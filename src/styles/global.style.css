@@ -1,0 +1,64 @@
+@import url("./fonts.style.css");
+@import url("./variables.style.css");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "metropolis", sans-serif;
+}
+
+/* Scrollbar Hide */
+::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  outline: none;
+}
+
+/* textarea:-webkit-autofill, */
+/* textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus  */
+/* input:-webkit-autofill:hover,  */
+/* input:-webkit-autofill:focus */
+.autofill-effect:-webkit-autofill {
+  -webkit-text-fill-color: var(--primary);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Hide spinner in WebKit browsers (Chrome, Edge, Safari) */
+.number-input-mouse-control-none::-webkit-inner-spin-button,
+.number-input-mouse-control-none::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide spinner in Firefox */
+.number-input-mouse-control-none[type="number"] {
+  appearance: textfield;
+}
+
+/* Loading Screen Page */
+.loadingHighlight,
+.highlight {
+  color: transparent;
+  background-clip: text;
+  background-image: var(--accent-duo);
+  display: inline;
+}
+
+.border-rounded-corners-gradient {
+  border: solid 1px transparent;
+  border-radius: 16px;
+  background-image: linear-gradient(
+      var(--primary-inverted),
+      var(--primary-inverted)
+    ),
+    linear-gradient(var(--primary-50) 10%, var(--primary-10));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
