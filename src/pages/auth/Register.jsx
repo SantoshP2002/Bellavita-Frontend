@@ -48,6 +48,15 @@ const Register = () => {
             />
             <FaLock className="absolute top-3.5 left-3 text-gray-500" />
           </div>
+          <div className="relative mb-4">
+            <input
+              type="password"
+              placeholder="Enter confirm password..."
+              required
+              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            />
+            <FaLock className="absolute top-3.5 left-3 text-gray-500" />
+          </div>
 
           {/* Submit Button */}
           <button
