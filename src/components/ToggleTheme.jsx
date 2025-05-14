@@ -7,7 +7,8 @@ const ToggleTheme = ({ className }) => {
 
   return (
     <div onClick={toggleTheme} className={`cursor-pointer ${className}`}>
-      {theme === "dark" ? <IoSunny /> : <FaRegMoon />}
+      <p className="w-5 h-5 flex items-center justify-center">{theme === "dark" ? "D" : "L"}</p>
+      {/* {theme === "dark" ? <IoSunny /> : <FaRegMoon />} */}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import router from "./routes";
 import { RouterProvider } from "react-router-dom";
+import ToggleTheme from "./components/ToggleTheme";
 
 const App = () => {
   const { theme } = useThemeStore();
@@ -22,6 +23,7 @@ const App = () => {
           <RouterProvider router={router} />
         </div>
       </div>
+      {/* <ToggleTheme className="fixed bottom-5 right-5 z-50 bg-red-600 p-2 rounded-full" /> */}
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
