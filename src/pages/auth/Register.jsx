@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
-    <div className="w-dvw flex justify-center items-center min-h-screen bg-gradient-to-tr px-4">
+    <div className="w-dvw h-dvh overflow-y-scroll flex justify-center items-center bg-gradient-to-tr px-4">
       <div className="w-fit p-8 animate-fade-in-up mx-auto bg-slate-100 rounded-xl shadow-lg">
         <form className="max-w-xl">
           <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 animate-fade-in-scale">
