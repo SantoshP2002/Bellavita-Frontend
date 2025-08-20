@@ -1,5 +1,4 @@
-@import url("./fonts.style.css");
-@import url("./variables.style.css");
+@import "tailwindcss";
 
 * {
   box-sizing: border-box;
@@ -15,29 +14,4 @@
 
 button {
   outline: none;
-}
-
-/* textarea:-webkit-autofill, */
-/* textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus  */
-/* input:-webkit-autofill:hover,  */
-/* input:-webkit-autofill:focus */
-.autofill-effect:-webkit-autofill {
-  -webkit-text-fill-color: var(--primary);
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-/* Hide spinner in WebKit browsers (Chrome, Edge, Safari) */
-.number-input-mouse-control-none::-webkit-inner-spin-button,
-.number-input-mouse-control-none::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Hide spinner in Firefox */
-.number-input-mouse-control-none[type="number"] {
-  appearance: textfield;
 }
