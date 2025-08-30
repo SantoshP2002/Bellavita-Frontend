@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
   FaRegUser,
@@ -13,18 +11,8 @@ import {
   FaLinkedin,
   FaArrowRight,
 } from "react-icons/fa";
-import { toast } from "react-toastify";
-
-interface RegisterResponse {
-  success: boolean;
-  message: string;
-  token: string;
-  data: {
-    id: string;
-    name: string;
-    email: string;
-  };
-}
+import type { IUser } from "../../types";
+import { useRegisterUser } from "../../api/auth/service";
 
 // Zod Schema
 const registerSchema = z.object({
@@ -33,38 +21,34 @@ const registerSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-type RegisterFormData = z.infer<typeof registerSchema>;
-
 const Register = () => {
-  const navigate = useNavigate();
+  const { mutateAsync, isPending, isError } = useRegisterUser();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<RegisterFormData>({
+  } = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
   });
 
   // Submit Handler
 
-  const onSubmit = async (data: RegisterFormData) => {
-    try {
-      const response = await axios.post<RegisterResponse>(
-        `${import.meta.env.VITE_BACKEND_URI}/api/auth/register`,
-        data
-      );
-      console.log(response);
-
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.data));
-
-      toast.success(response.data.message);
-      navigate("/");
-    } catch (error) {
-      toast.error("Something went wrong");
-      console.log("Register error", error);
-    }
+  const onSubmit = async (data: Omit<IUser, "_id" | "role">) => {
+    console.log("DATA Before", data);
+    mutateAsync(data, {
+      onSuccess(data) {
+        console.log("DATA After", data);
+      },
+    });
   };
+
+  if (isPending) {
+    return <div className="">Loading......</div>;
+  }
+  if (isError) {
+    return <div className="">Something went wrong</div>;
+  }
 
   return (
     <div className="w-dvw h-dvh overflow-y-scroll flex justify-center items-center bg-gradient-to-tr px-4">
