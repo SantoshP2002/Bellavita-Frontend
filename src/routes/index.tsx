@@ -3,6 +3,7 @@ import Main from "../pages/main";
 import Home from "../pages/home";
 import Register from "../pages/auth/Register";
 import Login from "../pages/auth/Login";
+import AdminDashboard from "../pages/admin/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -13,16 +14,20 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        path: "/adminPanel",
+        element: <AdminDashboard />,
+      },
     ],
   },
   {
     path: "/login",
-    element: <Login/>
+    element: <Login />,
   },
   {
     path: "/register",
-    element: <Register/>
-  }
+    element: <Register />,
+  },
 ]);
 
 export default router;
