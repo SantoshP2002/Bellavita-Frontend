@@ -15,7 +15,7 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="w-full shadow-md bg-white fixed top-0 left-0 z-50">
+    <div className="w-full shadow-md bg-white sticky inset-x-0 top-0 z-50">
       {/* TOP NAV */}
       <div className="flex items-center justify-between px-4 md:px-14 py-3">
         {/* Left - Logo */}

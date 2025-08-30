@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-7xl mx-auto mt-10">
+    <div className="w-full max-w-7xl mx-auto">
       <div className="mt-10">
         {/* Carousel */}
         <div className="relative overflow-hidden h-[400px] rounded-2xl shadow-lg">
