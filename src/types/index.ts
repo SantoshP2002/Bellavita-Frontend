@@ -1,7 +1,20 @@
+export type TUserRole = "ADMIN" | "USER";
+
 export interface IUser {
   _id: string;
-  name: string;
   email: string;
+  firstName: string;
+  lastName: string;
   password: string;
-  role: "ADMIN" | "CUSTOMER";
+  profilePic: string;
+  role: TUserRole;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IUserStore {
+  user: IUser | null;
+  isLoggedIn: boolean;
+  setUser: (user: IUser) => void;
+  logout: () => void;
 }
