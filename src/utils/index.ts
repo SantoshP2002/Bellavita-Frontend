@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { VITE_ENCRYPTION_SECRET_KEY } from "../env";
+import { VITE_ENCRYPTION_SECRET_KEY, VITE_TOKEN_KEY } from "../env";
 
 export const encryptData = (data: object | string) => {
   const stringData = typeof data === "string" ? data : JSON.stringify(data);
@@ -9,7 +9,6 @@ export const encryptData = (data: object | string) => {
   );
   return encrypted.toString();
 };
-
 
 export const decryptData = (
   encryptedData: string | null
@@ -26,6 +25,25 @@ export const decryptData = (
       return decrypted;
     }
   }
-
   return null;
+};
+
+export const removeLocalToken = () => localStorage.removeItem(VITE_TOKEN_KEY);
+
+export const saveLocalToken = (token: string) => {
+  const encryptedToken = encryptData(token);
+  localStorage.setItem(VITE_TOKEN_KEY, encryptedToken);
+};
+
+export const getUserToken = () => {
+  const raw_token = localStorage.getItem(VITE_TOKEN_KEY);
+  if (!raw_token) {
+    throw new Error("No Token found");
+  }
+
+  const token = decryptData(raw_token);
+  if (!token) {
+    throw new Error("No Token found");
+  }
+  return token;
 };

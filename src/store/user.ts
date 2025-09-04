@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { IUser, IUserStore } from "../types";
-import { decryptData, encryptData } from "../utils";
+import { decryptData, encryptData, removeLocalToken } from "../utils";
 
 const SESSION_KEY = "user";
 export const useUserStore = create<IUserStore>((set) => {
@@ -23,6 +23,7 @@ export const useUserStore = create<IUserStore>((set) => {
     },
     logout: () => {
       sessionStorage.removeItem(SESSION_KEY);
+      removeLocalToken()
       set({ user: null, isLoggedIn: false });
     },
   };
