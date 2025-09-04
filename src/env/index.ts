@@ -1,3 +1,1 @@
-export const env = {
-  BACKEND_URL: import.meta.env.VITE_BACKEND_URI,
-}; 
+export const { VITE_BACKEND_URI, VITE_ENCRYPTION_SECRET_KEY } = import.meta.env;
