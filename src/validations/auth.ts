@@ -3,8 +3,8 @@ import { ALLOWED_IMAGE_TYPES, MAX_IMAGE_FILE_SIZE, MB } from "../constants";
 
 export const loginSchema = z.object({
   email: z
-    .email("Email should be a valid email address")
-    .nonempty("email is required")
+    .string("Email should be a string")
+    .nonempty("Email is required")
     .trim()
     .toLowerCase()
     .regex(
@@ -12,8 +12,8 @@ export const loginSchema = z.object({
       "please provide a valid email address, like example@domain.com"
     ),
   password: z
-    .string("password should be a string")
-    .nonempty("password is required")
+    .string("Password should be a string")
+    .nonempty("Password is required")
     .trim()
     .min(6, "Password must be at least 6 characters long")
     .max(20, "Password may not exceed 20 characters")
@@ -27,7 +27,7 @@ export const registerSchema = loginSchema
   .extend({
     firstName: z
       .string("First name should be a string")
-      .nonempty("")
+      .nonempty("First name is required")
       .trim()
       .toLowerCase()
       .min(2, "First name must be at least 2 characters long")
@@ -57,35 +57,30 @@ export const registerSchema = loginSchema
         /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])(?=\S.*$).{6,20}$/,
         "Confirm Password must be 6–20 characters long, include at least one uppercase letter, one lowercase letter, one number, one special character, and must not contain spaces"
       ),
-    profilePic: z.any().superRefine((file, ctx) => {
-      if (typeof File !== "undefined" && file instanceof File) {
-        // File size check
+    profilePic: z
+      .custom<File>((val) => val instanceof File, {
+        message: "Profile pic must be a valid File",
+      })
+      .superRefine((file, ctx) => {
+        if (!(file instanceof File)) return;
+
         if (file.size > MAX_IMAGE_FILE_SIZE) {
           const sizeInMB = (file.size / MB).toFixed(1);
           ctx.addIssue({
             code: "custom",
             message: `Profile pic is too large (${sizeInMB} MB). Max allowed is 2 MB.`,
-            path: [],
           });
         }
-        // File type check
+
         if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
           ctx.addIssue({
             code: "custom",
             message: `Invalid format. Allowed formats: ${ALLOWED_IMAGE_TYPES.map(
               (t) => t.replace("image/", "")
             ).join(", ")}`,
-            path: [],
           });
         }
-      } else {
-        ctx.addIssue({
-          code: "custom",
-          message: `Profile pic must be a valid File`,
-          path: [],
-        });
-      }
-    }),
+      }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
