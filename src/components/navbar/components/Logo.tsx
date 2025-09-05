@@ -3,7 +3,7 @@ const Logo = () => {
     <div className="">
       <img
         className="w-full h-10"
-        src="/public/assets/images/download.png"
+        src="/assets/images/download.png"
         alt=""
       />
     </div>

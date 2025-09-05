@@ -2,9 +2,9 @@
 import { AxiosError } from "axios";
 import { apiRoutes } from "../routes";
 import api from "../axios.instance";
-import type { IUser } from "../../types";
+import type { TBaseUser } from "../../types";
 
-export const register_user = async (data: Omit<IUser, "_id" | "role">) => {
+export const register_user = async (data: TBaseUser) => {
   try {
     const { method, url } = apiRoutes.auth.register;
     const response = await api.request({ method, url, data });

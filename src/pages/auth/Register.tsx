@@ -11,15 +11,9 @@ import {
   FaLinkedin,
   FaArrowRight,
 } from "react-icons/fa";
-import type { IUser } from "../../types";
+import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
-
-// Zod Schema
-const registerSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters"),
-  email: z.email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
+import { registerSchema } from "../../validations/auth";
 
 const Register = () => {
   const { mutateAsync, isPending, isError } = useRegisterUser();
@@ -34,7 +28,7 @@ const Register = () => {
 
   // Submit Handler
 
-  const onSubmit = async (data: Omit<IUser, "_id" | "role">) => {
+  const onSubmit = async (data: TBaseUser) => {
     console.log("DATA Before", data);
     mutateAsync(data, {
       onSuccess(data) {
@@ -49,7 +43,7 @@ const Register = () => {
   if (isError) {
     return <div className="">Something went wrong</div>;
   }
-
+  console.log("errors.profilePic", errors.profilePic);
   return (
     <div className="w-dvw h-dvh overflow-y-scroll flex justify-center items-center bg-gradient-to-tr px-4">
       <div className="w-fit p-8 animate-fade-in-up mx-auto bg-slate-100 rounded-xl shadow-lg">
@@ -57,18 +51,49 @@ const Register = () => {
           <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 animate-fade-in-scale">
             Register
           </h1>
-
-          {/* Name */}
+          {/* Profile Picture */}
           <div className="relative mb-4">
             <input
-              {...register("name")}
-              type="text"
-              placeholder="Enter your full name..."
+              {...register("profilePic")}
+              type="file"
+              multiple={false}
+              placeholder="Enter your first name..."
               className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
             />
             <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
-            {errors.name && (
-              <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+            {errors.profilePic?.message && (
+              <p className="text-red-500 text-xs mt-1">
+                {String(errors.profilePic.message)}
+              </p>
+            )}
+          </div>
+          {/* Name */}
+          <div className="relative mb-4">
+            <input
+              {...register("firstName")}
+              type="text"
+              placeholder="Enter your first name..."
+              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            />
+            <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
+            {errors.firstName && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.firstName.message}
+              </p>
+            )}
+          </div>
+          <div className="relative mb-4">
+            <input
+              {...register("lastName")}
+              type="text"
+              placeholder="Enter your last name..."
+              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            />
+            <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
+            {errors.lastName && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.lastName.message}
+              </p>
             )}
           </div>
 
@@ -100,6 +125,20 @@ const Register = () => {
             {errors.password && (
               <p className="text-red-500 text-xs mt-1">
                 {errors.password.message}
+              </p>
+            )}
+          </div>
+          <div className="relative mb-4">
+            <input
+              {...register("confirmPassword")}
+              type="password"
+              placeholder="Confirm password..."
+              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            />
+            <FaLock className="absolute top-3.5 left-3 text-gray-500" />
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.confirmPassword.message}
               </p>
             )}
           </div>

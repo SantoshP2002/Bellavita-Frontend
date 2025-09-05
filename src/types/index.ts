@@ -1,13 +1,17 @@
 export type TUserRole = "ADMIN" | "USER";
 
-export interface IUser {
-  _id: string;
+export type TBaseUser = {
   email: string;
   firstName: string;
   lastName: string;
   password: string;
-  profilePic: string;
+  confirmPassword: string;
+  profilePic: File;
+};
+export interface IUser extends Omit<TBaseUser, "profilePic"> {
+  _id: string;
   role: TUserRole;
+  profilePic: string;
   createdAt: Date;
   updatedAt: Date;
 }
