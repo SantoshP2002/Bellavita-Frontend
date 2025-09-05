@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
@@ -14,13 +14,16 @@ import {
 import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
+import { ALLOWED_IMAGE_TYPES } from "../../constants";
 
 const Register = () => {
   const { mutateAsync, isPending, isError } = useRegisterUser();
 
   const {
+    control,
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -45,20 +48,35 @@ const Register = () => {
   }
   console.log("errors.profilePic", errors.profilePic);
   return (
-    <div className="w-dvw h-dvh overflow-y-scroll flex justify-center items-center bg-gradient-to-tr px-4">
+    <div className="w-dvw h-dvh overflow-y-scroll flex justify-center bg-gradient-to-tr px-4">
       <div className="w-fit p-8 animate-fade-in-up mx-auto bg-slate-100 rounded-xl shadow-lg">
         <form className="max-w-xl" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 animate-fade-in-scale">
             Register
           </h1>
           {/* Profile Picture */}
+          {watch("profilePic") && (
+            <div className="mb-4">
+              <img
+                src={URL.createObjectURL(watch("profilePic"))}
+                alt="Profile Pic"
+                className="w-20 h-20 object-cover object-center aspect-square rounded-full mx-auto"
+              />
+            </div>
+          )}
           <div className="relative mb-4">
-            <input
-              {...register("profilePic")}
-              type="file"
-              multiple={false}
-              placeholder="Enter your first name..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            <Controller
+              name="profilePic"
+              control={control}
+              render={({ field }) => (
+                <input
+                  type="file"
+                  multiple={false}
+                  accept={ALLOWED_IMAGE_TYPES.join(",")}
+                  onChange={(e) => field.onChange(e.target.files?.[0] || null)} // pick File
+                  className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                />
+              )}
             />
             <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
             {errors.profilePic?.message && (
