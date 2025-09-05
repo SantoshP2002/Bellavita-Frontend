@@ -46,7 +46,6 @@ const Register = () => {
   if (isError) {
     return <div className="">Something went wrong</div>;
   }
-  console.log("errors.profilePic", errors.profilePic);
   return (
     <div className="w-dvw h-dvh overflow-y-scroll flex justify-center bg-gradient-to-tr px-4">
       <div className="w-fit p-8 animate-fade-in-up mx-auto bg-slate-100 rounded-xl shadow-lg">
