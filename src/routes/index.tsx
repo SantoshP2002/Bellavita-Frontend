@@ -1,33 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../pages/main";
 import Home from "../pages/home";
-import Register from "../pages/auth/Register";
-import Login from "../pages/auth/Login";
+import RegisterRedirect from "./RegisterRedirect";
+import LoginRedirect from "./LoginRedirect";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
     children: [
+      { index: true, element: <Home /> },
       {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/adminPanel",
-        element: <AdminDashboard />,
+        path: "/admin",
+        element: (
+          <PrivateRoute>
+            <AdminDashboard />
+          </PrivateRoute>
+        ),
       },
     ],
   },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
+  { path: "/login", element: <LoginRedirect /> },
+  { path: "/register", element: <RegisterRedirect /> },
 ]);
 
 export default router;
