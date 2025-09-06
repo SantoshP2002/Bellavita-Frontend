@@ -3,6 +3,7 @@ import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 
 const Main = () => {
+
   return (
     <div className="w-full h-full flex flex-col">
       <Navbar />

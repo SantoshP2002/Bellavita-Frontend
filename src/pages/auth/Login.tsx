@@ -9,14 +9,13 @@ import {
   FaLock,
   FaRegUser,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import type { TBaseUser } from "../../types";
 import { loginSchema } from "../../validations/auth";
 import type z from "zod";
 import { useLoginUser } from "../../api/auth/service";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { mutateAsync, isPending } = useLoginUser();
 
   const {
@@ -28,11 +27,7 @@ const Login = () => {
   });
 
   const onSubmit = async (data: Pick<TBaseUser, "email" | "password">) => {
-    mutateAsync(data, {
-      onSuccess: () => {
-        navigate("/");
-      },
-    });
+    mutateAsync(data);
   };
 
   return (

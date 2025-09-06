@@ -15,12 +15,8 @@ import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
 import { ALLOWED_IMAGE_TYPES } from "../../constants";
-import { saveLocalToken } from "../../utils";
-import { useUserStore } from "../../store/user";
-
 const Register = () => {
   const { mutateAsync, isPending, isError } = useRegisterUser();
-  const { setUser } = useUserStore();
   const {
     control,
     register,
@@ -46,12 +42,7 @@ const Register = () => {
       formData.append("profilePic", file);
     }
 
-    mutateAsync(formData, {
-      onSuccess(data) {
-        setUser(data?.user);
-        saveLocalToken(data?.token);
-      },
-    });
+    mutateAsync(formData);
   };
 
   if (isPending) {
