@@ -1,6 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   FaArrowRight,
@@ -11,62 +9,30 @@ import {
   FaLock,
   FaRegUser,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import z from "zod";
-
-interface LoginResponse {
-  message: string;
-  data: {
-    id: string;
-    name: string;
-    email: string;
-    token: string;
-  };
-}
-
-const loginSchema = z.object({
-  email: z.email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
+import { Link, useNavigate } from "react-router-dom";
+import type { TBaseUser } from "../../types";
+import { loginSchema } from "../../validations/auth";
+import type z from "zod";
+import { useLoginUser } from "../../api/auth/service";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const { mutateAsync, isPending } = useLoginUser();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormData>({
+  } = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async (data: LoginFormData) => {
-    try {
-      setLoading(true);
-      const response = await axios.post<LoginResponse>(
-        `${import.meta.env.VITE_BACKEND_URI}/api/auth/login`,
-        data
-      );
-      const respData = response.data;
-      if (respData) {
-        localStorage.setItem("user", JSON.stringify(respData.data));
-        toast.success(respData.message);
-
-        setTimeout(() => {
-          setLoading(false);
-          navigate("/");
-        }, 600);
-      }
-    } catch (error) {
-      setLoading(false);
-      toast.error("Something went wrong");
-      console.error("Login error:", error);
-    }
+  const onSubmit = async (data: Pick<TBaseUser, "email" | "password">) => {
+    mutateAsync(data, {
+      onSuccess: () => {
+        navigate("/");
+      },
+    });
   };
 
   return (
@@ -120,9 +86,9 @@ const Login = () => {
           <button
             type="submit"
             className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 text-sm rounded-lg transition duration-300 cursor-pointer`}
-            disabled={loading}
+            disabled={!!isPending}
           >
-            {loading ? "Logging in..." : "Login"}
+            {isPending ? "Logging in..." : "Login"}
           </button>
 
           {/* Divider */}
