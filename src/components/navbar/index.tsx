@@ -8,11 +8,13 @@ import Logo from "./components/Logo";
 import SearchBar from "./components/SearchBar";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import { useUserStore } from "../../store/user";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { user, isLoggedIn, logout } = useUserStore();
 
   return (
     <div className="w-full shadow-md bg-white sticky inset-x-0 top-0 z-50">
@@ -37,14 +39,28 @@ const Navbar = () => {
 
         {/* Icons */}
         <div className="flex items-center gap-6 text-gray-700">
-          <GrUserAdmin
-            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
-            onClick={() => navigate("/adminPanel")}
-          />
-          <CiUser
-            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
-            onClick={() => navigate("/login")}
-          />
+          {user?.role === "ADMIN" && (
+            <GrUserAdmin
+              className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
+              onClick={() => navigate("/admin")}
+            />
+          )}
+          <div className="w-6 h-6">
+            {user?.profilePic ? (
+              <img
+                src={user?.profilePic}
+                alt="User"
+                className="border-2 border-black w-full h-full rounded-full cursor-pointer"
+                // onClick={() => navigate("/profile")}
+              />
+            ) : (
+              <CiUser
+                className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
+                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
+              />
+            )}
+          </div>
+
           <BsHandbag
             className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
             onClick={() => navigate("/addToCart")}
