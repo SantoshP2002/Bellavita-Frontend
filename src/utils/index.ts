@@ -45,5 +45,5 @@ export const getUserToken = () => {
   if (!token) {
     throw new Error("No Token found");
   }
-  return token;
+  return token as string;
 };
