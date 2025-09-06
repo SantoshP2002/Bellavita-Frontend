@@ -58,11 +58,13 @@ export const registerSchema = loginSchema
         "Confirm Password must be 6–20 characters long, include at least one uppercase letter, one lowercase letter, one number, one special character, and must not contain spaces"
       ),
     profilePic: z
-      .custom<File>((val) => val instanceof File, {
-        message: "Profile pic must be a valid File",
-      })
+      .custom<File | undefined>(
+        (val) => val === undefined || val instanceof File,
+        { message: "Profile pic must be a valid File" }
+      )
+      .optional()
       .superRefine((file, ctx) => {
-        if (!(file instanceof File)) return;
+        if (!file) return;
 
         if (file.size > MAX_IMAGE_FILE_SIZE) {
           const sizeInMB = (file.size / MB).toFixed(1);

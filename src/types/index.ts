@@ -6,7 +6,7 @@ export type TBaseUser = {
   lastName: string;
   password: string;
   confirmPassword: string;
-  profilePic: File;
+  profilePic?: File;
 };
 export interface IUser extends Omit<TBaseUser, "profilePic"> {
   _id: string;

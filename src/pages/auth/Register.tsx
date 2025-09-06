@@ -15,10 +15,12 @@ import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
 import { ALLOWED_IMAGE_TYPES } from "../../constants";
+import { saveLocalToken } from "../../utils";
+import { useUserStore } from "../../store/user";
 
 const Register = () => {
   const { mutateAsync, isPending, isError } = useRegisterUser();
-
+  const { setUser } = useUserStore();
   const {
     control,
     register,
@@ -32,10 +34,22 @@ const Register = () => {
   // Submit Handler
 
   const onSubmit = async (data: TBaseUser) => {
-    console.log("DATA Before", data);
-    mutateAsync(data, {
+    const formData = new FormData();
+
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("confirmPassword", data.confirmPassword);
+    const file = data.profilePic;
+    if (file) {
+      formData.append("profilePic", file);
+    }
+
+    mutateAsync(formData, {
       onSuccess(data) {
-        console.log("DATA After", data);
+        setUser(data?.user);
+        saveLocalToken(data?.token);
       },
     });
   };
@@ -46,6 +60,9 @@ const Register = () => {
   if (isError) {
     return <div className="">Something went wrong</div>;
   }
+
+  const profilePic = watch("profilePic") ?? null;
+
   return (
     <div className="w-dvw h-dvh overflow-y-scroll flex justify-center bg-gradient-to-tr px-4">
       <div className="w-fit p-8 animate-fade-in-up mx-auto bg-slate-100 rounded-xl shadow-lg">
@@ -54,10 +71,10 @@ const Register = () => {
             Register
           </h1>
           {/* Profile Picture */}
-          {watch("profilePic") && (
+          {profilePic && (
             <div className="mb-4">
               <img
-                src={URL.createObjectURL(watch("profilePic"))}
+                src={URL.createObjectURL(profilePic)}
                 alt="Profile Pic"
                 className="w-20 h-20 object-cover object-center aspect-square rounded-full mx-auto"
               />
