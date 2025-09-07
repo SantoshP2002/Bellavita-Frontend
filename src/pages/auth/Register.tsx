@@ -56,23 +56,24 @@ const Register = () => {
   const profilePic = watch("profilePic") ?? null;
 
   return (
-    <div className="w-dvw h-dvh overflow-y-scroll flex justify-center bg-gradient-to-tr px-4">
+    <div className="w-dvw min-h-dvh flex justify-center items-center bg-gradient-to-tr px-4">
       <div className="w-fit p-8 animate-fade-in-up mx-auto bg-slate-100 rounded-xl shadow-lg">
-        <form className="max-w-xl" onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="text-3xl font-bold text-center mb-6 text-gray-800 animate-fade-in-scale">
+        <form
+          className="max-w-md flex flex-col gap-4"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h1 className="text-3xl font-bold text-center mb-2 text-gray-800 animate-fade-in-scale">
             Register
           </h1>
           {/* Profile Picture */}
           {profilePic && (
-            <div className="mb-4">
-              <img
-                src={URL.createObjectURL(profilePic)}
-                alt="Profile Pic"
-                className="w-20 h-20 object-cover object-center aspect-square rounded-full mx-auto"
-              />
-            </div>
+            <img
+              src={URL.createObjectURL(profilePic)}
+              alt="Profile Pic"
+              className="w-20 h-20 object-cover object-center aspect-square rounded-full mx-auto"
+            />
           )}
-          <div className="relative mb-4">
+          <div className="relative">
             <Controller
               name="profilePic"
               control={control}
@@ -94,37 +95,39 @@ const Register = () => {
             )}
           </div>
           {/* Name */}
-          <div className="relative mb-4">
-            <input
-              {...register("firstName")}
-              type="text"
-              placeholder="Enter your first name..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
-            />
-            <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
-            {errors.firstName && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.firstName.message}
-              </p>
-            )}
-          </div>
-          <div className="relative mb-4">
-            <input
-              {...register("lastName")}
-              type="text"
-              placeholder="Enter your last name..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
-            />
-            <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
-            {errors.lastName && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.lastName.message}
-              </p>
-            )}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative">
+              <input
+                {...register("firstName")}
+                type="text"
+                placeholder="Enter your first name..."
+                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              />
+              <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
+              {errors.firstName && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.firstName.message}
+                </p>
+              )}
+            </div>
+            <div className="relative">
+              <input
+                {...register("lastName")}
+                type="text"
+                placeholder="Enter your last name..."
+                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              />
+              <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
+              {errors.lastName && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.lastName.message}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Email */}
-          <div className="relative mb-4">
+          <div className="relative">
             <input
               {...register("email")}
               type="email"
@@ -140,33 +143,35 @@ const Register = () => {
           </div>
 
           {/* Password */}
-          <div className="relative mb-4">
-            <input
-              {...register("password")}
-              type="password"
-              placeholder="Enter your password..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
-            />
-            <FaLock className="absolute top-3.5 left-3 text-gray-500" />
-            {errors.password && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
-          <div className="relative mb-4">
-            <input
-              {...register("confirmPassword")}
-              type="password"
-              placeholder="Confirm password..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
-            />
-            <FaLock className="absolute top-3.5 left-3 text-gray-500" />
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.confirmPassword.message}
-              </p>
-            )}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative">
+              <input
+                {...register("password")}
+                type="password"
+                placeholder="Enter your password..."
+                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              />
+              <FaLock className="absolute top-3.5 left-3 text-gray-500" />
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+            <div className="relative">
+              <input
+                {...register("confirmPassword")}
+                type="password"
+                placeholder="Confirm password..."
+                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              />
+              <FaLock className="absolute top-3.5 left-3 text-gray-500" />
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Submit Button */}
@@ -176,11 +181,11 @@ const Register = () => {
             buttonProps={{
               disabled: isSubmitting,
               type: "submit",
-              }}
+            }}
           />
 
           {/* Divider */}
-          <div className="text-center mt-3 text-gray-600 flex flex-col">
+          <div className="text-center text-gray-600 flex flex-col">
             <div className="flex items-center w-full gap-3">
               <div className="border border-black/30 w-full" />
               <span>OR</span>
@@ -190,7 +195,7 @@ const Register = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="flex justify-center gap-4 mt-4">
+          <div className="flex justify-center gap-4">
             <div className="text-red-500 hover:scale-110 transition text-xl">
               <FaGoogle />
             </div>
@@ -206,7 +211,7 @@ const Register = () => {
           </div>
 
           {/* Switch to Login */}
-          <p className="text-center mt-5 text-sm">
+          <p className="text-center text-sm">
             Already have an account?{" "}
             <Link to="/login" className="text-indigo-600 font-semibold">
               Login{" "}
