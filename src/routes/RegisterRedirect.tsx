@@ -2,6 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import Register from "../pages/auth/Register";
 import { useAuthCheck } from "../hooks/useAuthCheck";
 import { useUserStore } from "../store/user";
+import LoadingScreen from "../components/LoadingScreen";
 
 const RegisterRedirect = () => {
   const { isLoggedIn } = useUserStore();
@@ -10,9 +11,7 @@ const RegisterRedirect = () => {
 
   if (isLoading)
     return (
-      <div className="h-dvh w-dvw flex items-center justify-center p-4">
-        <p className="text-2xl">Loading.....</p>
-      </div>
+      <LoadingScreen/>
     );
 
   if (isLoggedIn) {

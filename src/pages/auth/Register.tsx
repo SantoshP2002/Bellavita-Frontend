@@ -170,16 +170,13 @@ const Register = () => {
           </div>
 
           {/* Submit Button */}
-
           <Button
-            pattern="primary"
+            pattern="secondary"
             content={isSubmitting ? "Registering..." : "Register"}
             buttonProps={{
               disabled: isSubmitting,
               type: "submit",
-              className:
-                "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 text-sm rounded-lg transition duration-300 cursor-pointer",
-            }}
+              }}
           />
 
           {/* Divider */}
