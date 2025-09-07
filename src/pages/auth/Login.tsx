@@ -14,6 +14,7 @@ import type { TBaseUser } from "../../types";
 import { loginSchema } from "../../validations/auth";
 import type z from "zod";
 import { useLoginUser } from "../../api/auth/service";
+import { Button } from "../../components/Button";
 
 const Login = () => {
   const { mutateAsync, isPending } = useLoginUser();
@@ -78,13 +79,12 @@ const Login = () => {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 text-sm rounded-lg transition duration-300 cursor-pointer`}
-            disabled={!!isPending}
-          >
-            {isPending ? "Logging in..." : "Login"}
-          </button>
+
+          <Button
+            pattern="secondary"
+            content={isPending ? "Logging in..." : "Login"}
+            buttonProps={{ disabled: isPending, type: "submit" }}
+          />
 
           {/* Divider */}
           <div className="text-center mt-3 text-gray-600 flex flex-col">

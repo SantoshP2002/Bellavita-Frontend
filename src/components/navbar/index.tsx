@@ -9,6 +9,7 @@ import SearchBar from "./components/SearchBar";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUserStore } from "../../store/user";
+import { Button } from "../Button";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -23,12 +24,14 @@ const Navbar = () => {
         {/* Left - Logo */}
         <div className="flex items-center gap-3">
           {/* Hamburger menu only on mobile */}
-          <button
-            className="md:hidden text-2xl text-gray-700"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <FiMenu />
-          </button>
+          <Button
+            content={<FiMenu />}
+            buttonProps={{
+              onClick: () => setIsSidebarOpen(true),
+              className: "md:hidden text-2xl text-gray-700",
+            }}
+          />
+
           <Logo />
         </div>
 
@@ -113,12 +116,14 @@ const Navbar = () => {
             {/* Close Button */}
             <div className="flex justify-between items-center">
               <Logo />
-              <button
-                className="text-2xl text-gray-700"
-                onClick={() => setIsSidebarOpen(false)}
-              >
-                <FiX />
-              </button>
+
+              <Button
+                content={<FiX />}
+                buttonProps={{
+                  onClick: () => setIsSidebarOpen(false),
+                  className: "text-2xl text-gray-700",
+                }}
+              />
             </div>
 
             {/* Nav Links */}

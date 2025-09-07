@@ -5,6 +5,7 @@ import {
   FaTachometerAlt,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Button } from "../../components/Button";
 
 const AdminDashboard = () => {
   return (
@@ -41,9 +42,13 @@ const AdminDashboard = () => {
           </Link>
         </nav>
         <div className="p-4 border-t border-indigo-600">
-          <button className="w-full bg-red-500 hover:bg-red-600 py-2 rounded-lg">
-            Logout
-          </button>
+          <Button
+            content="Logout"
+            buttonProps={{
+              className: `w-full bg-red-500 hover:bg-red-600 py-2 rounded-lg"
+              }`,
+            }}
+          />
         </div>
       </aside>
 

@@ -15,6 +15,7 @@ import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
 import { ALLOWED_IMAGE_TYPES } from "../../constants";
+import { Button } from "../../components/Button";
 const Register = () => {
   const { mutateAsync, isPending, isError } = useRegisterUser();
   const {
@@ -169,13 +170,17 @@ const Register = () => {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 text-sm rounded-lg transition duration-300 cursor-pointer"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Registering..." : "Register"}
-          </button>
+
+          <Button
+            pattern="primary"
+            content={isSubmitting ? "Registering..." : "Register"}
+            buttonProps={{
+              disabled: isSubmitting,
+              type: "submit",
+              className:
+                "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 text-sm rounded-lg transition duration-300 cursor-pointer",
+            }}
+          />
 
           {/* Divider */}
           <div className="text-center mt-3 text-gray-600 flex flex-col">

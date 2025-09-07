@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Button } from "../../components/Button";
 
 const images = [
   "https://bellavitaorganic.com/cdn/shop/files/Summer-Banner-1920x720.webp?v=1745321335&width=1920",
@@ -96,9 +97,10 @@ const Home = () => {
               <p className="text-sm text-gray-400 line-through">₹849.00</p>
             </div>
 
-            <button className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300">
-              Add to Cart
-            </button>
+            <Button
+              content="Add to Cart"
+              className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+            />
           </div>
         </div>
       </div>
