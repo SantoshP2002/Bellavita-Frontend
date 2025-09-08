@@ -9,7 +9,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="max-w-dvw max-h-dvh min-w-dvw min-h-dvh w-full h-full overflow-y-scroll bg-primary-inverted text-primary">
         <div className="max-w-[1920px] w-full h-full mx-auto">
-          <ToastContainer position="top-right" autoClose={3000} />
+          <ToastContainer position="bottom-center" autoClose={3000} />
           <RouterProvider router={router} />
         </div>
       </div>
