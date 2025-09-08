@@ -32,7 +32,7 @@ const Navbar = () => {
             }}
           />
 
-          <Logo />
+          <Logo onClick={() => navigate("/")} />
         </div>
 
         {/* Search bar (always visible) */}
