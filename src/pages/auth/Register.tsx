@@ -1,7 +1,7 @@
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaRegUser,
   FaLock,
@@ -17,6 +17,7 @@ import { registerSchema } from "../../validations/auth";
 import { ALLOWED_IMAGE_TYPES } from "../../constants";
 import { Button } from "../../components/Button";
 const Register = () => {
+  const navigate = useNavigate();
   const { mutateAsync, isPending, isError } = useRegisterUser();
   const {
     control,
@@ -220,6 +221,18 @@ const Register = () => {
               </span>
             </Link>
           </p>
+
+          <Button
+            content="🏠 Back to Home"
+            pattern="secondary"
+            className="!w-42 !h-14  fixed bottom-4 right-4"
+            icons={{
+              right: <FaArrowRight />,
+            }}
+            buttonProps={{
+              onClick: () => navigate("/"),
+            }}
+          />
         </form>
       </div>
     </div>

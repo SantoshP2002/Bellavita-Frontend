@@ -9,7 +9,7 @@ import {
   FaLock,
   FaRegUser,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import type { TBaseUser } from "../../types";
 import { loginSchema } from "../../validations/auth";
 import type z from "zod";
@@ -17,6 +17,7 @@ import { useLoginUser } from "../../api/auth/service";
 import { Button } from "../../components/Button";
 
 const Login = () => {
+  const navigate = useNavigate()
   const { mutateAsync, isPending } = useLoginUser();
 
   const {
@@ -122,6 +123,17 @@ const Login = () => {
               </span>
             </Link>
           </p>
+          <Button
+                      content="🏠 Back to Home"
+                      pattern="secondary"
+                      className="!w-42 !h-14  fixed bottom-4 right-4"
+                      icons={{
+                        right: <FaArrowRight />,
+                      }}
+                      buttonProps={{
+                        onClick: () => navigate("/"),
+                      }}
+                    />
         </form>
       </div>
     </div>
