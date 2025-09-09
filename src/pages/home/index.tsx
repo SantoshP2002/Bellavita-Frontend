@@ -38,7 +38,6 @@ const Home = () => {
 
         {/* Dots */}
         <div className="flex justify-center mt-4 gap-2 mb-6">
-          {" "}
           {images.map((_, index) => (
             <button
               key={index}
