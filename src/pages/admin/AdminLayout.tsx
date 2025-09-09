@@ -8,7 +8,7 @@ const AdminLayout = () => {
   return (
     <div className="flex justify-between gap-4">
       <Sidebar />
-      <main className="min-h-dvh flex-1 flex flex-col gap-4 p-4">
+      <main className="min-h-dvh flex-1 flex flex-col gap-4 p-4 bg-gray-200 rounded-xl m-2">
         <AdminHeader />
         <section className="w-full grow">
           <Outlet />
