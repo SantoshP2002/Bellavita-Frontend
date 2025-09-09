@@ -13,3 +13,16 @@
 button {
   outline: none;
 }
+
+
+/* Hide spinner in WebKit browsers (Chrome, Edge, Safari) */
+.number-input-mouse-control-none::-webkit-inner-spin-button,
+.number-input-mouse-control-none::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide spinner in Firefox */
+.number-input-mouse-control-none[type="number"] {
+  appearance: textfield;
+}
