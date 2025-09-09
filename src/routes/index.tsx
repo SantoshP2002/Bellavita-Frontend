@@ -11,6 +11,7 @@ import Dashboard from "../pages/admin/children/Dashboard";
 import Users from "../pages/admin/children/Users";
 import Products from "../pages/admin/children/Products";
 import Orders from "../pages/admin/children/Orders";
+import UploadProducts from "../pages/admin/children/UploadProducts";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { index: true, element: <Dashboard /> },
       { path: "users", element: <Users /> },
       { path: "products", element: <Products /> },
+      { path: "products/upload", element: <UploadProducts /> },
       { path: "orders", element: <Orders /> },
     ],
   },
