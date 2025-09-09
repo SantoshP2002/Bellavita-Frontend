@@ -1,4 +1,5 @@
-import type { SVGProps } from "react";
+import type { InputHTMLAttributes, ReactNode, SVGProps } from "react";
+import type { UseFormRegisterReturn } from "react-hook-form";
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -11,6 +12,14 @@ export type TBaseUser = {
   password: string;
   confirmPassword: string;
   profilePic?: File;
+};
+
+export type TBaseProduct = {
+  title: string;
+  brand: string;
+  price: number | undefined;
+  // sellingPrice:  number | string;
+  // category: string;
 };
 export interface IUser extends Omit<TBaseUser, "profilePic"> {
   _id: string;
@@ -25,4 +34,22 @@ export interface IUserStore {
   isLoggedIn: boolean;
   setUser: (user: IUser) => void;
   logout: () => void;
+}
+
+export interface ClassName {
+  className?: string;
+}
+
+interface TBaseInput extends ClassName {
+  containerClassName?: string;
+  icons?: { left?: TInputIcon; right?: Omit<TInputIcon, "text"> };
+  register?: UseFormRegisterReturn;
+  label?: string;
+  error?: string;
+}
+
+type TInputIcon = { text?: string; icon?: ReactNode; onClick?: () => void };
+
+export interface IInput extends TBaseInput {
+  inputProps: InputHTMLAttributes<HTMLInputElement>;
 }
