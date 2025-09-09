@@ -15,7 +15,7 @@ const Sidebar = () => {
       <div className="p-4 text-2xl font-bold border-b border-indigo-600">
         Admin Panel
       </div>
-      <nav className="p-4 space-y-2">
+      <nav className="p-6 space-y-2">
         <Link
           to="/admin"
           className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-indigo-600"
@@ -43,7 +43,8 @@ const Sidebar = () => {
         <Button
           content="Logout"
           buttonProps={{
-            className: "w-full bg-red-500 hover:bg-red-600 py-2 rounded-lg",
+            className:
+              "w-full text-white bg-red-500 hover:bg-red-600 py-2 rounded-lg",
             onClick: logout,
           }}
         />
