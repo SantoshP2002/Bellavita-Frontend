@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ALLOWED_IMAGE_TYPES, MAX_IMAGE_FILE_SIZE } from "../constants";
+import { ALLOWED_IMAGE_TYPES, MAX_IMAGE_FILE_SIZE, MB } from "../constants";
 
 export const uploadProductSchema = z.object({
   title: z
@@ -27,16 +27,37 @@ export const uploadProductSchema = z.object({
     .nonempty("Category is required"),
   productImages: z
     .array(
-      z
-        .custom<File>((file) => file instanceof File, {
-          message: "Invalid file",
-        })
-        .refine((file) => file.size <= MAX_IMAGE_FILE_SIZE, {
-          message: "Image not allowed more than 2MB",
-        })
-        .refine((file) => ALLOWED_IMAGE_TYPES.includes(file.type), {
-          message: "Invalid file type",
-        })
+      z.custom<File>((file) => file instanceof File, {
+        message: "Invalid file",
+      })
     )
-    .min(1, "At least one image is required"),
+    .min(1, "At least one image is required")
+    .superRefine((files, ctx) => {
+      files.forEach((file, index) => {
+        // Size check
+        if (file.size > MAX_IMAGE_FILE_SIZE) {
+          const sizeInMB = (file.size / MB).toFixed(1);
+          ctx.addIssue({
+            code: "custom",
+            message: `Image ${
+              index + 1
+            } is too large (${sizeInMB} MB). Max allowed is 2 MB.`,
+            path: [index],
+          });
+        }
+
+        // Type check
+        if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+          ctx.addIssue({
+            code: "custom",
+            message: `Image ${
+              index + 1
+            } invalid format. Allowed formats: ${ALLOWED_IMAGE_TYPES.map((t) =>
+              t.replace("image/", "")
+            ).join(", ")}`,
+            path: [index],
+          });
+        }
+      });
+    }),
 });
