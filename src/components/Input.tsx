@@ -68,7 +68,7 @@ const Input = ({
               inputProps?.type === "number"
                 ? "number-input-mouse-control-none"
                 : ""
-            }`}
+            } ${inputProps?.className ?? ""}`}
           />
           {/* Right Icon */}
           {!icons?.left && icons?.right && (
