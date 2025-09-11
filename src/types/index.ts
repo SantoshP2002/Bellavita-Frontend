@@ -17,9 +17,11 @@ export type TBaseUser = {
 export type TBaseProduct = {
   title: string;
   brand: string;
-  price: number | undefined;
-  // sellingPrice:  number | string;
-  // category: string;
+  price: number ;
+  sellingPrice: number ;
+  description: string;
+  category: string;
+  productImages: File[];
 };
 export interface IUser extends Omit<TBaseUser, "profilePic"> {
   _id: string;
