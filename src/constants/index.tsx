@@ -42,3 +42,15 @@ export const ALLOWED_IMAGE_TYPES = [
   "image/webp",
   "image/jpg",
 ];
+
+export const CATEGORIES_DATA = [
+  { label: "Shop All", value: "Shop All" },
+  { label: "Crazy Deals", value: "Crazy Deals" },
+  { label: "Bestsellers", value: "Bestsellers" },
+  { label: "Perfumes", value: "Perfumes" },
+  { label: "Bath & Body", value: "Bath & Body" },
+  { label: "Cosmetics", value: "Cosmetics" },
+  { label: "New Arrivals", value: "New Arrivals" },
+  { label: "Skincare", value: "Skincare" },
+  { label: "Gifting", value: "Gifting" },
+];

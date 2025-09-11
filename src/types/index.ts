@@ -64,4 +64,6 @@ export interface ISelectProps {
   options: { label: string; value: string }[];
   className?: string;
   containerClassName?: string;
+  placeholder?: string;
+  value?: string;
 }

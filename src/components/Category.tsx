@@ -9,6 +9,8 @@ const CategorySelect = ({
   options,
   className = "",
   containerClassName = "",
+  placeholder = "Select",
+  value,
 }: ISelectProps) => {
   return (
     <div className={`w-full flex flex-col gap-1.5 ${containerClassName}`}>
@@ -28,10 +30,15 @@ const CategorySelect = ({
           {...register}
           name={name}
           id={name}
-          className={`w-full h-full border border-black/10 bg-white rounded-lg text-sm p-3 text-black cursor-pointer outline-none ${className}`}
+          className={`w-full h-full border border-black/10 bg-white rounded-lg text-sm p-3 text-black cursor-pointer outline-none ${
+            value ? "text-black" : "text-black/50"
+          } ${className}`}
         >
+          <option value="" className="text-black">
+            {placeholder}
+          </option>
           {options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
+            <option key={opt.value} value={opt.value} className="text-black">
               {opt.label}
             </option>
           ))}

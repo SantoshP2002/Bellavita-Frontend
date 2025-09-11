@@ -9,6 +9,7 @@ import { uploadProductSchema } from "../../../validations/product";
 import { RxCross1 } from "react-icons/rx";
 import { useUploadProduct } from "../../../api/products/service";
 import CategorySelect from "../../../components/Category";
+import { CATEGORIES_DATA } from "../../../constants";
 
 const initialValues: TBaseProduct = {
   title: "",
@@ -124,30 +125,35 @@ const UploadProducts = () => {
             name="category"
             register={register("category")}
             error={errors?.category?.message}
-            options={[
-              { label: "Shop All", value: "Shop All" },
-              { label: "Crazy Deals", value: "Crazy Deals" },
-              { label: "Bestsellers", value: "Bestsellers" },
-              { label: "Perfumes", value: "Perfumes" },
-              { label: "Bath & Body", value: "Bath & Body" },
-              { label: "Cosmetics", value: "Cosmetics" },
-              { label: "New Arrivals", value: "New Arrivals" },
-              { label: "Skincare", value: "Skincare" },
-              { label: "Gifting", value: "Gifting" },
-            ]}
+            value={watch("category")}
+            options={CATEGORIES_DATA}
           />
           {/* productImage */}
-          <div className="w-60 flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <Input
               label="Product Images"
               error={errors?.productImages?.message}
+              icons={{
+                right: {
+                  icon: (
+                    <label htmlFor="productImages" className="pl-1.5 text-sm text-black/50 w-full">
+                      {productImages?.length
+                        ? "Add Product Images"
+                        : "Upload Product Images"}
+                    </label>
+                  ),
+                },
+              }}
+              className="[&>span]:w-full"
               inputProps={{
                 type: "file",
                 accept: "image/*",
+                name: "productImages",
                 multiple: true,
-                placeholder: "Upload Product Images",
+                className: "sr-only",
+
                 onChange: (e) => {
-                  const files = Array.from(e.target.files || []); // ✅ files array
+                  const files = Array.from(e.target.files || []);
                   setValue("productImages", files, { shouldValidate: true });
                 },
               }}
@@ -168,7 +174,7 @@ const UploadProducts = () => {
                       <Button
                         content={<RxCross1 />}
                         pattern="secondary"
-                        className="!w-6 !h-6 !p-0 absolute -top-2 -right-2 rounded-full flex items-center justify-center text-xs bg-red-500 hover:bg-red-600"
+                        className="!w-4 !h-4 !p-0 absolute top-0 right-0 rounded-full flex items-center justify-center text-xs bg-red-500 hover:bg-red-600"
                         buttonProps={{
                           type: "button",
                           onClick: () => {
