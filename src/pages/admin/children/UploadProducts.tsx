@@ -6,18 +6,26 @@ import Input from "../../../components/Input";
 import { Button } from "../../../components/Button";
 import type { TBaseProduct } from "../../../types";
 import { uploadProductSchema } from "../../../validations/product";
+import { RxCross1 } from "react-icons/rx";
+import { useUploadProduct } from "../../../api/products/service";
 
 const initialValues: TBaseProduct = {
   title: "",
   brand: "",
-  price: undefined,
+  price: 0,
+  sellingPrice: 0,
+  description: "",
+  category: "",
+  productImages: [],
 };
 
 const UploadProducts = () => {
+  const { mutateAsync } = useUploadProduct();
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     // control,
     formState: { errors },
   } = useForm<z.infer<typeof uploadProductSchema>>({
@@ -25,16 +33,30 @@ const UploadProducts = () => {
     resolver: zodResolver(uploadProductSchema),
   });
 
-  const onSubmit = (data: TBaseProduct) => {
+  console.log("errors", errors);
+
+  const productImages = watch("productImages") || [];
+
+  console.log("productImages", productImages);
+
+  const onSubmit = async (data: TBaseProduct) => {
     console.log("data", data);
 
-    // const formData = new FormData();
-    // console.log(formData)
+    const formData = new FormData();
+    console.log(formData);
 
-    // formData.append("title", data.title);
-    // formData.append("brand", data.brand);
-    // formData.append("sellingPrice", data.sellingPrice.toString());
-    // formData.append("price", data.price.toString());
+    formData.append("title", data.title);
+    formData.append("brand", data.brand);
+    formData.append("sellingPrice", data.sellingPrice.toString());
+    formData.append("price", data.price.toString());
+    formData.append("description", data.description);
+    formData.append("category", data.category);
+
+    data.productImages.forEach((file) =>
+      formData.append("productImages", file)
+    );
+
+    await mutateAsync(formData);
   };
   return (
     <div className="p-2">
@@ -60,23 +82,6 @@ const UploadProducts = () => {
           />
 
           {/*  Price */}
-          {/* <Input
-            label="Price"
-            error={errors?.price?.message}
-            register={register("price")}
-            inputProps={{
-              type: "number",
-              name: "price",
-              placeholder: "Enter price",
-              // onChange: (val) => {
-              //   console.log("HELLO")
-              //   setValue("price", Number(val) || 0, {
-              //     shouldValidate: true,
-              //   });
-              //   // field.onChange(val);
-              // },
-            }}
-          /> */}
           <Input
             label="Price"
             error={errors?.price?.message}
@@ -91,40 +96,111 @@ const UploadProducts = () => {
               },
             }}
           />
-
-          {/* <Controller
-            name="price"
-            control={control}
-            defaultValue={undefined}
-            render={({ field }) => {
-              return (
-
-              );
+          {/* Selling Price */}
+          <Input
+            label="Selling Price"
+            error={errors?.sellingPrice?.message}
+            inputProps={{
+              type: "number",
+              placeholder: "Enter Selling price",
+              onChange: (e) => {
+                const val = e.target.value;
+                setValue("sellingPrice", Number(val), {
+                  shouldValidate: true,
+                });
+              },
             }}
-          /> */}
+          />
+          {/* Description */}
+          <Input
+            label="Description"
+            className="w-full bg-white text-black"
+            register={register("description")}
+            error={errors.description?.message}
+            inputProps={{ placeholder: "Enter Description" }}
+          />
 
           {/* Category */}
-          {/* <select
+          <select
             {...register("category")}
             name="category"
             className="w-full h-12 border border-black rounded-xl outline-none cursor-pointer bg-white"
           >
             Category
-            <option value="">Shop All</option>
-            <option value="">Crazy Deals</option>
+            <option value="Shop All">Shop All</option>
+            <option value="Crazy Deals">Crazy Deals</option>
             <option value="">Bestsellers</option>
-            <option value="">Perfumes</option>
-            <option value="">Bath & Body</option>
-            <option value="">Cosmetics</option>
-            <option value="">New Arrivals</option>
-            <option value="">Skincare</option>
-            <option value="">Gifting</option>
+            <option value="Bestsellers">Perfumes</option>
+            <option value="Bath & Body">Bath & Body</option>
+            <option value="Cosmetics">Cosmetics</option>
+            <option value="New Arrivals">New Arrivals</option>
+            <option value="Skincare">Skincare</option>
+            <option value="Gifting">Gifting</option>
           </select>
-          {errors.category && (
-            <span className="text-red-500">{errors.category.message}</span>
-          )} */}
 
           {/* productImage */}
+          <div className="w-60 flex flex-col gap-2">
+            <Input
+              label="Product Images"
+              error={errors?.productImages?.message}
+              inputProps={{
+                type: "file",
+                accept: "image/*",
+                multiple: true,
+                placeholder: "Upload Product Images",
+                onChange: (e) => {
+                  const files = Array.from(e.target.files || []); // ✅ files array
+                  setValue("productImages", files, { shouldValidate: true });
+                },
+              }}
+            />
+            {/* Preview */}
+            {productImages.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {/* {errors?.productImages?.message} */}
+                {productImages.map((file, idx) => {
+                  const imagePreview = URL.createObjectURL(file); // ek-ek file ka preview
+                  return (
+                    <div key={idx} className="relative w-22 h-22">
+                      <img
+                        src={imagePreview}
+                        alt={`Preview ${idx}`}
+                        className="w-22 h-22 object-cover rounded-lg border border-gray-300"
+                      />
+                      <Button
+                        content={<RxCross1 />}
+                        pattern="secondary"
+                        className="!w-6 !h-6 !p-0 absolute -top-2 -right-2 rounded-full flex items-center justify-center text-xs bg-red-500 hover:bg-red-600"
+                        buttonProps={{
+                          type: "button",
+                          onClick: () => {
+                            // Remove selected image
+                            const remainingImages = productImages.filter(
+                              (_, i) => i !== idx
+                            );
+                            setValue("productImages", remainingImages, {
+                              shouldValidate: true,
+                            });
+                          },
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <div>
+              {errors?.productImages &&
+                Array.isArray(errors.productImages) &&
+                errors.productImages.map((err, ind) =>
+                  err?.message ? (
+                    <p key={ind} className="text-sm text-red-500 mt-1">
+                      {err?.message}
+                    </p>
+                  ) : null
+                )}
+            </div>
+          </div>
 
           {/* Upload Product Button */}
           <Button
