@@ -8,6 +8,7 @@ import type { TBaseProduct } from "../../../types";
 import { uploadProductSchema } from "../../../validations/product";
 import { RxCross1 } from "react-icons/rx";
 import { useUploadProduct } from "../../../api/products/service";
+import CategorySelect from "../../../components/Category";
 
 const initialValues: TBaseProduct = {
   title: "",
@@ -37,13 +38,10 @@ const UploadProducts = () => {
 
   const productImages = watch("productImages") || [];
 
-  console.log("productImages", productImages);
-
   const onSubmit = async (data: TBaseProduct) => {
     console.log("data", data);
 
     const formData = new FormData();
-    console.log(formData);
 
     formData.append("title", data.title);
     formData.append("brand", data.brand);
@@ -121,23 +119,23 @@ const UploadProducts = () => {
           />
 
           {/* Category */}
-          <select
-            {...register("category")}
+          <CategorySelect
+            label="Category"
             name="category"
-            className="w-full h-12 border border-black rounded-xl outline-none cursor-pointer bg-white"
-          >
-            Category
-            <option value="Shop All">Shop All</option>
-            <option value="Crazy Deals">Crazy Deals</option>
-            <option value="">Bestsellers</option>
-            <option value="Bestsellers">Perfumes</option>
-            <option value="Bath & Body">Bath & Body</option>
-            <option value="Cosmetics">Cosmetics</option>
-            <option value="New Arrivals">New Arrivals</option>
-            <option value="Skincare">Skincare</option>
-            <option value="Gifting">Gifting</option>
-          </select>
-
+            register={register("category")}
+            error={errors?.category?.message}
+            options={[
+              { label: "Shop All", value: "Shop All" },
+              { label: "Crazy Deals", value: "Crazy Deals" },
+              { label: "Bestsellers", value: "Bestsellers" },
+              { label: "Perfumes", value: "Perfumes" },
+              { label: "Bath & Body", value: "Bath & Body" },
+              { label: "Cosmetics", value: "Cosmetics" },
+              { label: "New Arrivals", value: "New Arrivals" },
+              { label: "Skincare", value: "Skincare" },
+              { label: "Gifting", value: "Gifting" },
+            ]}
+          />
           {/* productImage */}
           <div className="w-60 flex flex-col gap-2">
             <Input
