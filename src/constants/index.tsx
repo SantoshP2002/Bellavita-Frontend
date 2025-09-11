@@ -23,7 +23,7 @@ export const navMapData = [
       { title: "All Bath & Body" },
       { title: "Shower Gel" },
       { title: "Body Mist" },
-      { title: "Body Parfum (No Gas Deo)" },
+      { title: "Body Perfume (No Gas Deo)" },
       { title: "Travel Kit" },
       { title: "Body lotion" },
     ],
