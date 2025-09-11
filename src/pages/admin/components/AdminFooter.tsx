@@ -1,6 +1,6 @@
 const AdminFooter = () => {
   return (
-    <footer className="bg-white border-t border-gray-200 p-4 text-center text-sm text-gray-600">
+    <footer className="bg-white border-t border-gray-200 p-4 text-center text-sm text-gray-600 rounded-xl">
       <div className="flex flex-col md:flex-row justify-between items-center gap-2">
         {/* Left side */}
         <p>© {new Date().getFullYear()} Admin Panel. All rights reserved.</p>
