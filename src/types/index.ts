@@ -17,8 +17,8 @@ export type TBaseUser = {
 export type TBaseProduct = {
   title: string;
   brand: string;
-  price: number ;
-  sellingPrice: number ;
+  price: number;
+  sellingPrice: number;
   description: string;
   category: string;
   productImages: File[];
@@ -54,4 +54,14 @@ type TInputIcon = { text?: string; icon?: ReactNode; onClick?: () => void };
 
 export interface IInput extends TBaseInput {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
+}
+
+export interface ISelectProps {
+  label?: string;
+  register?: UseFormRegisterReturn;
+  name: string;
+  error?: string;
+  options: { label: string; value: string }[];
+  className?: string;
+  containerClassName?: string;
 }
