@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../components/Button";
-import { useGetAllProducts } from "../../../api/products/service";
-import type { TBaseGetProduct } from "../../../types";
 import { FaStar } from "react-icons/fa";
+import { useGetAllProducts } from "../../../api/products/service";
+import type { TGetAllProducts } from "../../../types";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Products = () => {
         {error && <p className="text-red-500">Failed to load products</p>}
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((p: TBaseGetProduct) => (
+          {products.map((p: TGetAllProducts) => (
             <div
               key={p._id}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
@@ -87,7 +87,7 @@ const Products = () => {
                 </div>
                 <div className="flex flex-row gap-2">
                   <Button
-                    content="Add to Cart"
+                    content="Update Product"
                     className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
                   />
                   <Button
