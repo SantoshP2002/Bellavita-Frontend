@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import Main from "../pages/main";
 import Home from "../pages/home";
 import RegisterRedirect from "./RegisterRedirect";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [{ index: true, element: <Home /> }],
   },
+  // ADMIN ROUTES
   {
     path: "admin",
     element: (
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
       { path: "orders", element: <Orders /> },
     ],
   },
+  // AUTH ROUTES
   { path: "login", element: <LoginRedirect /> },
   { path: "register", element: <RegisterRedirect /> },
 ]);
