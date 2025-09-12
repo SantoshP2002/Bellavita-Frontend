@@ -23,6 +23,17 @@ export type TBaseProduct = {
   category: string;
   productImages: File[];
 };
+
+export interface useGetAllProducts extends Omit<TBaseProduct, "productImages"> {
+  _id: string;
+  productImages: string[];
+  discount: number;
+  rating: number;
+  reviews: number;
+  isBestseller: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
 export interface IUser extends Omit<TBaseUser, "profilePic"> {
   _id: string;
   role: TUserRole;
