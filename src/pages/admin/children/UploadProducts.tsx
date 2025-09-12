@@ -136,7 +136,10 @@ const UploadProducts = () => {
               icons={{
                 right: {
                   icon: (
-                    <label htmlFor="productImages" className="pl-1.5 text-sm text-black/50 w-full">
+                    <label
+                      htmlFor="productImages"
+                      className="pl-1.5 text-sm text-black/50 w-full"
+                    >
                       {productImages?.length
                         ? "Add Product Images"
                         : "Upload Product Images"}
