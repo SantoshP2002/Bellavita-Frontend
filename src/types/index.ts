@@ -24,7 +24,7 @@ export type TBaseProduct = {
   productImages: File[];
 };
 
-export interface useGetAllProducts extends Omit<TBaseProduct, "productImages"> {
+export interface TGetAllProducts extends Omit<TBaseProduct, "productImages"> {
   _id: string;
   productImages: string[];
   discount: number;
