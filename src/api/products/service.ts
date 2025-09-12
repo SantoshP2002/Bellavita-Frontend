@@ -1,5 +1,5 @@
-import { useMutation } from "@tanstack/react-query";
-import { create_product } from "./api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { create_product, getAll_Products } from "./api";
 import { toast } from "react-toastify";
 
 export const useUploadProduct = () => {
@@ -13,3 +13,10 @@ export const useUploadProduct = () => {
     },
   });
 };
+
+export const useGetAllProducts = () => {
+  return useQuery({
+    queryKey: ["all-products"],
+    queryFn: getAll_Products,
+  });
+}
