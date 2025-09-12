@@ -7,6 +7,7 @@ export const apiRoutes = {
     getUser: { method: "GET", url: "/users/user" },
   },
   products: {
-    createProduct:{method:"POST", url:"/products/create-product"}
-  }
+    createProduct: { method: "POST", url: "/products/create-product" },
+    getAllProducts: { method: "GET", url: "/products/all-products" },
+  },
 };
