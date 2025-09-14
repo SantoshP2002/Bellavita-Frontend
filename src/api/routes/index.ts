@@ -7,7 +7,10 @@ export const apiRoutes = {
     getUser: { method: "GET", url: "/users/user" },
   },
   products: {
-    createProduct: { method: "POST", url: "/products/create-product" },
-    getAllProducts: { method: "GET", url: "/products/all-products" },
+    createProduct: { method: "POST", url: "/products/create" },
+    getAllProducts: { method: "GET", url: "/products" },
+    getProductById: { method: "GET", url: "/products" },
+    updateProductById: { method: "PATCH", url: "/products" },
+    deleteProductById: { method: "DELETE", url: "/products" },
   },
 };
