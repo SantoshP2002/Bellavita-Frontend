@@ -1,18 +1,25 @@
-import type { JSX } from "react";
+import { useEffect, type JSX } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuthCheck } from "../hooks/useAuthCheck";
 import { useUserStore } from "../store/user";
+import { removeLocalToken } from "../utils";
+import LoadingScreen from "../components/LoadingScreen";
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-  const { isLoading } = useAuthCheck();
-  const { isLoggedIn } = useUserStore();
+  const { isLoading, isError } = useAuthCheck();
+  const { isLoggedIn, logout } = useUserStore();
   const location = useLocation();
+
+  useEffect(() => {
+    if (isError) {
+      removeLocalToken();
+      logout();
+    }
+  }, [isError, logout]);
 
   if (isLoading) {
     return (
-      <div className="h-dvh w-dvw flex items-center justify-center p-4">
-        <p className="text-2xl">Loading.....</p>
-      </div>
+      <LoadingScreen/>
     );
   }
 
