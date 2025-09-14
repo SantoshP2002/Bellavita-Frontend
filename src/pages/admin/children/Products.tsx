@@ -1,12 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../components/Button";
-import { FaStar } from "react-icons/fa";
-import { useGetAllProducts } from "../../../api/products/service";
-import type { TGetAllProducts } from "../../../types";
-
+import {
+  useDeleteProductById,
+  useGetAllProducts,
+} from "../../../api/products/service";
+import type { TProduct } from "../../../types";
 const Products = () => {
+  const deleteProductQuery = useDeleteProductById();
   const navigate = useNavigate();
   const { data: products = [], isLoading, error } = useGetAllProducts();
+
+  const handleDelete = (id: string) => {
+    if (window.confirm("Are you sure you want to delete this product?")) {
+      deleteProductQuery.mutate(id);
+    }
+  };
+
   return (
     <div className="">
       <div className="flex justify-between items-center">
@@ -27,54 +36,25 @@ const Products = () => {
         {error && <p className="text-red-500">Failed to load products</p>}
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((p: TGetAllProducts) => (
+          {products?.map((p: TProduct) => (
             <div
               key={p._id}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {/* Image Section */}
-              <div className="relative h-72 w-full bg-gray-100">
-                {p.isBestseller && (
-                  <span className="absolute top-2 left-2 bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded">
-                    Bestseller
-                  </span>
-                )}
-
+              <div className="relative h-44 w-full bg-gray-100">
                 <img
                   src={p.productImages?.[0] || "/placeholder.png"}
                   alt={p.title}
                   className="w-full h-full object-contain p-4"
                 />
-
-                {p.discount && (
-                  <span className="absolute bottom-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                    {p.discount}% OFF
-                  </span>
-                )}
               </div>
-
               {/* Details */}
               <div className="p-4">
                 <p className="text-xs text-gray-500 font-medium">{p.brand}</p>
                 <h2 className="text-sm mt-1 font-semibold text-gray-800">
                   {p.title}
                 </h2>
-
-                <div className="flex items-center mt-2">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className={`w-4 h-4 ${
-                        i < Math.floor(p.rating)
-                          ? "fill-yellow-500 text-yellow-500"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  ))}
-                  <span className="text-gray-600 text-sm ml-2">
-                    ({p.reviews || 0})
-                  </span>
-                </div>
                 <div className="mt-2 flex items-center gap-2">
                   <p className="text-lg font-bold text-black">
                     ₹{p.sellingPrice.toFixed(2)}
@@ -87,13 +67,20 @@ const Products = () => {
                 </div>
                 <div className="flex flex-row gap-2">
                   <Button
-                    content="Update Product"
+                    content="Update"
                     className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                    buttonProps={{
+                      onClick: () =>
+                        navigate(`/admin/products/update/${p._id}`),
+                    }}
                   />
                   <Button
                     pattern="secondary"
-                    content="Delete Product"
+                    content="Delete"
                     className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                    buttonProps={{
+                      onClick: () => handleDelete(p._id),
+                    }}
                   />
                 </div>
               </div>
