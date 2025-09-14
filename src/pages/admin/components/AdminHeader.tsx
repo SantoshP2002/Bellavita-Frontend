@@ -1,9 +1,28 @@
-const AdminHeader = () => {
+import { FaBars } from "react-icons/fa";
+import { Button } from "../../../components/Button";
+
+type AdminHeadersProps = {
+  onMenuClick?: () => void;
+};
+
+const AdminHeader = ({ onMenuClick }: AdminHeadersProps) => {
   return (
-    <header className="flex justify-between items-center p-4">
-      <h1 className="text-2xl font-bold text-gray-700">Dashboard</h1>
+    <header className="flex justify-between items-center p-4 border-b">
+      {/* Left Section */}
       <div className="flex items-center gap-3">
-        <span className="text-gray-600">Welcome, Admin 👋</span>
+        <Button
+          content={<FaBars size={22} />}
+          buttonProps={{
+            onClick: onMenuClick,
+            className: "md:hidden text-gray-700",
+          }}
+        />
+        <h1 className="text-2xl font-bold text-gray-700">Dashboard</h1>
+      </div>
+
+      {/* Right Section */}
+      <div className="flex items-center gap-3">
+        <span className="text-gray-600 hidden sm:block">Welcome, Admin 👋</span>
         <img
           src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-118143566.jpg"
           alt="Admin"
