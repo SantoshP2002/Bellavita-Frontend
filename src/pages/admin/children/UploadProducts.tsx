@@ -1,25 +1,14 @@
 import type z from "zod";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import Input from "../../../components/Input";
 import { Button } from "../../../components/Button";
 import type { TBaseProduct } from "../../../types";
-import { uploadProductSchema } from "../../../validations/product";
+import { productSchema } from "../../../validations/product";
 import { RxCross1 } from "react-icons/rx";
 import { useUploadProduct } from "../../../api/products/service";
-import CategorySelect from "../../../components/Category";
-import { CATEGORIES_DATA } from "../../../constants";
-
-const initialValues: TBaseProduct = {
-  title: "",
-  brand: "",
-  price: 0,
-  sellingPrice: 0,
-  description: "",
-  category: "",
-  productImages: [],
-};
+import Select from "../../../components/Select";
+import { CATEGORIES_DATA, PRODUCT_INITIAL_VALUES } from "../../../constants";
 
 const UploadProducts = () => {
   const { mutateAsync } = useUploadProduct();
@@ -28,11 +17,11 @@ const UploadProducts = () => {
     handleSubmit,
     setValue,
     watch,
-    // control,
+    control,
     formState: { errors },
-  } = useForm<z.infer<typeof uploadProductSchema>>({
-    defaultValues: initialValues,
-    resolver: zodResolver(uploadProductSchema),
+  } = useForm<z.infer<typeof productSchema>>({
+    defaultValues: PRODUCT_INITIAL_VALUES,
+    resolver: zodResolver(productSchema),
   });
 
   console.log("errors", errors);
@@ -68,7 +57,7 @@ const UploadProducts = () => {
             className="w-full bg-white text-black"
             register={register("title")}
             error={errors.title?.message}
-            inputProps={{ placeholder: "Enter Title" }}
+            inputProps={{ placeholder: "Enter Title", name: "title" }}
           />
 
           {/* BRAND */}
@@ -77,7 +66,7 @@ const UploadProducts = () => {
             className="w-full bg-white text-black"
             register={register("brand")}
             error={errors?.brand?.message}
-            inputProps={{ placeholder: "Enter Brand" }}
+            inputProps={{ placeholder: "Enter Brand", name: "brand" }}
           />
 
           {/*  Price */}
@@ -86,6 +75,7 @@ const UploadProducts = () => {
             error={errors?.price?.message}
             inputProps={{
               type: "number",
+              name: "price",
               placeholder: "Enter price",
               onChange: (e) => {
                 const val = e.target.value;
@@ -101,6 +91,7 @@ const UploadProducts = () => {
             error={errors?.sellingPrice?.message}
             inputProps={{
               type: "number",
+              name: "sellingPrice",
               placeholder: "Enter Selling price",
               onChange: (e) => {
                 const val = e.target.value;
@@ -116,50 +107,66 @@ const UploadProducts = () => {
             className="w-full bg-white text-black"
             register={register("description")}
             error={errors.description?.message}
-            inputProps={{ placeholder: "Enter Description" }}
+            inputProps={{
+              placeholder: "Enter Description",
+              name: "description",
+            }}
           />
 
           {/* Category */}
-          <CategorySelect
+          <Select
             label="Category"
-            name="category"
-            register={register("category")}
-            error={errors?.category?.message}
-            value={watch("category")}
+            placeholder="Select Category"
             options={CATEGORIES_DATA}
+            containerClassName="[&_label]:cursor-default"
+            register={register("category")}
+            selectProps={{
+              className: `-ml-1 ${
+                watch("category") ? "text-black" : "text-black/50"
+              }`,
+            }}
+            error={errors?.category?.message}
           />
           {/* productImage */}
           <div className="flex flex-col gap-2">
-            <Input
-              label="Product Images"
-              error={errors?.productImages?.message}
-              icons={{
-                right: {
-                  icon: (
-                    <label
-                      htmlFor="productImages"
-                      className="pl-1.5 text-sm text-black/50 w-full"
-                    >
-                      {productImages?.length
-                        ? "Add Product Images"
-                        : "Upload Product Images"}
-                    </label>
-                  ),
-                },
-              }}
-              className="[&>span]:w-full"
-              inputProps={{
-                type: "file",
-                accept: "image/*",
-                name: "productImages",
-                multiple: true,
-                className: "sr-only",
-
-                onChange: (e) => {
-                  const files = Array.from(e.target.files || []);
-                  setValue("productImages", files, { shouldValidate: true });
-                },
-              }}
+            <Controller
+              control={control}
+              name="productImages"
+              defaultValue={[]}
+              render={({ field }) => (
+                <Input
+                  label="Product Images"
+                  error={errors?.productImages?.message}
+                  icons={{
+                    right: {
+                      icon: (
+                        <label
+                          htmlFor="productImages"
+                          className="flex items-center p-3 text-sm text-black/50 w-full cursor-pointer"
+                        >
+                          {productImages?.length
+                            ? "Add Product Images"
+                            : "Upload Product Images"}
+                        </label>
+                      ),
+                    },
+                  }}
+                  className="[&>span]:w-full [&>span]:p-0"
+                  inputProps={{
+                    type: "file",
+                    accept: "image/*",
+                    multiple: true,
+                    className: "sr-only",
+                    id: "productImages",
+                    name: "productImages",
+                    onChange: (e) => {
+                      const files = Array.from(e.target.files || []);
+                      const newFiles = [...productImages, ...files];
+                      field.onChange(newFiles);
+                    },
+                  }}
+                />
+              )}
             />
             {/* Preview */}
             {productImages.length > 0 && (

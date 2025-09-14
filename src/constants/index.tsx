@@ -1,3 +1,5 @@
+import type { TBaseProduct } from "../types";
+
 export const navMapData = [
   { title: "Crazy Deals" },
   { title: "Shop All" },
@@ -54,3 +56,14 @@ export const CATEGORIES_DATA = [
   { label: "Skincare", value: "Skincare" },
   { label: "Gifting", value: "Gifting" },
 ];
+
+
+export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
+  title: "",
+  brand: "",
+  price: 0,
+  sellingPrice: 0,
+  description: "",
+  category: "",
+  productImages: [],
+};
