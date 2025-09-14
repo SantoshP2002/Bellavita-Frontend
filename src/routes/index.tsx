@@ -13,6 +13,7 @@ import Users from "../pages/admin/children/Users";
 import Products from "../pages/admin/children/Products";
 import Orders from "../pages/admin/children/Orders";
 import UploadProducts from "../pages/admin/children/UploadProducts";
+import UpdateProduct from "../pages/admin/children/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +29,12 @@ const router = createBrowserRouter([
         <AdminLayout />
       </PrivateRoute>
     ),
-
     children: [
       { index: true, element: <Dashboard /> },
       { path: "users", element: <Users /> },
       { path: "products", element: <Products /> },
       { path: "products/upload", element: <UploadProducts /> },
+      { path: "products/update/:id", element: <UpdateProduct /> },
       { path: "orders", element: <Orders /> },
     ],
   },

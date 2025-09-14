@@ -11,7 +11,7 @@ export type TBaseUser = {
   lastName: string;
   password: string;
   confirmPassword: string;
-  profilePic?: File;
+  profilePic?: File | string;
 };
 
 export type TBaseProduct = {
@@ -21,16 +21,12 @@ export type TBaseProduct = {
   sellingPrice: number;
   description: string;
   category: string;
-  productImages: File[];
+  productImages: (File | string)[];
 };
 
-export interface TGetAllProducts extends Omit<TBaseProduct, "productImages"> {
+export interface TProduct extends Omit<TBaseProduct, "productImages"> {
   _id: string;
   productImages: string[];
-  discount: number;
-  rating: number;
-  reviews: number;
-  isBestseller: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -67,14 +63,8 @@ export interface IInput extends TBaseInput {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 }
 
-export interface ISelectProps {
-  label?: string;
-  register?: UseFormRegisterReturn;
-  name: string;
-  error?: string;
+export interface ISelect extends TBaseInput {
   options: { label: string; value: string }[];
-  className?: string;
-  containerClassName?: string;
+  selectProps: InputHTMLAttributes<HTMLSelectElement>;
   placeholder?: string;
-  value?: string;
 }
