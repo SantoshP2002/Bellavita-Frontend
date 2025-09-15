@@ -60,6 +60,7 @@ export const update_Product = async (id: string, data: FormData) => {
       data,
       headers: { Authorization: token },
     });
+    
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
