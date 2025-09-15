@@ -1,8 +1,8 @@
+import type z from "zod";
 import { useParams } from "react-router-dom";
 import { useEffect, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type z from "zod";
 
 import Input from "../../../components/Input";
 import { Button } from "../../../components/Button";
@@ -57,7 +57,9 @@ const EditProduct = () => {
     setProductValues();
   }, [product, setValue]);
 
-  console.log("ERRORS", errors);
+
+  // console.log("data1", getProductQuery.data);
+  // console.log("ERRORS", errors);
 
   const onSubmit = async (data: TBaseProduct) => {
     const formData = new FormData();
@@ -114,11 +116,15 @@ const EditProduct = () => {
       return;
     }
 
-    Object.entries(changedProductFields).forEach(([key, value]) => {
-      if (value) {
-        formData.append(key, value.toString());
-      }
-    });
+   Object.entries(changedProductFields).forEach(([key, value]) => {
+     if (value !== undefined && value !== null) {
+       if (key === "price" || key === "sellingPrice") {
+         formData.append(key, String(Number(value)));
+       } else {
+         formData.append(key, String(value));
+       }
+     }
+   });
 
     updateProductQuery.mutateAsync(formData);
   };
