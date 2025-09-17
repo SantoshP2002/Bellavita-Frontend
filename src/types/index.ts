@@ -68,3 +68,8 @@ export interface ISelect extends TBaseInput {
   selectProps: InputHTMLAttributes<HTMLSelectElement>;
   placeholder?: string;
 }
+
+export type TPageParams = {
+  page?: number;
+  limit?: number;
+};
