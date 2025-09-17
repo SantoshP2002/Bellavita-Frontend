@@ -1,3 +1,5 @@
+import { useInfiniteQuery } from "@tanstack/react-query";
+
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
   create_product,
@@ -25,10 +27,25 @@ export const useUploadProduct = () => {
 export const useGetAllProducts = () => {
   return useQuery({
     queryKey: ["get_all_products"],
-    queryFn: () => get_all_products(),
+    queryFn: () => get_all_products({}),
     enabled: true,
     refetchOnWindowFocus: false,
     select: (data) => data?.products,
+  });
+};
+
+export const useGetAllProductsInfinite = () => {
+  return useInfiniteQuery({
+    queryKey: ["get_all_products_infinite"],
+    initialPageParam: 1,
+    queryFn: ({ pageParam }) => get_all_products({ page: pageParam, limit: 8 }),
+
+    getNextPageParam: (lastPage) => {
+      if (lastPage?.currentPage < lastPage?.totalPages) {
+        return lastPage?.currentPage + 1;
+      }
+      return undefined;
+    },
   });
 };
 
