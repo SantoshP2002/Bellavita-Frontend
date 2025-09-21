@@ -96,7 +96,7 @@ const Products = () => {
                 >
                   <div className="relative h-44 w-full bg-gray-100">
                     <img
-                      src={p.productImages?.[0] || "/placeholder.png"}
+                      src={p.images?.[0] || "/placeholder.png"}
                       alt={p.title}
                       className="w-full h-full object-contain p-4"
                     />

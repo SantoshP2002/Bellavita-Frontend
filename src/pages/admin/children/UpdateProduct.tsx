@@ -51,12 +51,11 @@ const EditProduct = () => {
       setValue("price", product?.price ?? 0);
       setValue("sellingPrice", product?.sellingPrice ?? 0);
       setValue("description", product?.description ?? "");
-      setValue("productImages", product?.productImages ?? []);
+      setValue("images", product?.images ?? []);
     };
 
     setProductValues();
   }, [product, setValue]);
-
 
   // console.log("data1", getProductQuery.data);
   // console.log("ERRORS", errors);
@@ -85,7 +84,7 @@ const EditProduct = () => {
     // const removedImages: string[] = [];
     const existingImages: string[] = [];
 
-    (data.productImages || []).forEach((file) => {
+    (data.images || []).forEach((file) => {
       if (file instanceof File) {
         hasChanges = true;
         formData.append("newImages", file);
@@ -95,8 +94,7 @@ const EditProduct = () => {
     });
 
     const removedImages =
-      product?.productImages?.filter((img) => !existingImages.includes(img)) ||
-      [];
+      product?.images?.filter((img) => !existingImages.includes(img)) || [];
 
     if (removedImages.length > 0) {
       hasChanges = true;
@@ -116,20 +114,20 @@ const EditProduct = () => {
       return;
     }
 
-   Object.entries(changedProductFields).forEach(([key, value]) => {
-     if (value !== undefined && value !== null) {
-       if (key === "price" || key === "sellingPrice") {
-         formData.append(key, String(Number(value)));
-       } else {
-         formData.append(key, String(value));
-       }
-     }
-   });
+    Object.entries(changedProductFields).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) {
+        if (key === "price" || key === "sellingPrice") {
+          formData.append(key, String(Number(value)));
+        } else {
+          formData.append(key, String(value));
+        }
+      }
+    });
 
     updateProductQuery.mutateAsync(formData);
   };
 
-  const images = watch("productImages") || [];
+  const images = watch("images") || [];
 
   if (getProductQuery?.isLoading) {
     return <LoadingScreen />;
@@ -207,17 +205,17 @@ const EditProduct = () => {
 
         <Controller
           control={control}
-          name="productImages"
+          name="images"
           defaultValue={[]}
           render={({ field }) => (
             <Input
               label="Product Images"
-              error={errors.productImages?.message}
+              error={errors.images?.message}
               icons={{
                 right: {
                   icon: (
                     <label
-                      htmlFor="productImages"
+                      htmlFor="images"
                       className="pl-1.5 text-sm text-black/50 w-full"
                     >
                       {images?.length
@@ -260,7 +258,7 @@ const EditProduct = () => {
                     className="absolute top-0 right-0 p-0.5 bg-red-500 text-white rounded-full"
                     onClick={() => {
                       const newImages = images.filter((_, i) => i !== idx);
-                      setValue("productImages", newImages, {
+                      setValue("images", newImages, {
                         shouldValidate: true,
                       });
                     }}

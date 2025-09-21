@@ -26,7 +26,7 @@ export const productSchema = z
     category: z
       .string({ error: "Category must be string" })
       .nonempty("Category is required"),
-    productImages: z
+    images: z
       .array(z.any())
       .min(1, "At least one image is required")
       .superRefine((files, ctx) => {

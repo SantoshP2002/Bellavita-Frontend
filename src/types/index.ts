@@ -21,12 +21,12 @@ export type TBaseProduct = {
   sellingPrice: number;
   description: string;
   category: string;
-  productImages: (File | string)[];
+  images: (File | string)[];
 };
 
-export interface TProduct extends Omit<TBaseProduct, "productImages"> {
+export interface TProduct extends Omit<TBaseProduct, "images"> {
   _id: string;
-  productImages: string[];
+  images: string[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -74,8 +74,7 @@ export type TPageParams = {
   limit?: number;
 };
 
-
 export type TCart = {
   productId: string;
   quantity?: number;
-}
+};

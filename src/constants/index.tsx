@@ -65,5 +65,5 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   sellingPrice: 0,
   description: "",
   category: "",
-  productImages: [],
+  images: [],
 };

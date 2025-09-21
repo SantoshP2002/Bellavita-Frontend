@@ -26,7 +26,7 @@ const UploadProducts = () => {
 
   console.log("errors", errors);
 
-  const productImages = watch("productImages") || [];
+  const images = watch("images") || [];
 
   const onSubmit = async (data: TBaseProduct) => {
     console.log("data", data);
@@ -40,9 +40,7 @@ const UploadProducts = () => {
     formData.append("description", data.description);
     formData.append("category", data.category);
 
-    data.productImages.forEach((file) =>
-      formData.append("productImages", file)
-    );
+    data.images.forEach((file) => formData.append("images", file));
 
     await mutateAsync(formData);
   };
@@ -131,20 +129,20 @@ const UploadProducts = () => {
           <div className="flex flex-col gap-2">
             <Controller
               control={control}
-              name="productImages"
+              name="images"
               defaultValue={[]}
               render={({ field }) => (
                 <Input
                   label="Product Images"
-                  error={errors?.productImages?.message}
+                  error={errors?.images?.message}
                   icons={{
                     right: {
                       icon: (
                         <label
-                          htmlFor="productImages"
+                          htmlFor="images"
                           className="flex items-center p-3 text-sm text-black/50 w-full cursor-pointer"
                         >
-                          {productImages?.length
+                          {images?.length
                             ? "Add Product Images"
                             : "Upload Product Images"}
                         </label>
@@ -157,11 +155,11 @@ const UploadProducts = () => {
                     accept: "image/*",
                     multiple: true,
                     className: "sr-only",
-                    id: "productImages",
-                    name: "productImages",
+                    id: "images",
+                    name: "images",
                     onChange: (e) => {
                       const files = Array.from(e.target.files || []);
-                      const newFiles = [...productImages, ...files];
+                      const newFiles = [...images, ...files];
                       field.onChange(newFiles);
                     },
                   }}
@@ -169,10 +167,10 @@ const UploadProducts = () => {
               )}
             />
             {/* Preview */}
-            {productImages.length > 0 && (
+            {images.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                {/* {errors?.productImages?.message} */}
-                {productImages.map((file, idx) => {
+                {/* {errors?.images?.message} */}
+                {images.map((file, idx) => {
                   const imagePreview = URL.createObjectURL(file); // ek-ek file ka preview
                   return (
                     <div key={idx} className="relative w-22 h-22">
@@ -189,10 +187,10 @@ const UploadProducts = () => {
                           type: "button",
                           onClick: () => {
                             // Remove selected image
-                            const remainingImages = productImages.filter(
+                            const remainingImages = images.filter(
                               (_, i) => i !== idx
                             );
-                            setValue("productImages", remainingImages, {
+                            setValue("images", remainingImages, {
                               shouldValidate: true,
                             });
                           },
@@ -204,9 +202,9 @@ const UploadProducts = () => {
               </div>
             )}
             <div>
-              {errors?.productImages &&
-                Array.isArray(errors.productImages) &&
-                errors.productImages.map((err, ind) =>
+              {errors?.images &&
+                Array.isArray(errors.images) &&
+                errors.images.map((err, ind) =>
                   err?.message ? (
                     <p key={ind} className="text-sm text-red-500 mt-1">
                       {err?.message}

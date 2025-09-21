@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { useGetAllProducts } from "../../api/products/service";
 import type { TProduct } from "../../types";
-import { useAddToCart } from "../../api/cart/service";
+// import { useAddToCart } from "../../api/cart/service";
+// import { useUserStore } from "../../store/user";
 
 const images = [
   "https://bellavitaorganic.com/cdn/shop/files/Summer-Banner-1920x720.webp?v=1745321335&width=1920",
@@ -12,12 +13,13 @@ const images = [
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
+  // const { isLoggedIn } = useUserStore();
 
   // ✅ Fetch all products
   const { data: products, isLoading, isError, error } = useGetAllProducts();
 
   // Cart Mutation
-  const { mutate: addToCart } = useAddToCart();
+  // const { mutateAsync: addToCart } = useAddToCart();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,6 +27,23 @@ const Home = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  // Handle AddToCart
+
+  // Handle LoginSuccess
+  // const handleLoginSuccess = (userData: IUser) => {
+  //   // ✅ Store user
+  //   setUser(userData);
+
+  //   // ✅ Close popup
+  //   setShowLoginPopup(false);
+
+  //   // ✅ Agar pending product hai → add to cart
+  //   if (pendingProduct) {
+  //     addToCart({ productId: pendingProduct, quantity: 1 });
+  //     setPendingProduct(null);
+  //   }
+  // };
 
   // ✅ First 8 products only
   const firstEight = products?.slice(0, 8) || [];
@@ -82,7 +101,7 @@ const Home = () => {
                 {/* Image */}
                 <div className="relative h-64 w-full bg-gray-100">
                   <img
-                    src={p.productImages?.[0] || "/placeholder.png"}
+                    src={p.images?.[0] || "/placeholder.png"}
                     alt={p.title}
                     className="w-full h-full object-contain p-4"
                   />
@@ -119,10 +138,11 @@ const Home = () => {
                   <Button
                     content="Add to Cart"
                     className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
-                    buttonProps={{
-                      onClick: () =>
-                        addToCart({ productId: p._id, quantity: 1 }),
-                    }}
+                    buttonProps={
+                      {
+                        // onClick: () => handleAddToCart(p._id),
+                      }
+                    }
                   />
                 </div>
               </div>
