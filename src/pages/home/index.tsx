@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
+import { useGetAllProducts } from "../../api/products/service";
+import type { TProduct } from "../../types";
+import { useAddToCart } from "../../api/cart/service";
 
 const images = [
   "https://bellavitaorganic.com/cdn/shop/files/Summer-Banner-1920x720.webp?v=1745321335&width=1920",
@@ -10,6 +13,12 @@ const images = [
 const Home = () => {
   const [current, setCurrent] = useState(0);
 
+  // ✅ Fetch all products
+  const { data: products, isLoading, isError, error } = useGetAllProducts();
+
+  // Cart Mutation
+  const { mutate: addToCart } = useAddToCart();
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
@@ -17,37 +26,38 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // ✅ First 8 products only
+  const firstEight = products?.slice(0, 8) || [];
+
   return (
     <div className="w-full max-w-7xl mx-auto">
-      <div className="mt-10">
-        {/* Carousel */}
-        <div className="relative overflow-hidden h-[400px] rounded-2xl shadow-lg">
-          {images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Slide ${index + 1}`}
-              className={`w-full h-full object-cover transition-opacity duration-1000 ${
-                index === current
-                  ? "opacity-100"
-                  : "opacity-0 absolute top-0 left-0"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Carousel */}
+      <div className="mt-10 relative overflow-hidden h-[400px] rounded-2xl shadow-lg">
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Slide ${index + 1}`}
+            className={`w-full h-full object-cover transition-opacity duration-1000 ${
+              index === current
+                ? "opacity-100"
+                : "opacity-0 absolute top-0 left-0"
+            }`}
+          />
+        ))}
+      </div>
 
-        {/* Dots */}
-        <div className="flex justify-center mt-4 gap-2 mb-6">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`h-3 w-3 rounded-full transition-colors duration-300 ${
-                index === current ? "bg-blue-600" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Dots */}
+      <div className="flex justify-center mt-4 gap-2 mb-6">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`h-3 w-3 rounded-full transition-colors duration-300 ${
+              index === current ? "bg-blue-600" : "bg-gray-300"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Content Header */}
@@ -57,51 +67,75 @@ const Home = () => {
         <h1 className="text-2xl font-semibold text-gray-500">NEW ARRIVALS</h1>
       </div>
 
-      {/* Card Section */}
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-          {/* Image Section */}
-          <div className="relative h-72 w-full bg-gray-100">
-            <span className="absolute top-2 left-2 bg-orange-400 text-white text-xs font-bold px-2 py-1 rounded">
-              Bestseller
-            </span>
+      {/* ✅ Horizontal Scroll Product Section */}
+      <div className="mt-8">
+        {isLoading && <p>Loading products...</p>}
+        {isError && <p className="text-red-500">Error: {String(error)}</p>}
 
-            <img
-              src="https://bellavitaorganic.com/cdn/shop/files/front_2.jpg?v=1736851564&width=500"
-              alt="Product Image"
-              className="w-full h-full object-contain p-4"
-            />
+        {firstEight.length > 0 && (
+          <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
+            {firstEight.map((p: TProduct) => (
+              <div
+                key={p._id}
+                className="min-w-[250px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              >
+                {/* Image */}
+                <div className="relative h-64 w-full bg-gray-100">
+                  <img
+                    src={p.productImages?.[0] || "/placeholder.png"}
+                    alt={p.title}
+                    className="w-full h-full object-contain p-4"
+                  />
 
-            <span className="absolute bottom-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-              34% OFF
-            </span>
+                  {p.price > p.sellingPrice && (
+                    <span className="absolute bottom-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                      {Math.round(((p.price - p.sellingPrice) / p.price) * 100)}
+                      % OFF
+                    </span>
+                  )}
+                </div>
+
+                {/* Details */}
+                <div className="p-4">
+                  <p className="text-xs text-gray-500 font-medium">
+                    {p.category}
+                  </p>
+
+                  <h2 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-2">
+                    {p.title}
+                  </h2>
+
+                  <div className="mt-2 flex items-center gap-2">
+                    <p className="text-lg font-bold text-black">
+                      ₹{p.sellingPrice.toFixed(2)}
+                    </p>
+                    {p.price > p.sellingPrice && (
+                      <p className="text-sm text-gray-400 line-through">
+                        ₹{p.price.toFixed(2)}
+                      </p>
+                    )}
+                  </div>
+
+                  <Button
+                    content="Add to Cart"
+                    className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                    buttonProps={{
+                      onClick: () =>
+                        addToCart({ productId: p._id, quantity: 1 }),
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
+        )}
 
-          {/* Details */}
-          <div className="p-4">
-            <p className="text-xs text-gray-500 font-medium">
-              GIFT SET FOR MAN
-            </p>
-
-            <h2 className="text-sm mt-1 font-semibold text-gray-800">
-              Luxury Perfume Gift Set For Men - 4 x 20ml
-            </h2>
-
-            <div className="flex items-center text-yellow-500 text-sm mt-2">
-              ⭐⭐⭐⭐☆ <span className="text-gray-600 ml-1">(120)</span>
-            </div>
-
-            <div className="mt-2 flex items-center gap-2">
-              <p className="text-lg font-bold text-black">₹564.00</p>
-              <p className="text-sm text-gray-400 line-through">₹849.00</p>
-            </div>
-
-            <Button
-              content="Add to Cart"
-              className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
-            />
-          </div>
-        </div>
+        {/* If no products */}
+        {firstEight.length === 0 && !isLoading && (
+          <p className="text-center text-gray-600 text-lg mt-4">
+            No products found
+          </p>
+        )}
       </div>
     </div>
   );
