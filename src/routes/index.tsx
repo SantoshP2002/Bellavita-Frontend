@@ -14,6 +14,7 @@ import Products from "../pages/admin/children/Products";
 import Orders from "../pages/admin/children/Orders";
 import UploadProducts from "../pages/admin/children/UploadProducts";
 import UpdateProduct from "../pages/admin/children/UpdateProduct";
+import Cart from "../pages/cart";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,9 @@ const router = createBrowserRouter([
   // AUTH ROUTES
   { path: "login", element: <LoginRedirect /> },
   { path: "register", element: <RegisterRedirect /> },
+
+  // CART PAGE
+  { path: "addToCart", element: <Cart /> },
 ]);
 
 export default router;
