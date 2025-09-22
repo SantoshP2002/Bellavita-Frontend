@@ -34,11 +34,11 @@ export const useGetAllProducts = () => {
   });
 };
 
-export const useGetAllProductsInfinite = () => {
+export const useGetAllProductsInfinite = (limit: number) => {
   return useInfiniteQuery({
     queryKey: ["get_all_products_infinite"],
     initialPageParam: 1,
-    queryFn: ({ pageParam }) => get_all_products({ page: pageParam, limit: 8 }),
+    queryFn: ({ pageParam }) => get_all_products({ page: pageParam, limit }),
 
     getNextPageParam: (lastPage) => {
       if (lastPage?.currentPage < lastPage?.totalPages) {
