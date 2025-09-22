@@ -23,3 +23,21 @@ export const add_to_cart = async (data: TCart) => {
     throw "Something went wrong!";
   }
 };
+
+export const get_user_cart = async () => {
+  try {
+    const token = getUserToken();
+    const { method, url } = apiRoutes.cart.getUserCart;
+    const response = await api.request({
+      method,
+      url,
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error?.response?.data?.message || "API Error occurred";
+    }
+    throw "Something went wrong!";
+  }
+};
