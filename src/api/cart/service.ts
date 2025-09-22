@@ -1,6 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type { TCart } from "../../types";
-import { add_to_cart } from "./api";
+import { add_to_cart, get_user_cart } from "./api";
 import { toast } from "react-toastify";
 
 export const useAddToCart = () => {
@@ -12,5 +12,14 @@ export const useAddToCart = () => {
     onError: (error) => {
       toast.error(typeof error === "string" ? error : "Something went wrong!");
     },
+  });
+};
+
+export const useGetUserCart = () => {
+  return useQuery({
+    queryKey: ["get_user_cart"],
+    queryFn: () => get_user_cart(),
+    enabled: true,
+    refetchOnWindowFocus: false,
   });
 };
