@@ -66,7 +66,7 @@ const Navbar = () => {
 
           <BsHandbag
             className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
-            onClick={() => navigate("/addToCart")}
+            onClick={() => navigate("/cart")}
           />
         </div>
       </div>

@@ -20,7 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    children: [{ index: true, element: <Home /> }],
+    children: [
+      { index: true, element: <Home /> },
+      { path: "cart", element: <Cart /> },
+    ],
   },
   // ADMIN ROUTES
   {
@@ -44,7 +47,6 @@ const router = createBrowserRouter([
   { path: "register", element: <RegisterRedirect /> },
 
   // CART PAGE
-  { path: "addToCart", element: <Cart /> },
 ]);
 
 export default router;

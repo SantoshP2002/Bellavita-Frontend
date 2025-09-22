@@ -37,7 +37,7 @@ const Products = () => {
   // console.log("filteredProducts", filteredProducts);
 
   const { data, isLoading, error, fetchNextPage, hasNextPage, isError } =
-    useGetAllProductsInfinite();
+    useGetAllProductsInfinite(8);
 
   useEffect(() => {
     if (inView && hasNextPage) {
