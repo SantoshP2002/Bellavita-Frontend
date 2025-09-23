@@ -15,6 +15,7 @@ export const apiRoutes = {
   },
   cart: {
     addToCart: { method: "POST", url: "/carts/add-to-cart" },
-    getUserCart: {method: "GET", url:"/cart"},
+    getUserCart: { method: "GET", url: "/cart" },
+    updateCartProductQuantity: { method: "PATCH", url: "/cart-product/update" },
   },
 };
