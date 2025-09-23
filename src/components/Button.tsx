@@ -24,7 +24,7 @@ export const Button = ({
     } else if (pattern === "secondary") {
       return "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm rounded-lg transition duration-300";
     } else if (pattern === "tertiary") {
-      return "";
+      return "bg-gray-400 hover:bg-green-700 text-white font-semibold text-sm rounded-lg transition duration-300";
     } else if (pattern === "outline") {
       return "";
     } else {
