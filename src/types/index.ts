@@ -74,7 +74,15 @@ export type TPageParams = {
   limit?: number;
 };
 
-export type TCart = {
-  productId: string;
-  quantity?: number;
+export type TProductCart = {
+  _id: string;
+  product: Pick<TProduct, "_id" | "title" | "brand" | "price" | "sellingPrice" | "images">;
+  quantity: number;
 };
+
+export interface ICart {
+  _id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  products: TProductCart[];
+}
