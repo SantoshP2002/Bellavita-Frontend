@@ -14,7 +14,7 @@ export const apiRoutes = {
     deleteProductById: { method: "DELETE", url: "/products" },
   },
   cart: {
-    addToCart: { method: "POST", url: "/carts/add-to-cart" },
+    addToCart: { method: "POST", url: "/cart-product/add" },
     getUserCart: { method: "GET", url: "/cart" },
     updateCartProductQuantity: { method: "PATCH", url: "/cart-product/update" },
     deleteCartProduct: {method:"DELETE", url:"/cart-product/remove"}
