@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
+  useDeleteCartProduct,
   useGetUserCart,
   useUpdateQuantityCartProduct,
 } from "../api/cart/service";
@@ -10,8 +11,9 @@ import { HiMinusSmall } from "react-icons/hi2";
 
 const CartProducts = () => {
   const { data } = useGetUserCart();
-  //   const cartItems = data?.cart?.products || [];
+  // const cartItems: TProductCart = data?.cart?.products || [];
   const { mutateAsync: updateQuantity } = useUpdateQuantityCartProduct();
+  const { mutateAsync: removeProduct } = useDeleteCartProduct();
 
   const [products, setProducts] = useState<TProductCart[]>([]);
 
@@ -22,6 +24,14 @@ const CartProducts = () => {
       setProducts(cart.products);
     }
   }, [cart.products]);
+
+  // Subtotal calculation
+  const subtotal = useMemo(() => {
+    return products.reduce(
+      (acc, item) => acc + item?.product?.price * item?.quantity,
+      0
+    );
+  }, [products]);
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
     setProducts((prevProduct) =>
@@ -34,6 +44,19 @@ const CartProducts = () => {
       { onError: () => setProducts(cart.products) }
     );
   };
+
+  // deleteProduct
+  const handleRemoveProductToCart = (id: string) => {
+    removeProduct(id, {
+      onSuccess() {
+        setProducts((prev) => prev.filter((item) => item._id !== id));
+      },
+      onError() {
+        setProducts(cart.products);
+      },
+    });
+  };
+
   return (
     <div>
       <div className="flex-1 p-4 sm:p-6 lg:p-12">
@@ -53,14 +76,14 @@ const CartProducts = () => {
                   return (
                     <div
                       key={product._id}
-                      className="flex flex-col sm:flex-row items-center sm:items-start bg-white p-4 rounded-xl shadow gap-4"
+                      className="flex flex-col sm:flex-row items-center sm:items-start p-4 rounded-xl shadow gap-4"
                     >
                       <img
                         src={product.images[0]}
                         alt={product.title}
                         className="w-24 h-24 object-cover rounded-lg"
                       />
-                      <div className="flex-1 text-center sm:text-left flex flex-col gap-1.5">
+                      <div className="w-20 flex-1 text-center sm:text-left flex flex-col gap-1.5">
                         <h3 className="text-sm sm:text-base font-semibold line-clamp-1 leading-none">
                           {product.title}
                         </h3>
@@ -108,9 +131,18 @@ const CartProducts = () => {
                           />
                         </div>
                       </div>
-                      <button className="text-red-500 hover:text-red-700 text-sm mt-2 sm:mt-0 cursor-pointer">
+                      {/* <button className="text-red-500 hover:text-red-700 text-sm mt-2 sm:mt-0 cursor-pointer">
                         Remove
-                      </button>
+                      </button> */}
+                      <Button
+                        content="Remove"
+                        className="!w-fit !p-0 text-red-500 hover:text-red-700 text-sm mt-2 sm:mt-0 cursor-pointer"
+                        buttonProps={{
+                          onClick: () => {
+                            handleRemoveProductToCart(item._id);
+                          },
+                        }}
+                      />
                     </div>
                   );
                 })}
@@ -118,7 +150,7 @@ const CartProducts = () => {
             </div>
 
             {/* Right: Summary */}
-            {/* <div className="bg-gray-50 p-4 sm:p-6 rounded-xl shadow flex flex-col h-full">
+            <div className="bg-gray-50 p-4 sm:p-6 rounded-xl shadow flex flex-col h-full">
               <h2 className="text-lg sm:text-xl font-semibold mb-4">
                 Order Summary
               </h2>
@@ -139,7 +171,7 @@ const CartProducts = () => {
                   Proceed to Payment
                 </button>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
