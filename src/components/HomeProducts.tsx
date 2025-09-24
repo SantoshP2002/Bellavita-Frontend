@@ -1,12 +1,18 @@
+import { useAddToCart } from "../api/cart/service";
 import { useGetAllProductsInfinite } from "../api/products/service";
 import type { TProduct } from "../types";
 import { Button } from "./Button";
 
 const HomeProducts = () => {
   const { data, isLoading, isError, error } = useGetAllProductsInfinite(8);
+  const { mutateAsync: addToCart } = useAddToCart();
 
   // ✅ First 8 products only
   const products = data?.pages?.flatMap((page) => page.products) || [];
+
+  const handleAddToCart = (id: string) => {
+    addToCart(id);
+  };
 
   return (
     <div>
@@ -60,11 +66,9 @@ const HomeProducts = () => {
                   <Button
                     content="Add to Cart"
                     className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
-                    buttonProps={
-                      {
-                        // onClick: () => handleAddToCart(p._id),
-                      }
-                    }
+                    buttonProps={{
+                      onClick: () => handleAddToCart(p._id),
+                    }}
                   />
                 </div>
               </div>
