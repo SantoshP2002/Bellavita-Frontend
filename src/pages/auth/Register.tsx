@@ -16,6 +16,7 @@ import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
 import { ALLOWED_IMAGE_TYPES } from "../../constants";
 import { Button } from "../../components/Button";
+import Input from "../../components/Input";
 const Register = () => {
   const navigate = useNavigate();
   const { mutateAsync, isPending, isError } = useRegisterUser();
@@ -79,12 +80,25 @@ const Register = () => {
               name="profilePic"
               control={control}
               render={({ field }) => (
-                <input
-                  type="file"
-                  multiple={false}
-                  accept={ALLOWED_IMAGE_TYPES.join(",")}
-                  onChange={(e) => field.onChange(e.target.files?.[0] || null)} // pick File
-                  className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                // <input
+                //   type="file"
+                //   multiple={false}
+                //   accept={ALLOWED_IMAGE_TYPES.join(",")}
+                //   onChange={(e) => field.onChange(e.target.files?.[0] || null)} // pick File
+                //   className="w-full px-4 py-3 pl-6 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                // />
+                <Input
+                  label="Upload Image"
+                  className="w-full px-4 py-3 pl-6 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                  inputProps={{
+                    placeholder: "Enter first name...",
+                    name: "firstName",
+                    type: "file",
+                    multiple: false,
+                    accept: ALLOWED_IMAGE_TYPES.join(","),
+                    onChange: (e) =>
+                      field.onChange(e.target.files?.[0] || null),
+                  }}
                 />
               )}
             />
@@ -98,11 +112,15 @@ const Register = () => {
           {/* Name */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative">
-              <input
-                {...register("firstName")}
-                type="text"
-                placeholder="Enter your first name..."
-                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              {/* FirstName */}
+              <Input
+                label="First Name"
+                className="w-full px-4 py-3 pl-6 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                register={register("firstName")}
+                inputProps={{
+                  placeholder: "Enter first name...",
+                  name: "firstName",
+                }}
               />
               <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
               {errors.firstName && (
@@ -112,11 +130,15 @@ const Register = () => {
               )}
             </div>
             <div className="relative">
-              <input
-                {...register("lastName")}
-                type="text"
-                placeholder="Enter your last name..."
-                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              {/* LastName */}
+              <Input
+                label="Last Name"
+                className="w-full px-4 py-3 pl-6 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                register={register("lastName")}
+                inputProps={{
+                  placeholder: "Enter last name...",
+                  name: "lastName",
+                }}
               />
               <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
               {errors.lastName && (
@@ -129,11 +151,14 @@ const Register = () => {
 
           {/* Email */}
           <div className="relative">
-            <input
-              {...register("email")}
-              type="email"
-              placeholder="Enter your email..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            <Input
+              label="Email"
+              className="w-full px-4 py-3 pl-6 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              register={register("email")}
+              inputProps={{
+                placeholder: "Enter Your Email...",
+                name: "email",
+              }}
             />
             <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
             {errors.email && (
@@ -146,11 +171,14 @@ const Register = () => {
           {/* Password */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative">
-              <input
-                {...register("password")}
-                type="password"
-                placeholder="Enter your password..."
-                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              <Input
+                label="Password"
+                className="w-full px-4 py-3 pl-6 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                register={register("password")}
+                inputProps={{
+                  placeholder: "Enter Your Password...",
+                  name: "password",
+                }}
               />
               <FaLock className="absolute top-3.5 left-3 text-gray-500" />
               {errors.password && (
@@ -160,11 +188,15 @@ const Register = () => {
               )}
             </div>
             <div className="relative">
-              <input
-                {...register("confirmPassword")}
-                type="password"
-                placeholder="Confirm password..."
-                className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              {/* Confirm Password */}
+              <Input
+                label="Confirm Password"
+                className="w-full px-4 py-3 pl-6 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                register={register("confirmPassword")}
+                inputProps={{
+                  placeholder: "Enter Confirm Password...",
+                  name: "confirmPassword",
+                }}
               />
               <FaLock className="absolute top-3.5 left-3 text-gray-500" />
               {errors.confirmPassword && (

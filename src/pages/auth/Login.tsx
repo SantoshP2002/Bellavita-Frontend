@@ -15,9 +15,10 @@ import { loginSchema } from "../../validations/auth";
 import type z from "zod";
 import { useLoginUser } from "../../api/auth/service";
 import { Button } from "../../components/Button";
+import Input from "../../components/Input";
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { mutateAsync, isPending } = useLoginUser();
   const {
     register,
@@ -41,11 +42,11 @@ const Login = () => {
 
           {/* Email Input */}
           <div className="relative mb-4">
-            <input
-              {...register("email")}
-              type="text"
-              placeholder="Enter your Email..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            <Input
+              label="Email"
+              className="w-full px-4 py-3 pl-12 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              register={register("email")}
+              inputProps={{ placeholder: "Enter Your Email...", name: "email" }}
             />
             <FaRegUser className="absolute top-3.5 left-3 text-gray-500" />
             {errors.email && (
@@ -57,11 +58,11 @@ const Login = () => {
 
           {/* Password Input */}
           <div className="relative mb-4">
-            <input
-              {...register("password")}
-              type="password"
-              placeholder="Enter your password..."
-              className="w-full px-4 py-3 pl-12 border-b-2 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            <Input
+              label="Password"
+              className="w-full px-4 py-3 pl-12 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              register={register("password")}
+              inputProps={{ placeholder: "Enter Password", name: "password" }}
             />
             <FaLock className="absolute top-3.5 left-3 text-gray-500" />
             {errors.password && (
@@ -123,16 +124,16 @@ const Login = () => {
             </Link>
           </p>
           <Button
-                      content="🏠 Back to Home"
-                      pattern="secondary"
-                      className="!w-42 !h-14  fixed bottom-4 right-4"
-                      icons={{
-                        right: <FaArrowRight />,
-                      }}
-                      buttonProps={{
-                        onClick: () => navigate("/"),
-                      }}
-                    />
+            content="🏠 Back to Home"
+            pattern="secondary"
+            className="!w-42 !h-14  fixed bottom-4 right-4"
+            icons={{
+              right: <FaArrowRight />,
+            }}
+            buttonProps={{
+              onClick: () => navigate("/"),
+            }}
+          />
         </form>
       </div>
     </div>
