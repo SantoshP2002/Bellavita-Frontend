@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 export const useAddToCart = () => {
   return useMutation({
-    mutationFn: (data: TProductCart) => add_to_cart(data),
+    mutationFn: (id: string) => add_to_cart(id),
     onSuccess: (data) => {
       toast.success(data?.message || "Product added to cart successfully!");
     },
