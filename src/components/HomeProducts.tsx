@@ -7,6 +7,7 @@ const HomeProducts = () => {
 
   // ✅ First 8 products only
   const products = data?.pages?.flatMap((page) => page.products) || [];
+
   return (
     <div>
       {/* ✅ Horizontal Scroll Product Section */}
@@ -79,6 +80,6 @@ const HomeProducts = () => {
       </div>
     </div>
   );
-}
+};
 
-export default HomeProducts
+export default HomeProducts;
