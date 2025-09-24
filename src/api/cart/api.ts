@@ -42,21 +42,42 @@ export const get_user_cart = async () => {
   }
 };
 
-export const update_cart_product_quantity = async (id: string, quantity: number) => {
+export const update_cart_product_quantity = async (
+  id: string,
+  quantity: number
+) => {
   try {
     const token = getUserToken();
-    const { method, url } = apiRoutes.cart.updateCartProductQuantity
+    const { method, url } = apiRoutes.cart.updateCartProductQuantity;
     const response = await api.request({
       method,
       url: `${url}/${id}`,
       data: { quantity },
       headers: { Authorization: token },
     });
-    return response.data
+    return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
       throw error?.response?.data?.message || "API Error occurred";
     }
     throw "Something went wrong!";
   }
-}
+};
+
+export const delete_cart_Product = async (id: string) => {
+  try {
+    const token = getUserToken();
+    const { method, url } = apiRoutes.cart.deleteCartProduct;
+    const response = await api.request({
+      method,
+      url: `${url}/${id}`,
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error?.response?.data?.message || "API Error occurred";
+    }
+    throw "Something went wrong!";
+  }
+};
