@@ -1,17 +1,15 @@
 import { AxiosError } from "axios";
-import type { TProductCart } from "../../types";
 import { getUserToken } from "../../utils";
 import { apiRoutes } from "../routes";
 import api from "../axios.instance";
 
-export const add_to_cart = async (data: TProductCart) => {
+export const add_to_cart = async (id: string) => {
   try {
     const token = getUserToken();
-    const { method, url } = apiRoutes.cart.addToCart;
+    const { method, url } = apiRoutes.cart.addToCart
     const response = await api.request({
       method,
-      url,
-      data,
+      url:`${url}/${id}`,
       headers: { Authorization: token },
     });
 
