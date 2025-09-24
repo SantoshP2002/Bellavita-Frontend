@@ -28,7 +28,7 @@ const CartProducts = () => {
   // Subtotal calculation
   const subtotal = useMemo(() => {
     return products.reduce(
-      (acc, item) => acc + item?.product?.price * item?.quantity,
+      (acc, item) => acc + item?.product?.sellingPrice * item?.quantity,
       0
     );
   }, [products]);
@@ -58,119 +58,104 @@ const CartProducts = () => {
   };
 
   return (
-    <div>
-      <div className="flex-1 p-4 sm:p-6 lg:p-12">
-        <div className="h-full w-full bg-white rounded-2xl p-4 sm:p-6 shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-            {/* Left: Products */}
-            <div className="lg:col-span-2 flex flex-col bg-gray-50 rounded-xl shadow p-4 sm:p-6 h-full">
-              <h2 className="text-xl sm:text-2xl font-semibold mb-4">
-                Shopping Cart
-              </h2>
-              <div className="space-y-4 flex-1 overflow-y-auto">
-                {products?.map((item) => {
-                  const product = item.product;
-                  const allowDec = item.quantity > 1;
-                  const allowInc = item.quantity < 5;
+    <div className="flex-1 p-2 sm:p-4 lg:p-12">
+      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 h-full">
+          {/* Left: Products */}
+          <div className="lg:col-span-2 flex flex-col bg-gray-50 rounded-xl shadow p-2 sm:p-4 h-full">
+            <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4">
+              Shopping Cart
+            </h2>
+            <div className="space-y-3 sm:space-y-4 flex-1 overflow-y-auto">
+              {products?.map((item) => {
+                const product = item.product;
+                const allowDec = item.quantity > 1;
+                const allowInc = item.quantity < 5;
 
-                  return (
-                    <div
-                      key={product._id}
-                      className="flex flex-col sm:flex-row items-center sm:items-start p-4 rounded-xl shadow gap-4"
-                    >
-                      <img
-                        src={product.images[0]}
-                        alt={product.title}
-                        className="w-24 h-24 object-cover rounded-lg"
-                      />
-                      <div className="w-20 flex-1 text-center sm:text-left flex flex-col gap-1.5">
-                        <h3 className="text-sm sm:text-base font-semibold line-clamp-1 leading-none">
-                          {product.title}
-                        </h3>
-                        <p className="text-xs text-gray-500">{product.brand}</p>
-                        <div className="flex items-center justify-center sm:justify-start gap-2">
-                          <span className="text-red-500 font-bold text-sm">
-                            ₹{product.sellingPrice}
-                          </span>
-                          <span className="text-gray-400 line-through text-sm">
-                            ₹{product.price}
-                          </span>
-                        </div>
-                        {/* Quantity Control */}
-                        <div className="flex items-center gap-2">
-                          <Button
-                            pattern="tertiary"
-                            content={<HiMinusSmall />}
-                            className="!w-5 !h-5 !p-0 !rounded-full  hover:!bg-red-700"
-                            buttonProps={{
-                              onClick: () => {
-                                handleQuantityChange(
-                                  item._id,
-                                  item.quantity - 1
-                                );
-                              },
-                              disabled: !allowDec,
-                            }}
-                          />
-                          <span className="text-sm font-semibold">
-                            {item.quantity}
-                          </span>
-                          <Button
-                            pattern="tertiary"
-                            content={<GoPlus />}
-                            className="!h-5 !w-5 !p-0 !rounded-full"
-                            buttonProps={{
-                              onClick: () => {
-                                handleQuantityChange(
-                                  item._id,
-                                  item.quantity + 1
-                                );
-                              },
-                              disabled: !allowInc,
-                            }}
-                          />
-                        </div>
+                return (
+                  <div
+                    key={product._id}
+                    className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4 rounded-xl shadow gap-3 sm:gap-4"
+                  >
+                    <img
+                      src={product.images[0]}
+                      alt={product.title}
+                      className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg"
+                    />
+                    <div className="flex-1 text-center sm:text-left flex flex-col gap-1.5">
+                      <h3 className="text-sm sm:text-base font-semibold line-clamp-1">
+                        {product.title}
+                      </h3>
+                      <p className="text-xs text-gray-500">{product.brand}</p>
+                      <div className="flex items-center justify-center sm:justify-start gap-2">
+                        <span className="text-red-500 font-bold text-sm sm:text-base">
+                          ₹{product.sellingPrice}
+                        </span>
+                        <span className="text-gray-400 line-through text-xs sm:text-sm">
+                          ₹{product.price}
+                        </span>
                       </div>
-                      {/* <button className="text-red-500 hover:text-red-700 text-sm mt-2 sm:mt-0 cursor-pointer">
-                        Remove
-                      </button> */}
-                      <Button
-                        content="Remove"
-                        className="!w-fit !p-0 text-red-500 hover:text-red-700 text-sm mt-2 sm:mt-0 cursor-pointer"
-                        buttonProps={{
-                          onClick: () => {
-                            handleRemoveProductToCart(item._id);
-                          },
-                        }}
-                      />
+                      {/* Quantity Control */}
+                      <div className="flex items-center justify-center sm:justify-start gap-2 mt-2">
+                        <Button
+                          pattern="tertiary"
+                          content={<HiMinusSmall />}
+                          className="!w-6 !h-6 sm:!w-5 sm:!h-5 !p-0 !rounded-full hover:!bg-red-700"
+                          buttonProps={{
+                            onClick: () =>
+                              handleQuantityChange(item._id, item.quantity - 1),
+                            disabled: !allowDec,
+                          }}
+                        />
+                        <span className="text-sm font-semibold">
+                          {item.quantity}
+                        </span>
+                        <Button
+                          pattern="tertiary"
+                          content={<GoPlus />}
+                          className="!w-6 !h-6 sm:!w-5 sm:!h-5 !p-0 !rounded-full"
+                          buttonProps={{
+                            onClick: () =>
+                              handleQuantityChange(item._id, item.quantity + 1),
+                            disabled: !allowInc,
+                          }}
+                        />
+                      </div>
                     </div>
-                  );
-                })}
-              </div>
+                    <Button
+                      content="Remove"
+                      className="!w-fit !p-0 text-red-500 hover:text-red-700 text-xs sm:text-sm mt-2 sm:mt-0"
+                      buttonProps={{
+                        onClick: () => handleRemoveProductToCart(item._id),
+                      }}
+                    />
+                  </div>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Right: Summary */}
-            <div className="bg-gray-50 p-4 sm:p-6 rounded-xl shadow flex flex-col h-full">
-              <h2 className="text-lg sm:text-xl font-semibold mb-4">
-                Order Summary
-              </h2>
-              <div className="flex justify-between mb-2 text-sm sm:text-base">
-                <span>Subtotal</span>
-                <span>₹{subtotal}</span>
-              </div>
-              <div className="flex justify-between mb-2 text-sm sm:text-base">
-                <span>Shipping</span>
-                <span className="text-green-600">Free</span>
-              </div>
-              <div className="flex justify-between font-bold text-base sm:text-lg mt-2 border-t pt-2">
-                <span>Total</span>
-                <span>₹{subtotal}</span>
-              </div>
-              <div className="mt-auto">
-                <button className="w-full bg-indigo-600 text-white py-2 sm:py-3 rounded-xl hover:bg-indigo-700 transition text-sm sm:text-base">
-                  Proceed to Payment
-                </button>
-              </div>
+          {/* Right: Summary */}
+          <div className="bg-gray-50 p-3 sm:p-6 rounded-xl shadow flex flex-col h-full mt-4 lg:mt-0">
+            <h2 className="text-base sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left">
+              Order Summary
+            </h2>
+            <div className="flex justify-between mb-2 text-sm sm:text-base">
+              <span>Subtotal</span>
+              <span>₹{subtotal}</span>
+            </div>
+            <div className="flex justify-between mb-2 text-sm sm:text-base">
+              <span>Shipping</span>
+              <span className="text-green-600">Free</span>
+            </div>
+            <div className="flex justify-between font-bold text-base sm:text-lg mt-2 border-t pt-2">
+              <span>Total</span>
+              <span>₹{subtotal}</span>
+            </div>
+            <div className="mt-4 sm:mt-auto">
+              <button className="w-full bg-indigo-600 text-white py-2 sm:py-3 rounded-xl hover:bg-indigo-700 transition text-sm sm:text-base">
+                Proceed to Payment
+              </button>
             </div>
           </div>
         </div>
