@@ -57,7 +57,6 @@ export const CATEGORIES_DATA = [
   { label: "Gifting", value: "Gifting" },
 ];
 
-
 export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   title: "",
   brand: "",
@@ -67,3 +66,8 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   category: "",
   images: [],
 };
+
+export const carouselImages = [
+  "https://bellavitaorganic.com/cdn/shop/files/Web.webp?v=1757920399&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/1920x720New.webp?v=1756991147&width=1920",
+];
