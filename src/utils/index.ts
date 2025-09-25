@@ -38,12 +38,14 @@ export const saveLocalToken = (token: string) => {
 export const getUserToken = () => {
   const raw_token = localStorage.getItem(VITE_TOKEN_KEY);
   if (!raw_token) {
-    throw new Error("No Token found");
+    // throw new Error("No Token found");
+    return null
   }
 
   const token = decryptData(raw_token);
   if (!token) {
-    throw new Error("No Token found");
+    // throw new Error("No Token found");
+    return null
   }
   return token as string;
 };
