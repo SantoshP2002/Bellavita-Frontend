@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <Navbar />
-      <main className="grow flex-1 px-4 md:px-10">
+      <main className="grow flex-1">
         <Outlet />
       </main>
       <Footer />
