@@ -45,7 +45,7 @@ const HomeProducts = () => {
 
                 <div className="p-4">
                   <p className="text-xs text-gray-500 font-medium">
-                    {p.category}
+                    {p.brand}
                   </p>
 
                   <h2 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-2">
