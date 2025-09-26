@@ -2,17 +2,24 @@ import { useState } from "react";
 import { useGetProductById } from "../api/products/service";
 import { Button } from "./Button";
 import { useParams } from "react-router-dom";
+import { useAddToCart } from "../api/cart/service";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const [current, setCurrent] = useState(0);
 
+  const {mutateAsync : addToCart} = useAddToCart()
+
   const { data: product = {} } = useGetProductById(productId!);
+
+  const handleAddToCart = (id: string) => {
+    addToCart(id)
+  }
 
   return (
     <div className="flex flex-col md:flex-row justify-center gap-10 p-5 md:p-10 max-w-6xl mx-auto">
       {/* LEFT IMAGE  */}
-      <div className="flex flex-col gap-4 items-center md:items-start max-w-1/2">
+      <div className="flex flex-col gap-4 items-center md:items-start lg:max-w-1/2">
         <img
           src={product?.images?.[current]}
           alt={`Product image`}
@@ -58,6 +65,10 @@ const ProductDetails = () => {
           content="Add To Cart"
           pattern="outline"
           className=" mt-5 lg:w-full rounded bg-black text-white"
+          buttonProps={{
+            onClick: () => handleAddToCart(product._id)
+
+          }}
         />
 
         <div className="p-3 sm:p-4 bg-gray-100 mt-5 rounded">
