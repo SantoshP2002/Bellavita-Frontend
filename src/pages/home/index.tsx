@@ -1,5 +1,6 @@
 import HomeCarousel from "../../components/homeCarousel";
 import HomeProducts from "../../components/HomeProducts";
+import LuxuryCategory from "../../components/LuxuryCategory";
 import { carouselImages } from "../../constants";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
           "https://bellavitaorganic.com/cdn/shop/files/Offer-Banner-2-UPB.webp?v=1727436765&width=1920",
         ]}
       />
+      <LuxuryCategory/>
     </div>
   );
 };
