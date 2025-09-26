@@ -57,8 +57,6 @@ const EditProduct = () => {
     setProductValues();
   }, [product, setValue]);
 
-  // console.log("data1", getProductQuery.data);
-  // console.log("ERRORS", errors);
 
   const onSubmit = async (data: TBaseProduct) => {
     const formData = new FormData();
