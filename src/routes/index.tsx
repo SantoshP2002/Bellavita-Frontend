@@ -15,6 +15,7 @@ import Orders from "../pages/admin/children/Orders";
 import UploadProducts from "../pages/admin/children/UploadProducts";
 import UpdateProduct from "../pages/admin/children/UpdateProduct";
 import Cart from "../pages/cart";
+import ProductDetails from "../components/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "cart", element: <Cart /> },
+      { path: "products/:productId", element: <ProductDetails /> },
     ],
   },
   // ADMIN ROUTES
