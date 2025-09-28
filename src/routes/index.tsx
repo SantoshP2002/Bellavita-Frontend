@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 
 import Main from "../pages/main";
 import Home from "../pages/home";
@@ -15,7 +15,9 @@ import Orders from "../pages/admin/children/Orders";
 import UploadProducts from "../pages/admin/children/UploadProducts";
 import UpdateProduct from "../pages/admin/children/UpdateProduct";
 import Cart from "../pages/cart";
-import ProductDetails from "../components/ProductDetails";
+import ProductDetails from "../pages/product/ProductDetails";
+import AllProducts from "../pages/product/AllProducts";
+import Address from "../pages/address/Address";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,14 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "cart", element: <Cart /> },
-      { path: "products/:productId", element: <ProductDetails /> },
+      {
+        path: "products",
+        element: <Outlet />,
+        children: [
+          { index: true, element: <AllProducts /> },
+          { path: ":productId", element: <ProductDetails /> },
+        ],
+      },
     ],
   },
   // ADMIN ROUTES
@@ -48,7 +57,11 @@ const router = createBrowserRouter([
   { path: "login", element: <LoginRedirect /> },
   { path: "register", element: <RegisterRedirect /> },
 
-  // CART PAGE
+  // Address page
+  {
+    path: "address",
+    element: <Address />,
+  },
 ]);
 
 export default router;
