@@ -12,7 +12,7 @@ import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 
 const CartProducts = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { data } = useGetUserCart();
   // const cartItems: TProductCart = data?.cart?.products || [];
   const { mutateAsync: updateQuantity } = useUpdateQuantityCartProduct();
@@ -175,16 +175,15 @@ const CartProducts = () => {
                     <p className="text-xl sm:text-2xl font-bold text-gray-600 mb-3">
                       🛒 Your Cart Is Empty!
                     </p>
-                    {/* <button className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
-                      Continue Shopping
-                    </button> */}
                     <Button
                       content="Continue Shopping"
-                        className="px-6 py-2 !w-50 text-white rounded-lg hover:bg-indigo-700 transition"
-                        pattern="secondary"
-                        buttonProps={{
-                          onClick: () =>{navigate("/")}
-                        }}
+                      className="px-6 py-2 !w-50 text-white rounded-lg hover:bg-indigo-700 transition"
+                      pattern="secondary"
+                      buttonProps={{
+                        onClick: () => {
+                          navigate("/");
+                        },
+                      }}
                     />
                   </motion.div>
                 )}
@@ -218,13 +217,14 @@ const CartProducts = () => {
                   <span>Total</span>
                   <span>₹{subtotal}</span>
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-indigo-600 text-white py-2 sm:py-3 rounded-xl hover:bg-indigo-700 transition text-sm sm:text-base mt-4 sm:mt-auto"
-                >
-                  Proceed to Payment
-                </motion.button>
+                <Button
+                  content="Proceed to Payment"
+                  pattern="secondary"
+                  className="mt-4 hover:scale-105"
+                  buttonProps={{
+                    onClick: () =>navigate("/address")
+                  }}
+                />
               </motion.div>
             )}
           </AnimatePresence>
