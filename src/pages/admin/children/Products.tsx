@@ -21,23 +21,9 @@ const Products = () => {
     }
   };
 
-  //  Filter products by search
-  // const filteredProducts = useMemo(() => {
-  //   if (!search.trim()) return products;
-
-  //   return products.filter((p: TProduct) => {
-  //     const searchLower = search.toLowerCase();
-  //     return (
-  //       p.title?.toLowerCase().includes(searchLower) ||
-  //       p.brand?.toLowerCase().includes(searchLower) ||
-  //       p.category?.toLowerCase().includes(searchLower)
-  //     );
-  //   });
-  // }, [products, search]);
-  // console.log("filteredProducts", filteredProducts);
 
   const { data, isLoading, error, fetchNextPage, hasNextPage, isError } =
-    useGetAllProductsInfinite(8);
+    useGetAllProductsInfinite({ limit: 8 });
 
   useEffect(() => {
     if (inView && hasNextPage) {
