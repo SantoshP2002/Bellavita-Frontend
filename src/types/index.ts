@@ -69,14 +69,14 @@ export interface ISelect extends TBaseInput {
   placeholder?: string;
 }
 
-export type TPageParams = {
-  page?: number;
-  limit?: number;
-};
+export type TQueryParams = Record<string, number | string>;
 
 export type TProductCart = {
   _id: string;
-  product: Pick<TProduct, "_id" | "title" | "brand" | "price" | "sellingPrice" | "images">;
+  product: Pick<
+    TProduct,
+    "_id" | "title" | "brand" | "price" | "sellingPrice" | "images"
+  >;
   quantity: number;
 };
 
@@ -87,3 +87,6 @@ export interface ICart {
   products: TProductCart[];
 }
 
+export interface IQueryParams {
+  [key: string]: string;
+}
