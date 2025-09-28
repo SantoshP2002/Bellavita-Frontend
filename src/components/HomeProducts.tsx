@@ -5,8 +5,10 @@ import type { TProduct } from "../types";
 import { Button } from "./Button";
 
 const HomeProducts = () => {
-  const navigate = useNavigate()
-  const { data, isLoading, isError, error } = useGetAllProductsInfinite(8);
+  const navigate = useNavigate();
+  const { data, isLoading, isError, error } = useGetAllProductsInfinite({
+    limit: 8,
+  });
   const { mutateAsync: addToCart } = useAddToCart();
 
   // ✅ First 8 products only
@@ -27,9 +29,7 @@ const HomeProducts = () => {
           <div className="flex justify-center items-center gap-4 mt-8">
             <h1 className="text-3xl text-black">BESTSELLER</h1>
             <span className="text-gray-400">|</span>
-            <h1 className="text-3xl text-gray-500">
-              NEW ARRIVALS
-            </h1>
+            <h1 className="text-3xl text-gray-500">NEW ARRIVALS</h1>
           </div>
           <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
             {products.map((p: TProduct) => (
@@ -37,7 +37,10 @@ const HomeProducts = () => {
                 key={p._id}
                 className="flex flex-col gap-1 min-w-[280px] min-h-[440px] bg-white rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
-                <div onClick={() => navigate(`/products/${p._id}`)} className="relative h-64 w-full bg-gray-100">
+                <div
+                  onClick={() => navigate(`/products/${p._id}`)}
+                  className="relative h-64 w-full bg-gray-100"
+                >
                   <img
                     src={p.images?.[0] || "/placeholder.png"}
                     alt={p.title}
@@ -96,6 +99,9 @@ const HomeProducts = () => {
         content="VIEW ALL"
         pattern="outline"
         className="!w-60 !h-12 font-semibold mt-4 mb-18 mx-auto rounded border"
+        buttonProps={{
+          onClick: () => navigate("/products")
+        }}
       />
     </div>
   );
