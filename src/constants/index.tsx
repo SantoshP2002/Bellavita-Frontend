@@ -71,3 +71,42 @@ export const carouselImages = [
   "https://bellavitaorganic.com/cdn/shop/files/Web.webp?v=1757920399&width=1920",
   "https://bellavitaorganic.com/cdn/shop/files/1920x720New.webp?v=1756991147&width=1920",
 ];
+
+export const luxuryCategories = [
+  {
+    name: "COSMETICS",
+    category: "Cosmetics",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/cosmetics-category-card-web_a4ad6e4b-07bf-421e-8f23-fcac380118ff.webp?v=1725617238&width=800",
+  },
+  {
+    name: "SKINCARE",
+    category: "Skincare",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/Category-card-for-web-skincare2.webp?v=1725617237&width=800",
+  },
+  {
+    name: "LUXURY PERFUMES",
+    category: "Perfumes",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/intense_1.webp?v=1725617238&width=800",
+  },
+  {
+    name: "BATH & BODY",
+    category: "Bath & Body",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/Category-card-body-wash2.webp?v=1725617238&width=800",
+  },
+  {
+    name: "New Arrivals",
+    category: "New Arrivals",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/download_aa0adad6-f23f-47c3-85b2-f57edc95477d.jpg?v=1755846059&width=500",
+  },
+  {
+    name: "GIFT SETS",
+    category: "Gifting",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/Artboard_4_copy_05b3b2ed-5440-4463-b119-bedcd60ed5c1.webp?v=1725617237&width=800",
+  },
+];
