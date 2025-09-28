@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import api from "../axios.instance";
 import { apiRoutes } from "../routes";
 import { getUserToken } from "../../utils";
-import type { TPageParams } from "../../types";
+import type { TQueryParams } from "../../types";
 
 export const create_product = async (data: FormData) => {
   try {
@@ -23,10 +23,10 @@ export const create_product = async (data: FormData) => {
   }
 };
 
-export const get_all_products = async (pageParams: TPageParams) => {
+export const get_all_products = async (params: TQueryParams) => {
   try {
     const { method, url } = apiRoutes.products.getAllProducts;
-    const response = await api.request({ method, url, params: pageParams });
+    const response = await api.request({ method, url, params });
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
