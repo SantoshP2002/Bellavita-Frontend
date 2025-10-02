@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 export interface ButtonProps {
-  buttonProps?: ButtonHTMLAttributes<HTMLButtonElement>;
+  buttonProps?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, "content">;
   icons?: {
     left?: ReactNode;
     right?: ReactNode;
