@@ -7,5 +7,6 @@ export const useGetUser = () => {
     queryFn: () => get_user(),
     enabled: true,
     refetchOnWindowFocus: false,
+    retry: false
   });
 };
