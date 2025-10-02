@@ -1,4 +1,4 @@
-import type { TBaseProduct } from "../types";
+import type {  IBaseAddress, TBaseProduct } from "../types";
 
 export const navMapData = [
   { title: "Crazy Deals" },
@@ -110,3 +110,20 @@ export const luxuryCategories = [
       "https://bellavitaorganic.com/cdn/shop/files/Artboard_4_copy_05b3b2ed-5440-4463-b119-bedcd60ed5c1.webp?v=1725617237&width=800",
   },
 ];
+
+
+export const ALLOW_COUNTRIES = ["India"];
+
+export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
+  address: "",
+  city: "",
+  country: "India",
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+  pinCode: "",
+  state: "",
+  // altPhoneNumber: undefined,
+  // landmark: undefined,
+};
