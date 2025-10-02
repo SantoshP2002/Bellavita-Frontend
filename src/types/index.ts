@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ReactNode, SVGProps } from "react";
+import type { InputHTMLAttributes, JSX, ReactNode, SVGProps } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 import type { ALLOW_COUNTRIES } from "../constants";
 
@@ -92,7 +92,6 @@ export interface IQueryParams {
   [key: string]: string;
 }
 
-
 export interface IBaseAddress {
   firstName: string;
   lastName: string;
@@ -104,9 +103,19 @@ export interface IBaseAddress {
   city: string;
   state: string;
   pinCode: string; // length = 6
-  country: typeof ALLOW_COUNTRIES[number]; // default: "India"
+  country: (typeof ALLOW_COUNTRIES)[number]; // default: "India"
 }
 
-export interface IAddress extends IBaseAddress  {
+export interface IAddress extends IBaseAddress {
   _id: string;
+}
+
+// modal
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: JSX.Element;
+  containerProps?: JSX.IntrinsicElements["div"];
+  heading?: string;
+  className?: string;
 }
