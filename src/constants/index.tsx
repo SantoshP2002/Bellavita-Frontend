@@ -1,4 +1,4 @@
-import type {  IBaseAddress, TBaseProduct } from "../types";
+import type { IBaseAddress, TBaseProduct } from "../types";
 
 export const navMapData = [
   { title: "Crazy Deals" },
@@ -111,7 +111,6 @@ export const luxuryCategories = [
   },
 ];
 
-
 export const ALLOW_COUNTRIES = ["India"];
 
 export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
@@ -124,6 +123,4 @@ export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
   phoneNumber: "",
   pinCode: "",
   state: "",
-  // altPhoneNumber: undefined,
-  // landmark: undefined,
 };
