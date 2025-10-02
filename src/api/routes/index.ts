@@ -30,7 +30,8 @@ export const apiRoutes = {
   // Address
   address: {
     addAddress: { method: "POST", url: "/address/add" },
-    getAddress: {method : "GET", url:"/address/"}
+    getAddress: { method: "GET", url: "/address" },
+    updateAddress: {method : "PATCH", url:"/address/update"}
   },
 
 };
