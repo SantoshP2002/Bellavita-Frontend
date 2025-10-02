@@ -1,11 +1,16 @@
 export const apiRoutes = {
+  // Auth
   auth: {
     register: { method: "POST", url: "/auth/register" },
     login: { method: "POST", url: "/auth/login" },
   },
+
+  // User
   user: {
     getUser: { method: "GET", url: "/users/user" },
   },
+
+  // Products
   products: {
     createProduct: { method: "POST", url: "/products/create" },
     getAllProducts: { method: "GET", url: "/products" },
@@ -13,10 +18,19 @@ export const apiRoutes = {
     updateProductById: { method: "PATCH", url: "/products" },
     deleteProductById: { method: "DELETE", url: "/products" },
   },
+
+  // Cart
   cart: {
     addToCart: { method: "POST", url: "/cart-product/add" },
     getUserCart: { method: "GET", url: "/cart" },
     updateCartProductQuantity: { method: "PATCH", url: "/cart-product/update" },
-    deleteCartProduct: {method:"DELETE", url:"/cart-product/remove"}
+    deleteCartProduct: { method: "DELETE", url: "/cart-product/remove" },
   },
+
+  // Address
+  address: {
+    addAddress: { method: "POST", url: "/address/add" },
+    getAddress: {method : "GET", url:"/address/"}
+  },
+
 };
