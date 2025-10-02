@@ -1,5 +1,6 @@
 import type { InputHTMLAttributes, ReactNode, SVGProps } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
+import type { ALLOW_COUNTRIES } from "../constants";
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -89,4 +90,23 @@ export interface ICart {
 
 export interface IQueryParams {
   [key: string]: string;
+}
+
+
+export interface IBaseAddress {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  altPhoneNumber?: string; // optional
+  email: string;
+  address: string;
+  landmark?: string; // optional
+  city: string;
+  state: string;
+  pinCode: string; // length = 6
+  country: typeof ALLOW_COUNTRIES[number]; // default: "India"
+}
+
+export interface IAddress extends IBaseAddress  {
+  _id: string;
 }
