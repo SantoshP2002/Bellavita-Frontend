@@ -26,6 +26,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "cart", element: <Cart /> },
+      { path: "address", element: <Address /> },
       {
         path: "products",
         element: <Outlet />,
@@ -58,10 +59,6 @@ const router = createBrowserRouter([
   { path: "register", element: <RegisterRedirect /> },
 
   // Address page
-  {
-    path: "address",
-    element: <Address />,
-  },
 ]);
 
 export default router;
