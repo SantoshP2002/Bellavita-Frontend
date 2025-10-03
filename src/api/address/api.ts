@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { getUserToken } from "../../utils";
 import { apiRoutes } from "../routes";
 import api from "../axios.instance";
-import type {  IAddress, IBaseAddress } from "../../types";
+import type { IAddress, IBaseAddress } from "../../types";
 
 // add address
 export const add_address = async (addressData: IBaseAddress) => {
@@ -53,6 +53,24 @@ export const update_address = async (data: Partial<IAddress>) => {
       method,
       url: `${url}/${data._id}`,
       data,
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error?.response?.data?.message || "API Error occurred";
+    }
+    throw "Something went wrong!";
+  }
+};
+
+export const delete_address = async (id: string) => {
+  try {
+    const token = getUserToken();
+    const { method, url } = apiRoutes.address.deleteAddress;
+    const response = await api.request({
+      method,
+      url: `${url}/${id}`,
       headers: { Authorization: token },
     });
     return response.data;
