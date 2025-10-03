@@ -10,7 +10,7 @@ const AddressFormModal = ({
   addresses,
 }: {
   onClose: () => void;
-  addresses: IAddress[];
+  addresses?: IAddress[];
 }) => {
   const { queryParams, removeParam } = useQueryParams();
 
