@@ -4,107 +4,130 @@ import Input from "./Input";
 import type z from "zod";
 import { addressSchema } from "../validations/address";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAddAddress } from "../api/address/service";
+import { useAddAddress, useUpdateAddress } from "../api/address/service";
 import { ADDRESS_INITIAL_VALUES } from "../constants";
-import type { IBaseAddress } from "../types";
+import type { IAddress, IBaseAddress } from "../types";
+import useQueryParams from "../hooks/useQueryParams";
+import { deepEqual } from "../utils";
+import { toast } from "react-toastify";
 
-const AddressForm = () => {
+
+const AddressForm = ({ addresses, className }: { addresses?: IAddress[], className?: string }) => {
+  const { queryParams, removeParam } = useQueryParams();
   const { mutateAsync: addAddress, isPending } = useAddAddress();
+  const { mutateAsync: updateAddress } = useUpdateAddress();
+
+  const address =
+    addresses?.find((a) => a._id === queryParams.edit) ||
+    ADDRESS_INITIAL_VALUES;
+
   const { register, handleSubmit } = useForm<z.infer<typeof addressSchema>>({
     resolver: zodResolver(addressSchema),
-    defaultValues: ADDRESS_INITIAL_VALUES,
+    defaultValues: address,
   });
 
   const onSubmit = (data: z.infer<typeof addressSchema>) => {
-    const finalizedData = data;
-    Object.keys(data).forEach((key) => {
-      const typedKey = key as keyof IBaseAddress;
-      if (data[typedKey]) {
-        finalizedData[typedKey] = data[typedKey];
-      } else {
-        delete finalizedData[typedKey];
-      }
-    });
-    console.log(" Object.keys(data)", finalizedData);
+    if ("_id" in address && (typeof address._id === "string") && address?._id) {
+      const changedFields: Partial<IAddress> = {};
+      Object.keys(data).forEach((key) => {
+        const typedKey = key as keyof IBaseAddress;
+        if (!deepEqual(data[typedKey], address[typedKey])) {
+          (changedFields[typedKey] as unknown) = data[typedKey];
+        }
+      });
 
-    addAddress(finalizedData);
+      if (!Object.keys(changedFields).length) {
+        toast.warning("No changes made to update address!");
+        return;
+      }
+
+      changedFields._id = address._id
+      updateAddress(changedFields, {
+        onSuccess: () => removeParam("edit"),
+      });
+    } else {
+      const finalizedData = data;
+      Object.keys(data).forEach((key) => {
+        const typedKey = key as keyof IBaseAddress;
+        if (data[typedKey]) {
+          finalizedData[typedKey] = data[typedKey];
+        } else {
+          delete finalizedData[typedKey];
+        }
+      });
+      addAddress(finalizedData, {
+        onSuccess: () => removeParam("add"),
+      });
+    }
   };
   return (
-    <div className="p-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-10 text-center text-indigo-600">
-        🏠 Add Your First Address
-      </h2>
-
-      <div className="bg-gradient-to-r from-indigo-100 to-pink-100 shadow-xl rounded-2xl p-8 mb-12">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input
-              label="First Name"
-              register={register("firstName")}
-              inputProps={{ placeholder: "Enter First Name" }}
-            />
-            <Input
-              label="Last Name"
-              register={register("lastName")}
-              inputProps={{ placeholder: "Enter Last Name" }}
-            />
-            <div className="col-span-2">
-              <Input
-                label="Email"
-                register={register("email")}
-                inputProps={{ placeholder: "Enter Email", type: "email" }}
-              />
-            </div>
-            <Input
-              label="Phone Number"
-              register={register("phoneNumber")}
-              inputProps={{ placeholder: "Enter Phone Number" }}
-            />
-            <Input
-              label="Alt. Phone Number"
-              register={register("altPhoneNumber")}
-              inputProps={{ placeholder: "Enter Alternative Number" }}
-            />
-            <Input
-              label="Address"
-              register={register("address")}
-              inputProps={{ placeholder: "Enter Address" }}
-            />
-            <Input
-              label="Landmark"
-              register={register("landmark")}
-              inputProps={{ placeholder: "Enter Landmark" }}
-            />
-            <Input
-              label="City"
-              register={register("city")}
-              inputProps={{ placeholder: "Enter City" }}
-            />
-            <Input
-              label="Pincode"
-              register={register("pinCode")}
-              inputProps={{ placeholder: "Enter PinCode", type: "number" }}
-            />
-            <Input
-              label="State"
-              register={register("state")}
-              inputProps={{ placeholder: "Enter State" }}
-            />
-            <Input
-              label="Country"
-              register={register("country")}
-              inputProps={{ placeholder: "Enter Country" }}
-            />
-          </div>
-          <Button
-            content={isPending ? "Saving..." : "Save Address"}
-            pattern="secondary"
-            className="mt-6"
-            buttonProps={{ type: "submit", disabled: isPending }}
+    <form onSubmit={handleSubmit(onSubmit)} className={`${className}` }>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Input
+          label="First Name"
+          register={register("firstName")}
+          inputProps={{ placeholder: "Enter First Name" }}
+        />
+        <Input
+          label="Last Name"
+          register={register("lastName")}
+          inputProps={{ placeholder: "Enter Last Name" }}
+        />
+        <div className="col-span-2">
+          <Input
+            label="Email"
+            register={register("email")}
+            inputProps={{ placeholder: "Enter Email", type: "email" }}
           />
-        </form>
+        </div>
+        <Input
+          label="Phone Number"
+          register={register("phoneNumber")}
+          inputProps={{ placeholder: "Enter Phone Number" }}
+        />
+        <Input
+          label="Alt. Phone Number"
+          register={register("altPhoneNumber")}
+          inputProps={{ placeholder: "Enter Alternative Number" }}
+        />
+        <Input
+          label="Address"
+          register={register("address")}
+          inputProps={{ placeholder: "Enter Address" }}
+        />
+        <Input
+          label="Landmark"
+          register={register("landmark")}
+          inputProps={{ placeholder: "Enter Landmark" }}
+        />
+        <Input
+          label="City"
+          register={register("city")}
+          inputProps={{ placeholder: "Enter City" }}
+        />
+        <Input
+          label="Pincode"
+          register={register("pinCode")}
+          inputProps={{ placeholder: "Enter PinCode", type: "number" }}
+        />
+        <Input
+          label="State"
+          register={register("state")}
+          inputProps={{ placeholder: "Enter State" }}
+        />
+        <Input
+          label="Country"
+          register={register("country")}
+          inputProps={{ placeholder: "Enter Country" }}
+        />
       </div>
-    </div>
+      <Button
+        content={isPending ? "Saving..." : "Save Address"}
+        pattern="secondary"
+        className="mt-6"
+        buttonProps={{ type: "submit", disabled: isPending }}
+      />
+    </form>
   );
 };
 
