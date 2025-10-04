@@ -30,8 +30,36 @@ export const navMapData = [
       { title: "Body lotion" },
     ],
   },
-  { title: "Little Luxuries" },
+  {
+    title: "Cosmetic",
+    options: [
+      { title: "Flawless Base Range" },
+      { title: "Mood Range" },
+      { title: "Pick Any 2" },
+      { title: "Pick Any 3" },
+      { title: "Lipstick" },
+      { title: "Makeup Brushes" },
+      { title: "Face Blush" },
+      { title: "Kajal" },
+      { title: "Airbrush Compact" },
+      { title: "Airbrush Foundation" },
+      { title: "Nail Paints" },
+    ],
+  },
   { title: "New Arrivals" },
+  {
+    title: "Skincare", options: [
+    {title: "All Skincare"},
+    {title: "Face Wash"},
+    {title: "Lip Care"},
+    {title: "Skin Essential Combos"},
+    {title: "K-Beauty Secret"},
+    {title: "Dry Skin"},
+    {title: "Sun-Kissed Summer"},
+    {title: "Sunscreen"},
+    {title: "Underarm Roll On"},
+    {title: "Wooden Comb"},
+  ] },
   { title: "Gifting" },
 ];
 

@@ -10,6 +10,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUserStore } from "../../store/user";
 import { Button } from "../Button";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -28,7 +29,8 @@ const Navbar = () => {
             content={<FiMenu />}
             buttonProps={{
               onClick: () => setIsSidebarOpen(true),
-              className: "md:hidden text-2xl text-gray-700",
+              className:
+                "!w-fit md:hidden text-2xl text-gray-700 border border-[red]",
             }}
           />
 
@@ -80,21 +82,21 @@ const Navbar = () => {
             onMouseLeave={() => setSelectedOption(null)}
             className="group/nav relative flex items-center cursor-pointer whitespace-nowrap"
           >
-            <span className="uppercase">{item.title}</span>
+            <span className="uppercase text-xs">{item.title}</span>
 
             {/* Hover underline */}
-            <div className="absolute left-0 bottom-0 h-[2px] w-0 bg-indigo-600 transition-all duration-300 group-hover/nav:w-full" />
+            <div className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/nav:w-full" />
 
             {/* Dropdown Menu */}
             {selectedOption === item.title && item.options && (
-              <div className="absolute left-0 top-6 bg-white shadow-lg rounded-md p-3 flex flex-col gap-2 z-50 min-w-[150px]">
+              <div className="absolute left-0 top-6 bg-white shadow-lg rounded-md p-7 flex flex-col gap-2 z-50 min-w-[200px]">
                 {item.options.map((option, index) => (
                   <div
                     key={index}
-                    className="relative w-fit whitespace-nowrap cursor-pointer group/option text-gray-700 hover:text-indigo-600"
+                    className="relative w-fit whitespace-nowrap cursor-pointer group/option text-gray-700 hover:text-gray-600"
                   >
                     <span>{option.title}</span>
-                    <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-indigo-600 transition-all duration-300 group-hover/option:w-full" />
+                    <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
                   </div>
                 ))}
               </div>
@@ -121,7 +123,7 @@ const Navbar = () => {
                 content={<FiX />}
                 buttonProps={{
                   onClick: () => setIsSidebarOpen(false),
-                  className: "text-2xl text-gray-700",
+                  className: "!w-fit text-2xl text-gray-700",
                 }}
               />
             </div>
@@ -141,7 +143,13 @@ const Navbar = () => {
                       className="uppercase font-semibold text-gray-800 cursor-pointer flex justify-between items-center"
                     >
                       {item.title}
-                      <span className="text-lg">{isOpen ? "▲" : "▼"}</span>
+                      <span className="text-lg">
+                        {isOpen ? (
+                          <RiArrowDropUpLine />
+                        ) : (
+                          <RiArrowDropDownLine />
+                        )}
+                      </span>
                     </span>
 
                     {/* Child Options (Slide Down) */}
@@ -152,12 +160,12 @@ const Navbar = () => {
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="ml-3 mt-1 flex flex-col gap-2 text-gray-600 overflow-hidden"
+                          className="ml-3 mt-1 flex flex-col text-sm gap-2 text-gray-600 overflow-hidden"
                         >
                           {item.options.map((option, idx) => (
                             <span
                               key={idx}
-                              className="cursor-pointer hover:text-indigo-600"
+                              // className="cursor-pointer hover:text-indigo-600"
                             >
                               {option.title}
                             </span>
