@@ -74,13 +74,13 @@ const Navbar = () => {
       </div>
 
       {/* BOTTOM NAV (Desktop Only) */}
-      <div className="hidden md:flex justify-center items-center gap-8 text-sm font-medium relative z-50 px-2 md:px-0 py-2">
+      <div className="hidden md:flex justify-center items-center gap-9 font-medium relative z-50 px-2 md:px-0 py-2">
         {navMapData.map((item, index) => (
           <div
             key={index}
             onMouseEnter={() => setSelectedOption(item.title)}
             onMouseLeave={() => setSelectedOption(null)}
-            className="group/nav relative flex items-center cursor-pointer whitespace-nowrap"
+            className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
           >
             <span className="uppercase text-xs">{item.title}</span>
 
@@ -93,7 +93,7 @@ const Navbar = () => {
                 {item.options.map((option, index) => (
                   <div
                     key={index}
-                    className="relative w-fit whitespace-nowrap cursor-pointer group/option text-gray-700 hover:text-gray-600"
+                    className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-sm"
                   >
                     <span>{option.title}</span>
                     <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
