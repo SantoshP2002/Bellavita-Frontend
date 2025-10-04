@@ -11,8 +11,13 @@ import useQueryParams from "../hooks/useQueryParams";
 import { deepEqual } from "../utils";
 import { toast } from "react-toastify";
 
-
-const AddressForm = ({ addresses, className }: { addresses?: IAddress[], className?: string }) => {
+const AddressForm = ({
+  addresses,
+  className,
+}: {
+  addresses?: IAddress[];
+  className?: string;
+}) => {
   const { queryParams, removeParam } = useQueryParams();
   const { mutateAsync: addAddress, isPending } = useAddAddress();
   const { mutateAsync: updateAddress } = useUpdateAddress();
@@ -27,7 +32,7 @@ const AddressForm = ({ addresses, className }: { addresses?: IAddress[], classNa
   });
 
   const onSubmit = (data: z.infer<typeof addressSchema>) => {
-    if ("_id" in address && (typeof address._id === "string") && address?._id) {
+    if ("_id" in address && typeof address._id === "string" && address?._id) {
       const changedFields: Partial<IAddress> = {};
       Object.keys(data).forEach((key) => {
         const typedKey = key as keyof IBaseAddress;
@@ -41,7 +46,7 @@ const AddressForm = ({ addresses, className }: { addresses?: IAddress[], classNa
         return;
       }
 
-      changedFields._id = address._id
+      changedFields._id = address._id;
       updateAddress(changedFields, {
         onSuccess: () => removeParam("edit"),
       });
@@ -61,7 +66,7 @@ const AddressForm = ({ addresses, className }: { addresses?: IAddress[], classNa
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={`${className}` }>
+    <form onSubmit={handleSubmit(onSubmit)} className={`${className}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
           label="First Name"
