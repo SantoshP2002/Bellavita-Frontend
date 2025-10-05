@@ -26,3 +26,19 @@ button {
 .number-input-mouse-control-none[type="number"] {
   appearance: textfield;
 }
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-slide {
+  animation: slide 2s ease-in-out infinite;
+}
