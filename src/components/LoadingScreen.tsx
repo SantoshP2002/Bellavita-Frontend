@@ -1,13 +1,9 @@
 const LoadingScreen = () => {
   return (
-    <div className="h-dvh w-dvw flex flex-col items-center justify-center bg-white fixed inset-0 z-[100]">
-      <div className="h-12 w-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-4 shadow-lg shadow-indigo-300/50" />
-      <p className="text-lg font-semibold text-gray-700 animate-bounce">
-        Loading...
-      </p>
-      <p className="text-sm text-gray-500 mt-2">
-        Please wait, we are preparing things for you ✨
-      </p>
+    <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+      <div className="relative w-32 h-[2px] overflow-hidden bg-gray-200 rounded-full">
+        <div className="absolute left-0 top-0  h-full w-1/1 bg-black animate-slide rounded-full" />
+      </div>
     </div>
   );
 };
