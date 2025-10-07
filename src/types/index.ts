@@ -70,7 +70,13 @@ export interface ISelect extends TBaseInput {
   placeholder?: string;
 }
 
-export type TQueryParams = Record<string, number | string>;
+export interface TQueryParams {
+  page?: number;
+  limit?: number;
+  category?: string;
+  sortBy?: string;
+}
+
 
 export type TProductCart = {
   _id: string;
