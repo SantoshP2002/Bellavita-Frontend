@@ -100,7 +100,7 @@ const HomeProducts = () => {
         pattern="outline"
         className="!w-60 !h-12 font-semibold mt-4 mb-18 mx-auto rounded border"
         buttonProps={{
-          onClick: () => navigate("/products")
+          onClick: () => navigate("/products"),
         }}
       />
     </div>
