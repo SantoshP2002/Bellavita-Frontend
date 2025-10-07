@@ -152,3 +152,11 @@ export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
   pinCode: "",
   state: "",
 };
+
+
+export const SORT_DATA = [
+  { label: "Price: Low to High", value: "price_low_high" },
+  { label: "Price: High to Low", value: "price_high_low" },
+  { label: "Newest First", value: "newest_first" },
+  { label: "Oldest First", value: "oldest_first" },
+];
