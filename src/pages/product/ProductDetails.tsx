@@ -8,13 +8,13 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const [current, setCurrent] = useState(0);
 
-  const {mutateAsync : addToCart} = useAddToCart()
+  const { mutateAsync: addToCart } = useAddToCart();
 
   const { data: product = {} } = useGetProductById(productId!);
 
   const handleAddToCart = (id: string) => {
-    addToCart(id)
-  }
+    addToCart(id);
+  };
 
   return (
     <div className="flex flex-col md:flex-row justify-center gap-10 p-5 md:p-10 max-w-6xl mx-auto">
@@ -66,8 +66,7 @@ const ProductDetails = () => {
           pattern="outline"
           className=" mt-5 lg:w-full rounded bg-black text-white"
           buttonProps={{
-            onClick: () => handleAddToCart(product._id)
-
+            onClick: () => handleAddToCart(product._id),
           }}
         />
 
@@ -106,7 +105,7 @@ const ProductDetails = () => {
           ].map((item, i) => (
             <div
               key={i}
-              className="p-3 bg-gray-100 rounded flex flex-col justify-center items-center"
+              className="w-25 h-28 p-3 bg-gray-100 rounded flex flex-col justify-center items-center"
             >
               <img className="w-10 h-10" src={item.img} />
               <p className="text-xs text-center font-semibold mt-1">
