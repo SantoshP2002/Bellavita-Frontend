@@ -38,7 +38,7 @@ export const useGetAllProductsInfinite = (
   params: Record<string, number | string>
 ) => {
   return useInfiniteQuery({
-    queryKey: ["get_all_products_infinite"],
+    queryKey: ["get_all_products_infinite", params],
     initialPageParam: 1,
     queryFn: ({ pageParam }) =>
       get_all_products({ page: pageParam, ...params }),
