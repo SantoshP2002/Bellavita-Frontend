@@ -8,7 +8,7 @@ const Logo: React.FC<LogoProps> = ({ onClick }) => {
   return (
     <div className="flex items-center gap-2 cursor-pointer" onClick={onClick}>
       <img
-        className="w-full h-10"
+        className="w-full h-13"
         src="/assets/images/download.png"
         alt="Logo bellavita"
       />
