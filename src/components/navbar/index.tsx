@@ -30,7 +30,7 @@ const Navbar = () => {
             buttonProps={{
               onClick: () => setIsSidebarOpen(true),
               className:
-                "!w-fit md:hidden text-2xl text-gray-700 border border-[red]",
+                "!w-fit md:hidden text-2xl text-gray-700",
             }}
           />
 
