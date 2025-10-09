@@ -3,6 +3,7 @@ import { useAddToCart } from "../api/cart/service";
 import { useGetAllProductsInfinite } from "../api/products/service";
 import type { TProduct } from "../types";
 import { Button } from "./Button";
+import LoadingScreen from "./LoadingScreen";
 
 const HomeProducts = () => {
   const navigate = useNavigate();
@@ -20,7 +21,11 @@ const HomeProducts = () => {
 
   return (
     <div className="mt-8 px-4 md:px-10">
-      {isLoading && <p>Loading products...</p>}
+      {isLoading && (
+        <p>
+          <LoadingScreen />
+        </p>
+      )}
       {isError && <p className="text-red-500">Error: {String(error)}</p>}
 
       {products.length > 0 && (
