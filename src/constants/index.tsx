@@ -48,18 +48,20 @@ export const navMapData = [
   },
   { title: "New Arrivals" },
   {
-    title: "Skincare", options: [
-    {title: "All Skincare"},
-    {title: "Face Wash"},
-    {title: "Lip Care"},
-    {title: "Skin Essential Combos"},
-    {title: "K-Beauty Secret"},
-    {title: "Dry Skin"},
-    {title: "Sun-Kissed Summer"},
-    {title: "Sunscreen"},
-    {title: "Underarm Roll On"},
-    {title: "Wooden Comb"},
-  ] },
+    title: "Skincare",
+    options: [
+      { title: "All Skincare" },
+      { title: "Face Wash" },
+      { title: "Lip Care" },
+      { title: "Skin Essential Combos" },
+      { title: "K-Beauty Secret" },
+      { title: "Dry Skin" },
+      { title: "Sun-Kissed Summer" },
+      { title: "Sunscreen" },
+      { title: "Underarm Roll On" },
+      { title: "Wooden Comb" },
+    ],
+  },
   { title: "Gifting" },
 ];
 
@@ -91,12 +93,12 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   price: 0,
   sellingPrice: 0,
   description: "",
-  category: "",
+  category: "shop All",
   images: [],
 };
 
 export const carouselImages = [
-  "https://bellavitaorganic.com/cdn/shop/files/Web.webp?v=1757920399&width=1920",
+  "http://bellavitaorganic.com/cdn/shop/files/gourmet_banner.webp?v=1758865399&width=1920",
   "https://bellavitaorganic.com/cdn/shop/files/1920x720New.webp?v=1756991147&width=1920",
 ];
 
@@ -152,7 +154,6 @@ export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
   pinCode: "",
   state: "",
 };
-
 
 export const SORT_DATA = [
   { label: "Price: Low to High", value: "price_low_high" },
