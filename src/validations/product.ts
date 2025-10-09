@@ -25,7 +25,7 @@ export const productSchema = z
       .min(1, { message: "Description must have minimum 2 characters long" }),
     category: z
       .string({ error: "Category must be string" })
-      .nonempty("Category is required"),
+      .min(1, { message: "Category is required" }),
     images: z
       .array(z.any())
       .min(1, "At least one image is required")
