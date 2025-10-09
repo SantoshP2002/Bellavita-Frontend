@@ -34,13 +34,14 @@ const Navbar = () => {
             }}
           />
 
-          <Logo onClick={() => navigate("/")} />
+          <div className="hidden md:block">
+          <SearchBar />
+        </div>
         </div>
 
         {/* Search bar (always visible) */}
-        <div className="hidden md:block">
-          <SearchBar />
-        </div>
+
+        <Logo onClick={() => navigate("/")} />
 
         {/* Icons */}
         <div className="flex items-center gap-6 text-gray-700">
