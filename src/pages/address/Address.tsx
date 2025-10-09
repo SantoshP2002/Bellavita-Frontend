@@ -51,6 +51,7 @@ const Address = () => {
           )}
         </div>
       )}
+      <Button content="Procced To Pay" pattern="secondary" className="mt-8" />
     </div>
   );
 };
