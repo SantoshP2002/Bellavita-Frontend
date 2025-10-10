@@ -44,7 +44,7 @@ const Login = () => {
           <div className="relative mb-4">
             <Input
               label="Email"
-              className="w-full px-4 py-3 pl-12 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              className="w-full px-4 py-3 pl-8 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
               register={register("email")}
               inputProps={{ placeholder: "Enter Your Email...", name: "email" }}
             />
@@ -60,7 +60,7 @@ const Login = () => {
           <div className="relative mb-4">
             <Input
               label="Password"
-              className="w-full px-4 py-3 pl-12 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+              className="w-full px-4 py-3 pl-8 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
               register={register("password")}
               inputProps={{ placeholder: "Enter Password", name: "password" }}
             />
