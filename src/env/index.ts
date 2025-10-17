@@ -1,2 +1,7 @@
-export const { VITE_BACKEND_URI, VITE_ENCRYPTION_SECRET_KEY, VITE_TOKEN_KEY } =
-  import.meta.env;
+export const {
+  VITE_BACKEND_URI,
+  VITE_ENCRYPTION_SECRET_KEY,
+  VITE_TOKEN_KEY,
+  VITE_RAZORPAY_KEY_ID,
+  VITE_RAZORPAY_KEY_SECRET,
+} = import.meta.env;
