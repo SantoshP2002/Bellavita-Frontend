@@ -32,7 +32,13 @@ export const apiRoutes = {
     addAddress: { method: "POST", url: "/address/add" },
     getAddress: { method: "GET", url: "/address" },
     updateAddress: { method: "PATCH", url: "/address/update" },
-    deleteAddress: {method: "DELETE", url:"/address/delete"}
+    deleteAddress: { method: "DELETE", url: "/address/delete" },
   },
 
+  // Order
+  order: {
+    createOrder: { method: "POST", url: "/order/create" },
+    getOrder: { method: "GET", url: "/order/" },
+    getOrderById: { method: "GET", url: "/order" },
+  },
 };
