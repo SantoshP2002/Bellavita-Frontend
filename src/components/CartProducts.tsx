@@ -10,6 +10,7 @@ import { GoPlus } from "react-icons/go";
 import { Button } from "./Button";
 import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import { FaArrowRight} from "react-icons/fa";
 
 const CartProducts = () => {
   const navigate = useNavigate();
@@ -218,11 +219,12 @@ const CartProducts = () => {
                   <span>₹{subtotal}</span>
                 </div>
                 <Button
-                  content="Proceed to Payment"
+                  content="Continue"
                   pattern="secondary"
-                  className="mt-4 hover:scale-105"
+                  className="mt-4 hover:scale-105 gap-1"
+                  icons={{ right: <FaArrowRight /> }}
                   buttonProps={{
-                    onClick: () =>navigate("/address")
+                    onClick: () => navigate("/address"),
                   }}
                 />
               </motion.div>
