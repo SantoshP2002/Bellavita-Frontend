@@ -4,25 +4,18 @@ import { MdErrorOutline } from "react-icons/md";
 
 const Select = ({
   label = "",
-  register,
   className = "",
   error = "",
   containerClassName = "",
   icons,
-  options = [],
   selectProps,
-  placeholder,
 }: ISelect) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<string>("");
 
   const handleSelect = (value: string) => {
     setSelected(value);
-    const event = {
-      target: { value },
-    } as React.ChangeEvent<HTMLSelectElement>;
-    selectProps?.onChange?.(event);
-    register?.onChange?.(event);
+    selectProps?.onChange?.(value);
     setIsOpen(false);
   };
 
@@ -30,14 +23,7 @@ const Select = ({
     <div
       className={`w-full flex flex-col gap-1.5 relative ${containerClassName}`}
     >
-      {label && (
-        <label
-          htmlFor={selectProps?.name}
-          className="text-xs text-black mb-1 cursor-pointer"
-        >
-          {label}
-        </label>
-      )}
+      {label && <span className="text-xs text-black mb-1">{label}</span>}
 
       {/* Select box */}
       <div
@@ -46,8 +32,8 @@ const Select = ({
       >
         <div className="flex-1 text-sm text-gray-700">
           {selected
-            ? options.find((opt) => opt.value === selected)?.label
-            : placeholder || "Select"}
+            ? selectProps?.options.find((opt) => opt.value === selected)?.name
+            : selectProps?.placeholder || "Select"}
         </div>
 
         {icons?.right && (
@@ -61,9 +47,9 @@ const Select = ({
       </div>
 
       {/* Dropdown */}
-      {isOpen && (
+      {isOpen && selectProps?.options.length > 0 && (
         <div className="absolute top-full left-0 w-full bg-white border border-gray-200 rounded-lg z-50 mt-1 overflow-hidden shadow-md">
-          {options.map((opt) => (
+          {selectProps.options.map((opt) => (
             <div
               key={opt.value}
               onClick={() => handleSelect(opt.value)}
@@ -71,7 +57,7 @@ const Select = ({
                 selected === opt.value ? "bg-gray-200 font-medium" : ""
               }`}
             >
-              {opt.label}
+              {opt.name}
             </div>
           ))}
         </div>
