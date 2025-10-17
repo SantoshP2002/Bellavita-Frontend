@@ -27,7 +27,7 @@ const ProductDetails = () => {
         />
         {product?.images?.length > 1 && (
           <div className="flex items-center overflow-x-scroll scroll-smooth">
-            <div className="flex flex-nowrap gap-4 shrink-0">
+            <div className="flex flex-nowrap gap-2 shrink-0">
               {product.images.map((img: string, ind: number) => (
                 <img
                   key={ind}
@@ -62,7 +62,7 @@ const ProductDetails = () => {
         </p>
 
         <Button
-          content="Add To Cart"
+          content=" Add To Cart "
           pattern="outline"
           className=" mt-5 lg:w-full rounded bg-black text-white"
           buttonProps={{
