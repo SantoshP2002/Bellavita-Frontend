@@ -12,6 +12,7 @@ import { CATEGORIES_DATA, PRODUCT_INITIAL_VALUES } from "../../../constants";
 
 const UploadProducts = () => {
   const { mutateAsync } = useUploadProduct();
+
   const {
     register,
     handleSubmit,
@@ -44,6 +45,8 @@ const UploadProducts = () => {
 
     await mutateAsync(formData);
   };
+
+  console.log("TEST", watch("category"));
   return (
     <div className="p-2">
       <div>Upload Products</div>
@@ -112,19 +115,22 @@ const UploadProducts = () => {
           />
 
           {/* Category */}
-          <Select
-            label="Category"
-            placeholder="Select Category"
-            options={CATEGORIES_DATA}
-            containerClassName="[&_label]:cursor-default"
-            register={register("category")}
-            selectProps={{
-              className: `-ml-1 ${
-                watch("category") ? "text-black" : "text-black/50"
-              }`,
-            }}
-            error={errors?.category?.message}
+          <Controller
+            control={control}
+            name="category"
+            render={({ field }) => (
+              <Select
+                label="Category"
+                selectProps={{
+                  onChange: (value) => field.onChange(value),
+                  options: CATEGORIES_DATA,
+                  placeholder: "Select Category",
+                }}
+                error={errors?.category?.message}
+              />
+            )}
           />
+
           {/* productImage */}
           <div className="flex flex-col gap-2">
             <Controller
