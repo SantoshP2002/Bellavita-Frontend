@@ -5,11 +5,25 @@ import type { IAddress } from "../../../types";
 import { useDeleteAddress } from "../../../api/address/service";
 import useQueryParams from "../../../hooks/useQueryParams";
 
-const AddressCard = ({ address }: { address: IAddress }) => {
+const AddressCard = ({
+  address,
+  isSelected,
+  onSelect,
+}: {
+  address: IAddress;
+  isSelected?: boolean;
+  onSelect: () => void;
+}) => {
   const { setParams } = useQueryParams();
   const { mutateAsync } = useDeleteAddress();
   return (
-    <div className="border border-black rounded-2xl p-5 transition-transform duration-200 hover:scale-[1.02] relative w-full  shadow-sm hover:shadow-md bg-white">
+    <div
+      className={`border ${
+        isSelected
+          ? "border-2 border-blue-600 shadow-xl shadow-blue-600/20"
+          : "border-black shadow-sm hover:shadow-md"
+      } rounded-2xl p-5 transition-transform duration-200 hover:scale-[1.02] relative w-full bg-white`}
+    >
       <div className="absolute top-3 right-3 flex gap-2">
         <Button
           content={<CiEdit />}
@@ -26,7 +40,7 @@ const AddressCard = ({ address }: { address: IAddress }) => {
       </div>
 
       {/* Card content */}
-      <div className="space-y-1">
+      <div className="space-y-1 cursor-grab" onClick={onSelect}>
         <h4 className="font-semibold text-lg text-gray-800 truncate">
           {address.firstName} {address.lastName}
         </h4>
@@ -45,12 +59,10 @@ const AddressCard = ({ address }: { address: IAddress }) => {
             🏷️ {address.landmark}
           </p>
         )}
-      </div>
-
-      <div className="text-gray-600 text-sm mt-1 leading-tight">
-        🌆 {address.city}, {address.state} - {address.pinCode}
-        <br />
-        🌍 {address.country}
+        <p className="text-gray-600 text-sm truncate">
+          🌆 {address.city}, {address.state} - {address.pinCode}
+        </p>
+        <p className="text-gray-600 text-sm truncate">🌍 {address.country}</p>
       </div>
     </div>
   );
