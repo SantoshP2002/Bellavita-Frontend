@@ -9,17 +9,17 @@ const LuxuryCategory = () => {
 
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 px-4 sm:px-8 lg:px-20">
         {luxuryCategories.map((cat, index) => (
-          <div
-            key={index}
-            onClick={() =>
-              navigate(`/products?category=${encodeURIComponent(cat.category)}`)
-            }
-            className="flex flex-col items-center transition hover:scale-105 cursor-pointer p-2"
-          >
+          <div key={index} className="flex flex-col items-center p-2">
             <img
               src={cat.image}
               alt={cat.name}
-              className="object-cover rounded shadow"
+              onClick={() =>
+                navigate(
+                  `/products?category=${encodeURIComponent(cat.category)}`
+                )
+              }
+              role="button"
+              className="object-cover rounded shadow hover:scale-110 transition-transform duration-300 cursor-pointer"
             />
             <p className="mt-3 text-sm sm:text-base font-medium uppercase">
               {cat.name}
