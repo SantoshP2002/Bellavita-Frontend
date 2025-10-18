@@ -39,11 +39,10 @@ const AllProducts = () => {
 
   const products = data?.pages?.flatMap((page) => page.products) || [];
 
-  // const totalProducts = data?.pages?.[0]?.totalProducts || 0;
+  const totalProducts = data?.pages?.[0]?.totalProducts || 0;
 
   // handle sort change
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
+  const handleSortChange = (value: string) => {
     setParams({ sortBy: value });
   };
 
@@ -67,24 +66,24 @@ const AllProducts = () => {
           />
 
           <Select
-            placeholder="SORT BY"
             containerClassName="!w-50 !h-10 !m-1 cursor-pointer"
-            options={SORT_DATA}
             icons={{
               right: {
                 icon: <IoIosArrowDown className="text-base cursor-pointer" />,
               },
             }}
             selectProps={{
-              onChange: handleSortChange,
+              onChange: (value) => handleSortChange(value),
+              options: SORT_DATA,
+              placeholder: "SORT BY",
               value: queryParams.sortBy || "",
             }}
           />
         </div>
 
-        {/* <p className="text-sm text-gray-600 font-medium">
-          {totalProducts} Product{totalProducts !== 1 && "s"}
-        </p> */}
+        <p className="text-sm text-gray-600 font-medium">
+          {totalProducts} Product{totalProducts !== 1}
+        </p>
       </div>
 
       {isLoading ? (
@@ -94,50 +93,48 @@ const AllProducts = () => {
       ) : products.length > 0 ? (
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((p, index) => {
-            const isLastItem = index === products.length - 1;
+            const isLastItem = index === products.length - 4;
             return (
-              <div className="bg-red-200">
-                <div
-                  key={p._id}
-                  ref={isLastItem ? ref : null}
-                  onClick={() => navigate(p?._id)}
-                  className="bg-white shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-                >
-                  <div className="relative h-44 w-full bg-gray-100">
-                    <img
-                      src={p.images?.[0]}
-                      alt={p.title}
-                      className="w-full h-full object-contain p-4"
-                    />
-                  </div>
-
-                  <div className="p-1">
-                    <p className="text-xs text-gray-500 font-medium line-clamp-1">
-                      {p.brand}
-                    </p>
-                    <h2 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-1">
-                      {p.title}
-                    </h2>
-                    <div className="mt-2 flex items-center gap-2">
-                      <p className="text-lg font-bold text-black">
-                        ₹{p.sellingPrice.toFixed(2)}
-                      </p>
-                      {p.price > p.sellingPrice && (
-                        <p className="text-sm text-gray-400 line-through">
-                          ₹{p.price.toFixed(2)}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <Button
-                    content="Add To Cart"
-                    pattern="outline"
-                    className=" mt-5 lg:w-full rounded bg-black text-white"
-                    buttonProps={{
-                      onClick: () => handleAddToCart(p._id),
-                    }}
+              <div
+                key={p._id}
+                ref={isLastItem ? ref : null}
+                className="bg-white overflow-hidden transition-shadow duration-300"
+              >
+                <div className="relative h-44 w-full bg-gray-100">
+                  <img
+                    src={p.images?.[0]}
+                    alt={p.title}
+                    onClick={() => navigate(p?._id)}
+                    className="w-full h-full object-contain p-4 hover:scale-115 transition-transform duration-300 cursor-pointer"
                   />
                 </div>
+
+                <div className="p-1">
+                  <p className="text-xs text-gray-500 font-medium line-clamp-1">
+                    {p.brand}
+                  </p>
+                  <h2 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-1">
+                    {p.title}
+                  </h2>
+                  <div className="mt-2 flex items-center gap-2">
+                    <p className="text-lg font-bold text-black">
+                      ₹{p.sellingPrice.toFixed(2)}
+                    </p>
+                    {p.price > p.sellingPrice && (
+                      <p className="text-sm text-gray-400 line-through">
+                        ₹{p.price.toFixed(2)}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <Button
+                  content="Add To Cart"
+                  pattern="outline"
+                  className=" mt-5 lg:w-full rounded bg-black text-white"
+                  buttonProps={{
+                    onClick: () => handleAddToCart(p._id),
+                  }}
+                />
               </div>
             );
           })}
