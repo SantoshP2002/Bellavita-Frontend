@@ -6,12 +6,24 @@ import { useGetAddress } from "../../api/address/service";
 import AddressFormModal from "../../components/modal/children/AddressFormModal";
 import useQueryParams from "../../hooks/useQueryParams";
 import AddressCard from "./components/AddressCard";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Address = () => {
+  const navigate = useNavigate();
   const { removeParam, setParams, queryParams } = useQueryParams();
   const { data, isLoading, isError } = useGetAddress();
 
   const addresses: IAddress[] = data?.userAddress?.addresses || [];
+
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (data?.userAddress?.defaultAddress) {
+      setSelectedAddress(data?.userAddress?.defaultAddress);
+    }
+  }, [data?.userAddress?.defaultAddress]);
 
   return (
     <div className="w-full h-full p-6">
@@ -43,7 +55,12 @@ const Address = () => {
           {addresses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {addresses.map((address, index) => (
-                <AddressCard key={index} address={address} />
+                <AddressCard
+                  key={index}
+                  address={address}
+                  isSelected={selectedAddress === address._id}
+                  onSelect={() => setSelectedAddress(address._id)}
+                />
               ))}
             </div>
           ) : (
@@ -51,7 +68,24 @@ const Address = () => {
           )}
         </div>
       )}
-      <Button content="Procced To Pay" pattern="secondary" className="mt-8" />
+      <Button
+        content="Checkout"
+        pattern="secondary"
+        className="mt-8"
+        buttonProps={{
+          onClick: () => {
+            if (!selectedAddress) {
+              toast.error("Please select an address before proceeding!");
+              return;
+            }
+            navigate("/checkout", {
+              state: {
+                addressId: selectedAddress,
+              },
+            });
+          },
+        }}
+      />
     </div>
   );
 };
