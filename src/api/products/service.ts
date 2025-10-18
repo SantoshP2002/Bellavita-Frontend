@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
@@ -40,7 +40,7 @@ export const useGetAllProductsInfinite = (
   return useInfiniteQuery({
     queryKey: ["get_all_products_infinite", params],
     initialPageParam: 1,
-    queryFn: ({ pageParam }) =>
+    queryFn: ({ pageParam = 1 }) =>
       get_all_products({ page: pageParam, ...params }),
 
     getNextPageParam: (lastPage) => {
@@ -79,10 +79,15 @@ export const useUpdateProduct = (id: string) => {
 
 // delete product by ID
 export const useDeleteProductById = () => {
+  const queryClient = useQueryClient();
   return useMutation({
+    mutationKey: ["delete_Product_By_Id"],
     mutationFn: (id: string) => delete_Product_By_Id(id),
     onSuccess: (data) => {
       toast.success(data?.message || "Product deleted successfully!");
+      queryClient.invalidateQueries({
+        queryKey: ["get_all_products_infinite"],
+      });
     },
     onError: (error) => {
       toast.error(typeof error === "string" ? error : "Something went wrong!");
