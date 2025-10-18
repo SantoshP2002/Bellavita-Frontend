@@ -7,6 +7,7 @@ import {
   useDeleteProductById,
   useGetAllProductsInfinite,
 } from "../../../api/products/service";
+import { useDebounce } from "../../../hooks/useDebounce";
 
 const Products = () => {
   const deleteProductQuery = useDeleteProductById();
@@ -14,6 +15,7 @@ const Products = () => {
   const { ref, inView } = useInView();
 
   const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 500);
 
   const handleDelete = (id: string) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
@@ -21,15 +23,21 @@ const Products = () => {
     }
   };
 
-
-  const { data, isLoading, error, fetchNextPage, hasNextPage, isError } =
-    useGetAllProductsInfinite({ limit: 8 });
+  const {
+    data,
+    isLoading,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isError,
+    refetch,
+  } = useGetAllProductsInfinite({ limit: 8, search: debouncedSearch });
 
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
-  }, [inView, hasNextPage, fetchNextPage]);
+  }, [inView, hasNextPage, fetchNextPage, refetch]);
 
   if (isError) return <h1>{error.message}</h1>;
   const products = data?.pages?.flatMap((page) => page.products) || [];
