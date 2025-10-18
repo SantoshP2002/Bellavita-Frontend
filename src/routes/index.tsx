@@ -18,6 +18,9 @@ import Cart from "../pages/cart";
 import ProductDetails from "../pages/product/ProductDetails";
 import AllProducts from "../pages/product/AllProducts";
 import Address from "../pages/address/Address";
+import AllOrder from "../pages/order";
+import OrderDetails from "../pages/order/OrderDetails"
+import CheckoutSummary from "../pages/address/CheckoutSummary";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +28,46 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [
       { index: true, element: <Home /> },
-      { path: "cart", element: <Cart /> },
-      { path: "address", element: <Address/> },
+      {
+        path: "cart",
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "address",
+        element: (
+          <PrivateRoute>
+            <Address />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <PrivateRoute>
+            <CheckoutSummary />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "orders",
+        element: (
+          <PrivateRoute>
+            <AllOrder />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "orders/:id",
+        element: (
+          <PrivateRoute>
+            <OrderDetails />
+          </PrivateRoute>
+        ),
+      },
       {
         path: "products",
         element: <Outlet />,
