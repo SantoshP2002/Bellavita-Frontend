@@ -8,6 +8,8 @@ import {
   useGetAllProductsInfinite,
 } from "../../../api/products/service";
 import { useDebounce } from "../../../hooks/useDebounce";
+import Input from "../../../components/Input";
+import { CiSearch } from "react-icons/ci";
 
 const Products = () => {
   const deleteProductQuery = useDeleteProductById();
@@ -49,12 +51,15 @@ const Products = () => {
         <h3 className="text-2xl font-bold text-gray-700">ALL PRODUCTS</h3>
         <div className="flex items-center gap-3 w-full sm:w-auto">
           {/* 🔍 Search Bar */}
-          <input
-            type="text"
-            placeholder="Search by title, brand, or category..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="px-3 py-2 border rounded-full w-full sm:w-64 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          <Input
+            className="border-b-4 rounded-lg"
+            icons={{ left: { icon: <CiSearch /> } }}
+            inputProps={{
+              type: "text",
+              placeholder: "Search by title, brand, or category...",
+              value: search,
+              onChange: (e) => setSearch(e.target.value),
+            }}
           />
           <Button
             content="Upload Products"
