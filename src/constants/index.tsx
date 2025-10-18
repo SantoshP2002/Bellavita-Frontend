@@ -76,15 +76,15 @@ export const ALLOWED_IMAGE_TYPES = [
 ];
 
 export const CATEGORIES_DATA = [
-  { label: "Shop All", value: "Shop All" },
-  { label: "Crazy Deals", value: "Crazy Deals" },
-  { label: "Bestsellers", value: "Bestsellers" },
-  { label: "Perfumes", value: "Perfumes" },
-  { label: "Bath & Body", value: "Bath & Body" },
-  { label: "Cosmetics", value: "Cosmetics" },
-  { label: "New Arrivals", value: "New Arrivals" },
-  { label: "Skincare", value: "Skincare" },
-  { label: "Gifting", value: "Gifting" },
+  { name: "Shop All", value: "Shop All" },
+  { name: "Crazy Deals", value: "Crazy Deals" },
+  { name: "Bestsellers", value: "Bestsellers" },
+  { name: "Perfumes", value: "Perfumes" },
+  { name: "Bath & Body", value: "Bath & Body" },
+  { name: "Cosmetics", value: "Cosmetics" },
+  { name: "New Arrivals", value: "New Arrivals" },
+  { name: "Skincare", value: "Skincare" },
+  { name: "Gifting", value: "Gifting" },
 ];
 
 export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
@@ -93,7 +93,7 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   price: 0,
   sellingPrice: 0,
   description: "",
-  category: "shop All",
+  category: "",
   images: [],
 };
 
@@ -156,8 +156,8 @@ export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
 };
 
 export const SORT_DATA = [
-  { label: "Price: Low to High", value: "price_low_high" },
-  { label: "Price: High to Low", value: "price_high_low" },
-  { label: "Newest First", value: "newest_first" },
-  { label: "Oldest First", value: "oldest_first" },
+  { name: "Price: Low to High", value: "price_low_high" },
+  { name: "Price: High to Low", value: "price_high_low" },
+  { name: "Newest First", value: "newest_first" },
+  { name: "Oldest First", value: "oldest_first" },
 ];
