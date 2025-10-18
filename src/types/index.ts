@@ -1,4 +1,9 @@
-import type { InputHTMLAttributes, JSX, ReactNode, SVGProps } from "react";
+import type {
+  InputHTMLAttributes,
+  JSX,
+  ReactNode,
+  SVGProps,
+} from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 import type { ALLOW_COUNTRIES } from "../constants";
 
@@ -64,10 +69,13 @@ export interface IInput extends TBaseInput {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 }
 
-export interface ISelect extends TBaseInput {
-  options: { label: string; value: string }[];
-  selectProps: InputHTMLAttributes<HTMLSelectElement>;
-  placeholder?: string;
+export interface ISelect extends Omit<TBaseInput, "register"> {
+  selectProps: {
+    onChange?: (value: string) => void;
+    options: Record<"name" | "value", string>[];
+    value?: string;
+    placeholder?: string;
+  };
 }
 
 export interface TQueryParams {
@@ -76,7 +84,6 @@ export interface TQueryParams {
   category?: string;
   sortBy?: string;
 }
-
 
 export type TProductCart = {
   _id: string;
@@ -125,3 +132,51 @@ export interface ModalProps {
   heading?: string;
   className?: string;
 }
+
+export interface IOrder {
+  _id: string;
+  user: string;
+  address: {
+    address: string;
+    landmark?: string;
+    city: string;
+    state: string;
+    pinCode: string;
+    phone?: string;
+    name?: string;
+  };
+  products: {
+    _id: string;
+    quantity: number;
+    product: {
+      _id: string;
+      title: string;
+      brand: string;
+      price: number;
+      sellingPrice: number;
+      quantity: number
+      images: string[];
+    };
+  }[];
+  totalPrice: number | string;
+  order_result: {
+    order_status: "PENDING" | "PAID" | "FAILED";
+    amount: number;
+    order_receipt: string;
+    discount?: number;
+    charges?: number;
+  };
+  razorpay_payment_result: {
+    payment_mode: "ONLINE" | "COD";
+    rzp_payment_status: "UNPAID" | "PAID" | "FAILED";
+    currency: "INR";
+  };
+  payment_details?: {
+    fee?: number;
+    tax?: number;
+  };
+  status?: "paid" | "pending" | "failed"; // Optional frontend-friendly alias
+  createdAt: string;
+  updatedAt: string;
+}
+
