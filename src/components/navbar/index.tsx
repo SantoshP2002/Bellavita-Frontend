@@ -29,14 +29,13 @@ const Navbar = () => {
             content={<FiMenu />}
             buttonProps={{
               onClick: () => setIsSidebarOpen(true),
-              className:
-                "!w-fit md:hidden text-2xl text-gray-700",
+              className: "!w-fit md:hidden text-2xl text-gray-700",
             }}
           />
 
           <div className="hidden md:block">
-          <SearchBar />
-        </div>
+            <SearchBar onSearch={(query) => console.log("Search:", query)} />
+          </div>
         </div>
 
         {/* Search bar (always visible) */}
