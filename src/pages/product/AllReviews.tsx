@@ -3,8 +3,12 @@ import { useGetReviewByProductId } from "../../api/review/service";
 import type { IReview } from "../../types";
 import { Button } from "../../components/Button";
 import { FiUser } from "react-icons/fi";
+import { useGetAllProductsInfinite } from "../../api/products/service";
+import { useAddToCart } from "../../api/cart/service";
+import { useNavigate } from "react-router-dom";
 
 const AllReviews = () => {
+  const navigate = useNavigate();
   const {
     data,
     fetchNextPage,
@@ -13,6 +17,21 @@ const AllReviews = () => {
     isLoading,
     isError,
   } = useGetReviewByProductId();
+
+  const {
+    data: productsData,
+    isLoading: productsLoading,
+    isError: productsError,
+  } = useGetAllProductsInfinite({ limit: 4 });
+
+  const { mutateAsync: addToCart } = useAddToCart();
+
+  const handleAddToCart = async (id: string) => {
+    await addToCart(id);
+  };
+
+  const products =
+    productsData?.pages?.flatMap((page) => page.products)?.slice(0, 4) || [];
 
   const allReviews = data?.pages.flatMap((page) => page?.reviews || []) || [];
 
@@ -98,6 +117,56 @@ const AllReviews = () => {
               disabled: isFetchingNextPage,
             }}
           />
+        </div>
+      )}
+
+      {/* 🛍 Recommended Products Section */}
+      {products.length > 0 && (
+        <div className="mt-12">
+          <h2 className="font-bold text-2xl text-center mb-6 uppercase">
+            You May Also Like
+          </h2>
+
+          {productsLoading ? (
+            <p className="text-center text-gray-500">Loading products...</p>
+          ) : productsError ? (
+            <p className="text-center text-red-500">Failed to load products</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {products.map((p) => (
+                <div key={p._id} className="p-4  flex flex-col justify-between">
+                  <div
+                    onClick={() => navigate(`/products/${p._id}`)}
+                    className="cursor-pointer"
+                  >
+                    <img
+                      src={p.images?.[0]}
+                      alt={p.title}
+                      className="object-contain mb-2"
+                    />
+                    <p className="text-sm text-gray-500 font-medium">
+                      {p.brand}
+                    </p>
+                    <h3 className="font-semibold text-gray-800 line-clamp-1">
+                      {p.title}
+                    </h3>
+                    <p className="text-lg font-bold text-black mt-1">
+                      ₹{p.sellingPrice.toFixed(2)}
+                    </p>
+                  </div>
+
+                  <Button
+                    content="Add To Cart"
+                    pattern="outline"
+                    className="w-full mt-4 rounded bg-black text-white hover:bg-gray-900 transition"
+                    buttonProps={{
+                      onClick: () => handleAddToCart(p._id),
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
