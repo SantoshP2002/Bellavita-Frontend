@@ -41,4 +41,10 @@ export const apiRoutes = {
     getOrder: { method: "GET", url: "/order/" },
     getOrderById: { method: "GET", url: "/order" },
   },
+
+  // Review
+  reviews: {
+    createReview: { method: "POST", url: "/review" },
+    getReviewsByProductId: { method: "GET", url: "/review" },
+  },
 };
