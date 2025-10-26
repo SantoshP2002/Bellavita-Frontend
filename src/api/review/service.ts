@@ -35,7 +35,7 @@ export const useGetReviewByProductId = () => {
     // pageParam ka default value
     initialPageParam: 1,
     queryFn: async ({ pageParam }) =>
-      get_review_by_product_id(productId, pageParam, 10, false),
+      get_review_by_product_id(productId, pageParam, 7, false),
 
     getNextPageParam: (lastPage) => {
       const { pagination } = lastPage || {};
