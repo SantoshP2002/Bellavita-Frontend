@@ -1,0 +1,147 @@
+@import url("quill/dist/quill.snow.css");
+#custom-editor {
+  & > .ql-toolbar.ql-snow {
+    font-family: "metropolis", sans-serif !important;
+    border: transparent;
+    border-bottom: 2px solid var(--primary-10);
+    padding: 20px 12px 12px 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.6vw;
+    flex-wrap: wrap;
+  }
+
+  & > .ql-container {
+    border: transparent;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+  }
+  & .ql-editor {
+    height: 300px;
+    max-height: 300px;
+    margin-bottom: 12px;
+    padding-bottom: 0 !important;
+    & a {
+      color: var(--blue-crayola-c) !important;
+      text-decoration: none !important;
+      cursor: pointer !important;
+    }
+  }
+  & .ql-formats {
+    border: 1px solid var(--primary-10);
+    padding: 2px;
+    margin-right: 0px !important;
+    border-radius: 4px;
+    & > button:hover .ql-stroke {
+      stroke: var(--blue-crayola-c) !important;
+    }
+    & > button:hover .ql-fill {
+      fill: var(--blue-crayola-c) !important;
+    }
+
+    & .ql-picker-label:hover .ql-stroke {
+      stroke: var(--blue-crayola-c) !important;
+    }
+
+    & .ql-picker-label:hover,
+    .ql-picker-label.ql-active,
+    .ql-picker-item.ql-selected {
+      color: var(--blue-crayola-c) !important;
+    }
+
+    & .ql-picker-label,
+    .ql-picker.ql-expanded {
+      border: none !important;
+      color: var(--silver-jet-2);
+    }
+
+    & .ql-picker.ql-expanded .ql-picker-label,
+    .ql-picker-item:hover {
+      color: var(--blue-crayola-c) !important;
+      & .ql-stroke {
+        stroke: var(--blue-crayola-c) !important;
+      }
+    }
+  }
+  & .ql-formats:hover {
+    border: 1px solid var(--primary-30);
+    background-color: var(--primary-inverted-50);
+  }
+  /* Don't Move it */
+  & .ql-picker {
+    position: relative;
+  }
+  /* Don't Move it */
+  & #ql-picker-options-0 {
+    position: absolute;
+    top: 28px;
+    left: -3px;
+  }
+  & .ql-stroke {
+    stroke: var(--silver-jet-2) !important;
+  }
+
+  & .ql-fill {
+    fill: var(--silver-jet-2) !important;
+  }
+  & .ql-active {
+    & .ql-stroke {
+      stroke: var(--blue-crayola-c) !important;
+    }
+    & .ql-fill {
+      fill: var(--blue-crayola-c) !important;
+    }
+  }
+  & .ql-editor.ql-blank::before {
+    font-size: 14px;
+    color: var(--primary-50);
+    font-family: "metropolis", sans-serif !important;
+    font-style: italic;
+  }
+}
+
+.ql-toolbar.ql-snow .ql-picker-options {
+  border: 1px solid var(--primary-10) !important;
+  border-radius: 4px;
+  color: var(--silver-jet-2) !important;
+  background-color: var(--smoke-eerie);
+  box-shadow: var(--primary-10) 0 2px 8px;
+}
+
+/* Link Tool Tip */
+.ql-tooltip {
+  position: absolute;
+  left: 50% !important;
+  transform: translateY(0) !important;
+  transform: translateX(-50%) !important;
+  background-color: var(--primary-inverted-10) !important;
+  border: 1px solid var(--primary-30) !important;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 5px var(--silver-jet) !important;
+  color: var(--primary-50) !important;
+  & > input[type="text"] {
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid var(--primary-30) !important;
+    background-color: var(--primary-inverted-50) !important;
+    color: var(--blue-crayola-c) !important;
+  }
+  & .ql-action,
+  .ql-remove {
+    border-radius: 4px;
+    min-width: 60px;
+    max-width: 60px;
+    background-color: var(--blue-crayola-c) !important;
+    color: var(--secondary) !important;
+  }
+  & .ql-remove {
+    min-width: 67px !important;
+    max-width: 80px !important;
+  }
+}
