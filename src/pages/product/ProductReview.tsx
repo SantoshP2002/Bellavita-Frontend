@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Button } from "../../components/Button";
 import Input from "../../components/Input";
@@ -11,7 +11,7 @@ const ProductReview = ({
 }: {
   reviews: IReview[];
 }) => {
-  const [reviews, setReviews] = useState<IReview[]>(initialReviews);
+  const [reviews, setReviews] = useState<IReview[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -108,6 +108,8 @@ const ProductReview = ({
       },
     });
   };
+
+  useEffect(() => setReviews(initialReviews), [initialReviews]);
 
   return (
     <div className="max-w-6xl mx-auto px-4 mt-10 text-center">
