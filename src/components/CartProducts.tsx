@@ -11,6 +11,7 @@ import { Button } from "./Button";
 import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight} from "react-icons/fa";
+import QuillEditor from "./QuillEditor/QuillEditor";
 
 const CartProducts = () => {
   const navigate = useNavigate();
@@ -231,6 +232,7 @@ const CartProducts = () => {
             )}
           </AnimatePresence>
         </div>
+        <QuillEditor/>
       </div>
     </div>
   );
