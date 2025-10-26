@@ -1,4 +1,4 @@
-import type { IBaseAddress, TBaseProduct } from "../types";
+import type { IBaseAddress, QuillToolbar, TBaseProduct } from "../types";
 
 export const navMapData = [
   { title: "Crazy Deals" },
@@ -161,3 +161,19 @@ export const SORT_DATA = [
   { name: "Newest First", value: "newest_first" },
   { name: "Oldest First", value: "oldest_first" },
 ];
+
+
+export const defaultToolbarOptions: QuillToolbar = [
+  [{ header: [false, 6, 5, 4, 3, 2, 1] }],
+  ["bold", "italic", "underline", "strike"],
+  [{ color: [] }, { background: [] }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ script: "sub" }, { script: "super" }],
+  [{ indent: "-1" }, { indent: "+1" }],
+  [{ align: [] }],
+  [{ direction: "rtl" }],
+  ["link", "image", "video"],
+  ["code", "clean"],
+];
+
+export const DEFAULT_QUILL_LINK_ID = "custom-link-btn" as const;
