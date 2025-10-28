@@ -1,68 +1,72 @@
 import type { IBaseAddress, QuillToolbar, TBaseProduct } from "../types";
 
 export const navMapData = [
-  { title: "Crazy Deals" },
-  { title: "Shop All" },
-  { title: "Bestsellers" },
+  { name: "Crazy Deals", value: "crazy_deals" },
+  { name: "Shop All", value: "shop_all" },
+  { name: "Bestsellers", value: "bestseller" },
   {
-    title: "Perfumes",
+    name: "Perfumes",
+    value: "perfumes",
     options: [
-      { title: "All Perfumes" },
-      { title: "Men" },
-      { title: "Women" },
-      { title: "Unisex" },
-      { title: "Oud Collection" },
-      { title: "Attars" },
-      { title: "Little Luxuries" },
-      { title: "Mood Collection" },
-      { title: "Zodiac Collection" },
-      { title: "Gourmet Collection" },
+      { name: "All Perfumes", value: "all_perfumes" },
+      { name: "Men", value: "men" },
+      { name: "Women", value: "women" },
+      { name: "Unisex", value: "unisex" },
+      { name: "Oud Collection", value: "oud_collection" },
+      { name: "Attars", value: "attars" },
+      { name: "Little Luxuries", value: "little_luxuries" },
+      { name: "Mood Collection", value: "mood_collection" },
+      { name: "Zodiac Collection", value: "zodiac_collection" },
+      { name: "Gourmet Collection", value: "gourmet_collection" },
     ],
   },
   {
-    title: "Bath & Body",
+    name: "Bath & Body",
+    value: "bath and body",
     options: [
-      { title: "All Bath & Body" },
-      { title: "Shower Gel" },
-      { title: "Body Mist" },
-      { title: "Body Perfume" },
-      { title: "Travel Kit" },
-      { title: "Body lotion" },
+      { name: "All Bath & Body", value: "all_bath_and_body" },
+      { name: "Shower Gel", value: "shower_gel" },
+      { name: "Body Mist", value: "body_mist" },
+      { name: "Body Perfume", value: "body_perfume" },
+      { name: "Travel Kit", value: "travel_kit" },
+      { name: "Body lotion", value: "body_lotion" },
     ],
   },
   {
-    title: "Cosmetic",
+    name: "Cosmetic",
+    value: "cosmetic",
     options: [
-      { title: "Flawless Base Range" },
-      { title: "Mood Range" },
-      { title: "Pick Any 2" },
-      { title: "Pick Any 3" },
-      { title: "Lipstick" },
-      { title: "Makeup Brushes" },
-      { title: "Face Blush" },
-      { title: "Kajal" },
-      { title: "Airbrush Compact" },
-      { title: "Airbrush Foundation" },
-      { title: "Nail Paints" },
+      { name: "Flawless Base Range", value: "flawless_base_range" },
+      { name: "Mood Range", value: "mood_range" },
+      { name: "Pick Any 2", value: "pick_any_2" },
+      { name: "Pick Any 3", value: "pick_any_3" },
+      { name: "Lipstick", value: "lipstick" },
+      { name: "Makeup Brushes", value: "makeup_brushes" },
+      { name: "Face Blush", value: "face_blush" },
+      { name: "Kajal", value: "kajal" },
+      { name: "Airbrush Compact", value: "airbrush_compact" },
+      { name: "Airbrush Foundation", value: "airbrush_foundation" },
+      { name: "Nail Paints", value: "nail_paints" },
     ],
   },
-  { title: "New Arrivals" },
+  { name: "New Arrivals", value: "new_arrivals" },
   {
-    title: "Skincare",
+    name: "Skincare",
+    value: "skincare",
     options: [
-      { title: "All Skincare" },
-      { title: "Face Wash" },
-      { title: "Lip Care" },
-      { title: "Skin Essential Combos" },
-      { title: "K-Beauty Secret" },
-      { title: "Dry Skin" },
-      { title: "Sun-Kissed Summer" },
-      { title: "Sunscreen" },
-      { title: "Underarm Roll On" },
-      { title: "Wooden Comb" },
+      { name: "All Skincare", value: "all_skincare" },
+      { name: "Face Wash", value: "face_wash" },
+      { name: "Lip Care", value: "lip_care" },
+      { name: "Skin Essential Combos", value: "skin_essential_combos" },
+      { name: "K-Beauty Secret", value: "k_beauty_secret" },
+      { name: "Dry Skin", value: "dry_skin" },
+      { name: "Sun-Kissed Summer", value: "su_kissed_summer" },
+      { name: "Sunscreen", value: "sunscreen" },
+      { name: "Underarm Roll On", value: "underarm_roll_on" },
+      { name: "Wooden Comb", value: "wooden_comb" },
     ],
   },
-  { title: "Gifting" },
+  { name: "Gifting", value: "gifting" },
 ];
 
 export const MB = 1024 ** 2;
@@ -75,17 +79,10 @@ export const ALLOWED_IMAGE_TYPES = [
   "image/jpg",
 ];
 
-export const CATEGORIES_DATA = [
-  { name: "Shop All", value: "Shop All" },
-  { name: "Crazy Deals", value: "Crazy Deals" },
-  { name: "Bestsellers", value: "Bestsellers" },
-  { name: "Perfumes", value: "Perfumes" },
-  { name: "Bath & Body", value: "Bath & Body" },
-  { name: "Cosmetics", value: "Cosmetics" },
-  { name: "New Arrivals", value: "New Arrivals" },
-  { name: "Skincare", value: "Skincare" },
-  { name: "Gifting", value: "Gifting" },
-];
+export const CATEGORIES_DATA = navMapData.map(({ name, value }) => ({
+  name,
+  value,
+}));
 
 export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   title: "",
@@ -93,7 +90,14 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
   price: 0,
   sellingPrice: 0,
   description: "",
-  category: "",
+  category: {
+    name: "",
+    value: "",
+  },
+  subCategory: {
+    name: "",
+    value: "",
+  },
   images: [],
 };
 
@@ -104,8 +108,8 @@ export const carouselImages = [
 
 export const luxuryCategories = [
   {
-    name: "COSMETICS",
-    category: "Cosmetics",
+    name: "COSMETIC",
+    category: "Cosmetic",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/cosmetics-category-card-web_a4ad6e4b-07bf-421e-8f23-fcac380118ff.webp?v=1725617238&width=800",
   },
@@ -161,7 +165,6 @@ export const SORT_DATA = [
   { name: "Newest First", value: "newest_first" },
   { name: "Oldest First", value: "oldest_first" },
 ];
-
 
 export const defaultToolbarOptions: QuillToolbar = [
   [{ header: [false, 6, 5, 4, 3, 2, 1] }],
