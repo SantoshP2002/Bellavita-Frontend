@@ -28,7 +28,8 @@ export type TBaseProduct = {
   price: number;
   sellingPrice: number;
   description: string;
-  category: string;
+  category: { name: string; value: string };
+  subCategory?: { name: string; value: string };
   images: (File | string)[];
 };
 
@@ -73,10 +74,11 @@ export interface IInput extends TBaseInput {
 
 export interface ISelect extends Omit<TBaseInput, "register"> {
   selectProps: {
-    onChange?: (value: string) => void;
+    onChange?: (data: Record<"name" | "value", string>) => void;
     options: Record<"name" | "value", string>[];
-    value?: string;
+    value?: Record<"name" | "value", string>;
     placeholder?: string;
+    disabled?: boolean;
   };
 }
 
@@ -247,5 +249,5 @@ export interface IReview {
   title?: string;
   description?: string;
   date?: string;
-  images: string[]
+  images: string[];
 }
