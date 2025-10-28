@@ -3,12 +3,16 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Input from "../../../components/Input";
 import { Button } from "../../../components/Button";
-import type { TBaseProduct } from "../../../types";
 import { productSchema } from "../../../validations/product";
 import { RxCross1 } from "react-icons/rx";
 import { useUploadProduct } from "../../../api/products/service";
 import Select from "../../../components/Select";
-import { CATEGORIES_DATA, PRODUCT_INITIAL_VALUES } from "../../../constants";
+import {
+  CATEGORIES_DATA,
+  navMapData,
+  PRODUCT_INITIAL_VALUES,
+} from "../../../constants";
+import { useMemo } from "react";
 
 const UploadProducts = () => {
   const { mutateAsync } = useUploadProduct();
@@ -29,7 +33,7 @@ const UploadProducts = () => {
 
   const images = watch("images") || [];
 
-  const onSubmit = async (data: TBaseProduct) => {
+  const onSubmit = async (data: z.infer<typeof productSchema>) => {
     console.log("data", data);
 
     const formData = new FormData();
@@ -39,14 +43,21 @@ const UploadProducts = () => {
     formData.append("sellingPrice", data.sellingPrice.toString());
     formData.append("price", data.price.toString());
     formData.append("description", data.description);
-    formData.append("category", data.category);
+    formData.append("category", JSON.stringify(data.category));
+    formData.append("subCategory", JSON.stringify(data.subCategory));
 
     data.images.forEach((file) => formData.append("images", file));
 
     await mutateAsync(formData);
   };
 
-  console.log("TEST", watch("category"));
+  const category = watch("category");
+
+  const subCategoryOptions = useMemo(
+    () => navMapData.find((cat) => cat.value === category.value)?.options || [],
+    [category.value]
+  );
+
   return (
     <div className="p-2">
       <div>Upload Products</div>
@@ -122,6 +133,7 @@ const UploadProducts = () => {
               <Select
                 label="Category"
                 selectProps={{
+                  value: watch("category"),
                   onChange: (value) => field.onChange(value),
                   options: CATEGORIES_DATA,
                   placeholder: "Select Category",
@@ -129,6 +141,30 @@ const UploadProducts = () => {
                 error={errors?.category?.message}
               />
             )}
+          />
+
+          {/* Sub-Category */}
+          <Controller
+            control={control}
+            name="subCategory"
+            render={({ field }) => {
+              return (
+                <Select
+                  label="Sub-Category"
+                  selectProps={{
+                    value: watch("subCategory"),
+                    onChange: (value) => field.onChange(value),
+                    options: subCategoryOptions,
+                    disabled: !subCategoryOptions.length,
+                    placeholder:
+                      subCategoryOptions.length > 0
+                        ? "Select Sub-Category"
+                        : "No Sub-Category available",
+                  }}
+                  error={errors?.subCategory?.message}
+                />
+              );
+            }}
           />
 
           {/* productImage */}
