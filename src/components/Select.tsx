@@ -11,13 +11,15 @@ const Select = ({
   selectProps,
 }: ISelect) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<string>("");
 
-  const handleSelect = (value: string) => {
-    setSelected(value);
+  const handleSelect = (value: Record<"name" | "value", string>) => {
     selectProps?.onChange?.(value);
     setIsOpen(false);
   };
+
+  const selected = selectProps?.options?.find(
+    (item) => item?.value === selectProps?.value?.value
+  );
 
   return (
     <div
@@ -27,13 +29,13 @@ const Select = ({
 
       {/* Select box */}
       <div
-        className={`relative border border-gray-300 rounded-lg p-2 flex justify-between items-center cursor-pointer bg-white ${className}`}
-        onClick={() => setIsOpen((prev) => !prev)}
+        className={`relative border border-gray-300 rounded-lg p-2 flex justify-between items-center bg-white ${
+          selectProps.disabled ? "cursor-not-allowed" : "cursor-pointer"
+        } ${className}`}
+        onClick={() => !selectProps.disabled && setIsOpen((prev) => !prev)}
       >
         <div className="flex-1 text-sm text-gray-700">
-          {selected
-            ? selectProps?.options.find((opt) => opt.value === selected)?.name
-            : selectProps?.placeholder || "Select"}
+          {selected ? selected.name : selectProps?.placeholder || "Select"}
         </div>
 
         {icons?.right && (
@@ -52,9 +54,9 @@ const Select = ({
           {selectProps.options.map((opt) => (
             <div
               key={opt.value}
-              onClick={() => handleSelect(opt.value)}
+              onClick={() => handleSelect(opt)}
               className={`px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 ${
-                selected === opt.value ? "bg-gray-200 font-medium" : ""
+                selected?.value === opt.value ? "bg-gray-200 font-medium" : ""
               }`}
             >
               {opt.name}
