@@ -9,7 +9,7 @@ import { Button } from "../../../components/Button";
 import Select from "../../../components/Select";
 import { RxCross1 } from "react-icons/rx";
 import { productSchema } from "../../../validations/product";
-import { CATEGORIES_DATA, PRODUCT_INITIAL_VALUES } from "../../../constants";
+import { CATEGORIES_DATA, navMapData, PRODUCT_INITIAL_VALUES } from "../../../constants";
 
 import {
   useGetProductById,
@@ -56,7 +56,12 @@ const EditProduct = () => {
 
     setProductValues();
   }, [product, setValue]);
+  const category = watch("category");
 
+  const subCategoryOptions = useMemo(
+    () => navMapData.find((cat) => cat.value === category.value)?.options || [],
+    [category.value]
+  );
 
   const onSubmit = async (data: TBaseProduct) => {
     const formData = new FormData();
@@ -188,19 +193,46 @@ const EditProduct = () => {
         />
 
         {/* Category */}
-        <Select
-          label="Category"
-          placeholder="Select Category"
-          options={CATEGORIES_DATA}
-          containerClassName="[&_label]:cursor-default"
-          register={register("category")}
-          selectProps={{
-            name: "category",
-            className: `${watch("category") ? "text-black" : "text-black/50"}`,
-          }}
-          error={errors?.category?.message}
+        <Controller
+          control={control}
+          name="category"
+          render={({ field }) => (
+            <Select
+              label="Category"
+              selectProps={{
+                value: watch("category"),
+                onChange: (value) => field.onChange(value),
+                options: CATEGORIES_DATA,
+                placeholder: "Select Category",
+              }}
+              error={errors?.category?.message}
+            />
+          )}
         />
 
+        {/* Sub-Category */}
+        <Controller
+          control={control}
+          name="subCategory"
+          render={({ field }) => {
+            return (
+              <Select
+                label="Sub-Category"
+                selectProps={{
+                  value: watch("subCategory"),
+                  onChange: (value) => field.onChange(value),
+                  options: subCategoryOptions,
+                  disabled: !subCategoryOptions.length,
+                  placeholder:
+                    subCategoryOptions.length > 0
+                      ? "Select Sub-Category"
+                      : "No Sub-Category available",
+                }}
+                error={errors?.subCategory?.message}
+              />
+            );
+          }}
+        />
         <Controller
           control={control}
           name="images"
