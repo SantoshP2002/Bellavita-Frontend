@@ -23,9 +23,27 @@ export const productSchema = z
       .string({ error: "Description must be string" })
       .nonempty("Description is required")
       .min(1, { message: "Description must have minimum 2 characters long" }),
+    keyBenefits: z
+      .string({ error: "Key benefits must be string" })
+      .min(1, { message: "Key benefits must have minimum 2 characters long" })
+      .optional(),
+    howToUse: z
+      .string({ error: "How To Use must be string" })
+      .min(1, { message: "How To Use must have minimum 2 characters long" })
+      .optional(),
+    ingredients: z
+      .string({ error: "ingredients must be string" })
+      .min(1, { message: "ingredients must have minimum 2 characters long" })
+      .optional(),
+    otherInformation: z
+      .string({ error: "otherInformation must be string" })
+      .min(1, {
+        message: "otherInformation must have minimum 2 characters long",
+      })
+      .optional(),
 
     category: z.object({
-      name: z.string(),
+      name: z.string("Category must be required"),
       value: z.string(),
     }),
     subCategory: z
