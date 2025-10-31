@@ -12,9 +12,19 @@ import {
   navMapData,
   PRODUCT_INITIAL_VALUES,
 } from "../../../constants";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import QuillEditor from "../../../components/QuillEditor/QuillEditor";
+import { getQuillValue, processQuillContent } from "../../../utils";
+import type Quill from "quill";
 
 const UploadProducts = () => {
+  const quillRefs = {
+    description: useRef<Quill | null>(null),
+  };
+
+  const blobUrlRefs = {
+    description: useRef<string[]>([]),
+  };
   const { mutateAsync } = useUploadProduct();
 
   const {
@@ -36,13 +46,20 @@ const UploadProducts = () => {
   const onSubmit = async (data: z.infer<typeof productSchema>) => {
     console.log("data", data);
 
+    processQuillContent({
+      quillRef: quillRefs.description,
+      blobUrlsRef: blobUrlRefs.description,
+      setValue: (value) => setValue("description", value),
+      folderName: `Products/${data.title}/Description`,
+    });
+
     const formData = new FormData();
 
     formData.append("title", data.title);
     formData.append("brand", data.brand);
     formData.append("sellingPrice", data.sellingPrice.toString());
     formData.append("price", data.price.toString());
-    formData.append("description", data.description);
+    formData.append("description", getQuillValue(data.description));
     formData.append("category", JSON.stringify(data.category));
     formData.append("subCategory", JSON.stringify(data.subCategory));
 
@@ -114,7 +131,7 @@ const UploadProducts = () => {
             }}
           />
           {/* Description */}
-          <Input
+          {/* <Input
             label="Description"
             className="w-full bg-white text-black"
             register={register("description")}
@@ -123,7 +140,29 @@ const UploadProducts = () => {
               placeholder: "Enter Description",
               name: "description",
             }}
+          /> */}
+          <Controller
+            control={control}
+            name={"description"}
+            render={({ field }) => (
+              <QuillEditor
+                label={"Description"}
+                ref={quillRefs.description}
+                blobUrlsRef={blobUrlRefs.description}
+                onChange={field.onChange}
+                value={typeof field.value === "string" ? field.value : ""}
+                placeholder={"Write description here..."}
+                errorText={errors?.description?.message}
+              />
+            )}
           />
+
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6  rounded-lg">
+            <QuillEditor label="How To Use" onChange={}/>
+            <QuillEditor label="Ingredients" />
+            <QuillEditor label="Key Benefits" />
+            <QuillEditor label="Other Information" />
+          </div> */}
 
           {/* Category */}
           <Controller
