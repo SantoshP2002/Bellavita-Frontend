@@ -13,15 +13,11 @@ const LuxuryCategory = () => {
             <img
               src={cat.image}
               alt={cat.name}
-              onClick={() =>
-                navigate(
-                  `/products?category=${encodeURIComponent(cat.category)}`
-                )
-              }
+              onClick={() => navigate(`/products?category=${cat.value}`)}
               role="button"
               className="object-cover rounded shadow hover:scale-110 transition-transform duration-300 cursor-pointer"
             />
-            <p className="mt-3 text-sm sm:text-base font-medium uppercase">
+            <p className="mt-5 text-sm sm:text-base font-medium uppercase">
               {cat.name}
             </p>
           </div>
