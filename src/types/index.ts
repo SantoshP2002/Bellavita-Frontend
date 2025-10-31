@@ -1,13 +1,16 @@
 import type {
+  Dispatch,
   InputHTMLAttributes,
   JSX,
+  ReactElement,
   ReactNode,
   RefObject,
+  SetStateAction,
   SVGProps,
 } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 import type { ALLOW_COUNTRIES } from "../constants";
-import type { ToolbarProps } from "quill/modules/toolbar";
+import type Quill from "quill";
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -237,10 +240,6 @@ export interface QuillEditorProps {
   toolbarOptions?: IToolBarOptions;
 }
 
-export interface IQuillToolbarExtended extends ToolbarProps {
-  handlers: Record<string, (...args: unknown[]) => void>;
-}
-
 // review type
 export interface IReview {
   _id?: string;
@@ -250,4 +249,31 @@ export interface IReview {
   description?: string;
   date?: string;
   images: string[];
+}
+
+export type TDropdownOption = {
+  name: string;
+  value: string;
+  disabled?: boolean;
+};
+
+export interface TDropdown extends ClassName {
+  title: string | ReactElement;
+  icons?: Partial<Record<"left" | "right", ReactElement>>;
+  children: ReactElement<{ onSelect?: () => void }>;
+  closeOnOutsideClick?: boolean;
+  isAbsolute?: boolean;
+  showShadow?: boolean;
+  closeOnOptionClick?: boolean;
+  options?: TDropdownOption[];
+  isRounded?: boolean;
+  defaultOpen?: boolean;
+}
+
+export interface IProcessQuillContent {
+  quillRef: RefObject<Quill | null>;
+  blobUrlsRef: RefObject<string[]>;
+  setValue: (value: string) => void;
+  folderName: string;
+  setLoading?: Dispatch<SetStateAction<boolean>>;
 }
