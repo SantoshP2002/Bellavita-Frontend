@@ -78,24 +78,34 @@ const Navbar = () => {
         {navMapData.map((item, index) => (
           <div
             key={index}
-            onMouseEnter={() => setSelectedOption(item.title)}
+            onMouseEnter={() => setSelectedOption(item.name)}
             onMouseLeave={() => setSelectedOption(null)}
             className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
           >
-            <span className="uppercase text-xs">{item.title}</span>
+            <span
+              className="uppercase text-xs cursor-pointer"
+              onClick={() => navigate(`/products?category=${item.value}`)}
+            >
+              {item.name}
+            </span>
 
             {/* Hover underline */}
             <div className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/nav:w-full" />
 
             {/* Dropdown Menu */}
-            {selectedOption === item.title && item.options && (
+            {selectedOption === item.name && item.options && (
               <div className="absolute left-0 top-6 bg-white shadow-lg rounded-md p-7 flex flex-col gap-2 z-50 min-w-[200px]">
                 {item.options.map((option, index) => (
                   <div
                     key={index}
                     className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-sm"
+                    onClick={() => {
+                      navigate(
+                        `/products?category=${item.value}&subCategory=${option.value}`
+                      );
+                    }}
                   >
-                    <span>{option.title}</span>
+                    <span>{option.name}</span>
                     <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
                   </div>
                 ))}
@@ -131,18 +141,18 @@ const Navbar = () => {
             {/* Nav Links */}
             <div className="flex flex-col gap-4">
               {navMapData.map((item, index) => {
-                const isOpen = selectedOption === item.title;
+                const isOpen = selectedOption === item.name;
 
                 return (
                   <div key={index} className="flex flex-col">
                     {/* Parent Title */}
                     <span
                       onClick={() =>
-                        setSelectedOption(isOpen ? null : item.title)
+                        setSelectedOption(isOpen ? null : item.name)
                       }
                       className="uppercase font-semibold text-gray-800 cursor-pointer flex justify-between items-center"
                     >
-                      {item.title}
+                      {item.name}
                       <span className="text-lg">
                         {isOpen ? (
                           <RiArrowDropUpLine />
@@ -165,9 +175,15 @@ const Navbar = () => {
                           {item.options.map((option, idx) => (
                             <span
                               key={idx}
-                              // className="cursor-pointer hover:text-indigo-600"
+                              onClick={() => {
+                                navigate(
+                                  `/products?category=${item.value}&subCategory=${option.value}`
+                                );
+                                setIsSidebarOpen(false);
+                              }}
+                              className="cursor-pointer hover:text-indigo-600"
                             >
-                              {option.title}
+                              {option.name}
                             </span>
                           ))}
                         </motion.div>
