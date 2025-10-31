@@ -1,6 +1,5 @@
 import { forwardRef, useEffect, useRef } from "react";
 import Quill, { Delta } from "quill";
-
 import "./editor.css";
 import {
   addBlobUrlToImage,
@@ -41,8 +40,6 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
 
       const container = containerRef.current;
       const editorContainer = document.createElement("div");
-      console.log("editorContainer", editorContainer);
-
       container.innerHTML = "";
       container.appendChild(editorContainer);
 
@@ -77,8 +74,6 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
           addIdsToHeadings: { enable: true },
         },
       });
-
-      // Add link id button to toolbar
 
       quill.on("text-change", (delta, _oldDelta, source) => {
         // *NOTE - Don't change order
@@ -138,20 +133,17 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
     }, [readOnly]);
 
     return (
-      <div className={`w-full space-y-1.5 bg-white ${className}`}>
+      <div className={`w-full space-y-1.5 ${className}`}>
         <div className="relative">
           {label && (
-            <label
-              className={`text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer`}
-            >
+            <span className="text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded">
               {label}
-            </label>
+            </span>
           )}
-
           <div
             ref={containerRef}
             id="custom-editor"
-            className="w-full bg-smoke-eerie rounded-lg  text-primary flex flex-col gap-2"
+            className="w-full bg-white rounded-lg border border-black/10 text-black flex flex-col gap-2"
           />
         </div>
         {!readOnly && errorText && (
