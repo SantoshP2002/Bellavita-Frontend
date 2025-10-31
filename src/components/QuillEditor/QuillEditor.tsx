@@ -41,6 +41,8 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
 
       const container = containerRef.current;
       const editorContainer = document.createElement("div");
+      console.log("editorContainer", editorContainer);
+
       container.innerHTML = "";
       container.appendChild(editorContainer);
 
@@ -136,17 +138,20 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
     }, [readOnly]);
 
     return (
-      <div className={`w-full space-y-1.5 ${className}`}>
+      <div className={`w-full space-y-1.5 bg-white ${className}`}>
         <div className="relative">
           {label && (
-            <span className="text-[10px] lg:text-xs text-primary-50 absolute top-0 left-3 transform -translate-y-1/2 border border-primary-10 leading-none px-1 md:px-2 py-0.5 2xl:py-1 bg-smoke-eerie rounded">
+            <label
+              className={`text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer`}
+            >
               {label}
-            </span>
+            </label>
           )}
+
           <div
             ref={containerRef}
             id="custom-editor"
-            className="w-full bg-smoke-eerie rounded-lg border border-primary-10 text-primary flex flex-col gap-2"
+            className="w-full bg-smoke-eerie rounded-lg  text-primary flex flex-col gap-2"
           />
         </div>
         {!readOnly && errorText && (
