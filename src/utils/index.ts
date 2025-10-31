@@ -1,17 +1,16 @@
 import CryptoJS from "crypto-js";
 import { VITE_ENCRYPTION_SECRET_KEY, VITE_TOKEN_KEY } from "../env";
 import type {
-  IQuillToolbarExtended,
+  IProcessQuillContent,
   IToolBarOptions,
   QuillToolbar,
   TQuillImageBlot,
 } from "../types";
 import Quill, { Delta } from "quill";
 import { v4 as uuidv4 } from "uuid";
-import { DEFAULT_QUILL_LINK_ID, MB } from "../constants";
 import type { RefObject } from "react";
 import { toastErrorMessage } from "./toast.utils";
-import Inline from "quill/blots/inline";
+import { MB } from "../constants";
 
 export const encryptData = (data: object | string) => {
   const stringData = typeof data === "string" ? data : JSON.stringify(data);
@@ -175,22 +174,6 @@ export const addBlobUrlToImage = (
   };
 };
 
-export const addIdToLink = (quill: Quill) => {
-  const range = quill.getSelection();
-  if (!range) return;
-
-  const [link] = quill.scroll.descendant(Inline, range.index);
-
-  if (!link) return;
-
-  const domNode = (link as Inline & { domNode: HTMLElement }).domNode;
-  if (domNode.getAttribute("id") === DEFAULT_QUILL_LINK_ID) {
-    domNode.removeAttribute("id");
-  } else {
-    domNode.setAttribute("id", DEFAULT_QUILL_LINK_ID);
-  }
-};
-
 export const removeDefaultCss = (delta: Delta) => {
   delta.ops = delta.ops.map((op: (typeof delta.ops)[0]) => {
     if (op.attributes) {
@@ -201,25 +184,6 @@ export const removeDefaultCss = (delta: Delta) => {
     return op;
   });
   return delta;
-};
-
-export const createLinkIdButtonToToolbar = (quill: Quill) => {
-  const toolbarContainer = document.querySelector(".ql-toolbar");
-  if (toolbarContainer) {
-    const toolbarModule = quill.getModule("toolbar") as IQuillToolbarExtended;
-    const button = document.createElement("button");
-    const section = document.createElement("span");
-    button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" class="ql-fill">
-      <path fill="none" d="M0 0h24v24H0V0z"></path>
-      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
-      <circle cx="12" cy="12" r="5"></circle>
-    </svg>`;
-    button.type = "button";
-    button.onclick = () => toolbarModule?.handlers.addIdToLink();
-    section.classList.add("ql-formats");
-    section.appendChild(button);
-    toolbarContainer.appendChild(section);
-  }
 };
 
 export const removeUnusedBlobUrls = (
@@ -268,7 +232,7 @@ export const blockDraggedOrCopiedImage = (delta: Delta): boolean => {
 
   return block;
 };
-// DeepEqual => 
+// DeepEqual =>
 export const deepEqual = <T>(obj1: T, obj2: T): boolean => {
   if (obj1 === obj2) return true;
 
@@ -286,4 +250,72 @@ export const deepEqual = <T>(obj1: T, obj2: T): boolean => {
   if (keys1.length !== keys2.length) return false;
 
   return keys1.every((key) => deepEqual(obj1[key], obj2[key]));
+};
+
+export const processQuillContent = async ({
+  quillRef,
+  blobUrlsRef,
+  setValue,
+  folderName,
+  setLoading,
+}: IProcessQuillContent) => {
+  if (!quillRef.current) return;
+  const quill = quillRef.current;
+  let content = quill.root.innerHTML;
+
+  // If no blob images, just set the value and return
+  if (!blobUrlsRef.current || blobUrlsRef.current.length === 0) {
+    setValue(content);
+    return;
+  }
+
+  if (setLoading) {
+    setLoading(true);
+  }
+  try {
+    const uploadPromises = blobUrlsRef.current.map(async (blobUrl, index) => {
+      try {
+        const response = await fetch(blobUrl);
+        const blob = await response.blob();
+        const ext = blob.type.split("/")[1] || "webp";
+
+        const file = new File([blob], `image_${index}.${ext}`, {
+          type: blob.type,
+        });
+
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("folderName", folderName);
+
+        // const data = await upload_single_image(formData);
+        return {
+          blobUrl,
+          cloudUrl: "", // data.cloudUrl
+        };
+      } catch (error) {
+        console.error("Image upload error:", error);
+        return null;
+      }
+    });
+
+    const uploadedImages = await Promise.all(uploadPromises);
+    const validUploadedImages = uploadedImages.filter(
+      (img): img is { blobUrl: string; cloudUrl: string } => img !== null
+    );
+
+    validUploadedImages.forEach(({ blobUrl, cloudUrl }) => {
+      content = content.replace(blobUrl, cloudUrl);
+    });
+
+    quill.root.innerHTML = content;
+    setValue(content);
+  } finally {
+    if (setLoading) {
+      setLoading(false); // End loading no matter what
+    }
+  }
+};
+
+export const getQuillValue = (value: string | undefined) => {
+  return value ? (value !== "<p><br></p>" ? value : "") : "";
 };
