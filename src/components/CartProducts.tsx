@@ -10,8 +10,7 @@ import { GoPlus } from "react-icons/go";
 import { Button } from "./Button";
 import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
-import { FaArrowRight} from "react-icons/fa";
-import QuillEditor from "./QuillEditor/QuillEditor";
+import { FaArrowRight } from "react-icons/fa";
 
 const CartProducts = () => {
   const navigate = useNavigate();
@@ -83,12 +82,14 @@ const CartProducts = () => {
                 {products && products.length > 0 ? (
                   products.map((item) => {
                     const product = item.product;
+                    console.log("product.images", product);
+
                     const allowDec = item.quantity > 1;
                     const allowInc = item.quantity < 5;
 
                     return (
                       <motion.div
-                        key={product._id}
+                        key={product?._id}
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -96,24 +97,24 @@ const CartProducts = () => {
                         className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4 rounded-xl shadow gap-3 sm:gap-4 bg-white hover:shadow-lg transition"
                       >
                         <motion.img
-                          src={product.images[0]}
-                          alt={product.title}
+                          src={product?.images?.[0]}
+                          alt={product?.title}
                           className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg"
                           whileHover={{ scale: 1.05 }}
                         />
                         <div className="flex-1 text-center sm:text-left flex flex-col gap-1.5">
                           <h3 className="text-sm sm:text-base font-semibold line-clamp-1">
-                            {product.title}
+                            {product?.title}
                           </h3>
                           <p className="text-xs text-gray-500">
-                            {product.brand}
+                            {product?.brand}
                           </p>
                           <div className="flex items-center justify-center sm:justify-start gap-2">
                             <span className="text-red-500 font-bold text-sm sm:text-base">
-                              ₹{product.sellingPrice}
+                              ₹{product?.sellingPrice}
                             </span>
                             <span className="text-gray-400 line-through text-xs sm:text-sm">
-                              ₹{product.price}
+                              ₹{product?.price}
                             </span>
                           </div>
                           {/* Quantity Control */}
@@ -232,7 +233,7 @@ const CartProducts = () => {
             )}
           </AnimatePresence>
         </div>
-        <QuillEditor/>
+        
       </div>
     </div>
   );
