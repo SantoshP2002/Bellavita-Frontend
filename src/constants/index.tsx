@@ -22,7 +22,7 @@ export const navMapData = [
   },
   {
     name: "Bath & Body",
-    value: "bath and body",
+    value: "bath_and_body",
     options: [
       { name: "All Bath & Body", value: "all_bath_and_body" },
       { name: "Shower Gel", value: "shower_gel" },
@@ -109,37 +109,37 @@ export const carouselImages = [
 export const luxuryCategories = [
   {
     name: "COSMETIC",
-    category: "Cosmetic",
+    value: "cosmetic",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/cosmetics-category-card-web_a4ad6e4b-07bf-421e-8f23-fcac380118ff.webp?v=1725617238&width=800",
   },
   {
     name: "SKINCARE",
-    category: "Skincare",
+    value: "skincare",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/Category-card-for-web-skincare2.webp?v=1725617237&width=800",
   },
   {
     name: "LUXURY PERFUMES",
-    category: "Perfumes",
+    value: "perfumes",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/intense_1.webp?v=1725617238&width=800",
   },
   {
     name: "BATH & BODY",
-    category: "Bath & Body",
+    value: "bath_and_body",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/Category-card-body-wash2.webp?v=1725617238&width=800",
   },
   {
     name: "New Arrivals",
-    category: "New Arrivals",
+    value: "new_arrivals",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/download_aa0adad6-f23f-47c3-85b2-f57edc95477d.jpg?v=1755846059&width=500",
   },
   {
     name: "GIFT SETS",
-    category: "Gifting",
+    value: "gifting",
     image:
       "https://bellavitaorganic.com/cdn/shop/files/Artboard_4_copy_05b3b2ed-5440-4463-b119-bedcd60ed5c1.webp?v=1725617237&width=800",
   },
@@ -160,6 +160,7 @@ export const ADDRESS_INITIAL_VALUES: IBaseAddress = {
 };
 
 export const SORT_DATA = [
+  { name: "SORT BY", value: "" },
   { name: "Price: Low to High", value: "price_low_high" },
   { name: "Price: High to Low", value: "price_high_low" },
   { name: "Newest First", value: "newest_first" },
@@ -178,5 +179,3 @@ export const defaultToolbarOptions: QuillToolbar = [
   ["link", "image", "video"],
   ["code", "clean"],
 ];
-
-export const DEFAULT_QUILL_LINK_ID = "custom-link-btn" as const;
