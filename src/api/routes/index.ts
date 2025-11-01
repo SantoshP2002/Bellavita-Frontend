@@ -47,4 +47,9 @@ export const apiRoutes = {
     createReview: { method: "POST", url: "/review" },
     getReviewsByProductId: { method: "GET", url: "/review" },
   },
+
+  // Media
+  media: {
+    uploadSingleImage: { method: "POST", url: "/media/image/upload" },
+  },
 };
