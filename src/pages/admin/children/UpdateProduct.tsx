@@ -1,6 +1,6 @@
 import type z from "zod";
 import { useParams } from "react-router-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -9,7 +9,11 @@ import { Button } from "../../../components/Button";
 import Select from "../../../components/Select";
 import { RxCross1 } from "react-icons/rx";
 import { productSchema } from "../../../validations/product";
-import { CATEGORIES_DATA, navMapData, PRODUCT_INITIAL_VALUES } from "../../../constants";
+import {
+  CATEGORIES_DATA,
+  navMapData,
+  PRODUCT_INITIAL_VALUES,
+} from "../../../constants";
 
 import {
   useGetProductById,
@@ -19,8 +23,17 @@ import LoadingScreen from "../../../components/LoadingScreen";
 import { deepEqual } from "../../../utils";
 import type { TBaseProduct, TProduct } from "../../../types";
 import { toast } from "react-toastify";
+import QuillEditor from "../../../components/QuillEditor/QuillEditor";
+import type Quill from "quill";
 
 const EditProduct = () => {
+  const quillRefs = {
+    description: useRef<Quill | null>(null),
+  };
+
+  const blobUrlRefs = {
+    description: useRef<string[]>([]),
+  };
   const { id } = useParams();
 
   const getProductQuery = useGetProductById(id!);
@@ -185,11 +198,20 @@ const EditProduct = () => {
         />
 
         {/* Description */}
-        <Input
-          label="Description"
-          register={register("description")}
-          error={errors.description?.message}
-          inputProps={{ placeholder: "Enter Description" }}
+        <Controller
+          control={control}
+          name={"description"}
+          render={({ field }) => (
+            <QuillEditor
+              label={"Description"}
+              ref={quillRefs.description}
+              blobUrlsRef={blobUrlRefs.description}
+              onChange={field.onChange}
+              value={typeof field.value === "string" ? field.value : ""}
+              placeholder={"Write description here..."}
+              errorText={errors?.description?.message}
+            />
+          )}
         />
 
         {/* Category */}
