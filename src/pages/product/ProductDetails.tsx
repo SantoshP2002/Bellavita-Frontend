@@ -6,6 +6,7 @@ import { Button } from "../../components/Button";
 import ProductInfo from "./ProductInfo";
 import ProductReview from "./ProductReview";
 import AllReviews from "./AllReviews";
+import QuillContent from "../../components/quillContent";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -123,7 +124,7 @@ const ProductDetails = () => {
             DESCRIPTION :
           </p>
           <div className="text-gray-600 text-sm sm:text-base">
-            {product.description}
+            <QuillContent content={product?.description} />
           </div>
           <img
             src="https://bellavitaorganic.com/cdn/shop/files/UPD_-_Pdp_banner.jpg?v=1739267213&width=500"
