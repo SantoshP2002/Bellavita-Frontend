@@ -164,7 +164,10 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                 {isOpen ? (
                   <IoIosArrowUp className="text-lg" />
                 ) : (
-                  <IoIosArrowDown className="text-lg" />
+                  <IoIosArrowDown
+                    className="text-lg"
+                    children={<QuillContent content={content || ""} />}
+                  />
                 )}
               </button>
 
