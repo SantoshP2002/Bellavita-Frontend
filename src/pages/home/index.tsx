@@ -4,6 +4,7 @@ import HomeCarousel from "../../components/homeCarousel";
 import HomeProducts from "../../components/HomeProducts";
 import LuxuryCategory from "../../components/LuxuryCategory";
 import QuizProducts from "../../components/QuizProducts";
+import ShopByNotes from "../../components/ShopByNotes";
 import { carouselImages } from "../../constants";
 
 const Home = () => {
@@ -22,7 +23,8 @@ const Home = () => {
       <LuxuryCategory />
       <QuizProducts />
       <BellamoodTech />
-      <CrazyDeals/>
+      <CrazyDeals />
+      <ShopByNotes/>
     </div>
   );
 };
