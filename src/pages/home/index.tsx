@@ -1,4 +1,5 @@
 import BellamoodTech from "../../components/BellamoodTech";
+import CrazyDeals from "../../components/CrazyDeals";
 import HomeCarousel from "../../components/homeCarousel";
 import HomeProducts from "../../components/HomeProducts";
 import LuxuryCategory from "../../components/LuxuryCategory";
@@ -20,7 +21,8 @@ const Home = () => {
       />
       <LuxuryCategory />
       <QuizProducts />
-      <BellamoodTech/>
+      <BellamoodTech />
+      <CrazyDeals/>
     </div>
   );
 };
