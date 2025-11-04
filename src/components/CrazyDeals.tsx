@@ -30,7 +30,9 @@ const CrazyDeals = () => {
     <div className="p-6">
       {/* Heading */}
       <div>
-        <h5 className="text-2xl text-center mb-6">CRAZY DEALS</h5>
+        <h5 className="text-xl sm:text-xl md:text-2xl text-center mb-6">
+          CRAZY DEALS
+        </h5>
       </div>
 
       {/* Images section */}
