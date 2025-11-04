@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import type { RefObject } from "react";
 import { toastErrorMessage } from "./toast.utils";
 import { MB } from "../constants";
+import { upload_single_image } from "../api/media/api";
 
 export const encryptData = (data: object | string) => {
   const stringData = typeof data === "string" ? data : JSON.stringify(data);
@@ -215,9 +216,10 @@ export const blockDraggedOrCopiedImage = (delta: Delta): boolean => {
     if (op.insert && typeof op.insert === "object" && "image" in op.insert) {
       const image = op.insert.image as { src: string };
       // Todo: Replace ctruh with actual CDN Domain
-      const isAllowedURL = ["blob:", "ctruh"].some((prefix) =>
-        image.src.includes(prefix)
-      );
+      const isAllowedURL = [
+        "blob:",
+        "https://res.cloudinary.com/doooaaopn",
+      ].some((prefix) => image.src.includes(prefix));
       if (image && !isAllowedURL) {
         block = true;
         return;
@@ -287,10 +289,12 @@ export const processQuillContent = async ({
         formData.append("image", file);
         formData.append("folderName", folderName);
 
-        // const data = await upload_single_image(formData);
+        const data = await upload_single_image(formData);
+        // console.log("data", data);
+
         return {
           blobUrl,
-          cloudUrl: "", // data.cloudUrl
+          cloudUrl: data.url,
         };
       } catch (error) {
         console.error("Image upload error:", error);
@@ -305,9 +309,14 @@ export const processQuillContent = async ({
 
     validUploadedImages.forEach(({ blobUrl, cloudUrl }) => {
       content = content.replace(blobUrl, cloudUrl);
+      
+      console.log("blobUrl", blobUrl);
+      console.log("cloudUrl", cloudUrl);
     });
 
     quill.root.innerHTML = content;
+
+    console.log("content", content);
     setValue(content);
   } finally {
     if (setLoading) {
