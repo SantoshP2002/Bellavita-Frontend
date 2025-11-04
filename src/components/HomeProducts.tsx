@@ -31,11 +31,18 @@ const HomeProducts = () => {
       {products.length > 0 && (
         <div className="flex flex-col gap-8">
           {/* CONTENT HEADERS */}
-          <div className="flex justify-center items-center gap-4 mt-8">
-            <h1 className="text-3xl text-black">BESTSELLER</h1>
-            <span className="text-gray-400">|</span>
-            <h1 className="text-3xl text-gray-500">NEW ARRIVALS</h1>
+          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-center">
+            <h1 className="text-lg sm:text-2xl md:text-3xl text-black">
+              BESTSELLER
+            </h1>
+            <span className="text-gray-400 text-lg sm:text-2xl md:text-3xl">
+              |
+            </span>
+            <h1 className="text-lg sm:text-2xl md:text-3xl text-gray-500 ">
+              NEW ARRIVALS
+            </h1>
           </div>
+
           <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
             {products.map((p: TProduct) => (
               <div
