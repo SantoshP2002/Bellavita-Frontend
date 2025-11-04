@@ -101,9 +101,9 @@ interface ProductInfoProps {
   product: {
     description?: string;
     ingredients?: string;
-    usage?: string;
-    benefits?: string;
-    brandInfo?: string;
+    howToUse?: string;
+    keyBenefits?: string;
+    otherInformation?: string;
   };
   className?: string;
 }
@@ -123,7 +123,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
       {
         title: "How To Use",
-        content: product?.usage,
+        content: product?.howToUse,
       },
       {
         title: "Ingredients",
@@ -131,11 +131,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
       },
       {
         title: "Key Benefits",
-        content: product?.benefits,
+        content: product?.keyBenefits,
       },
       {
         title: "Other Information",
-        content: product?.brandInfo,
+        content: product?.otherInformation,
       },
     ];
   }, [product]);
