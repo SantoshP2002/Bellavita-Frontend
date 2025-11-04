@@ -20,10 +20,18 @@ import type Quill from "quill";
 const UploadProducts = () => {
   const quillRefs = {
     description: useRef<Quill | null>(null),
+    howToUse: useRef<Quill | null>(null),
+    ingredients: useRef<Quill | null>(null),
+    keyBenefits: useRef<Quill | null>(null),
+    otherInformation: useRef<Quill | null>(null),
   };
 
   const blobUrlRefs = {
     description: useRef<string[]>([]),
+    howToUse: useRef<string[]>([]),
+    ingredients: useRef<string[]>([]),
+    keyBenefits: useRef<string[]>([]),
+    otherInformation: useRef<string[]>([]),
   };
   const { mutateAsync } = useUploadProduct();
 
@@ -46,11 +54,43 @@ const UploadProducts = () => {
   const onSubmit = async (data: z.infer<typeof productSchema>) => {
     console.log("data", data);
 
-    processQuillContent({
+    // Description
+    await processQuillContent({
       quillRef: quillRefs.description,
       blobUrlsRef: blobUrlRefs.description,
       setValue: (value) => setValue("description", value),
       folderName: `Products/${data.title}/Description`,
+    });
+    // How to use
+    await processQuillContent({
+      quillRef: quillRefs.howToUse,
+      blobUrlsRef: blobUrlRefs.howToUse,
+      setValue: (value) => setValue("howToUse", value),
+      folderName: `Products/${data.title}/howToUse`,
+    });
+
+    // ingredients
+    await processQuillContent({
+      quillRef: quillRefs.ingredients,
+      blobUrlsRef: blobUrlRefs.ingredients,
+      setValue: (value) => setValue("ingredients", value),
+      folderName: `Products/${data.title}/ingredients`,
+    });
+
+    // keyBenefits
+    await processQuillContent({
+      quillRef: quillRefs.keyBenefits,
+      blobUrlsRef: blobUrlRefs.keyBenefits,
+      setValue: (value) => setValue("keyBenefits", value),
+      folderName: `Products/${data.title}/keyBenefits`,
+    });
+
+    // otherInformation
+    await processQuillContent({
+      quillRef: quillRefs.otherInformation,
+      blobUrlsRef: blobUrlRefs.otherInformation,
+      setValue: (value) => setValue("otherInformation", value),
+      folderName: `Products/${data.title}/otherInformation`,
     });
 
     const formData = new FormData();
@@ -60,6 +100,10 @@ const UploadProducts = () => {
     formData.append("sellingPrice", data.sellingPrice.toString());
     formData.append("price", data.price.toString());
     formData.append("description", getQuillValue(data.description));
+    formData.append("howToUse", getQuillValue(data.howToUse));
+    formData.append("ingredients", getQuillValue(data.ingredients));
+    formData.append("keyBenefits", getQuillValue(data.keyBenefits));
+    formData.append("otherInformation", getQuillValue(data.otherInformation));
     formData.append("category", JSON.stringify(data.category));
     formData.append("subCategory", JSON.stringify(data.subCategory));
 
@@ -88,7 +132,6 @@ const UploadProducts = () => {
             error={errors.title?.message}
             inputProps={{ placeholder: "Enter Title", name: "title" }}
           />
-
           {/* BRAND */}
           <Input
             label="Brand"
@@ -97,7 +140,6 @@ const UploadProducts = () => {
             error={errors?.brand?.message}
             inputProps={{ placeholder: "Enter Brand", name: "brand" }}
           />
-
           {/*  Price */}
           <Input
             label="Price"
@@ -131,16 +173,6 @@ const UploadProducts = () => {
             }}
           />
           {/* Description */}
-          {/* <Input
-            label="Description"
-            className="w-full bg-white text-black"
-            register={register("description")}
-            error={errors.description?.message}
-            inputProps={{
-              placeholder: "Enter Description",
-              name: "description",
-            }}
-          /> */}
           <Controller
             control={control}
             name={"description"}
@@ -151,19 +183,77 @@ const UploadProducts = () => {
                 blobUrlsRef={blobUrlRefs.description}
                 onChange={field.onChange}
                 value={typeof field.value === "string" ? field.value : ""}
-                placeholder={"Write description here..."}
+                placeholder="Write description here..."
                 errorText={errors?.description?.message}
               />
             )}
           />
-
-          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6  rounded-lg">
-            <QuillEditor label="How To Use" onChange={}/>
-            <QuillEditor label="Ingredients" />
-            <QuillEditor label="Key Benefits" />
-            <QuillEditor label="Other Information" />
-          </div> */}
-
+          {/* How To Use */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6  rounded-lg">
+            <Controller
+              control={control}
+              name="howToUse"
+              render={({ field }) => (
+                <QuillEditor
+                  label="How To Use"
+                  ref={quillRefs.howToUse}
+                  blobUrlsRef={blobUrlRefs.howToUse}
+                  onChange={field.onChange}
+                  value={typeof field.value === "string" ? field.value : ""}
+                  placeholder="Write How To Use here..."
+                  errorText={errors?.howToUse?.message}
+                />
+              )}
+            />
+            {/* ingredients */}
+            <Controller
+              control={control}
+              name="ingredients"
+              render={({ field }) => (
+                <QuillEditor
+                  label="ingredients"
+                  ref={quillRefs.ingredients}
+                  blobUrlsRef={blobUrlRefs.ingredients}
+                  onChange={field.onChange}
+                  value={typeof field.value === "string" ? field.value : ""}
+                  placeholder="Write ingredients here..."
+                  errorText={errors?.ingredients?.message}
+                />
+              )}
+            />
+            {/* Key Benefits */}
+            <Controller
+              control={control}
+              name="keyBenefits"
+              render={({ field }) => (
+                <QuillEditor
+                  label="key Benefits"
+                  ref={quillRefs.keyBenefits}
+                  blobUrlsRef={blobUrlRefs.keyBenefits}
+                  onChange={field.onChange}
+                  value={typeof field.value === "string" ? field.value : ""}
+                  placeholder="Write Key Benefits here..."
+                  errorText={errors?.keyBenefits?.message}
+                />
+              )}
+            />
+            {/*Other Information*/}
+            <Controller
+              control={control}
+              name="otherInformation"
+              render={({ field }) => (
+                <QuillEditor
+                  label="Other Information"
+                  ref={quillRefs.otherInformation}
+                  blobUrlsRef={blobUrlRefs.otherInformation}
+                  onChange={field.onChange}
+                  value={typeof field.value === "string" ? field.value : ""}
+                  placeholder="Write Other Information here..."
+                  errorText={errors?.otherInformation?.message}
+                />
+              )}
+            />
+          </div>
           {/* Category */}
           <Controller
             control={control}
@@ -181,7 +271,6 @@ const UploadProducts = () => {
               />
             )}
           />
-
           {/* Sub-Category */}
           <Controller
             control={control}
@@ -205,7 +294,6 @@ const UploadProducts = () => {
               );
             }}
           />
-
           {/* productImage */}
           <div className="flex flex-col gap-2">
             <Controller
@@ -294,7 +382,6 @@ const UploadProducts = () => {
                 )}
             </div>
           </div>
-
           {/* Upload Product Button */}
           <Button
             className="w-40!"
