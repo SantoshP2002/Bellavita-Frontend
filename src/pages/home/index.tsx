@@ -5,6 +5,7 @@ import HomeProducts from "../../components/HomeProducts";
 import LuxuryCategory from "../../components/LuxuryCategory";
 import QuizProducts from "../../components/QuizProducts";
 import ShopByNotes from "../../components/ShopByNotes";
+import WhyBellavitaInfo from "../../components/WhyBellavitaInfo";
 import { carouselImages } from "../../constants";
 
 const Home = () => {
@@ -24,7 +25,8 @@ const Home = () => {
       <QuizProducts />
       <BellamoodTech />
       <CrazyDeals />
-      <ShopByNotes/>
+      <ShopByNotes />
+      <WhyBellavitaInfo/>
     </div>
   );
 };
