@@ -102,9 +102,15 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
 };
 
 export const carouselImages = [
-  "http://bellavitaorganic.com/cdn/shop/files/gourmet_banner.webp?v=1758865399&width=1920",
-  "https://bellavitaorganic.com/cdn/shop/files/1920x720New.webp?v=1756991147&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/1920-720_8af70e11-34be-4c94-b987-2299d747a5ee.jpg?v=1762235997&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/lip_sleeping_mask_1_1__11zon.webp?v=1762174363&width=1920",
 ];
+
+export const mobileCarouselImages = [
+  "https://bellavitaorganic.com/cdn/shop/files/860-1150_c8c7060a-c93e-47b1-b422-9643124604a4.jpg?v=1762235996&width=800",
+  "https://bellavitaorganic.com/cdn/shop/files/lip_sleeping_mask_Mobile_1_1__11zon.webp?v=1762174363&width=800",
+];
+
 
 export const luxuryCategories = [
   {
