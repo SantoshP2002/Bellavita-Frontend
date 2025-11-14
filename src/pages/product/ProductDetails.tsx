@@ -89,7 +89,7 @@ const ProductDetails = () => {
           </div>
 
           {/* FEATURES GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-8 px-2">
             {[
               {
                 img: "https://bellavitaorganic.com/cdn/shop/files/Long_Lasting_1_70a277fc-8142-4cfb-b036-fc4084c6cee5.svg?crop=center&height=40&v=1694673851&width=40",
@@ -110,10 +110,14 @@ const ProductDetails = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="w-25 h-28 p-3 bg-gray-100 rounded flex flex-col justify-center items-center"
+                className="w-full h-24 sm:h-28 bg-gray-100 rounded-xl flex flex-col justify-center items-center shadow-sm hover:shadow-md transition-all p-3"
               >
-                <img className="w-10 h-10" src={item.img} />
-                <p className="text-xs text-center font-semibold mt-1">
+                <img
+                  className="w-10 h-10 sm:w-12 sm:h-12"
+                  src={item.img}
+                  alt={item.text}
+                />
+                <p className="text-[10px] sm:text-xs text-center font-semibold mt-2">
                   {item.text}
                 </p>
               </div>
