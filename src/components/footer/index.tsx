@@ -1,49 +1,218 @@
+import { useState } from "react";
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaLinkedin,
+  FaChevronDown,
+  FaChevronUp,
+  FaArrowRight,
 } from "react-icons/fa";
+import Input from "../Input";
+
+type SectionType = "bestseller" | "information" | "support" | "contact" | null;
 
 const Footer = () => {
+  const [openSection, setOpenSection] = useState<SectionType>(null);
+
+  const toggleSection = (section: Exclude<SectionType, null>) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-17">
+    <footer className="bg-[#434343] text-gray-300 mt-6">
       {/* Top Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* About Section */}
-        <div>
-          <h2 className="text-xl font-bold text-white mb-4">MyShop</h2>
-          <p className="text-sm leading-6">
-            MyShop ek trusted e-commerce platform hai jaha aapko best quality
-            products milte hain affordable price me.
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 md:px-12 py-8 md:py-12 grid grid-cols-1 md:grid-cols-5 gap-6">
+        {/* EXCLUSIVE Section */}
+        <div className="order-1 md:order-5 border-b border-gray-500 pb-5 md:border-none">
+          <h2 className="text-white text-base md:text-lg mb-3 md:mb-6 pb-2 md:border-none">
+            EXCLUSIVE
+          </h2>
+
+          {/* Input + Icon container */}
+          <div className="relative w-full">
+            <Input
+              inputProps={{ placeholder: "Enter Email Here..." }}
+              className="p-3" 
+            />
+            <FaArrowRight className="absolute right-3 top-1/2 -translate-y-1/2 text-black text-md cursor-pointer" />
+          </div>
+
+          <p className="text-white text-sm mt-4 leading-relaxed">
+            Sign up here to get the latest news, updates, and special offers
+            delivered to your inbox.
+          </p>
+          <p className="text-white text-sm mt-3 leading-relaxed">
+            Plus, you'll be the first to know about our discounts!
           </p>
         </div>
 
-        {/* Links Section */}
-        <div>
-          <h2 className="text-xl font-bold text-white mb-4">Quick Links</h2>
-          <ul className="space-y-2">
-            <li className="hover:text-indigo-500 cursor-pointer">Home</li>
-            <li className="hover:text-indigo-500 cursor-pointer">Shop</li>
-            <li className="hover:text-indigo-500 cursor-pointer">About Us</li>
-            <li className="hover:text-indigo-500 cursor-pointer">Contact</li>
+        {/* BESTSELLER Section */}
+        <div className="order-2 border-b border-gray-500 pb-4 md:border-none">
+          <div
+            className="flex items-center justify-between md:block cursor-pointer md:cursor-default"
+            onClick={() => toggleSection("bestseller")}
+          >
+            <h2 className="text-white text-base md:text-lg pb-2 md:pb-0 mb-0 md:mb-6 md:border-none">
+              BESTSELLER
+            </h2>
+            <span className="md:hidden text-lg flex items-center">
+              {openSection === "bestseller" ? (
+                <FaChevronUp />
+              ) : (
+                <FaChevronDown />
+              )}
+            </span>
+          </div>
+
+          <ul
+            className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+              openSection === "bestseller" || window.innerWidth >= 768
+                ? "max-h-[500px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            {[
+              "Ultimate Perfume Box",
+              "Perfume Gift Set For Men",
+              "Perfume Gift Set For Women",
+              "Under Eye Cream for Dark Circles",
+              "Perfume For Men",
+              "Perfume For Women",
+              "Unisex Perfume",
+            ].map((item) => (
+              <li key={item} className="hover:text-indigo-400 cursor-pointer">
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Social Section */}
-        <div>
-          <h2 className="text-xl font-bold text-white mb-4">Follow Us</h2>
-          <div className="flex space-x-4">
-            <a href="#" className="hover:text-indigo-500 text-lg">
+        {/* INFORMATION Section */}
+        <div className="order-3 border-b border-gray-500 pb-4 md:border-none">
+          <div
+            className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
+            onClick={() => toggleSection("information")}
+          >
+            <h2 className="text-white text-base md:text-lg mb-2 md:mb-6 pb-2 md:border-none">
+              INFORMATION
+            </h2>
+            <span className="md:hidden text-lg">
+              {openSection === "information" ? (
+                <FaChevronUp />
+              ) : (
+                <FaChevronDown />
+              )}
+            </span>
+          </div>
+
+          <ul
+            className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+              openSection === "information" || window.innerWidth >= 768
+                ? "max-h-[500px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            {[
+              "Blogs",
+              "Newsroom",
+              "Terms & Conditions",
+              "Privacy Policy",
+              "Refund and Return",
+              "Shipping Policy",
+              "Bulk Order - GST",
+              "Invoice",
+            ].map((item) => (
+              <li key={item} className="hover:text-indigo-400 cursor-pointer">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* SUPPORT Section */}
+        <div className="order-4 border-b border-gray-500 pb-4 md:border-none">
+          <div
+            className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
+            onClick={() => toggleSection("support")}
+          >
+            <h2 className="text-white text-base md:text-lg mb-2 md:mb-6 pb-2 md:border-none">
+              SUPPORT
+            </h2>
+            <span className="md:hidden text-lg">
+              {openSection === "support" ? <FaChevronUp /> : <FaChevronDown />}
+            </span>
+          </div>
+
+          <ul
+            className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+              openSection === "support" || window.innerWidth >= 768
+                ? "max-h-[500px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            {[
+              "About Us",
+              "Contact Us",
+              "Order Tracking",
+              "All Products",
+              "FAQ",
+              "Sitemap",
+            ].map((item) => (
+              <li key={item} className="hover:text-indigo-400 cursor-pointer">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* CONTACT US Section */}
+        <div className="order-5 md:order-4 border-b border-gray-500 pb-4 md:border-none">
+          <div
+            className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
+            onClick={() => toggleSection("contact")}
+          >
+            <h2 className="text-white text-base md:text-lg mb-2 md:mb-6 pb-2 md:border-none">
+              CONTACT US
+            </h2>
+            <span className="md:hidden text-lg">
+              {openSection === "contact" ? <FaChevronUp /> : <FaChevronDown />}
+            </span>
+          </div>
+
+          <ul
+            className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+              openSection === "contact" || window.innerWidth >= 768
+                ? "max-h-[500px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            <li>
+              Office Location: Plot no. 417, Udyog Vihar Phase III, Gurgaon,
+              Haryana, India
+            </li>
+            <li className="hover:text-indigo-400 cursor-pointer underline mt-4">
+              Contact Us on WhatsApp
+            </li>
+            <li className="mt-3 hover:text-indigo-400 cursor-pointer">
+              +91-9810154380
+            </li>
+            <li className="mt-3 hover:text-indigo-400 cursor-pointer">
+              Timing: 10:00 AM to 7:00 PM, Monday to Sunday
+            </li>
+          </ul>
+
+          <div className="flex space-x-6 mt-6 md:mt-8">
+            <a href="#" className="hover:text-indigo-400 text-xl">
               <FaFacebookF />
             </a>
-            <a href="#" className="hover:text-indigo-500 text-lg">
+            <a href="#" className="hover:text-indigo-400 text-xl">
               <FaTwitter />
             </a>
-            <a href="#" className="hover:text-indigo-500 text-lg">
+            <a href="#" className="hover:text-indigo-400 text-xl">
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-indigo-500 text-lg">
+            <a href="#" className="hover:text-indigo-400 text-xl">
               <FaLinkedin />
             </a>
           </div>
@@ -51,7 +220,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-gray-700 text-center py-4 text-sm">
+      <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
         © {new Date().getFullYear()} MyShop. All rights reserved.
       </div>
     </footer>
