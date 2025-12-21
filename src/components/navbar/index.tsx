@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BsHandbag } from "react-icons/bs";
-import { CiUser } from "react-icons/ci";
+import { PiHandbagLight, PiUserLight } from "react-icons/pi";
+import { CiDeliveryTruck } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { navMapData } from "../../constants";
@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-4 md:px-14 py-3">
         {/* Left - Logo */}
         <div className="flex items-center gap-3">
-          {/* Hamburger menu only on mobile */}
+          {/* menu only on mobile */}
           <Button
             content={<FiMenu />}
             buttonProps={{
@@ -32,21 +32,22 @@ const Navbar = () => {
               className: "!w-fit md:hidden text-2xl text-gray-700",
             }}
           />
-
+          {/* Search bar (always visible) */}
           <div className="hidden md:block">
             <SearchBar onSearch={(query) => console.log("Search:", query)} />
           </div>
         </div>
 
-        {/* Search bar (always visible) */}
-
-        <Logo onClick={() => navigate("/")} />
+        {/* LOGO  */}
+        
+          <Logo onClick={() => navigate("/")} />
+        
 
         {/* Icons */}
         <div className="flex items-center gap-6 text-gray-700">
           {user?.role === "ADMIN" && (
             <GrUserAdmin
-              className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
+              className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hidden md:block"
               onClick={() => navigate("/admin")}
             />
           )}
@@ -59,16 +60,21 @@ const Navbar = () => {
                 // onClick={() => navigate("/profile")}
               />
             ) : (
-              <CiUser
-                className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
+              <PiUserLight
+                className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
                 onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
               />
             )}
           </div>
 
-          <BsHandbag
-            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hover:text-indigo-600 transition"
+          <PiHandbagLight
+            className="h-5 w-5 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
             onClick={() => navigate("/cart")}
+          />
+
+          <CiDeliveryTruck
+            onClick={() => navigate("/orders")}
+            className="h-6 w-6 md:h-7 md:w-7 hidden md:block cursor-pointer transition-colors duration-200 hover:text-indigo-600"
           />
         </div>
       </div>
@@ -138,6 +144,44 @@ const Navbar = () => {
               />
             </div>
 
+            {/* My ORDER && Track Orders  */}
+            <div className="flex justify-center items-center gap-5 p-1 rounded-md">
+              {/* My Orders */}
+              <div
+                onClick={() => navigate("/orders")}
+                className="bg-gray-200 flex justify-center items-center gap-1 cursor-pointer px-3 py-2 rounded"
+              >
+                <img
+                  src="https://bellavitaorganic.com/cdn/shop/files/my-orders.svg?crop=center&height=18&v=1714549660&width=18"
+                  alt="My Orders"
+                  className="w-[12px] h-[12px]"
+                />
+                <span className="text-[10px] font-medium whitespace-nowrap">
+                  MY ORDERS
+                </span>
+              </div>
+
+              {/* Track Orders */}
+              <div className="bg-gray-200 flex justify-center items-center gap-1 cursor-pointer px-3 py-2 rounded">
+                <img
+                  src="https://bellavitaorganic.com/cdn/shop/files/track-order.svg?crop=center&height=18&v=1729672836&width=18"
+                  alt="Track Orders"
+                  className="w-[12px] h-[12px]"
+                />
+                <span className="text-[10px] font-medium text-gray-800 whitespace-nowrap">
+                  TRACK ORDERS
+                </span>
+              </div>
+            </div>
+
+            <div className="-mx-5 md:-mx-12">
+              <img
+                src="https://bellavitaorganic.com/cdn/shop/files/zodiac_hamburger_strip.jpg?v=1741862460"
+                alt="img"
+                className="w-full h-auto block"
+              />
+            </div>
+
             {/* Nav Links */}
             <div className="flex flex-col gap-4">
               {navMapData.map((item, index) => {
@@ -150,7 +194,7 @@ const Navbar = () => {
                       onClick={() =>
                         setSelectedOption(isOpen ? null : item.name)
                       }
-                      className="uppercase font-semibold text-gray-800 cursor-pointer flex justify-between items-center"
+                      className="uppercase text-gray-800 cursor-pointer flex justify-between items-center"
                     >
                       {item.name}
                       <span className="text-lg">
