@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="relative w-full">
             <Input
               inputProps={{ placeholder: "Enter Email Here..." }}
-              className="p-3" 
+              className="p-3"
             />
             <FaArrowRight className="absolute right-3 top-1/2 -translate-y-1/2 text-black text-md cursor-pointer" />
           </div>
@@ -74,14 +74,26 @@ const Footer = () => {
           >
             {[
               "Ultimate Perfume Box",
-              "Perfume Gift Set For Men",
-              "Perfume Gift Set For Women",
-              "Under Eye Cream for Dark Circles",
+              "Perfume Gift Set For",
+              "Men",
+              "Perfume Gift Set For",
+              "Women",
+              "Under Eye Cream for",
+              "Dark Circles",
               "Perfume For Men",
               "Perfume For Women",
               "Unisex Perfume",
             ].map((item) => (
-              <li key={item} className="hover:text-indigo-400 cursor-pointer">
+              <li
+                key={item}
+                className="relative block w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              >
                 {item}
               </li>
             ))}
@@ -123,7 +135,16 @@ const Footer = () => {
               "Bulk Order - GST",
               "Invoice",
             ].map((item) => (
-              <li key={item} className="hover:text-indigo-400 cursor-pointer">
+              <li
+                key={item}
+                className="relative block w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              >
                 {item}
               </li>
             ))}
@@ -159,7 +180,16 @@ const Footer = () => {
               "FAQ",
               "Sitemap",
             ].map((item) => (
-              <li key={item} className="hover:text-indigo-400 cursor-pointer">
+              <li
+                key={item}
+                className="relative block w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              >
                 {item}
               </li>
             ))}
@@ -217,6 +247,48 @@ const Footer = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Scame Alert  */}
+      <div className="border border-red-500 rounded-md p-4 md:p-5 max-w-full mx-12">
+        <h3 className="text-red-400 font-semibold text-base md:text-lg mb-2">
+          🚨 Scam Alert
+        </h3>
+
+        <h2 className="text-sm md:text-base mb-3">
+          We have noticed a rise in fraudulent activities through calls, SMS,
+          WhatsApp messages, emails, and other mediums.
+        </h2>
+
+        <h6 className="text-sm md:text-base mb-3">
+          Please be aware that{" "}
+          <span className="font-semibold">
+            BELLAVITA and its employees never ask for your financial details for
+            contests or deals
+          </span>{" "}
+          outside our official platform. We also never request payments for any
+          promotional activities through unauthorised channels.
+        </h6>
+
+        <p className="text-sm md:text-base mb-3">
+          If you receive any such communication, stay cautious and reach out to
+          us immediately at{" "}
+          <span className="font-semibold">+91 9810154380</span> or email us at{" "}
+          <span className="font-semibold underline">
+            shop@bellavitaorganic.com
+          </span>
+          .
+        </p>
+
+        <p className="text-sm md:text-base">
+          If you suspect any scam, kindly report it to the{" "}
+          <span className="font-semibold">
+            Department of Telecommunications (DoT)
+          </span>
+          .
+        </p>
+
+        <h5 className="mt-3 font-semibold">Stay safe!</h5>
       </div>
 
       {/* Bottom Section */}
