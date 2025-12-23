@@ -185,3 +185,36 @@ export const defaultToolbarOptions: QuillToolbar = [
   ["link", "image", "video"],
   ["code", "clean"],
 ];
+
+
+
+export const bestsellerLinks = [
+  {
+    label: "Mood Collection",
+    slug: "products?category=perfumes&subCategory=mood_collection",
+  },
+  {
+    label: "Perfume For Men",
+    slug: "products?category=perfumes&subCategory=men",
+  },
+  {
+    label: "Perfume For Women",
+    slug: "products?category=perfumes&subCategory=women",
+  },
+  {
+    label: "Skin Essential Combos",
+    slug: "products?category=skincare&subCategory=skin_essential_combos",
+  },
+  {
+    label: "Lipstick",
+    slug: "products?category=cosmetic&subCategory=lipstick",
+  },
+  {
+    label: "Face Wash",
+    slug: "products?category=skincare&subCategory=face_wash",
+  },
+  {
+    label: "Unisex Perfume",
+    slug: "products?category=perfumes&subCategory=unisex",
+  },
+];
