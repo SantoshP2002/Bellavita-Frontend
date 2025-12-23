@@ -9,6 +9,7 @@ import {
   update_Product,
 } from "./api";
 import { toast } from "react-toastify";
+import type {  TQueryParams } from "../../types";
 
 // upload product
 export const useUploadProduct = () => {
@@ -24,11 +25,11 @@ export const useUploadProduct = () => {
 };
 
 // get all products
-export const useGetAllProducts = () => {
+export const useGetAllProducts = (params: TQueryParams, enabled? : boolean) => {
   return useQuery({
-    queryKey: ["get_all_products"],
-    queryFn: () => get_all_products({}),
-    enabled: true,
+    queryKey: ["get_all_products", params],
+    queryFn: () => get_all_products(params),
+    enabled: enabled ?? true,
     refetchOnWindowFocus: false,
     select: (data) => data?.products,
   });
