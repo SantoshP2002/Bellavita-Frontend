@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAddToCart } from "../../api/cart/service";
 import { useGetProductById } from "../../api/products/service";
 import { Button } from "../../components/Button";
@@ -9,6 +9,7 @@ import AllReviews from "./AllReviews";
 import QuillContent from "../../components/quillContent";
 
 const ProductDetails = () => {
+  const navigate = useNavigate()
   const { productId } = useParams();
   const [current, setCurrent] = useState(0);
 
@@ -54,26 +55,36 @@ const ProductDetails = () => {
           <div className="text-xl sm:text-2xl md:text-3xl font-bold">
             {product?.title}
           </div>
-          <div className="text-sm text-gray-500">{product?.brand}</div>
+          <div className="text-sm text-yellow-500">{product?.brand}</div>
           <div className="mt-4 text-lg sm:text-xl font-bold">
             ₹{product?.sellingPrice}
           </div>
           <div className="flex items-center gap-1 text-sm text-gray-500">
             MRP:
-            <div className="line-through">₹{product?.price}</div>
+            <div className="line-through text-red-500">₹{product?.price}</div>
           </div>
           <p className="text-xs sm:text-sm text-gray-500">
             Inclusive of all taxes
           </p>
 
-          <Button
-            content=" Add To Cart "
-            pattern="outline"
-            className=" mt-5 lg:w-full rounded bg-black text-white"
-            buttonProps={{
-              onClick: () => handleAddToCart(product._id),
-            }}
-          />
+          <div className="flex justify-center items-center gap-4">
+            <Button
+              content=" Add To Cart "
+              pattern="outline"
+              className=" mt-5 lg:w-full rounded bg-black text-white"
+              buttonProps={{
+                onClick: () => handleAddToCart(product._id),
+              }}
+            />
+            <Button
+              content="Go To Cart "
+              pattern="secondary"
+              className=" mt-5 lg:w-full rounded bg-black text-white"
+              buttonProps={{
+                onClick: () => navigate("/cart"),
+              }}
+            />
+          </div>
 
           <div className="p-3 sm:p-4 bg-gray-100 mt-5 rounded">
             <div className="font-semibold text-sm sm:text-base">
