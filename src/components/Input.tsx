@@ -22,7 +22,7 @@ const Input = ({
         {label && (
           <label
             htmlFor={inputProps.name}
-            className={`text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer`}
+            className="text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer"
           >
             {label}
           </label>
