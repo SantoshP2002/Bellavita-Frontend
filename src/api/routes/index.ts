@@ -53,4 +53,9 @@ export const apiRoutes = {
   media: {
     uploadSingleImage: { method: "POST", url: "/media/image/upload" },
   },
+
+  // Blog
+  blog: {
+    createBlog: { method: "POST", url: "/blog/create" },
+  },
 };
