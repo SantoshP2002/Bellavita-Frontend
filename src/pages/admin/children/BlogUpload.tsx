@@ -45,7 +45,6 @@ const BlogUpload = () => {
   const onSubmit = async (data: z.infer<typeof blogSchema>) => {
     console.log("data", data);
 
-    // How to use
     await processQuillContent({
       quillRef: quillRefs.blog,
       blobUrlsRef: blobUrlRefs.blog,
@@ -57,7 +56,6 @@ const BlogUpload = () => {
 
     const content = getValues("blog");
     console.log("Content Blog", content);
-    
 
     formData.append("title", data.title);
     formData.append("description", data.description);
