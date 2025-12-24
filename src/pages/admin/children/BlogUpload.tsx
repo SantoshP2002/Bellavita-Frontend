@@ -1,7 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import type z from "zod";
 import { blogSchema } from "../../../validations/blog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BLOG_INITIAL_VALUES } from "../../../constants";
@@ -14,6 +13,7 @@ import { getQuillValue, processQuillContent } from "../../../utils";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import Textarea from "../../../components/TextArea";
 import { useUploadBlog } from "../../../api/blog/service";
+import type { TBaseBlog } from "../../../types";
 
 const BlogUpload = () => {
   const quillRefs = {
@@ -34,7 +34,7 @@ const BlogUpload = () => {
     watch,
     control,
     formState: { errors },
-  } = useForm<z.infer<typeof blogSchema>>({
+  } = useForm<TBaseBlog>({
     defaultValues: BLOG_INITIAL_VALUES,
     resolver: zodResolver(blogSchema),
   });
@@ -42,7 +42,7 @@ const BlogUpload = () => {
   console.log("BLOG ERROR", errors);
   const image = watch("image") || [];
 
-  const onSubmit = async (data: z.infer<typeof blogSchema>) => {
+  const onSubmit = async (data: TBaseBlog) => {
     console.log("data", data);
 
     await processQuillContent({
