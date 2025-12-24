@@ -4,6 +4,7 @@ import { useGetAllProductsInfinite } from "../api/products/service";
 import type { TProduct } from "../types";
 import { Button } from "./Button";
 import LoadingScreen from "./LoadingScreen";
+import { Link } from "react-router-dom";
 
 const HomeProducts = () => {
   const navigate = useNavigate();
@@ -38,9 +39,12 @@ const HomeProducts = () => {
             <span className="text-gray-400 text-lg sm:text-2xl md:text-3xl">
               |
             </span>
-            <h1 className="text-lg sm:text-2xl md:text-3xl text-gray-500 ">
+            <Link
+              to="/products?category=new_arrivals"
+              className="text-lg sm:text-2xl md:text-3xl text-gray-500 "
+            >
               NEW ARRIVALS
-            </h1>
+            </Link>
           </div>
 
           <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
