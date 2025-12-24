@@ -12,6 +12,8 @@ import type {
 import type { UseFormRegisterReturn } from "react-hook-form";
 import type { ALLOW_COUNTRIES } from "../constants";
 import type Quill from "quill";
+import type { blogSchema } from "../validations/blog";
+import type z from "zod";
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -288,4 +290,13 @@ export interface IProcessQuillContent {
   setValue: (value: string) => void;
   folderName: string;
   setLoading?: Dispatch<SetStateAction<boolean>>;
+}
+
+export type TBaseBlog = z.infer<typeof blogSchema>;
+
+export interface IBlog extends Omit<TBaseBlog, "image"> {
+  image: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
 }
