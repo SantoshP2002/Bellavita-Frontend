@@ -111,7 +111,6 @@ export const mobileCarouselImages = [
   "https://bellavitaorganic.com/cdn/shop/files/lip_sleeping_mask_Mobile_1_1__11zon.webp?v=1762174363&width=800",
 ];
 
-
 export const luxuryCategories = [
   {
     name: "COSMETIC",
@@ -186,8 +185,6 @@ export const defaultToolbarOptions: QuillToolbar = [
   ["code", "clean"],
 ];
 
-
-
 export const bestsellerLinks = [
   {
     label: "Mood Collection",
@@ -218,3 +215,11 @@ export const bestsellerLinks = [
     slug: "products?category=perfumes&subCategory=unisex",
   },
 ];
+
+export const BLOG_INITIAL_VALUES = {
+  images: [],
+  title: "",
+  date: "",
+  description: "",
+  blog: "",
+};

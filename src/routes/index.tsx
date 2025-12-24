@@ -19,8 +19,19 @@ import ProductDetails from "../pages/product/ProductDetails";
 import AllProducts from "../pages/product/AllProducts";
 import Address from "../pages/address/Address";
 import AllOrder from "../pages/order";
-import OrderDetails from "../pages/order/OrderDetails"
+import OrderDetails from "../pages/order/OrderDetails";
 import CheckoutSummary from "../pages/address/CheckoutSummary";
+import ProductCollectionPage from "../pages/footer/bestseller/ProductCollectionPage";
+import Blog from "../pages/footer/information/Blog";
+import NewsRoom from "../pages/footer/information/NewsRoom";
+import TermsAndCondition from "../pages/footer/information/TermsAndCondition";
+import PrivacyPolicy from "../pages/footer/information/PrivacyPolicy";
+import RefundAndReturn from "../pages/footer/information/RefundAndReturn";
+import ShippingPolicy from "../pages/footer/information/ShippingPolicy";
+import BulkOrder from "../pages/footer/information/BulkOrder";
+import Invoice from "../pages/footer/information/Invoice";
+import BlogUpload from "../pages/admin/children/BlogUpload";
+import AllBlogs from "../pages/admin/children/AllBlogs";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +39,14 @@ const router = createBrowserRouter([
     element: <Main />,
     children: [
       { index: true, element: <Home /> },
+      { path: "blogs", element: <Blog /> },
+      { path: "newsroom", element: <NewsRoom /> },
+      { path: "terms-and-condition", element: <TermsAndCondition /> },
+      { path: "privacy-policy", element: <PrivacyPolicy /> },
+      { path: "refund-return", element: <RefundAndReturn /> },
+      { path: "shipping-policy", element: <ShippingPolicy /> },
+      { path: "bulk-order", element: <BulkOrder /> },
+      { path: "invoice", element: <Invoice /> },
       {
         path: "cart",
         element: (
@@ -73,6 +92,12 @@ const router = createBrowserRouter([
         element: <Outlet />,
         children: [
           { index: true, element: <AllProducts /> },
+
+          {
+            path: "collections/:slug",
+            element: <ProductCollectionPage />,
+          },
+
           { path: ":productId", element: <ProductDetails /> },
         ],
       },
@@ -93,6 +118,8 @@ const router = createBrowserRouter([
       { path: "products/upload", element: <UploadProducts /> },
       { path: "products/update/:id", element: <UpdateProduct /> },
       { path: "orders", element: <Orders /> },
+      { path: "blog", element: <AllBlogs /> },
+      { path: "blog/upload", element: <BlogUpload /> },
     ],
   },
   // AUTH ROUTES

@@ -2,6 +2,7 @@ import { useGetOrder } from "../../api/order/service";
 import type { IOrder } from "../../types";
 import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import EmptyData from "../../components/empty-data/EmptyData";
 
 const AllOrder = () => {
   const navigate = useNavigate();
@@ -42,12 +43,13 @@ const AllOrder = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">My Orders</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">MY ORDERS</h1>
 
       {orders.length === 0 ? (
-        <p className="text-center text-gray-500 text-lg">
-          You haven’t placed any orders yet.
-        </p>
+        <EmptyData
+          content={"No Orders Found 😕"}
+          className="h-[50dvh] mx-auto [&>h3]:text-base sm:[&>h3]:text-4xl [&>h3]:uppercase gap-5"
+        />
       ) : (
         <div className="grid gap-5">
           {orders.map((order) => {

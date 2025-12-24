@@ -9,10 +9,15 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import Input from "../Input";
+import { Link } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+import { bestsellerLinks } from "../../constants";
 
 type SectionType = "bestseller" | "information" | "support" | "contact" | null;
 
 const Footer = () => {
+  const navigate = useNavigate();
   const [openSection, setOpenSection] = useState<SectionType>(null);
 
   const toggleSection = (section: Exclude<SectionType, null>) => {
@@ -72,29 +77,19 @@ const Footer = () => {
                 : "max-h-0 opacity-0"
             }`}
           >
-            {[
-              "Ultimate Perfume Box",
-              "Perfume Gift Set For",
-              "Men",
-              "Perfume Gift Set For",
-              "Women",
-              "Under Eye Cream for",
-              "Dark Circles",
-              "Perfume For Men",
-              "Perfume For Women",
-              "Unisex Perfume",
-            ].map((item) => (
+            {bestsellerLinks.map((item) => (
               <li
-                key={item}
+                key={item.slug}
+                onClick={() => navigate(`/${item.slug}`)}
                 className="relative block w-fit cursor-pointer text-white
-             after:content-['']
-             after:absolute after:left-0 after:-bottom-0
-             after:h-[1px] after:w-full after:bg-gray-400
-             after:scale-x-0 after:origin-right
-             after:transition-transform after:duration-300
-             hover:after:scale-x-100 hover:after:origin-left"
+        after:content-['']
+        after:absolute after:left-0 after:-bottom-0
+        after:h-[1px] after:w-full after:bg-gray-400
+        after:scale-x-0 after:origin-right
+        after:transition-transform after:duration-300
+        hover:after:scale-x-100 hover:after:origin-left"
               >
-                {item}
+                {item.label}
               </li>
             ))}
           </ul>
@@ -119,14 +114,110 @@ const Footer = () => {
           </div>
 
           <ul
-            className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+            className={`flex flex-col gap-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
               openSection === "information" || window.innerWidth >= 768
                 ? "max-h-[500px] opacity-100"
                 : "max-h-0 opacity-0"
             }`}
           >
-            {[
-              "Blogs",
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/blogs"
+            >
+              Blogs
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/newsroom"
+            >
+              News Room
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/terms-and-condition"
+            >
+              Terms & Condition
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/privacy-policy"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/refund-return"
+            >
+              Refund & Return
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/shipping-policy"
+            >
+              Shipping Policy
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/bulk-order"
+            >
+              Bulk Order - GST
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/invoice"
+            >
+              Invoice
+            </Link>
+            {/* {[
+              // "Blogs",
               "Newsroom",
               "Terms & Conditions",
               "Privacy Policy",
@@ -147,7 +238,7 @@ const Footer = () => {
               >
                 {item}
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
 
@@ -249,20 +340,20 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Scame Alert  */}
-      <div className="border border-red-500 rounded-md p-4 md:p-5 max-w-full mx-12">
+      {/* Scam Alert  */}
+      <div className="border border-red-500 rounded-md p-4 md:p-5 max-w-full mx-20">
         <h3 className="text-red-400 font-semibold text-base md:text-lg mb-2">
           🚨 Scam Alert
         </h3>
 
-        <h2 className="text-sm md:text-base mb-3">
+        <h2 className="text-md text-white md:text-base mb-3">
           We have noticed a rise in fraudulent activities through calls, SMS,
           WhatsApp messages, emails, and other mediums.
         </h2>
 
         <h6 className="text-sm md:text-base mb-3">
           Please be aware that{" "}
-          <span className="font-semibold">
+          <span className="font-semibold text-xs text-white">
             BELLAVITA and its employees never ask for your financial details for
             contests or deals
           </span>{" "}
@@ -272,17 +363,20 @@ const Footer = () => {
 
         <p className="text-sm md:text-base mb-3">
           If you receive any such communication, stay cautious and reach out to
-          us immediately at{" "}
-          <span className="font-semibold">+91 9810154380</span> or email us at{" "}
-          <span className="font-semibold underline">
+          us immediately at our{" "}
+          <span className="font-semibold text-white text-xs">
+            customer care number +91 9810154380
+          </span>{" "}
+          or email us at{" "}
+          <span className="font-semibold underline text-xs text-white">
             shop@bellavitaorganic.com
           </span>
           .
         </p>
 
         <p className="text-sm md:text-base">
-          If you suspect any scam, kindly report it to the{" "}
-          <span className="font-semibold">
+          If you suspect any scam, kindly{" "}
+          <span className="font-semibold text-xs text-white">
             Department of Telecommunications (DoT)
           </span>
           .

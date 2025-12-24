@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import type { ModalProps } from "../../types";
-import { IoMdClose } from "react-icons/io";
+import useVerticalScrollable from "../../hooks/useVerticalScrollable";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import { BottomGradient, TopGradient } from "../Gradients";
 
 const Modal = ({
   isOpen,
@@ -10,6 +12,7 @@ const Modal = ({
   className = "",
   heading = "",
 }: ModalProps) => {
+  const { showGradient, containerRef } = useVerticalScrollable();
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -20,7 +23,9 @@ const Modal = ({
     if (isOpen) {
       document.addEventListener("keydown", handleEsc);
     }
-  }, [onClose, isOpen]);
+
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -28,15 +33,20 @@ const Modal = ({
     <div
       onClick={onClose}
       {...containerProps}
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-white/50 p-8 backdrop-blur-sm ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-transparent p-8 backdrop-blur-sm ${
         containerProps?.className || ""
       }`}
     >
       <div
-        className={`bg-gradient-to-r from-indigo-100 to-pink-100 rounded-xl shadow-[rgba(0,0,0,0.1)_0px_4px_16px,_rgba(0,0,0,0.1)_0px_8px_32px] w-full max-w-md max-h-[90vh] relative ${className}`}
-        onClick={(e) => e.stopPropagation()}
+        className={`bg-gray-200 rounded-xl shadow-lg w-full max-w-md max-h-[90vh] relative overflow-hidden ${className}`}
+        onClick={(e) => e.stopPropagation()} 
       >
+        {/* Scrollable area */}
+        {showGradient.top && (
+          <TopGradient className={`h-8 ${heading ? "!top-16" : ""}`} />
+        )}
         <div
+          ref={containerRef}
           className={`max-h-[90dvh] overflow-y-auto scroll-smooth px-6 ${
             heading ? "pb-4" : "py-6"
           }`}
@@ -45,7 +55,7 @@ const Modal = ({
           <div
             className={`z-20 ${
               heading
-                ? "border-b border-black/50 h-16 flex items-center justify-between sticky top-0 bg-gradient-to-r from-indigo-100 to-pink-100"
+                ? "border-b h-16 flex items-center justify-between sticky top-0 "
                 : ""
             }`}
           >
@@ -54,15 +64,17 @@ const Modal = ({
                 {heading}
               </h2>
             )}
-            <IoMdClose
+            <IoMdCloseCircleOutline
               onClick={onClose}
-              className={`w-4 h-4 sm:w-5 sm:h-5 stroke-gray-400 hover:stroke-black cursor-pointer ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 stroke-tertiary hover:stroke-2 cursor-pointer ${
                 !heading ? "absolute top-2.5 right-2.5" : ""
               }`}
             />
           </div>
           <div className="py-2">{children}</div>
         </div>
+        {/* Content */}
+        {showGradient.bottom && <BottomGradient className="h-8" />}
       </div>
     </div>
   );

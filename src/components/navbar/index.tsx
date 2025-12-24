@@ -1,72 +1,80 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { PiHandbagLight, PiUserLight } from "react-icons/pi";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { navMapData } from "../../constants";
 import Logo from "./components/Logo";
-import SearchBar from "./components/SearchBar";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUserStore } from "../../store/user";
 import { Button } from "../Button";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
+import { GoSearch } from "react-icons/go";
+import SearchModal from "../modal/children/SearchModal";
+import Modal from "../modal";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, isLoggedIn, logout } = useUserStore();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <div className="w-full shadow-md bg-white sticky inset-x-0 top-0 z-50">
+    <div className="w-full shadow-lg sticky inset-x-0 bg-white top-0 z-50">
       {/* TOP NAV */}
-      <div className="flex items-center justify-between px-4 md:px-14 py-3">
+      <div className="flex items-center justify-between px-4 md:px-14">
         {/* Left - Logo */}
-        <div className="flex items-center gap-3">
-          {/* menu only on mobile */}
-          <Button
-            content={<FiMenu />}
-            buttonProps={{
-              onClick: () => setIsSidebarOpen(true),
-              className: "!w-fit md:hidden text-2xl text-gray-700",
-            }}
-          />
-          {/* Search bar (always visible) */}
-          <div className="hidden md:block">
-            <SearchBar onSearch={(query) => console.log("Search:", query)} />
-          </div>
-        </div>
+        <Button
+          content={<FiMenu />}
+          buttonProps={{
+            onClick: () => setIsSidebarOpen(true),
+            className: "!w-fit md:hidden text-2xl text-gray-700",
+          }}
+        />
+        {/* BELLAVITA LOGO  */}
+        <Logo onClick={() => navigate("/")} />
 
-        {/* LOGO  */}
-        
-          <Logo onClick={() => navigate("/")} />
-        
-
-        {/* Icons */}
+        {/* ADMIN Icons */}
         <div className="flex items-center gap-6 text-gray-700">
+          {/* Search Icon  */}
+          <GoSearch
+            onClick={() => setIsSearchOpen(true)}
+            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+          />
+          {/* Search Modal With Logic  */}
+          {isSearchOpen && (
+            <Modal
+              isOpen={isSearchOpen}
+              onClose={() => setIsSearchOpen(false)}
+              heading="Search Products"
+            >
+              <SearchModal onClose={() => setIsSearchOpen(false)} />
+            </Modal>
+          )}
+
           {user?.role === "ADMIN" && (
-            <GrUserAdmin
-              className="h-6 w-6 md:h-7 md:w-7 cursor-pointer hidden md:block"
-              onClick={() => navigate("/admin")}
+            <Link className="hidden md:block" to="/admin">
+              <GrUserAdmin className="h-6 w-6 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
+            </Link>
+          )}
+
+          {user?.profilePic ? (
+            <img
+              src={user?.profilePic}
+              alt="User"
+              className="border-2 border-black h-6 w-6 md:h-7 md:w-7 rounded-full cursor-pointer"
+              // onClick={() => navigate("/profile")}
+            />
+          ) : (
+            <PiUserLight
+              className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+              onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
             />
           )}
-          <div className="w-6 h-6">
-            {user?.profilePic ? (
-              <img
-                src={user?.profilePic}
-                alt="User"
-                className="border-2 border-black w-full h-full rounded-full cursor-pointer"
-                // onClick={() => navigate("/profile")}
-              />
-            ) : (
-              <PiUserLight
-                className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
-              />
-            )}
-          </div>
-
+          {/* Cart Bag  */}
           <PiHandbagLight
             className="h-5 w-5 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
             onClick={() => navigate("/cart")}
@@ -80,7 +88,7 @@ const Navbar = () => {
       </div>
 
       {/* BOTTOM NAV (Desktop Only) */}
-      <div className="hidden md:flex justify-center items-center gap-9 font-medium relative z-50 px-2 md:px-0 py-2">
+      <div className="hidden md:flex justify-center items-center gap-6 font-medium relative z-50 px-2 md:px-0 py-1">
         {navMapData.map((item, index) => (
           <div
             key={index}
@@ -89,7 +97,7 @@ const Navbar = () => {
             className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
           >
             <span
-              className="uppercase text-xs cursor-pointer"
+              className="uppercase cursor-pointer text-sm"
               onClick={() => navigate(`/products?category=${item.value}`)}
             >
               {item.name}

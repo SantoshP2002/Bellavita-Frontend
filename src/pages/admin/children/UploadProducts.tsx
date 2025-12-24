@@ -38,6 +38,7 @@ const UploadProducts = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     setValue,
     watch,
     control,
@@ -93,17 +94,26 @@ const UploadProducts = () => {
       folderName: `Products/${data.title}/otherInformation`,
     });
 
+    const newValues = getValues();
+    const content = {
+      howToUse: getQuillValue(newValues.howToUse),
+      ingredients: getQuillValue(newValues.ingredients),
+      keyBenefits: getQuillValue(newValues.keyBenefits),
+      otherInformation: getQuillValue(newValues.otherInformation),
+      description: getQuillValue(newValues.description),
+    };
+
     const formData = new FormData();
 
     formData.append("title", data.title);
     formData.append("brand", data.brand);
     formData.append("sellingPrice", data.sellingPrice.toString());
     formData.append("price", data.price.toString());
-    formData.append("description", getQuillValue(data.description));
-    formData.append("howToUse", getQuillValue(data.howToUse));
-    formData.append("ingredients", getQuillValue(data.ingredients));
-    formData.append("keyBenefits", getQuillValue(data.keyBenefits));
-    formData.append("otherInformation", getQuillValue(data.otherInformation));
+
+    Object.entries(content).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
     formData.append("category", JSON.stringify(data.category));
     formData.append("subCategory", JSON.stringify(data.subCategory));
 

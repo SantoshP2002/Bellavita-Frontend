@@ -7,6 +7,7 @@ import type {
   RefObject,
   SetStateAction,
   SVGProps,
+  TextareaHTMLAttributes,
 } from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
 import type { ALLOW_COUNTRIES } from "../constants";
@@ -75,6 +76,10 @@ export interface IInput extends TBaseInput {
   inputProps: InputHTMLAttributes<HTMLInputElement>;
 }
 
+export interface ITextArea extends Omit<TBaseInput, "icons"> {
+  textareaProps: TextareaHTMLAttributes<HTMLTextAreaElement>;
+}
+
 export interface ISelect extends Omit<TBaseInput, "register"> {
   selectProps: {
     onChange?: (data: Record<"name" | "value", string>) => void;
@@ -85,11 +90,15 @@ export interface ISelect extends Omit<TBaseInput, "register"> {
   };
 }
 
-export interface TQueryParams {
+export type TPageParams = {
   page?: number;
   limit?: number;
+};
+
+export interface TQueryParams extends TPageParams {
   category?: string;
   sortBy?: string;
+  search?: string;
 }
 
 export type TProductCart = {
@@ -130,14 +139,17 @@ export interface IAddress extends IBaseAddress {
   _id: string;
 }
 
-// modal
-export interface ModalProps {
+export interface ModalProps extends ClassName {
   isOpen: boolean;
   onClose: () => void;
   children: JSX.Element;
   containerProps?: JSX.IntrinsicElements["div"];
   heading?: string;
-  className?: string;
+}
+
+export interface VerticalScrollType {
+  top: boolean;
+  bottom: boolean;
 }
 
 export interface IOrder {
