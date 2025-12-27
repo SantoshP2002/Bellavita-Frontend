@@ -55,3 +55,42 @@ export const get_blog_By_Id = async (id: string) => {
     throw "Something went wrong!";
   }
 };
+
+// Update Blog
+export const update_blog = async (id: string, data: FormData) => {
+  try {
+    const token = getUserToken();
+    const { method, url } = apiRoutes.blog.updateBlog;
+    const response = await api.request({
+      method,
+      url: `${url}/${id}`,
+      data,
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error?.response?.data?.message || "API Error occurred";
+    }
+    throw "Something went wrong!";
+  }
+};
+
+// delete Blog
+export const delete_blog_By_Id = async (id: string) => {
+  try {
+    const token = getUserToken();
+    const { method, url } = apiRoutes.blog.deleteBlog;
+    const response = await api.request({
+      method,
+      url: `${url}/${id}`,
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error?.response?.data?.message || "API Error occurred";
+    }
+    throw "Something went wrong!";
+  }
+};
