@@ -32,6 +32,8 @@ import BulkOrder from "../pages/footer/information/BulkOrder";
 import Invoice from "../pages/footer/information/Invoice";
 import BlogUpload from "../pages/admin/children/BlogUpload";
 import AllBlogs from "../pages/admin/children/AllBlogs";
+import EditBlog from "../pages/admin/children/EditBlog";
+import BlogDetails from "../pages/footer/information/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "blogs", element: <Blog /> },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails />,
+      },
       { path: "newsroom", element: <NewsRoom /> },
       { path: "terms-and-condition", element: <TermsAndCondition /> },
       { path: "privacy-policy", element: <PrivacyPolicy /> },
@@ -120,6 +126,7 @@ const router = createBrowserRouter([
       { path: "orders", element: <Orders /> },
       { path: "blog", element: <AllBlogs /> },
       { path: "blog/upload", element: <BlogUpload /> },
+      { path: "blog/edit/:id", element: <EditBlog /> },
     ],
   },
   // AUTH ROUTES
