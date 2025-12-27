@@ -58,6 +58,8 @@ export const apiRoutes = {
   blog: {
     createBlog: { method: "POST", url: "/blog/create" },
     getBlog: { method: "GET", url: "/blog" },
-    getBlogById: { method: "GET", url: "/blog/:id" },
+    getBlogById: { method: "GET", url: "/blog" },
+    updateBlog: { method: "PATCH", url: "/blog" },
+    deleteBlog: { method: "DELETE", url: "/blog" },
   },
 };
