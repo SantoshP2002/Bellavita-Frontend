@@ -10,6 +10,7 @@ import {
 import { useDebounce } from "../../../hooks/useDebounce";
 import Input from "../../../components/Input";
 import { CiSearch } from "react-icons/ci";
+import LoadingScreen from "../../../components/LoadingScreen";
 
 const Products = () => {
   const deleteProductQuery = useDeleteProductById();
@@ -76,7 +77,11 @@ const Products = () => {
 
       {/* CARD */}
       <div className="mt-4">
-        {isLoading && <p>Loading products...</p>}
+        {isLoading && (
+          <p>
+            <LoadingScreen />
+          </p>
+        )}
         {error && <p className="text-red-500">Failed to load products</p>}
 
         {products.length === 0 ? (
