@@ -29,11 +29,15 @@ import PrivacyPolicy from "../pages/footer/information/PrivacyPolicy";
 import RefundAndReturn from "../pages/footer/information/RefundAndReturn";
 import ShippingPolicy from "../pages/footer/information/ShippingPolicy";
 import BulkOrder from "../pages/footer/information/BulkOrder";
-import Invoice from "../pages/footer/information/Invoice";
 import BlogUpload from "../pages/admin/children/BlogUpload";
 import AllBlogs from "../pages/admin/children/AllBlogs";
 import EditBlog from "../pages/admin/children/EditBlog";
 import BlogDetails from "../pages/footer/information/BlogDetails";
+import AboutUs from "../pages/footer/support/AboutUs";
+import ContactUs from "../pages/footer/support/ContactUs";
+import OrderTracking from "../pages/footer/support/OrderTracking";
+import FAQ from "../pages/footer/support/FAQ";
+import Sitemap from "../pages/footer/support/Sitemap";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +56,12 @@ const router = createBrowserRouter([
       { path: "refund-return", element: <RefundAndReturn /> },
       { path: "shipping-policy", element: <ShippingPolicy /> },
       { path: "bulk-order", element: <BulkOrder /> },
-      { path: "invoice", element: <Invoice /> },
+      { path: "aboutUs", element: <AboutUs /> },
+      { path: "contactUs", element: <ContactUs /> },
+      { path: "order-tracking", element: <OrderTracking /> },
+      { path: "all-products", element: <AllProducts /> },
+      { path: "faq", element: <FAQ /> },
+      { path: "sitemap", element: <Sitemap /> },
       {
         path: "cart",
         element: (
