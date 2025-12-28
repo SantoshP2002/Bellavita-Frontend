@@ -202,43 +202,8 @@ const Footer = () => {
              hover:after:scale-x-100 hover:after:origin-left"
               to="/bulk-order"
             >
-              Bulk Order - GST
+              Bulk Order - GST Invoice
             </Link>
-            <Link
-              className="relative w-fit cursor-pointer text-white
-             after:content-['']
-             after:absolute after:left-0 after:-bottom-0
-             after:h-[1px] after:w-full after:bg-gray-400
-             after:scale-x-0 after:origin-right
-             after:transition-transform after:duration-300
-             hover:after:scale-x-100 hover:after:origin-left"
-              to="/invoice"
-            >
-              Invoice
-            </Link>
-            {/* {[
-              // "Blogs",
-              "Newsroom",
-              "Terms & Conditions",
-              "Privacy Policy",
-              "Refund and Return",
-              "Shipping Policy",
-              "Bulk Order - GST",
-              "Invoice",
-            ].map((item) => (
-              <li
-                key={item}
-                className="relative block w-fit cursor-pointer text-white
-             after:content-['']
-             after:absolute after:left-0 after:-bottom-0
-             after:h-[1px] after:w-full after:bg-gray-400
-             after:scale-x-0 after:origin-right
-             after:transition-transform after:duration-300
-             hover:after:scale-x-100 hover:after:origin-left"
-              >
-                {item}
-              </li>
-            ))} */}
           </ul>
         </div>
 
@@ -257,33 +222,84 @@ const Footer = () => {
           </div>
 
           <ul
-            className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
-              openSection === "support" || window.innerWidth >= 768
+            className={`flex flex-col gap-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+              openSection === "information" || window.innerWidth >= 768
                 ? "max-h-[500px] opacity-100"
                 : "max-h-0 opacity-0"
             }`}
           >
-            {[
-              "About Us",
-              "Contact Us",
-              "Order Tracking",
-              "All Products",
-              "FAQ",
-              "Sitemap",
-            ].map((item) => (
-              <li
-                key={item}
-                className="relative block w-fit cursor-pointer text-white
+            <Link
+              className="relative w-fit cursor-pointer text-white
              after:content-['']
              after:absolute after:left-0 after:-bottom-0
              after:h-[1px] after:w-full after:bg-gray-400
              after:scale-x-0 after:origin-right
              after:transition-transform after:duration-300
              hover:after:scale-x-100 hover:after:origin-left"
-              >
-                {item}
-              </li>
-            ))}
+              to="/aboutUs"
+            >
+              About Us
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/contactUs"
+            >
+              Contact Us
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/order-tracking"
+            >
+              Order Tracking
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/all-products"
+            >
+              All Products
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/faq"
+            >
+              FAQ
+            </Link>
+            <Link
+              className="relative w-fit cursor-pointer text-white
+             after:content-['']
+             after:absolute after:left-0 after:-bottom-0
+             after:h-[1px] after:w-full after:bg-gray-400
+             after:scale-x-0 after:origin-right
+             after:transition-transform after:duration-300
+             hover:after:scale-x-100 hover:after:origin-left"
+              to="/sitemap"
+            >
+              Sitemap
+            </Link>
           </ul>
         </div>
 
