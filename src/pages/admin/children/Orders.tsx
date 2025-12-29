@@ -1,4 +1,5 @@
 import { useGetAdminOrder } from "../../../api/order/service";
+import EmptyData from "../../../components/empty-data/EmptyData";
 import LoadingScreen from "../../../components/LoadingScreen";
 
 interface Order {
@@ -12,43 +13,31 @@ interface Order {
 const Orders = () => {
   const { data, isLoading, isError } = useGetAdminOrder();
 
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center h-40 text-gray-500 animate-pulse">
-        <LoadingScreen /> Loading Orders...
-      </div>
-    );
+  if (isLoading) return <LoadingScreen />;
 
   if (isError)
     return (
-      <div className="text-center text-red-500 mt-4 animate-bounce">
-        ❌ Failed to load orders.
+      <div className="mt-20">
+        <EmptyData content="Fail To Load Order" />
       </div>
     );
 
-  const orders: Order[] = data?.orders || [];
-
-  console.log("ORDERS111", orders);
+  const orders: Order[] = data?.orders ?? [];
 
   return (
-    <div className="p-8 min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800 tracking-wide">
+    <div className="p-4 md:p-8 min-h-screen bg-gray-50">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
         🧾 Admin Orders
       </h2>
 
-      <div className="overflow-x-auto bg-white rounded-2xl shadow-xl border border-gray-200 transition-transform duration-300 hover:scale-[1.01]">
-        <table className="min-w-full">
-          <thead className="bg-gradient-to-r from-red-400 to-red-200 text-white">
+      {/* ================= DESKTOP TABLE ================= */}
+      <div className="hidden md:block bg-white rounded-xl shadow overflow-x-auto">
+        <table className="min-w-full text-sm text-gray-700">
+          <thead className="bg-red-500 text-white">
             <tr>
-              <th className="px-6 py-4 text-left text-sm font-semibold border-b border-gray-600">
-                Order ID
-              </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold border-b border-gray-600">
-                Email
-              </th>
-              <th className="px-6 py-4 text-left text-sm font-semibold border-b border-gray-600">
-                Role
-              </th>
+              <th className="px-6 py-4 text-left">Order ID</th>
+              <th className="px-6 py-4 text-left">Email</th>
+              <th className="px-6 py-4 text-left">Role</th>
             </tr>
           </thead>
 
@@ -57,38 +46,31 @@ const Orders = () => {
               orders.map((order, index) => (
                 <tr
                   key={order._id}
-                  className={`transition-all duration-300 hover:bg-gray-100 ${
+                  className={`${
                     index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                  }`}
+                  } hover:bg-gray-100`}
                 >
-                  <td className="px-6 py-4 text-sm border-b">
-                    <span>{order._id}</span>
+                  <td className="px-6 py-4 border-b">{order._id}</td>
+                  <td className="px-6 py-4 border-b">
+                    {order.user?.email || "N/A"}
                   </td>
-                  <td className="px-6 py-4 text-sm border-b">
-                    {order.user?.email || (
-                      <span className="text-gray-400 italic">N/A</span>
-                    )}
-                  </td>
-                  <td className="px-6 py-4 text-sm border-b">
+                  <td className="px-6 py-4 border-b">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         order.user?.role === "ADMIN"
                           ? "bg-green-100 text-green-700"
                           : "bg-blue-100 text-blue-700"
                       }`}
                     >
-                      {order.user?.role || "user"}
+                      {order.user?.role || "USER"}
                     </span>
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={3}
-                  className="text-center text-gray-500 py-10 text-sm italic"
-                >
-                  No orders found 💤
+                <td colSpan={3} className="text-center py-10 text-gray-500">
+                  No orders found
                 </td>
               </tr>
             )}
@@ -96,12 +78,43 @@ const Orders = () => {
         </table>
       </div>
 
-      {/* Floating animation for empty / success UI */}
-      <div className="mt-10 flex justify-center">
-        <div className="text-gray-600 text-sm animate-fadeIn">
-          Showing {orders.length} {orders.length === 1 ? "order" : "orders"} in
-          total
-        </div>
+      {/* ================= MOBILE / TABLET CARDS ================= */}
+      <div className="md:hidden space-y-4">
+        {orders.length > 0 ? (
+          orders.map((order, index) => (
+            <div
+              key={order._id}
+              className="bg-white rounded-xl shadow p-4 border"
+            >
+              <p className="text-xs text-gray-400 mb-1">#{index + 1}</p>
+
+              <p className="text-sm font-semibold break-all">{order._id}</p>
+
+              <p className="text-sm text-gray-600 mt-2">
+                📧 {order.user?.email || "N/A"}
+              </p>
+
+              <span
+                className={`inline-block mt-3 px-3 py-1 rounded-full text-xs font-semibold ${
+                  order.user?.role === "ADMIN"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-blue-100 text-blue-700"
+                }`}
+              >
+                {order.user?.role || "USER"}
+              </span>
+            </div>
+          ))
+        ) : (
+          <div className="text-center text-gray-500 py-10">
+            No orders found 💤
+          </div>
+        )}
+      </div>
+
+      {/* FOOTER COUNT */}
+      <div className="mt-8 text-center text-sm text-gray-600">
+        Showing {orders.length} {orders.length === 1 ? "order" : "orders"}
       </div>
     </div>
   );
