@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FiTrash2 } from "react-icons/fi";
 import { GoPencil } from "react-icons/go";
@@ -14,7 +14,7 @@ interface User {
   createdAt: string;
 }
 
-const Users: React.FC = () => {
+const Users = () => {
   const { data, isLoading, isError } = useGetUser();
   const [search, setSearch] = useState("");
 
