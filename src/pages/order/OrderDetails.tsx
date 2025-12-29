@@ -1,8 +1,12 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetOrderById } from "../../api/order/service";
 import type { IOrder } from "../../types";
+import { Button } from "../../components/Button";
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { ORDER_STEPS } from "../../constants";
 
 const OrderDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
   const { data, isLoading, isError } = useGetOrderById(id ?? "");
@@ -38,15 +42,30 @@ const OrderDetails = () => {
     );
   }
 
+  // order tracking
+  const currentStatus =
+    order.order_result?.order_status?.toLowerCase() ?? "pending";
+
+  // const currentStepIndex = ORDER_STEPS.indexOf(currentStatus);
+  const currentStepIndex = Math.max(0, ORDER_STEPS.indexOf(currentStatus));
+
   /* ------------------ UI ------------------ */
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Order Details</h1>
-        <Link to="/orders" className="text-sm text-blue-600 hover:underline">
-          ← Back to orders
-        </Link>
+        <Button
+          content="Back To Order"
+          pattern="tertiary"
+          className="w-40! underline"
+          icons={{
+            left: <FaLongArrowAltLeft />,
+          }}
+          buttonProps={{
+            onClick: () => navigate("/orders"),
+          }}
+        />
       </div>
 
       {/* Order Summary */}
@@ -117,6 +136,50 @@ const OrderDetails = () => {
         ) : (
           <p className="text-gray-500">No products found in this order.</p>
         )}
+
+        <div className="border rounded-2xl p-6 bg-white shadow-sm">
+          <h2 className="text-lg font-semibold mb-4">Order Tracking</h2>
+
+          <div className="flex items-center justify-between">
+            {ORDER_STEPS.map((step, index) => {
+              const isCompleted = index <= currentStepIndex;
+
+              return (
+                <div key={step} className="flex-1 flex items-center">
+                  {/* Circle */}
+                  <div
+                    className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold
+              ${
+                isCompleted
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-200 text-gray-500"
+              }`}
+                  >
+                    {index + 1}
+                  </div>
+
+                  {/* Label */}
+                  <p
+                    className={`ml-2 text-sm capitalize ${
+                      isCompleted ? "text-green-600" : "text-gray-400"
+                    }`}
+                  >
+                    {step}
+                  </p>
+
+                  {/* Line */}
+                  {index !== ORDER_STEPS.length - 1 && (
+                    <div
+                      className={`flex-1 h-1 mx-3 ${
+                        isCompleted ? "bg-green-600" : "bg-gray-200"
+                      }`}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
