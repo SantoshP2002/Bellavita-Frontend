@@ -5,6 +5,7 @@ import { GoPencil } from "react-icons/go";
 import { useGetUser } from "../../../api/user/service";
 import LoadingScreen from "../../../components/LoadingScreen";
 import { Button } from "../../../components/Button";
+import EmptyData from "../../../components/empty-data/EmptyData";
 
 interface User {
   _id: string;
@@ -18,6 +19,7 @@ const Users = () => {
   const { data, isLoading, isError } = useGetUser();
   const [search, setSearch] = useState("");
 
+  // SAME LOGIC
   const users: User[] = data?.user ? [data.user] : [];
 
   const filteredUsers = users.filter(
@@ -27,20 +29,22 @@ const Users = () => {
   );
 
   if (isLoading) return <LoadingScreen />;
-  if (isError)
+
+  if (isError) {
     return (
       <div className="text-center text-red-500 mt-10">
         Failed to load users 😞
       </div>
     );
+  }
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      {/* Header */}
+    <div className="p-4 sm:p-6 bg-gray-50 min-h-screen">
+      {/* HEADER */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
         <h1 className="text-2xl font-bold text-gray-800">👥 User Management</h1>
 
-        {/* Search */}
+        {/* SEARCH */}
         <div className="relative w-full sm:w-72">
           <CiSearch className="absolute left-3 top-3 text-gray-400" size={18} />
           <input
@@ -53,8 +57,8 @@ const Users = () => {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+      {/* ================= DESKTOP TABLE ================= */}
+      <div className="hidden md:block bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
         <table className="min-w-full text-sm text-gray-700">
           <thead className="bg-gray-100 text-gray-600 uppercase text-xs">
             <tr>
@@ -66,6 +70,7 @@ const Users = () => {
               <th className="py-3 px-4 text-center">Actions</th>
             </tr>
           </thead>
+
           <tbody>
             {filteredUsers.length > 0 ? (
               filteredUsers.map((user, index) => (
@@ -76,12 +81,13 @@ const Users = () => {
                   <td className="py-3 px-4">{index + 1}</td>
                   <td className="py-3 px-4 font-medium">{user.firstName}</td>
                   <td className="py-3 px-4">{user.email}</td>
+
                   <td className="py-3 px-4">
                     <span
                       className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        user.role === "Admin"
+                        user.role === "ADMIN"
                           ? "bg-green-100 text-green-700"
-                          : user.role === "Moderator"
+                          : user.role === "USER"
                           ? "bg-blue-100 text-blue-700"
                           : "bg-gray-100 text-gray-700"
                       }`}
@@ -89,9 +95,11 @@ const Users = () => {
                       {user.role}
                     </span>
                   </td>
+
                   <td className="py-3 px-4">
                     {new Date(user.createdAt).toLocaleDateString()}
                   </td>
+
                   <td className="py-3 px-4 text-center">
                     <div className="flex justify-center gap-3">
                       <Button
@@ -102,8 +110,7 @@ const Users = () => {
                             console.log("Edit clicked");
                           },
                         }}
-                        pattern="outline"
-                        className="!w-9 !h-9 flex items-center justify-center rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300"
+                        className="!w-9 !h-9 rounded-full border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
                       />
 
                       <Button
@@ -114,8 +121,7 @@ const Users = () => {
                             console.log("Delete clicked");
                           },
                         }}
-                        pattern="outline"
-                        className="!w-9 !h-9 flex items-center justify-center rounded-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300"
+                        className="!w-9 !h-9 rounded-full border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
                       />
                     </div>
                   </td>
@@ -123,16 +129,69 @@ const Users = () => {
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={6}
-                  className="py-6 text-center text-gray-500 italic"
-                >
-                  No users found 😔
+                <td colSpan={6} className="py-6 text-center">
+                  <EmptyData content="User Not Found" />
                 </td>
               </tr>
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* ================= MOBILE / TABLET CARDS ================= */}
+      <div className="md:hidden space-y-4">
+        {filteredUsers.length > 0 ? (
+          filteredUsers.map((user, index) => (
+            <div
+              key={user._id}
+              className="bg-white rounded-xl shadow-md p-4 border"
+            >
+              <div className="flex justify-between items-start">
+                <div>
+                  <p className="text-xs text-gray-500">#{index + 1}</p>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {user.firstName}
+                  </h3>
+                  <p className="text-sm text-gray-600">{user.email}</p>
+                </div>
+
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                    user.role === "Admin"
+                      ? "bg-green-100 text-green-700"
+                      : user.role === "Moderator"
+                      ? "bg-blue-100 text-blue-700"
+                      : "bg-gray-100 text-gray-700"
+                  }`}
+                >
+                  {user.role}
+                </span>
+              </div>
+
+              <div className="mt-3 flex justify-between items-center">
+                <p className="text-xs text-gray-500">
+                  Joined: {new Date(user.createdAt).toLocaleDateString()}
+                </p>
+
+                <div className="flex gap-2">
+                  <Button
+                    content={<GoPencil size={14} />}
+                    pattern="outline"
+                    className="!w-8 !h-8 rounded-full border-blue-500 text-blue-500"
+                  />
+
+                  <Button
+                    content={<FiTrash2 size={14} />}
+                    pattern="outline"
+                    className="!w-8 !h-8 rounded-full border-red-500 text-red-500"
+                  />
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <EmptyData content="User Not Found" />
+        )}
       </div>
     </div>
   );
