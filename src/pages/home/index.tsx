@@ -2,7 +2,7 @@ import AutoScrollStrip from "../../components/AutoScrollStrip";
 import BellamoodTech from "../../components/BellamoodTech";
 import CrazyDeals from "../../components/CrazyDeals";
 import CustomerCarousel from "../../components/CustomerCarousel";
-import HomeCarousel from "../../components/homeCarousel";
+import HomeCarousel from "../../components/HomeCarouse";
 import HomeProducts from "../../components/HomeProducts";
 import ImageStrip from "../../components/ImageStrip";
 import LuxuryCategory from "../../components/LuxuryCategory";
