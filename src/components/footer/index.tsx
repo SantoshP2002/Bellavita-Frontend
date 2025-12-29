@@ -1,12 +1,12 @@
 import { useState } from "react";
 import {
-  FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaLinkedin,
   FaChevronDown,
   FaChevronUp,
   FaArrowRight,
+  FaGoogle,
 } from "react-icons/fa";
 import Input from "../Input";
 import { Link } from "react-router-dom";
@@ -340,16 +340,43 @@ const Footer = () => {
           </ul>
 
           <div className="flex space-x-6 mt-6 md:mt-8">
-            <a href="#" className="hover:text-indigo-400 text-xl">
-              <FaFacebookF />
+            {/* GOOGLE  */}
+            <a
+              href="https://myaccount.google.com/?hl=en&utm_source=OGB&utm_medium=act&gar=WzJd&pli=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-indigo-400 text-xl"
+            >
+              <FaGoogle />
             </a>
-            <a href="#" className="hover:text-indigo-400 text-xl">
+
+            {/* TWITTER  */}
+            <a
+              href="https://x.com/Santosh13337724"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-indigo-400 text-xl"
+            >
               <FaTwitter />
             </a>
-            <a href="#" className="hover:text-indigo-400 text-xl">
+
+            {/* INSTAGRAM  */}
+            <a
+              href="https://www.instagram.com/santoshpawar987/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-indigo-400 text-xl"
+            >
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-indigo-400 text-xl">
+
+            {/* LINKEDIN  */}
+            <a
+              href="https://www.linkedin.com/in/santosh-pawar-2b1a642a5/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-indigo-400 text-xl"
+            >
               <FaLinkedin />
             </a>
           </div>
