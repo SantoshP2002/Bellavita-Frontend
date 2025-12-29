@@ -56,7 +56,7 @@ const Navbar = () => {
           )}
 
           {user?.role === "ADMIN" && (
-            <Link className="hidden md:block" to="/admin">
+            <Link to="/admin">
               <GrUserAdmin className="h-6 w-6 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
             </Link>
           )}
@@ -66,7 +66,7 @@ const Navbar = () => {
               src={user?.profilePic}
               alt="User"
               className="border-2 border-black h-6 w-6 md:h-7 md:w-7 rounded-full cursor-pointer"
-              // onClick={() => navigate("/profile")}
+              onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
             />
           ) : (
             <PiUserLight
@@ -82,7 +82,7 @@ const Navbar = () => {
 
           <CiDeliveryTruck
             onClick={() => navigate("/orders")}
-            className="h-6 w-6 md:h-7 md:w-7 hidden md:block cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
           />
         </div>
       </div>
