@@ -137,10 +137,11 @@ const OrderDetails = () => {
           <p className="text-gray-500">No products found in this order.</p>
         )}
 
-        <div className="border rounded-2xl p-6 bg-white shadow-sm">
+        <div className="border rounded-2xl p-4 md:p-6 bg-white shadow-sm">
           <h2 className="text-lg font-semibold mb-4">Order Tracking</h2>
 
-          <div className="flex items-center justify-between">
+          {/* ================= DESKTOP (HORIZONTAL) ================= */}
+          <div className="hidden md:flex items-center justify-between">
             {ORDER_STEPS.map((step, index) => {
               const isCompleted = index <= currentStepIndex;
 
@@ -170,11 +171,59 @@ const OrderDetails = () => {
                   {/* Line */}
                   {index !== ORDER_STEPS.length - 1 && (
                     <div
-                      className={`flex-1 h-1 mx-3 ${
+                      className={`flex-1 h-1 mx-3 rounded ${
                         isCompleted ? "bg-green-600" : "bg-gray-200"
                       }`}
                     />
                   )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* ================= MOBILE / TABLET (VERTICAL) ================= */}
+          <div className="md:hidden space-y-4">
+            {ORDER_STEPS.map((step, index) => {
+              const isCompleted = index <= currentStepIndex;
+
+              return (
+                <div key={step} className="flex items-start gap-4">
+                  {/* Left indicator */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold
+                ${
+                  isCompleted
+                    ? "bg-green-600 text-white"
+                    : "bg-gray-200 text-gray-500"
+                }`}
+                    >
+                      {index + 1}
+                    </div>
+
+                    {index !== ORDER_STEPS.length - 1 && (
+                      <div
+                        className={`w-1 h-10 mt-1 rounded ${
+                          isCompleted ? "bg-green-600" : "bg-gray-200"
+                        }`}
+                      />
+                    )}
+                  </div>
+
+                  {/* Label */}
+                  <div>
+                    <p
+                      className={`text-sm font-medium capitalize ${
+                        isCompleted ? "text-green-600" : "text-gray-400"
+                      }`}
+                    >
+                      {step}
+                    </p>
+
+                    <p className="text-xs text-gray-500">
+                      {isCompleted ? "Completed" : "Pending"}
+                    </p>
+                  </div>
                 </div>
               );
             })}
