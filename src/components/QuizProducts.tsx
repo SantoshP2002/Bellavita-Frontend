@@ -1,7 +1,7 @@
 const QuizProducts = () => {
   return (
-    <div className="mt-10 flex justify-center">
-      <div className="flex flex-wrap justify-center gap-6 w-full max-w-6xl">
+    <div className="mt-10 flex items-center justify-center">
+      <div className="flex flex-wrap justify-center gap-6 w-full max-w-7xl">
         <img
           src="https://bellavitaorganic.com/cdn/shop/files/Fragrance-Finder-Home-Page_1200-x-400_485ebb8a-29c5-453c-bc2d-d11b70b1c291.webp?v=1729248354&width=800"
           alt="left quiz image"
