@@ -223,3 +223,5 @@ export const BLOG_INITIAL_VALUES = {
   description: "",
   blog: "",
 };
+
+export const ORDER_STEPS = ["pending", "confirmed", "delivered"];
