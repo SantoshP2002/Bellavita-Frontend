@@ -33,9 +33,12 @@ const HomeProducts = () => {
         <div className="flex flex-col gap-8">
           {/* CONTENT HEADERS */}
           <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mt-6 sm:mt-8 text-center">
-            <h1 className="text-lg sm:text-2xl md:text-3xl text-black">
+            <Link
+              to="/products?category=bestseller"
+              className="text-lg sm:text-2xl md:text-3xl text-gray-500 "
+            >
               BESTSELLER
-            </h1>
+            </Link>
             <span className="text-gray-400 text-lg sm:text-2xl md:text-3xl">
               |
             </span>
