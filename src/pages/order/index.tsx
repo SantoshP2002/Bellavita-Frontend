@@ -1,57 +1,55 @@
+import { useNavigate } from "react-router-dom";
 import { useGetOrder } from "../../api/order/service";
 import type { IOrder } from "../../types";
 import { Button } from "../../components/Button";
-import { useNavigate } from "react-router-dom";
 import EmptyData from "../../components/empty-data/EmptyData";
 
 const AllOrder = () => {
   const navigate = useNavigate();
   const { data, isLoading, isError, error } = useGetOrder();
 
+  /* ------------------ Guards ------------------ */
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-lg font-semibold animate-pulse">
-          Loading your orders...
-        </p>
+      <div className="max-w-5xl mx-auto px-4 py-8 space-y-5 animate-pulse">
+        <div className="h-8 bg-gray-200 rounded w-40 mx-auto" />
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-40 bg-gray-200 rounded-2xl" />
+        ))}
       </div>
     );
   }
 
   if (isError) {
-    const errMsg =
-      error instanceof Error
-        ? error.message
-        : "Something went wrong while fetching orders.";
-
     return (
-      <div className="flex justify-center items-center h-screen text-red-500">
-        <p>{errMsg}</p>
+      <div className="flex justify-center items-center h-[60vh] text-red-500">
+        {error instanceof Error ? error.message : <EmptyData content="Orders Not Found"/>}
       </div>
     );
   }
 
-  const orders: IOrder[] = data?.orders || [];
-
-  console.log("ORDERS", orders);
+  const orders: IOrder[] = data?.orders ?? [];
 
   const getOrderAmount = (order: IOrder) =>
-    Number(order.totalPrice || order.order_result.amount);
+    Number(order.totalPrice ?? order.order_result?.amount ?? 0);
 
   const getOrderStatus = (order: IOrder) =>
-    order.order_result.order_status.toLowerCase();
+    order.order_result?.order_status?.toLowerCase() ?? "unknown";
 
+  /* ------------------ UI ------------------ */
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">MY ORDERS</h1>
+    <div className="max-w-5xl mx-auto px-4 py-10 space-y-8">
+      <h1 className="text-3xl font-bold text-center tracking-tight">
+        My Orders
+      </h1>
 
       {orders.length === 0 ? (
         <EmptyData
-          content={"No Orders Found 😕"}
-          className="h-[50dvh] mx-auto [&>h3]:text-base sm:[&>h3]:text-4xl [&>h3]:uppercase gap-5"
+          content="No Orders Found 😕"
+          className="h-[50vh] mx-auto [&>h3]:text-xl"
         />
       ) : (
-        <div className="grid gap-5">
+        <div className="space-y-6">
           {orders.map((order) => {
             const status = getOrderStatus(order);
             const amount = getOrderAmount(order);
@@ -59,58 +57,54 @@ const AllOrder = () => {
             return (
               <div
                 key={order._id}
-                className="border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-md transition-all duration-300"
+                className="rounded-2xl border bg-white shadow-sm hover:shadow-lg transition-all duration-300"
               >
-                {/* Order Header */}
-                <div className="flex justify-between items-center mb-3">
-                  <h2 className="font-semibold text-lg">
-                    Order #{order._id.slice(-6)}
-                  </h2>
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      status === "paid"
-                        ? "bg-green-100 text-green-700"
-                        : status === "pending"
-                        ? "bg-yellow-100 text-green-700"
-                        : "bg-red-100 text-green-700"
-                    }`}
-                  >
-                    {status.toUpperCase()}
-                  </span>
+                {/* Top */}
+                <div className="flex items-center justify-between px-6 py-4 border-b">
+                  <div>
+                    <p className="text-sm text-gray-500">Order ID</p>
+                    <h2 className="font-semibold text-red-500 text-lg">
+                      #{order._id.slice(-6)}
+                    </h2>
+                  </div>
+
+                  <OrderStatus status={status.toLowerCase()} />
                 </div>
 
-                {/* Order Info */}
-                <div className="text-gray-600 space-y-1 mb-3">
-                  <p>
-                    <strong>Amount:</strong> ₹{amount}
-                  </p>
-                  <p>
-                    <strong>Date:</strong>{" "}
-                    {new Date(order.createdAt).toLocaleString()}
-                  </p>
-                  <p>
-                    <strong>Payment Mode:</strong>{" "}
-                    {order.razorpay_payment_result?.payment_mode}
-                  </p>
+                {/* Body */}
+                <div className="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-sm">
+                  <Info label="Order Amount" value={`₹${amount}`} strong />
+                  <Info
+                    label="Order Date"
+                    value={new Date(order.createdAt).toLocaleString()}
+                  />
+                  <Info
+                    label="Payment Mode"
+                    value={order.razorpay_payment_result?.payment_mode ?? "N/A"}
+                  />
+                  <Info
+                    label="Items"
+                    value={`${order.products?.length ?? 0} items`}
+                  />
                 </div>
 
                 {/* Address */}
-                <div className="text-gray-500 text-sm mb-3">
-                  <p>
-                    <strong>Address:</strong> {order.address.address},{" "}
-                    {order.address.city}, {order.address.state} -{" "}
-                    {order.address.pinCode}
-                  </p>
+                <div className="px-6 pb-5 text-sm text-gray-500">
+                  <strong className="text-gray-700">Delivery Address:</strong>{" "}
+                  {order.address.address}, {order.address.city},{" "}
+                  {order.address.state} - {order.address.pinCode}
                 </div>
 
-                {/* Button */}
-                <Button
-                  content="View Details"
-                  pattern="primary"
-                  buttonProps={{
-                    onClick: () => navigate(`/orders/${order._id}`),
-                  }}
-                />
+                {/* Footer */}
+                <div className="px-6 py-4 bg-gray-50 flex justify-end rounded-b-2xl">
+                  <Button
+                    content="View Order Details"
+                    pattern="primary"
+                    buttonProps={{
+                      onClick: () => navigate(`/orders/${order._id}`),
+                    }}
+                  />
+                </div>
               </div>
             );
           })}
@@ -121,3 +115,43 @@ const AllOrder = () => {
 };
 
 export default AllOrder;
+
+/* ------------------ Small UI Blocks ------------------ */
+
+const Info = ({
+  label,
+  value,
+  strong,
+}: {
+  label: string;
+  value: string;
+  strong?: boolean;
+}) => (
+  <div>
+    <p className="text-gray-400 text-xs uppercase tracking-wide">{label}</p>
+    <p
+      className={`mt-1 ${
+        strong ? "font-semibold text-gray-900" : "font-medium text-gray-700"
+      }`}
+    >
+      {value}
+    </p>
+  </div>
+);
+
+const OrderStatus = ({ status }: { status: string }) => {
+  const base =
+    "px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide";
+
+  const map: Record<string, string> = {
+    paid: "bg-green-100 text-green-700",
+    pending: "bg-yellow-100 text-yellow-700",
+    failed: "bg-red-100 text-red-700",
+  };
+
+  return (
+    <span className={`${base} ${map[status] ?? "bg-gray-100 text-gray-600"}`}>
+      {status}
+    </span>
+  );
+};
