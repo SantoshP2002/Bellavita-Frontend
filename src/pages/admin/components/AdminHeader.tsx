@@ -1,11 +1,13 @@
 import { FaBars } from "react-icons/fa";
 import { Button } from "../../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 type AdminHeadersProps = {
   onMenuClick?: () => void;
 };
 
 const AdminHeader = ({ onMenuClick }: AdminHeadersProps) => {
+  const navigate = useNavigate();
   return (
     <header className="flex justify-between items-center p-4 border-b">
       {/* Left Section */}
@@ -18,6 +20,13 @@ const AdminHeader = ({ onMenuClick }: AdminHeadersProps) => {
           }}
         />
         <h1 className="text-2xl font-bold text-gray-700">Dashboard</h1>
+        <Button
+          content="home/"
+          className="underline text-indigo-500"
+          buttonProps={{
+            onClick: () => navigate("/"),
+          }}
+        />
       </div>
 
       {/* Right Section */}
