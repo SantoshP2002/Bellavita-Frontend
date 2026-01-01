@@ -128,7 +128,7 @@ const CheckoutSummary = () => {
                 Authorization: getUserToken(),
               },
             });
-                
+
             console.log("CANCEL PAYMENT RESPONSE", resp);
           },
         },
@@ -159,7 +159,7 @@ const CheckoutSummary = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Address Section */}
-        <div className="border border-gray-200 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6">
+        <div className="bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
             <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
             Shipping Address
@@ -176,7 +176,7 @@ const CheckoutSummary = () => {
         </div>
 
         {/* Products Section */}
-        <div className="border border-gray-200 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6">
+        <div className="border border-gray-200 bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 rounded-b-full shadow-lg hover:shadow-xl transition-all duration-300 p-6">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full"></span>
             Products
@@ -186,7 +186,7 @@ const CheckoutSummary = () => {
             {products.map((item) => (
               <div
                 key={item._id}
-                className="flex items-center gap-4 pb-4 hover:bg-gray-50 rounded-lg transition-colors duration-200"
+                className="flex items-center gap-4 pb-4 rounded-lg transition-colors duration-200"
               >
                 <img
                   src={item.product.images?.[0]}
@@ -205,7 +205,7 @@ const CheckoutSummary = () => {
             ))}
           </div>
 
-          <div className="flex justify-between items-center mt-6 text-lg font-semibold text-gray-800 border-t pt-4">
+          <div className="flex justify-center gap-12 items-center mt-6 text-lg font-semibold text-gray-800 border- pt-4">
             <span>Total:</span>
             <span className="text-red-500 text-xl">₹{subtotal}</span>
           </div>
