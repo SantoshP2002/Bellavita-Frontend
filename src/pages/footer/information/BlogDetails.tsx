@@ -6,7 +6,7 @@ import { Button } from "../../../components/Button";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 const BlogDetails = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const { data: blog, isLoading, isError } = useGetBlogById(id!);
 
@@ -22,7 +22,7 @@ const BlogDetails = () => {
 
       {/* CENTER CONTENT */}
       <div className="max-w-4xl mx-auto p-6">
-        <p className="text-5xl font-bold mt-8">{blog.title}</p>
+        <p className="text-5xl font-medium mt-12">{blog.title}</p>
 
         <p className="text-sm text-gray-400 mt-4">
           {new Date(blog.createdAt).toLocaleDateString("en-IN", {
@@ -48,8 +48,8 @@ const BlogDetails = () => {
           className="mt-10 w-40! gap-3"
           icons={{
             left: <FaArrowLeftLong />,
-                  }}
-                  buttonProps={{ onClick :() => navigate("/blogs")}}
+          }}
+          buttonProps={{ onClick: () => navigate("/blogs") }}
         />
       </div>
     </>
