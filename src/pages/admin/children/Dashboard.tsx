@@ -25,9 +25,9 @@ const Dashboard = () => {
 
   return (
     <div className="w-full">
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* USERS */}
-        <div className="p-6 rounded-xl shadow-md bg-orange-300">
+        <div className="p-6 rounded-md shadow-md bg-gradient-to-bl from-blue-200 via-violet-300 to-blue-100">
           <h2 className="text-gray-600">Users</h2>
           <p className="text-2xl font-bold">
             {userLoading ? "..." : usersCount}
@@ -35,7 +35,7 @@ const Dashboard = () => {
         </div>
 
         {/* PRODUCTS */}
-        <div className="p-6 rounded-xl shadow-md bg-yellow-300">
+        <div className="p-6 rounded-md shadow-md bg-gradient-to-bl from-blue-200 via-pink-300 to-blue-100">
           <h2 className="text-gray-600">Products</h2>
           <p className="text-2xl font-bold">
             {productLoading ? "..." : productsCount}
@@ -43,7 +43,7 @@ const Dashboard = () => {
         </div>
 
         {/* BLOGS */}
-        <div className="p-6 rounded-xl shadow-md bg-blue-300">
+        <div className="p-6 rounded-md shadow-md bg-gradient-to-bl from-blue-200 via-green-300 to-blue-100">
           <h2 className="text-gray-600">Blogs</h2>
           <p className="text-2xl font-bold">
             {blogLoading ? "..." : blogsCount}
