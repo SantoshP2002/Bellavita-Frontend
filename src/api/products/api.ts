@@ -50,6 +50,26 @@ export const get_product_by_id = async (id: string) => {
   }
 };
 
+// get My Products
+export const get_my_Products = async (params: Record<string, number | string>) => {
+  try {
+    const token = getUserToken();
+    const { method, url } = apiRoutes.products.getMyProducts;
+    const response = await api.request({
+      method,
+      url,
+      params,
+      headers: { Authorization: token },
+    });
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw error?.response?.data?.message || "API Error occurred";
+    }
+    throw "Something went wrong!";
+  }
+};
+
 // Update product by ID
 export const update_Product = async (id: string, data: FormData) => {
   try {
