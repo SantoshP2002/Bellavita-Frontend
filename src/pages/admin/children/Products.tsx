@@ -51,7 +51,7 @@ const Products = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
         <h3 className="text-2xl font-bold text-gray-700">ALL PRODUCTS</h3>
-        <div className="flex items-center gap-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           {/* 🔍 Search Bar */}
           <Input
             className="border-b-4 rounded-lg"
@@ -66,7 +66,7 @@ const Products = () => {
           <Button
             content="Upload Products"
             pattern="secondary"
-            className="w-60! bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
+            className="w-60!"
             // className="w-40!"
             buttonProps={{
               onClick: () => navigate("/admin/products/upload"),
