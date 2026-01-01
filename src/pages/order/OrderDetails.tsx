@@ -57,8 +57,8 @@ const OrderDetails = () => {
         <h1 className="text-2xl font-bold">Order Details</h1>
         <Button
           content="Back To Order"
-          pattern="tertiary"
-          className="w-40! underline"
+          pattern="secondary"
+          // className="w-40! underline bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400 text-white"
           icons={{
             left: <FaLongArrowAltLeft />,
           }}
@@ -69,7 +69,7 @@ const OrderDetails = () => {
       </div>
 
       {/* Order Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 border rounded-2xl p-6 bg-white shadow-sm">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 rounded-br-full p-6 bg-white shadow-md bg-gradient-to-bl from-pink-400 via-purple-200 to-pink-200 text-white">
         <Info label="Order ID" value={order._id} />
         <Info
           label="Order Date"
@@ -94,7 +94,7 @@ const OrderDetails = () => {
         <h2 className="text-xl font-semibold">Products</h2>
 
         {order.products && order.products.length > 0 ? (
-          <div className="divide-y rounded-2xl border bg-white shadow-sm">
+          <div className="divide-y rounded-br-full bg-gradient-to-bl from-pink-200 via-purple-200 to-pink-300 shadow-md ">
             {order.products.map((item, index) => {
               const product = item.product;
 
@@ -137,7 +137,7 @@ const OrderDetails = () => {
           <p className="text-gray-500">No products found in this order.</p>
         )}
 
-        <div className="border rounded-2xl p-4 md:p-6 bg-white shadow-sm">
+        <div className="rounded-2xl p-4 md:p-6 bg-white shadow-lg mt-12">
           <h2 className="text-lg font-semibold mb-4">Order Tracking</h2>
 
           {/* ================= DESKTOP (HORIZONTAL) ================= */}
@@ -152,7 +152,7 @@ const OrderDetails = () => {
                     className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold
               ${
                 isCompleted
-                  ? "bg-green-600 text-white"
+                  ? "bg-green-600 text-white" // green 1, 2, 3
                   : "bg-gray-200 text-gray-500"
               }`}
                   >
@@ -162,7 +162,7 @@ const OrderDetails = () => {
                   {/* Label */}
                   <p
                     className={`ml-2 text-sm capitalize ${
-                      isCompleted ? "text-green-600" : "text-gray-400"
+                      isCompleted ? "text-green-600" : "text-gray-400" // confirmed name
                     }`}
                   >
                     {step}
@@ -171,8 +171,8 @@ const OrderDetails = () => {
                   {/* Line */}
                   {index !== ORDER_STEPS.length - 1 && (
                     <div
-                      className={`flex-1 h-1 mx-3 rounded ${
-                        isCompleted ? "bg-green-600" : "bg-gray-200"
+                      className={`flex-1 h-1 mx-0 rounded ${
+                        isCompleted ? "bg-green-600" : "bg-gray-200" // green line
                       }`}
                     />
                   )}
