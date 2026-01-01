@@ -17,6 +17,10 @@ export const apiRoutes = {
     getProductById: { method: "GET", url: "/products" },
     updateProductById: { method: "PATCH", url: "/products" },
     deleteProductById: { method: "DELETE", url: "/products" },
+    getMyProducts: {
+      method: "GET",
+      url: "/products/my-products",
+    },
   },
 
   // Cart
