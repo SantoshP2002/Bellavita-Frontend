@@ -347,7 +347,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-400 text-xl"
             >
-              <FaGoogle />
+              <FaGoogle className="text-red-500 hover:scale-150 transition" />
             </a>
 
             {/* TWITTER  */}
@@ -357,7 +357,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-400 text-xl"
             >
-              <FaTwitter />
+              <FaTwitter className="text-blue-500 hover:scale-150 transition" />
             </a>
 
             {/* INSTAGRAM  */}
@@ -367,7 +367,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-400 text-xl"
             >
-              <FaInstagram />
+              <FaInstagram className="text-pink-500 hover:scale-150 transition" />
             </a>
 
             {/* LINKEDIN  */}
@@ -377,7 +377,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-indigo-400 text-xl"
             >
-              <FaLinkedin />
+              <FaLinkedin className="text-blue-500 hover:scale-150 transition" />
             </a>
           </div>
         </div>
