@@ -2,7 +2,7 @@ import { useGetAdminOrder } from "../../../api/order/service";
 import EmptyData from "../../../components/empty-data/EmptyData";
 import LoadingScreen from "../../../components/LoadingScreen";
 
-interface Order {
+interface IOrder {
   _id: string;
   user?: {
     email?: string;
@@ -22,7 +22,7 @@ const Orders = () => {
       </div>
     );
 
-  const orders: Order[] = data?.orders ?? [];
+  const orders: IOrder[] = data?.orders ?? [];
 
   return (
     <div className="p-4 md:p-8 min-h-screen bg-gray-50">
@@ -33,7 +33,7 @@ const Orders = () => {
       {/* ================= DESKTOP TABLE ================= */}
       <div className="hidden md:block bg-white rounded-xl shadow overflow-x-auto">
         <table className="min-w-full text-sm text-gray-700">
-          <thead className="bg-red-500 text-white">
+          <thead className="bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400 text-white">
             <tr>
               <th className="px-6 py-4 text-left">Order ID</th>
               <th className="px-6 py-4 text-left">Email</th>
@@ -50,11 +50,9 @@ const Orders = () => {
                     index % 2 === 0 ? "bg-gray-50" : "bg-white"
                   } hover:bg-gray-100`}
                 >
-                  <td className="px-6 py-4 border-b">{order._id}</td>
-                  <td className="px-6 py-4 border-b">
-                    {order.user?.email || "N/A"}
-                  </td>
-                  <td className="px-6 py-4 border-b">
+                  <td className="px-6 py-4">{order._id}</td>
+                  <td className="px-6 py-4">{order.user?.email || "N/A"}</td>
+                  <td className="px-6 py-4">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${
                         order.user?.role === "ADMIN"
@@ -82,10 +80,7 @@ const Orders = () => {
       <div className="md:hidden space-y-4">
         {orders.length > 0 ? (
           orders.map((order, index) => (
-            <div
-              key={order._id}
-              className="bg-white rounded-xl shadow p-4 border"
-            >
+            <div key={order._id} className="bg-white rounded-xl shadow p-4">
               <p className="text-xs text-gray-400 mb-1">#{index + 1}</p>
 
               <p className="text-sm font-semibold break-all">{order._id}</p>
