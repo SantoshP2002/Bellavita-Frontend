@@ -25,7 +25,7 @@ const Orders = () => {
   const orders: IOrder[] = data?.orders ?? [];
 
   return (
-    <div className="p-4 md:p-8 min-h-screen bg-gray-50">
+    <div className="p-4 md:p-8 min-h-screen bg-gray-200">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
         🧾 Admin Orders
       </h2>
@@ -80,10 +80,13 @@ const Orders = () => {
       <div className="md:hidden space-y-4">
         {orders.length > 0 ? (
           orders.map((order, index) => (
-            <div key={order._id} className="bg-white rounded-xl shadow p-4">
+            <div
+              key={order._id}
+              className="bg-white rounded-xl shadow p-4 bg-gradient-to-bl from-pink-300 via-purple-200 to-orange-200"
+            >
               <p className="text-xs text-gray-400 mb-1">#{index + 1}</p>
 
-              <p className="text-sm font-semibold break-all">{order._id}</p>
+              <p className="text-sm text-black font-semibold break-all">{order._id}</p>
 
               <p className="text-sm text-gray-600 mt-2">
                 📧 {order.user?.email || "N/A"}
