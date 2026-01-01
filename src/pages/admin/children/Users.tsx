@@ -39,10 +39,12 @@ const Users = () => {
   }
 
   return (
-    <div className="p-4 sm:p-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 bg-gray-200 min-h-screen">
       {/* HEADER */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
-        <h1 className="text-2xl font-bold text-gray-800">👥 User Management</h1>
+        <h1 className="text-2xl font-normal">
+          👥 User Management
+        </h1>
 
         {/* SEARCH */}
         <div className="relative w-full sm:w-72">
@@ -52,7 +54,7 @@ const Users = () => {
             placeholder="Search users..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-3 py-2 border rounded-lg focus:ring-2 focus:ring-black outline-none text-sm"
+            className="w-full pl-10 pr-3 py-2 border border-[gray] rounded-lg focus:ring-2 focus:ring-gray-300 outline-none text-sm"
           />
         </div>
       </div>
@@ -144,7 +146,7 @@ const Users = () => {
           filteredUsers.map((user, index) => (
             <div
               key={user._id}
-              className="bg-white rounded-xl shadow-md p-4 border"
+              className="bg-white rounded-tr-full shadow-md p-4 bg-gradient-to-bl from-pink-300 via-purple-200 to-orange-200 text-white"
             >
               <div className="flex justify-between items-start">
                 <div>
