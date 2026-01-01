@@ -23,7 +23,11 @@ const AllOrder = () => {
   if (isError) {
     return (
       <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error instanceof Error ? error.message : <EmptyData content="Orders Not Found"/>}
+        {error instanceof Error ? (
+          error.message
+        ) : (
+          <EmptyData content="Orders Not Found" />
+        )}
       </div>
     );
   }
@@ -57,12 +61,12 @@ const AllOrder = () => {
             return (
               <div
                 key={order._id}
-                className="rounded-2xl border bg-white shadow-sm hover:shadow-lg transition-all duration-300"
+                className="rounded-tr-full  bg-white shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-bl from-pink-200 via-purple-300 to-orange-200 text-white"
               >
                 {/* Top */}
                 <div className="flex items-center justify-between px-6 py-4 border-b">
                   <div>
-                    <p className="text-sm text-gray-500">Order ID</p>
+                    <p className="text-sm text-black">Order ID</p>
                     <h2 className="font-semibold text-red-500 text-lg">
                       #{order._id.slice(-6)}
                     </h2>
@@ -72,7 +76,7 @@ const AllOrder = () => {
                 </div>
 
                 {/* Body */}
-                <div className="px-6 py-5 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-sm">
+                <div className="px-6 py-4 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-sm">
                   <Info label="Order Amount" value={`₹${amount}`} strong />
                   <Info
                     label="Order Date"
@@ -96,10 +100,11 @@ const AllOrder = () => {
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-gray-50 flex justify-end rounded-b-2xl">
+                <div className="px-8 py-3 flex justify-end">
                   <Button
                     content="View Order Details"
-                    pattern="primary"
+                    // pattern="primary"
+                    className="rounded-lg bg-gradient-to-bl from-pink-300 via-purple-300 to-orange-300 text-black w-40!"
                     buttonProps={{
                       onClick: () => navigate(`/orders/${order._id}`),
                     }}
@@ -128,7 +133,7 @@ const Info = ({
   strong?: boolean;
 }) => (
   <div>
-    <p className="text-gray-400 text-xs uppercase tracking-wide">{label}</p>
+    <p className="text-slate-400 text-xs uppercase tracking-wide">{label}</p>
     <p
       className={`mt-1 ${
         strong ? "font-semibold text-gray-900" : "font-medium text-gray-700"
@@ -150,7 +155,7 @@ const OrderStatus = ({ status }: { status: string }) => {
   };
 
   return (
-    <span className={`${base} ${map[status] ?? "bg-gray-100 text-gray-600"}`}>
+    <span className={`${base} ${map[status] ?? "bg-green-200 text-green-600"}`}>
       {status}
     </span>
   );
