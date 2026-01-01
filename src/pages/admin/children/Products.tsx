@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { Button } from "../../../components/Button";
 import {
   useDeleteProductById,
-  useGetAllProductsInfinite,
+  // useGetAllProductsInfinite,
+  useGetMyProductsInfinite,
 } from "../../../api/products/service";
 import { useDebounce } from "../../../hooks/useDebounce";
 import Input from "../../../components/Input";
@@ -34,7 +35,7 @@ const Products = () => {
     hasNextPage,
     isError,
     refetch,
-  } = useGetAllProductsInfinite({ limit: 8, search: debouncedSearch });
+  } = useGetMyProductsInfinite({ limit: 8, search: debouncedSearch });
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -65,7 +66,8 @@ const Products = () => {
           <Button
             content="Upload Products"
             pattern="secondary"
-            className="w-40!"
+            className="w-80! bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
+            // className="w-40!"
             buttonProps={{
               onClick: () => navigate("/admin/products/upload"),
             }}
@@ -127,7 +129,7 @@ const Products = () => {
                     <div className="flex flex-row gap-2">
                       <Button
                         content="Update"
-                        className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                        className="mt-4 w-full text-sm py-2 rounded-lg transition-colors duration-300 bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
                         buttonProps={{
                           onClick: () =>
                             navigate(`/admin/products/update/${p._id}`),
@@ -136,7 +138,7 @@ const Products = () => {
                       <Button
                         pattern="secondary"
                         content="Delete"
-                        className="mt-4 w-full bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                        className="mt-4 w-full text-sm py-2 rounded-lg bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
                         buttonProps={{
                           onClick: () => handleDelete(p._id),
                         }}
