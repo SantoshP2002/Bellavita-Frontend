@@ -66,7 +66,7 @@ const Products = () => {
           <Button
             content="Upload Products"
             pattern="secondary"
-            className="w-80! bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
+            className="w-60! bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
             // className="w-40!"
             buttonProps={{
               onClick: () => navigate("/admin/products/upload"),
