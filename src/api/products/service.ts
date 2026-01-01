@@ -5,6 +5,7 @@ import {
   create_product,
   delete_Product_By_Id,
   get_all_products,
+  get_my_Products,
   get_product_by_id,
   update_Product,
 } from "./api";
@@ -52,6 +53,26 @@ export const useGetAllProductsInfinite = (
     },
   });
 };
+
+export const useGetMyProductsInfinite = (
+  params: Record<string, number | string>
+) => {
+  return useInfiniteQuery({
+    queryKey: ["get_my_products_infinite", params],
+    initialPageParam: 1,
+
+    queryFn: ({ pageParam = 1 }) =>
+      get_my_Products({ page: pageParam, ...params }),
+
+    getNextPageParam: (lastPage) => {
+      if (lastPage?.currentPage < lastPage?.totalPages) {
+        return lastPage.currentPage + 1;
+      }
+      return undefined;
+    },
+  });
+};
+
 
 // get product by ID
 export const useGetProductById = (id: string) => {
