@@ -60,7 +60,7 @@ const Users = () => {
       {/* ================= DESKTOP TABLE ================= */}
       <div className="hidden md:block bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
         <table className="min-w-full text-sm text-gray-700">
-          <thead className="bg-gray-100 text-gray-600 uppercase text-xs">
+          <thead className="bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400 text-white">
             <tr>
               <th className="py-3 px-4 text-left">#</th>
               <th className="py-3 px-4 text-left">Name</th>
