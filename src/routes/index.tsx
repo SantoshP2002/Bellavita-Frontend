@@ -38,6 +38,7 @@ import ContactUs from "../pages/footer/support/ContactUs";
 import OrderTracking from "../pages/footer/support/OrderTracking";
 import FAQ from "../pages/footer/support/FAQ";
 import Sitemap from "../pages/footer/support/Sitemap";
+import GoogleAuth from "../pages/auth/GoogleAuth";
 
 const router = createBrowserRouter([
   {
@@ -140,6 +141,7 @@ const router = createBrowserRouter([
   },
   // AUTH ROUTES
   { path: "login", element: <LoginRedirect /> },
+  { path: "google-auth", element: <GoogleAuth /> },
   { path: "register", element: <RegisterRedirect /> },
 
   // Address page
