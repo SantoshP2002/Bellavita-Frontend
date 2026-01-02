@@ -20,7 +20,7 @@ const AddressCard = ({
     <div
       className={`border ${
         isSelected
-          ? "border-2 border-blue-600 shadow-xl shadow-blue-600/20"
+          ? "shadow-xl rounded-br-xl bg-gradient-to-br from-pink-100 via-pink-300 to-blue-200 text-white"
           : "border-black shadow-sm hover:shadow-md"
       } rounded-2xl p-5 transition-transform duration-200 hover:scale-[1.02] relative w-full bg-white`}
     >
