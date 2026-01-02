@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PiHandbagLight, PiUserLight } from "react-icons/pi";
+import {  PiUserLight } from "react-icons/pi";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { navMapData } from "../../constants";
 import Logo from "./components/Logo";
 import { FiMenu, FiX } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUserStore } from "../../store/user";
 import { Button } from "../Button";
@@ -14,6 +15,7 @@ import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { GoSearch } from "react-icons/go";
 import SearchModal from "../modal/children/SearchModal";
 import Modal from "../modal";
+import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const Navbar = () => {
   return (
     <div className="w-full shadow-lg sticky inset-x-0 bg-white top-0 z-50">
       {/* TOP NAV */}
-      <div className="flex items-center justify-between px-4 md:px-14">
+      <div className="flex items-center justify-between px-4 md:px-10">
         {/* Left - Logo */}
         <Button
           content={<FiMenu />}
@@ -38,11 +40,11 @@ const Navbar = () => {
         <Logo onClick={() => navigate("/")} />
 
         {/* ADMIN Icons */}
-        <div className="flex items-center gap-6 text-gray-700">
+        <div className="flex items-center gap-4 md:gap-6 text-gray-700">
           {/* Search Icon  */}
           <GoSearch
             onClick={() => setIsSearchOpen(true)}
-            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
           />
           {/* Search Modal With Logic  */}
           {isSearchOpen && (
@@ -57,7 +59,7 @@ const Navbar = () => {
 
           {user?.role === "ADMIN" && (
             <Link to="/admin">
-              <GrUserAdmin className="h-6 w-6 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
+              <GrUserAdmin className="h-4 w-4 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
             </Link>
           )}
 
@@ -70,20 +72,27 @@ const Navbar = () => {
             />
           ) : (
             <PiUserLight
-              className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
               onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
             />
           )}
           {/* Cart Bag  */}
-          <PiHandbagLight
-            className="h-5 w-5 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+          <IoCartOutline
+            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
             onClick={() => navigate("/cart")}
           />
 
           <CiDeliveryTruck
             onClick={() => navigate("/orders")}
-            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
           />
+
+          <div>
+            <CgProfile
+              onClick={() => navigate("/profile")}
+              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+            />
+          </div>
         </div>
       </div>
 
