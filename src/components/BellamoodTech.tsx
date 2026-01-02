@@ -33,7 +33,7 @@ const BellamoodTech = () => {
   return (
     <div className="flex flex-col md:flex-row items-stretch justify-center p-6 md:p-16 gap-12 md:gap-20 mt-4">
       {/* 🖼️ LEFT SIDE IMAGE SECTION */}
-      <div className="flex-1 relative w-full max-w-2xl h-full max-h-[600px] bg-white overflow-hidden rounded-lg shadow-md flex items-center justify-center">
+      <div className="flex-1 relative w-full max-w-2xl h-full max-h-[800px] bg-white overflow-hidden rounded-lg shadow-md flex items-center justify-center">
         <img
           src="https://bellavitaorganic.com/cdn/shop/files/BV-Home-banner.jpg?v=1733382169&width=1500"
           alt="Perfume Banner"
@@ -68,7 +68,7 @@ const BellamoodTech = () => {
       </div>
 
       {/* 🛒 RIGHT SIDE ADD TO CART CARD */}
-      <div className="w-full max-w-sm p-6 flex flex-col gap-4 border border-gray-200 rounded-lg shadow-md bg-white h-full max-h-[600px]">
+      <div className="w-full max-w-sm p-6 flex flex-col m-auto gap-4 border border-gray-200 rounded-lg shadow-md bg-white h-full max-h-[700px]">
         {selectedPerfume && (
           <>
             {/* Product Image */}
