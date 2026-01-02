@@ -93,7 +93,7 @@ const Register = () => {
                 render={({ field }) => (
                   <Input
                     label="Upload Image"
-                    className="w-full px-4 py-3 pl-8 border-b-4 rounded-lg"
+                    className="w-full pl-8 border-b-4 rounded-lg"
                     inputProps={{
                       type: "file",
                       accept: ALLOWED_IMAGE_TYPES.join(","),
