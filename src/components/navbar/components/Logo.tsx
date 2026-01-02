@@ -16,7 +16,7 @@ const Logo: React.FC<LogoProps> = ({ onClick }) => {
 
       {/* MOBILE LOGO */}
       <img
-        className="block md:hidden h-15"
+        className="block md:hidden h-15 cursor-pointer"
         src="https://t4.ftcdn.net/jpg/13/06/18/43/240_F_1306184377_YCytm1yWub6o610ECqPinPxo54hX0vKJ.jpg"
         alt="Logo bellavita mobile"
       />
