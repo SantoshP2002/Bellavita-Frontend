@@ -39,6 +39,8 @@ import OrderTracking from "../pages/footer/support/OrderTracking";
 import FAQ from "../pages/footer/support/FAQ";
 import Sitemap from "../pages/footer/support/Sitemap";
 import GoogleAuth from "../pages/auth/GoogleAuth";
+import Profile from "../pages/profile/Profile";
+import EditProfile from "../pages/profile/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "blogs", element: <Blog /> },
+      { path: "profile", element: <Profile /> },
+      { path: "edit-profile", element: <EditProfile /> },
       {
         path: "/blog/:id",
         element: <BlogDetails />,
