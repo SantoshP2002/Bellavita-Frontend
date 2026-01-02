@@ -71,7 +71,7 @@ const CartProducts = () => {
               products && products.length > 0
                 ? "lg:col-span-2"
                 : "lg:col-span-3"
-            } flex flex-col bg-gray-50 rounded-xl p-2 sm:p-4 h-full`}
+            } flex flex-col bg-gray-100 rounded-xl p-2 sm:p-4 h-full`}
           >
             <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4">
               Shopping Cart
@@ -94,7 +94,7 @@ const CartProducts = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4 rounded-xl shadow gap-3 sm:gap-4 bg-white hover:shadow-lg transition"
+                        className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4 rounded-tr-full shadow gap-3 sm:gap-4 hover:shadow-lg transition bg-gradient-to-bl from-pink-200 via-purple-100 to-orange-200"
                       >
                         <motion.img
                           src={product?.images?.[0]}
@@ -233,7 +233,6 @@ const CartProducts = () => {
             )}
           </AnimatePresence>
         </div>
-        
       </div>
     </div>
   );
