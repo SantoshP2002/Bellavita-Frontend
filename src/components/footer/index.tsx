@@ -24,6 +24,10 @@ const Footer = () => {
     setOpenSection(openSection === section ? null : section);
   };
 
+   const handleGoogleLogin = () => {
+     window.location.href = "http://localhost:8080/api/google";
+   };
+
   return (
     <footer className="bg-[#434343] text-gray-300 mt-6">
       {/* Top Section */}
@@ -342,12 +346,15 @@ const Footer = () => {
           <div className="flex space-x-6 mt-6 md:mt-8">
             {/* GOOGLE  */}
             <a
-              href="https://myaccount.google.com/?hl=en&utm_source=OGB&utm_medium=act&gar=WzJd&pli=1"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-indigo-400 text-xl"
             >
-              <FaGoogle className="text-red-500 hover:scale-150 transition" />
+              <FaGoogle
+                className="text-red-500 hover:scale-150 transition"
+                onClick={handleGoogleLogin}
+              />
             </a>
 
             {/* TWITTER  */}
