@@ -8,6 +8,7 @@ export const apiRoutes = {
   // User
   user: {
     getUser: { method: "GET", url: "/users/user" },
+    updateUser: { method: "PATCH", url: "/users/user/update" },
   },
 
   // Products
