@@ -223,7 +223,7 @@ const Footer = () => {
 
           <ul
             className={`flex flex-col gap-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
-              openSection === "information" || window.innerWidth >= 768
+              openSection === "support" || window.innerWidth >= 768
                 ? "max-h-[500px] opacity-100"
                 : "max-h-0 opacity-0"
             }`}
