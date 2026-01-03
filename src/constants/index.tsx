@@ -102,8 +102,8 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
 };
 
 export const carouselImages = [
-  "https://bellavitaorganic.com/cdn/shop/files/1920-720_8af70e11-34be-4c94-b987-2299d747a5ee.jpg?v=1762235997&width=1920",
-  "https://bellavitaorganic.com/cdn/shop/files/lip_sleeping_mask_1_1__11zon.webp?v=1762174363&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/1920-720_7__11zon.webp?v=1765021204&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/1920-720_11.webp?v=1767200968&width=1920",
 ];
 
 export const mobileCarouselImages = [
