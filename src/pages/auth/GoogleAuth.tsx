@@ -15,9 +15,9 @@ const GoogleAuth = () => {
       localStorage.setItem("token", token);
       setStatus("success");
 
-      // setTimeout(() => {
-      //   navigate("/");
-      // }, 1500);
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } else {
       setStatus("fail");
     }
