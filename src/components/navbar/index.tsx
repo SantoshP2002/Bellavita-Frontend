@@ -25,117 +25,119 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <div className="w-full shadow-lg sticky inset-x-0 bg-white top-0 z-50">
-      {/* TOP NAV */}
-      <div className="flex items-center justify-between px-4 md:px-10">
-        {/* Left - Logo */}
-        <Button
-          content={<FiMenu />}
-          buttonProps={{
-            onClick: () => setIsSidebarOpen(true),
-            className: "!w-fit md:hidden text-2xl text-gray-700",
-          }}
-        />
-        {/* BELLAVITA LOGO  */}
-        <Logo onClick={() => navigate("/")} />
-
-        {/* ADMIN Icons */}
-        <div className="flex items-center gap-4 md:gap-6 text-gray-700">
-          {/* Search Icon  */}
-          <GoSearch
-            onClick={() => setIsSearchOpen(true)}
-            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+    <div className="w-full shadow sticky inset-x-0 bg-white top-0 z-50">
+      <div className="max-w-6xl mx-auto">
+        {/* TOP NAV */}
+        <div className="flex items-center justify-between px-4 md:px-10">
+          {/* Left - Logo */}
+          <Button
+            content={<FiMenu />}
+            buttonProps={{
+              onClick: () => setIsSidebarOpen(true),
+              className: "!w-fit md:hidden text-2xl text-gray-700",
+            }}
           />
-          {/* Search Modal With Logic  */}
-          {isSearchOpen && (
-            <Modal
-              isOpen={isSearchOpen}
-              onClose={() => setIsSearchOpen(false)}
-              heading="Search Products"
-            >
-              <SearchModal onClose={() => setIsSearchOpen(false)} />
-            </Modal>
-          )}
+          {/* BELLAVITA LOGO  */}
+          <Logo onClick={() => navigate("/")} />
 
-          {user?.role === "ADMIN" && (
-            <Link to="/admin">
-              <GrUserAdmin className="h-4 w-4 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
-            </Link>
-          )}
-
-          {user?.profilePic ? (
-            <img
-              src={user?.profilePic}
-              alt="User"
-              className="border-2 border-black h-6 w-6 md:h-7 md:w-7 rounded-full cursor-pointer"
-              onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
-            />
-          ) : (
-            <PiUserLight
-              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-              onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
-            />
-          )}
-          {/* Cart Bag  */}
-          <IoCartOutline
-            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-            onClick={() => navigate("/cart")}
-          />
-
-          <CiDeliveryTruck
-            onClick={() => navigate("/orders")}
-            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-          />
-
-          <div>
-            <CgProfile
-              onClick={() => navigate("/profile")}
+          {/* ADMIN Icons */}
+          <div className="flex items-center gap-4 md:gap-6 text-gray-700">
+            {/* Search Icon  */}
+            <GoSearch
+              onClick={() => setIsSearchOpen(true)}
               className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
             />
+            {/* Search Modal With Logic  */}
+            {isSearchOpen && (
+              <Modal
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+                heading="Search Products"
+              >
+                <SearchModal onClose={() => setIsSearchOpen(false)} />
+              </Modal>
+            )}
+
+            {user?.role === "ADMIN" && (
+              <Link to="/admin">
+                <GrUserAdmin className="h-4 w-4 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
+              </Link>
+            )}
+
+            {user?.profilePic ? (
+              <img
+                src={user?.profilePic}
+                alt="User"
+                className="border-2 border-black h-6 w-6 md:h-7 md:w-7 rounded-full cursor-pointer"
+                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
+              />
+            ) : (
+              <PiUserLight
+                className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
+              />
+            )}
+            {/* Cart Bag  */}
+            <IoCartOutline
+              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+              onClick={() => navigate("/cart")}
+            />
+
+            <CiDeliveryTruck
+              onClick={() => navigate("/orders")}
+              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+            />
+
+            <div>
+              <CgProfile
+                onClick={() => navigate("/profile")}
+                className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* BOTTOM NAV (Desktop Only) */}
-      <div className="hidden md:flex justify-center items-center gap-6 font-medium relative z-50 px-2 md:px-0 py-1">
-        {navMapData.map((item, index) => (
-          <div
-            key={index}
-            onMouseEnter={() => setSelectedOption(item.name)}
-            onMouseLeave={() => setSelectedOption(null)}
-            className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
-          >
-            <span
-              className="uppercase cursor-pointer text-sm"
-              onClick={() => navigate(`/products?category=${item.value}`)}
+        {/* BOTTOM NAV (Desktop Only) */}
+        <div className="hidden md:flex justify-center items-center gap-6 font-medium relative z-50 px-2 md:px-0 py-1">
+          {navMapData.map((item, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => setSelectedOption(item.name)}
+              onMouseLeave={() => setSelectedOption(null)}
+              className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
             >
-              {item.name}
-            </span>
+              <span
+                className="uppercase cursor-pointer text-sm"
+                onClick={() => navigate(`/products?category=${item.value}`)}
+              >
+                {item.name}
+              </span>
 
-            {/* Hover underline */}
-            <div className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/nav:w-full" />
+              {/* Hover underline */}
+              <div className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/nav:w-full" />
 
-            {/* Dropdown Menu */}
-            {selectedOption === item.name && item.options && (
-              <div className="absolute left-0 top-6 bg-white shadow-lg rounded-md p-7 flex flex-col gap-2 z-50 min-w-[200px]">
-                {item.options.map((option, index) => (
-                  <div
-                    key={index}
-                    className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-sm"
-                    onClick={() => {
-                      navigate(
-                        `/products?category=${item.value}&subCategory=${option.value}`
-                      );
-                    }}
-                  >
-                    <span>{option.name}</span>
-                    <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+              {/* Dropdown Menu */}
+              {selectedOption === item.name && item.options && (
+                <div className="absolute left-0 top-6 bg-white rounded-md p-7 flex flex-col gap-2 z-50 min-w-[200px]">
+                  {item.options.map((option, index) => (
+                    <div
+                      key={index}
+                      className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-sm"
+                      onClick={() => {
+                        navigate(
+                          `/products?category=${item.value}&subCategory=${option.value}`
+                        );
+                      }}
+                    >
+                      <span>{option.name}</span>
+                      <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* MOBILE SIDEBAR */}
