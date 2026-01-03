@@ -17,6 +17,7 @@ import { registerSchema } from "../../validations/auth";
 import { ALLOWED_IMAGE_TYPES } from "../../constants";
 import { Button } from "../../components/Button";
 import Input from "../../components/Input";
+import LoadingScreen from "../../components/LoadingScreen";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -48,7 +49,12 @@ const Register = () => {
     mutateAsync(formData);
   };
 
-  if (isPending) return <div>Loading...</div>;
+  if (isPending)
+    return (
+      <div>
+        <LoadingScreen />
+      </div>
+    );
   if (isError) return <div>Something went wrong</div>;
 
   const profilePic = watch("profilePic") ?? null;

@@ -47,18 +47,14 @@ const EditProfile = () => {
   return (
     <div
       className="
-        min-h-screen flex items-center justify-center
-        px-4 sm:px-6 bg-gray-100 
+        min-h-[500px] flex items-center justify-center
+        px-4 sm:px-6 bg-gray-100
       "
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="
-          w-full max-w-sm sm:max-w-md
-          bg-white/90 backdrop-blur-xl
-          p-6 sm:p-8
-          shadow-2xl
-          space-y-4 sm:space-y-5
+          w-full max-w-sm sm:max-w-md  bg-white/90 backdrop-blur-xl p-6 sm:p-8 shadow-2x space-y-4 sm:space-y-5
           animate-[scaleIn_0.4s_ease-out]  rounded-tl-full rounded-br-full
         "
       >

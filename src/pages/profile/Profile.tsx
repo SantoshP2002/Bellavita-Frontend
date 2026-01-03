@@ -5,17 +5,16 @@ import { CiUser } from "react-icons/ci";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user, logout } = useUserStore();
+  const { user } = useUserStore();
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-50 py-10 px-4 mx-auto">
+    <div className="flex justify-center items-center bg-gray-50 py-10 px-4 mx-auto">
       <div
         className="
-  max-w-4xl w-full
-  min-h-[400px]
+  max-w-xl w-full
   mx-auto
   bg-white
-  shadow-2xl overflow-hidden rounded
+  shadow-2xl overflow-hidden rounded-3xl
 "
       >
         {/* Header */}
@@ -60,14 +59,11 @@ const Profile = () => {
               }}
             />
 
-            <Button content="Change Password" pattern="secondary" />
-
             <Button
-              content="Logout"
-              pattern="primary"
-              className="hover:text-red-600"
+              content="Change Password"
+              pattern="secondary"
               buttonProps={{
-                onClick: logout,
+                onClick: () => navigate("/change-password"),
               }}
             />
           </div>

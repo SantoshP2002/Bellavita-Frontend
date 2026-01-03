@@ -41,6 +41,7 @@ import Sitemap from "../pages/footer/support/Sitemap";
 import GoogleAuth from "../pages/auth/GoogleAuth";
 import Profile from "../pages/profile/Profile";
 import EditProfile from "../pages/profile/EditProfile";
+import ChangePassword from "../pages/profile/ChangePassword";
 
 const router = createBrowserRouter([
   {
@@ -147,6 +148,7 @@ const router = createBrowserRouter([
   { path: "login", element: <LoginRedirect /> },
   { path: "google-auth", element: <GoogleAuth /> },
   { path: "register", element: <RegisterRedirect /> },
+  { path: "change-password", element: <ChangePassword /> },
 
   // Address page
 ]);
