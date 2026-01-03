@@ -56,8 +56,12 @@ const AllProducts = () => {
 
   return (
     <div className="py-4 px-3 sm:px-6 md:px-12 lg:px-24">
-      <p className="text-2xl sm:text-3xl text-center font-semibold">
-        Bestseller
+      <p className="text-xl mt-3 sm:text-2xl text-center capitalize">
+        -{" "}
+        {queryParams.subCategory
+          ? queryParams.subCategory.replace("_", " ")
+          : "All Products"}{" "}
+        -
       </p>
 
       {/* Filter and Sort Bar */}
