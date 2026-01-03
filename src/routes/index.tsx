@@ -146,7 +146,7 @@ const router = createBrowserRouter([
   },
   // AUTH ROUTES
   { path: "login", element: <LoginRedirect /> },
-  { path: "google-auth", element: <GoogleAuth /> },
+  { path: "test", element: <GoogleAuth /> },
   { path: "register", element: <RegisterRedirect /> },
   { path: "change-password", element: <ChangePassword /> },
 
