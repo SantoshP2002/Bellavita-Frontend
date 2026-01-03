@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import { bestsellerLinks } from "../../constants";
+import { VITE_BACKEND_URI } from "../../env";
 
 type SectionType = "bestseller" | "information" | "support" | "contact" | null;
 
@@ -24,9 +25,9 @@ const Footer = () => {
     setOpenSection(openSection === section ? null : section);
   };
 
-   const handleGoogleLogin = () => {
-     window.location.href = "http://localhost:8080/api/google";
-   };
+  const handleGoogleLogin = () => {
+    window.location.href = `${VITE_BACKEND_URI}/api/google`;
+  };
 
   return (
     <footer className="bg-[#434343] text-gray-300 mt-6">

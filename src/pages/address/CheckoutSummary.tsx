@@ -6,7 +6,11 @@ import LoadingScreen from "../../components/LoadingScreen";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { getUserToken } from "../../utils";
-import { VITE_RAZORPAY_KEY_ID, VITE_RAZORPAY_KEY_SECRET } from "../../env";
+import {
+  VITE_BACKEND_URI,
+  VITE_RAZORPAY_KEY_ID,
+  VITE_RAZORPAY_KEY_SECRET,
+} from "../../env";
 import { useUserStore } from "../../store/user";
 import type { IOrder, TProductCart } from "../../types";
 import { useEffect } from "react";
@@ -35,6 +39,7 @@ const CheckoutSummary = () => {
     }
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const openRazorpay = (options: any) => {
     const rzp = new window.Razorpay(options);
     rzp.open();
@@ -63,13 +68,11 @@ const CheckoutSummary = () => {
     0
   );
 
-  const BACKEND_URL = "http://localhost:8080/api";
-
   const handlePayment = async () => {
     try {
       const token = getUserToken();
       const { data: orderData } = await axios.post(
-        `${BACKEND_URL}/order/create`,
+        `${VITE_BACKEND_URI}/api/order/create`,
         {},
         {
           headers: { Authorization: token },
@@ -92,7 +95,7 @@ const CheckoutSummary = () => {
           try {
             // verify-payment api
             const { data: verifyData } = await axios.patch(
-              `${BACKEND_URL}/order/verify-payment`,
+              `${VITE_BACKEND_URI}/api/order/verify-payment`,
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,
@@ -122,7 +125,7 @@ const CheckoutSummary = () => {
         modal: {
           ondismiss: async () => {
             const resp = await axios.request({
-              url: `http://localhost:8080/api/order/cancel-payment/${orderData.createOrder._id}`,
+              url: `${VITE_BACKEND_URI}/api/order/cancel-payment/${orderData.createOrder._id}`,
               method: "PATCH",
               headers: {
                 Authorization: getUserToken(),

@@ -16,6 +16,7 @@ import type z from "zod";
 import { useLoginUser } from "../../api/auth/service";
 import { Button } from "../../components/Button";
 import Input from "../../components/Input";
+import { VITE_BACKEND_URI } from "../../env";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,9 +35,8 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:8080/api/google";
+    window.location.href = `${VITE_BACKEND_URI}/api/google`;
   };
-
 
   return (
     <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4">
