@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "Bellavita-Frontend",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
