@@ -93,7 +93,7 @@ const Register = () => {
                 render={({ field }) => (
                   <Input
                     label="Upload Image"
-                    className="w-full pl-8 border-b-4 rounded-lg"
+                    className="w-full pl-8 border-b-4 rounded-lg px-4 py-3 focus:outline-none focus:ring-indigo-400 text-sm"
                     inputProps={{
                       type: "file",
                       accept: ALLOWED_IMAGE_TYPES.join(","),
@@ -117,7 +117,7 @@ const Register = () => {
                 <Input
                   label="First Name"
                   register={register("firstName")}
-                  className="pl-8"
+                  className="pl-8 w-full px-4 py-3 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
                   inputProps={{ placeholder: "First name" }}
                 />
                 <FaRegUser className="absolute top-4 left-3 text-gray-500" />
@@ -132,7 +132,7 @@ const Register = () => {
                 <Input
                   label="Last Name"
                   register={register("lastName")}
-                  className="pl-8"
+                  className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
                   inputProps={{ placeholder: "Last name" }}
                 />
                 <FaRegUser className="absolute top-4 left-3 text-gray-500" />
@@ -149,7 +149,7 @@ const Register = () => {
               <Input
                 label="Email"
                 register={register("email")}
-                className="pl-8"
+                className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
                 inputProps={{ placeholder: "Email" }}
               />
               <FaRegUser className="absolute top-4 left-3 text-gray-500" />
@@ -164,7 +164,7 @@ const Register = () => {
                 <Input
                   label="Password"
                   register={register("password")}
-                  className="pl-8"
+                  className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
                   inputProps={{ placeholder: "Password" }}
                 />
                 <FaLock className="absolute top-4 left-3 text-gray-500" />
@@ -179,7 +179,7 @@ const Register = () => {
                 <Input
                   label="Confirm Password"
                   register={register("confirmPassword")}
-                  className="pl-8"
+                  className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
                   inputProps={{ placeholder: "Confirm password" }}
                 />
                 <FaLock className="absolute top-4 left-3 text-gray-500" />
