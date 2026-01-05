@@ -198,6 +198,24 @@ const UploadProducts = () => {
               />
             )}
           />
+
+          {/* Key Benefits */}
+          <Controller
+            control={control}
+            name="keyBenefits"
+            render={({ field }) => (
+              <QuillEditor
+                label="key Benefits"
+                ref={quillRefs.keyBenefits}
+                blobUrlsRef={blobUrlRefs.keyBenefits}
+                onChange={field.onChange}
+                value={typeof field.value === "string" ? field.value : ""}
+                placeholder="Write Key Benefits here..."
+                errorText={errors?.keyBenefits?.message}
+              />
+            )}
+          />
+
           {/* How To Use */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6  rounded-lg">
             <Controller
@@ -215,38 +233,7 @@ const UploadProducts = () => {
                 />
               )}
             />
-            {/* ingredients */}
-            <Controller
-              control={control}
-              name="ingredients"
-              render={({ field }) => (
-                <QuillEditor
-                  label="ingredients"
-                  ref={quillRefs.ingredients}
-                  blobUrlsRef={blobUrlRefs.ingredients}
-                  onChange={field.onChange}
-                  value={typeof field.value === "string" ? field.value : ""}
-                  placeholder="Write ingredients here..."
-                  errorText={errors?.ingredients?.message}
-                />
-              )}
-            />
-            {/* Key Benefits */}
-            <Controller
-              control={control}
-              name="keyBenefits"
-              render={({ field }) => (
-                <QuillEditor
-                  label="key Benefits"
-                  ref={quillRefs.keyBenefits}
-                  blobUrlsRef={blobUrlRefs.keyBenefits}
-                  onChange={field.onChange}
-                  value={typeof field.value === "string" ? field.value : ""}
-                  placeholder="Write Key Benefits here..."
-                  errorText={errors?.keyBenefits?.message}
-                />
-              )}
-            />
+
             {/*Other Information*/}
             <Controller
               control={control}
@@ -260,6 +247,23 @@ const UploadProducts = () => {
                   value={typeof field.value === "string" ? field.value : ""}
                   placeholder="Write Other Information here..."
                   errorText={errors?.otherInformation?.message}
+                />
+              )}
+            />
+
+            {/* ingredients */}
+            <Controller
+              control={control}
+              name="ingredients"
+              render={({ field }) => (
+                <QuillEditor
+                  label="All Ingredients"
+                  ref={quillRefs.ingredients}
+                  blobUrlsRef={blobUrlRefs.ingredients}
+                  onChange={field.onChange}
+                  value={typeof field.value === "string" ? field.value : ""}
+                  placeholder="Write ingredients here..."
+                  errorText={errors?.ingredients?.message}
                 />
               )}
             />
