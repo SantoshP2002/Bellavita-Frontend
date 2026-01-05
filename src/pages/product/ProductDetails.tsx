@@ -157,27 +157,53 @@ const ProductDetails = () => {
           </h1>
 
           {product?.images?.length > 1 && (
-            <div className="flex justify-center overflow-x-auto scroll-smooth px-4">
-              <div className="flex flex-nowrap gap-4 sm:gap-6 md:gap-10 mx-auto">
-                {product.images.slice(1, 5).map((img: string, ind: number) => (
-                  <img
-                    key={ind}
-                    src={img}
-                    alt={`Product image ${ind + 2}`}
-                    className="
-              w-[160px] h-[240px]
-              sm:w-[200px] sm:h-[300px]
-              md:w-[220px] md:h-[330px]
-              lg:w-[240px] lg:h-[370px]
-              object-cover
-              cursor-pointer
-              rounded-lg
-              shrink-0
-            "
-                  />
-                ))}
+            <>
+              {/* 📱 MOBILE: HORIZONTAL SCROLL */}
+              <div className="flex overflow-x-auto scroll-smooth px-3 sm:hidden">
+                <div className="flex flex-nowrap gap-3">
+                  {product.images
+                    .slice(1, 5)
+                    .map((img: string, ind: number) => (
+                      <img
+                        key={ind}
+                        src={img}
+                        alt={`Product image ${ind + 2}`}
+                        className="
+          w-[140px] h-[210px]
+          object-cover
+          rounded
+          cursor-pointer
+          shrink-0
+        "
+                      />
+                    ))}
+                </div>
               </div>
-            </div>
+
+              {/* 💻 TABLET + DESKTOP: HORIZONTAL SCROLL */}
+              <div className="hidden sm:flex justify-center overflow-x-auto scroll-smooth px-2">
+                <div className="flex flex-nowrap gap-4 md:gap-6 mx-auto">
+                  {product.images
+                    .slice(1, 5)
+                    .map((img: string, ind: number) => (
+                      <img
+                        key={ind}
+                        src={img}
+                        alt={`Product image ${ind + 2}`}
+                        className="
+                w-[180px] h-[260px]
+                md:w-[220px] md:h-[330px]
+                lg:w-[240px] lg:h-[370px]
+                object-cover
+                cursor-pointer
+                rounded
+                shrink-0
+              "
+                      />
+                    ))}
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
