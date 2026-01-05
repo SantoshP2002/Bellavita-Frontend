@@ -192,7 +192,7 @@ const ProductDetails = () => {
                         alt={`Product image ${ind + 2}`}
                         className="
                 w-[180px] h-[260px]
-                md:w-[220px] md:h-[330px]
+                md:w-[240px] md:h-[330px]
                 lg:w-[240px] lg:h-[370px]
                 object-cover
                 cursor-pointer
