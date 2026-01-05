@@ -9,7 +9,7 @@ import AllReviews from "./AllReviews";
 import QuillContent from "../../components/quillContent";
 
 const ProductDetails = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { productId } = useParams();
   const [current, setCurrent] = useState(0);
 
@@ -150,6 +150,36 @@ const ProductDetails = () => {
       </div>
       <div>
         <ProductInfo product={product} />
+
+        <div>
+          <h1 className="text-lg sm:text-xl m-6 sm:m-8 text-center">
+            COLORFUL CAPTIVATION
+          </h1>
+
+          {product?.images?.length > 1 && (
+            <div className="flex justify-center overflow-x-auto scroll-smooth px-4">
+              <div className="flex flex-nowrap gap-4 sm:gap-6 md:gap-10 mx-auto">
+                {product.images.slice(1, 5).map((img: string, ind: number) => (
+                  <img
+                    key={ind}
+                    src={img}
+                    alt={`Product image ${ind + 2}`}
+                    className="
+              w-[160px] h-[240px]
+              sm:w-[200px] sm:h-[300px]
+              md:w-[220px] md:h-[330px]
+              lg:w-[240px] lg:h-[370px]
+              object-cover
+              cursor-pointer
+              rounded-lg
+              shrink-0
+            "
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
       <div>
         <ProductReview reviews={product?.reviews || []} />
