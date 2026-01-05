@@ -169,7 +169,7 @@ const ProductDetails = () => {
                         src={img}
                         alt={`Product image ${ind + 2}`}
                         className="
-          w-[140px] h-[210px]
+          w-[241px] h-[370px]
           object-cover
           rounded
           cursor-pointer
