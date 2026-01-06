@@ -152,9 +152,13 @@ const ProductDetails = () => {
         <ProductInfo product={product} />
 
         <div>
-          <h1 className="text-lg sm:text-xl m-6 sm:m-8 text-center">
-            COLORFUL CAPTIVATION
-          </h1>
+          {product?.images?.length < 0 ? (
+            <h1 className="text-lg sm:text-xl m-6 sm:m-8 text-center">
+              COLORFUL CAPTIVATION
+            </h1>
+          ) : (
+            ""
+          )}
 
           {product?.images?.length > 1 && (
             <>
