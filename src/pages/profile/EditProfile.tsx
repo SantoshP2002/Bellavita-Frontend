@@ -47,7 +47,7 @@ const EditProfile = () => {
   return (
     <div
       className="
-        min-h-[500px] flex items-center justify-center
+        min-h-[500px] flex flex-col items-center justify-center
         px-4 sm:px-6 bg-gray-100
       "
     >
@@ -122,6 +122,21 @@ const EditProfile = () => {
           }}
         />
       </form>
+      <Button
+        content="BACK"
+        pattern="outline"
+        buttonProps={{
+          onClick: () => navigate("/profile"),
+          className: ` flex! flex-col!
+              w-20!
+              font-semibold
+              rounded-lg
+             
+              hover:scale-[1.02]
+              
+            `,
+        }}
+      />
     </div>
   );
 };
