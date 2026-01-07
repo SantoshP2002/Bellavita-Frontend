@@ -10,6 +10,7 @@ import Select from "../../components/Select";
 import { SORT_DATA } from "../../constants";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAddToCart } from "../../api/cart/service";
+import { IoCartOutline } from "react-icons/io5";
 
 const AllProducts = () => {
   const navigate = useNavigate();
@@ -109,10 +110,11 @@ const AllProducts = () => {
               <div
                 key={p._id}
                 ref={isLastItem ? ref : null}
-                className="bg-white rounded-xl overflow-hidden transition-shadow duration-300 shadow-sm hover:shadow-md"
+                className="w-full bg-white rounded-xl overflow-hidden
+             transition-shadow duration-300 shadow-sm hover:shadow-md"
               >
                 {/* Image */}
-                <div className="relative h-44 sm:h-60 md:h-72 w-full bg-gray-100">
+                <div className="relative h-64 sm:h-60 md:h-72 w-full bg-gray-100">
                   <img
                     src={p.images?.[0]}
                     alt={p.title}
@@ -146,7 +148,17 @@ const AllProducts = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="w-full rounded bg-black text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-gray-900 transition"
+                    className="
+                         bg-black text-white
+                          border border-gray-300 hover:border-2
+                          border-b-2 border-r-2 hover:border-b-4 hover:border-r-4 border-b-gray-500 border-r-gray-500
+                          text-xs sm:text-sm
+                          py-1 sm:py-2 px-3
+                         hover:bg-white hover:text-black! hover:border-black
+"
+                    icons={{
+                      right: <IoCartOutline className="size-5" />,
+                    }}
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
