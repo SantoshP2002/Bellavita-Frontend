@@ -5,9 +5,11 @@ import type { TProduct } from "../types";
 import { Button } from "./Button";
 import LoadingScreen from "./LoadingScreen";
 import { Link } from "react-router-dom";
-import { getUserToken } from "../utils";
+import { useUserStore } from "../store/user";
+import toast from "react-hot-toast";
 
 const HomeProducts = () => {
+  const { isLoggedIn } = useUserStore();
   const navigate = useNavigate();
   const { data, isLoading, isError, error } = useGetAllProductsInfinite({
     limit: 8,
@@ -18,11 +20,12 @@ const HomeProducts = () => {
   const products = data?.pages?.flatMap((page) => page.products) || [];
 
   const handleAddToCart = async (id: string) => {
-    const token = getUserToken();
-
-    if (!token) {
+    if (!isLoggedIn) {
       navigate("/login");
+      toast.error("Please First Login !!");
+      return;
     }
+
     await addToCart(id);
   };
 
