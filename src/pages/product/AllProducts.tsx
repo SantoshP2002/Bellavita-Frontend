@@ -11,9 +11,10 @@ import { SORT_DATA } from "../../constants";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAddToCart } from "../../api/cart/service";
 import { IoCartOutline } from "react-icons/io5";
-import { getUserToken } from "../../utils";
+import { useUserStore } from "../../store/user";
 
 const AllProducts = () => {
+  const { isLoggedIn } = useUserStore();
   const navigate = useNavigate();
   const { queryParams, setParams, removeParam } = useQueryParams();
   const { ref, inView } = useInView();
@@ -21,8 +22,7 @@ const AllProducts = () => {
   const { mutateAsync: addToCart } = useAddToCart();
 
   const handleAddToCart = async (id: string) => {
-    const token = getUserToken();
-    if (!token) {
+    if (!isLoggedIn) {
       navigate("/login");
       return;
     }
