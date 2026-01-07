@@ -84,6 +84,7 @@ const ChangePassword = () => {
               placeholder: "New Password",
               type: showNewPassword ? "text" : "password",
             }}
+            error={errors.newPassword?.message}
             icons={{
               left: {
                 icon: <TbLockPassword className="text-gray-400 text-lg" />,
@@ -116,6 +117,7 @@ const ChangePassword = () => {
               placeholder: "Confirm New Password",
               type: showConfirmPassword ? "text" : "password",
             }}
+            error={errors.confirmPassword?.message}
             icons={{
               left: {
                 icon: <TbLockPassword className="text-gray-400 text-lg" />,
