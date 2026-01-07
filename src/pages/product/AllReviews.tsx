@@ -111,7 +111,8 @@ const AllReviews = () => {
               )
             }
             pattern="outline"
-            className="!w-auto !px-6 !py-2"
+            className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
             buttonProps={{
               onClick: () => fetchNextPage(),
               disabled: isFetchingNextPage,
@@ -132,7 +133,7 @@ const AllReviews = () => {
           ) : productsError ? (
             <p className="text-center text-red-500">Failed to load products</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {products.map((p) => (
                 <div key={p._id} className="p-4  flex flex-col justify-between">
                   <div
@@ -158,7 +159,8 @@ const AllReviews = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="w-full mt-4 rounded bg-black text-white hover:bg-gray-900 transition"
+                    className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}

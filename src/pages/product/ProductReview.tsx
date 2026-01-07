@@ -169,9 +169,12 @@ const ProductReview = ({
 
         {/* RIGHT */}
         <div className="w-full md:w-1/4 flex justify-center md:pl-10">
+          {/* WRITE REVIEW BUTTON  */}
           <Button
-            content={showForm ? "Cancel Review" : "Write  Review"} // ✅ Dynamically change text
+            content={showForm ? "Cancel Review" : "Write Review"}
             pattern="outline"
+            className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
             buttonProps={{
               onClick: () => setShowForm((prev) => !prev),
             }}
@@ -312,7 +315,8 @@ const ProductReview = ({
               content="Cancel Review"
               key="button1"
               pattern="outline"
-              className="!w-auto"
+              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
               buttonProps={{
                 onClick: () => setShowForm(false),
               }}
@@ -322,7 +326,8 @@ const ProductReview = ({
               key="button2"
               content={isPending ? "Submitting..." : "Submit Review"}
               pattern="outline"
-              className="!w-auto relative overflow-hidden border border-black text-black hover:text-white hover:bg-black transition-all duration-500"
+              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
               buttonProps={{
                 type: "button",
                 onClick: handleSubmit,

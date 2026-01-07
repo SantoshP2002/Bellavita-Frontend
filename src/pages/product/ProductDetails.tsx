@@ -69,17 +69,19 @@ const ProductDetails = () => {
 
           <div className="flex justify-center items-center gap-4">
             <Button
-              content=" Add To Cart "
+              content="Add To Cart"
               pattern="outline"
-              className=" mt-5 lg:w-full rounded bg-black text-white"
+              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
               buttonProps={{
                 onClick: () => handleAddToCart(product._id),
               }}
             />
             <Button
               content="Go To Cart "
-              pattern="secondary"
-              className=" mt-5 lg:w-full rounded bg-black text-white"
+              pattern="outline"
+              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
               buttonProps={{
                 onClick: () => navigate("/cart"),
               }}

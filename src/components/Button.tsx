@@ -26,7 +26,7 @@ export const Button = ({
     } else if (pattern === "tertiary") {
       return "bg-gray-400 hover:bg-green-700 text-white font-semibold text-sm rounded-lg transition duration-300";
     } else if (pattern === "outline") {
-      return "border border-black text-black relative overflow-hidden transition-all duration-300 hover:text-white";
+      return "border border-black text-black relative overflow-hidden transition-all duration-300 hover:text-black";
     } else {
       return "";
     }
