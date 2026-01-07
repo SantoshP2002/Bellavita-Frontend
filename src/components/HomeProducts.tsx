@@ -5,6 +5,7 @@ import type { TProduct } from "../types";
 import { Button } from "./Button";
 import LoadingScreen from "./LoadingScreen";
 import { Link } from "react-router-dom";
+import { getUserToken } from "../utils";
 
 const HomeProducts = () => {
   const navigate = useNavigate();
@@ -16,8 +17,13 @@ const HomeProducts = () => {
   // ✅ First 8 products only
   const products = data?.pages?.flatMap((page) => page.products) || [];
 
-  const handleAddToCart = (id: string) => {
-    addToCart(id);
+  const handleAddToCart = async (id: string) => {
+    const token = getUserToken();
+
+    if (!token) {
+      navigate("/login");
+    }
+    await addToCart(id);
   };
 
   return (
@@ -96,7 +102,12 @@ const HomeProducts = () => {
 
                   <Button
                     content="Add to Cart"
-                    className="mt-4 w-full bg-black text-white text-sm py-2 hover:bg-gray-800 transition-colors duration-300"
+                    className="
+                         bg-black text-white border-gray-300 hover:border-2
+                          border-b-2 border-r-2 hover:border-b-4 hover:border-r-4 border-b-gray-500 border-r-gray-500
+                          text-xs sm:text-sm
+                          py-1 sm:py-2 px-3
+                         hover:bg-white hover:text-black! hover:border-black"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
@@ -117,7 +128,7 @@ const HomeProducts = () => {
       <Button
         content="VIEW ALL"
         pattern="outline"
-        className="!w-60 !h-12 font-semibold mt-4 mb-18 mx-auto rounded border"
+        className="!w-60 !h-12 font-semibold mt-4 mb-18 mx-auto rounded"
         buttonProps={{
           onClick: () => navigate("/products"),
         }}
