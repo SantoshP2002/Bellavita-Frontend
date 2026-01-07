@@ -7,7 +7,7 @@ export const changePasswordSchema = z
     confirmPassword: z.string().min(6),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
-    message: "Password do not Match!",
+    message: "Password do not Match of New Password!",
     path: ["confirmPassword"],
   });
 
