@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {  PiUserLight } from "react-icons/pi";
+import { PiUserLight } from "react-icons/pi";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
@@ -82,18 +82,21 @@ const Navbar = () => {
               className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
               onClick={() => navigate("/cart")}
             />
-
+            {/* Orders icon  */}
             <CiDeliveryTruck
               onClick={() => navigate("/orders")}
               className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
             />
 
-            <div>
-              <CgProfile
-                onClick={() => navigate("/profile")}
-                className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-              />
-            </div>
+            {isLoggedIn && (
+              <div>
+                {/* My Profile icon  */}
+                <CgProfile
+                  onClick={() => navigate("/profile")}
+                  className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+                />
+              </div>
+            )}
           </div>
         </div>
 
