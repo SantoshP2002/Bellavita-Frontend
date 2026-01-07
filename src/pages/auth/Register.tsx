@@ -199,8 +199,10 @@ const Register = () => {
 
             {/* Submit */}
             <Button
-              pattern="secondary"
+              pattern="outline"
               content={isSubmitting ? "Registering..." : "Register"}
+              className="w-60! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm 
+              py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
               buttonProps={{ type: "submit", disabled: isSubmitting }}
             />
 
