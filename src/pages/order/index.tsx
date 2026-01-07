@@ -43,14 +43,14 @@ const AllOrder = () => {
   /* ------------------ UI ------------------ */
   return (
     <div className="max-w-5xl mx-auto px-4 py-10 space-y-8">
-      <h1 className="text-3xl font-bold text-center tracking-tight">
-        My Orders
+      <h1 className="text-4xl font-extrabold text-center text-shadow-lg">
+        MY ORDER
       </h1>
 
       {orders.length === 0 ? (
         <EmptyData
           content="No Orders Found 😕"
-          className="h-[50vh] mx-auto [&>h3]:text-xl"
+          className="h-[50vh] mx-auto [&>h3]:text-3xl"
         />
       ) : (
         <div className="space-y-6">
