@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import QuillContent from "../../components/quillContent";
 
@@ -63,38 +62,33 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             >
               {/* Accordion Header */}
               <button
-                className="w-full flex justify-between items-center text-left py-4 font-semibold text-black hover:text-gray-600"
+                className={`w-full flex justify-between items-center py-4 transition-all duration-300 ease-in-out
+                    ${isOpen ? "text-black" : "text-gray-700 hover:text-black"}
+  `}
                 onClick={() => toggleDropdown(index)}
               >
-                <span className="uppercase text-xl font-medium">{title}</span>
+                <span className="uppercase text-xl font-medium hover:cursor-pointer">
+                  {title}
+                </span>
                 {isOpen ? (
                   <IoIosArrowUp className="text-lg" />
                 ) : (
-                  <IoIosArrowDown
-                    className="text-lg"
-                    children={<QuillContent content={content || ""} />}
-                  />
+                  <IoIosArrowDown className="text-lg" />
                 )}
               </button>
 
-              {/* Animated Accordion Body */}
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    key="content"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{
-                      height: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] },
-                      opacity: { duration: 0.3, delay: 0.05 },
-                    }}
-                    className="overflow-hidden px-2 pb-4 text-gray-700 text-sm leading-relaxed shadow-sm"
-                  >
-                    <QuillContent content={content || ""} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Section  Body */}
+
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out
+                      ${isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <QuillContent
+                  content={content || ""}
+                  className="px-4 pb-5 pt-2 text-gray-700 text-sm leading-relaxed
+               prose prose-sm max-w-none"
+                />
+              </div>
             </div>
           );
         })}
