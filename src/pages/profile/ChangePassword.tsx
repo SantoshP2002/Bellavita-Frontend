@@ -10,12 +10,13 @@ import Input from "../../components/Input";
 import { TbLockPassword } from "react-icons/tb";
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword = () => {
+  const navigate = useNavigate();
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
 
   const {
     register,
@@ -35,7 +36,7 @@ const ChangePassword = () => {
     });
   };
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-10 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto bg-white rounded-tl-full rounded-br-full shadow-2xl p-6"
@@ -143,11 +144,27 @@ const ChangePassword = () => {
         {/* Update PassWord BUTTON  */}
         <Button
           content={isPending ? "Updating..." : "Update Password"}
-          pattern="secondary"
-          className="w-full! mt-8!"
+          pattern="outline"
+          className="w-full py-2.5 sm:py-3
+              rounded-lg
+              hover:scale-[1.02]"
           buttonProps={{ disabled: isPending, type: "submit" }}
         />
       </form>
+      <Button
+        content="BACK"
+        pattern="outline"
+        buttonProps={{
+          onClick: () => navigate("/profile"),
+          className: ` flex! flex-col!
+              w-20!
+              font-semibold
+              rounded-lg
+              hover:scale-[1.02]
+              
+            `,
+        }}
+      />
     </div>
   );
 };
