@@ -11,6 +11,7 @@ import { SORT_DATA } from "../../constants";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAddToCart } from "../../api/cart/service";
 import { IoCartOutline } from "react-icons/io5";
+import { getUserToken } from "../../utils";
 
 const AllProducts = () => {
   const navigate = useNavigate();
@@ -19,8 +20,13 @@ const AllProducts = () => {
 
   const { mutateAsync: addToCart } = useAddToCart();
 
-  const handleAddToCart = (id: string) => {
-    addToCart(id);
+  const handleAddToCart = async (id: string) => {
+    const token = getUserToken();
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    await addToCart(id);
   };
 
   const params = {
@@ -154,8 +160,7 @@ const AllProducts = () => {
                           border-b-2 border-r-2 hover:border-b-4 hover:border-r-4 border-b-gray-500 border-r-gray-500
                           text-xs sm:text-sm
                           py-1 sm:py-2 px-3
-                         hover:bg-white hover:text-black! hover:border-black
-"
+                         hover:bg-white hover:text-black! hover:border-black"
                     icons={{
                       right: <IoCartOutline className="size-5" />,
                     }}
