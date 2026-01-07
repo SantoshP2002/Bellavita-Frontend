@@ -50,7 +50,7 @@ export const useUpdatePassword = () => {
     mutationFn: (data: TChangePasswordPayload) => update_password(data),
 
     onSuccess: (data) => {
-      toast.success(data?.message || "Login successful!");
+      toast.success(data?.message || "Password Update Successfully !");
       logout();
       navigate("/login");
     },
