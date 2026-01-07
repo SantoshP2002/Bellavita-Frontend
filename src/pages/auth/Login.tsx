@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4">
+    <div className="min-h-dvh w-dvw flex flex-col gap-5 items-center justify-center bg-gradient-to-tr px-4">
       {/* MAIN CARD */}
       <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl shadow-xl bg-white animate-fade-in-up">
         {/* LEFT IMAGE SECTION */}
@@ -142,8 +142,8 @@ const Login = () => {
       {/* Back to Home */}
       <Button
         content="🏠 Back to Home"
-        pattern="secondary"
-        className="fixed bottom-4 right-4 !h-10 w-50!"
+        pattern="outline"
+        className="!h-10 w-50!"
         icons={{ right: <FaArrowRight /> }}
         buttonProps={{ onClick: () => navigate("/") }}
       />
