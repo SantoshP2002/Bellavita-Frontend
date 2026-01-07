@@ -5,7 +5,7 @@ import { CiUser } from "react-icons/ci";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user } = useUserStore();
+  const { user, isLoggedIn, logout } = useUserStore();
 
   return (
     <div className="flex justify-center items-center bg-gray-50 py-10 px-4 mx-auto">
@@ -51,6 +51,8 @@ const Profile = () => {
           </div>
 
           <div className="flex gap-6">
+
+            {/* EDIT PROFILE BUTTON  */}
             <Button
               content="Edit Profile"
               pattern="tertiary"
@@ -58,12 +60,21 @@ const Profile = () => {
                 onClick: () => navigate("/edit-profile"),
               }}
             />
-
+            {/* CHANGE PASSWORD BUTTON */}
             <Button
               content="Change Password"
               pattern="secondary"
               buttonProps={{
                 onClick: () => navigate("/change-password"),
+              }}
+            />
+
+            {/* LOGOUT BUTTON  */}
+            <Button
+              content="LOGOUT"
+              pattern="outline"
+              buttonProps={{
+                onClick: () => (isLoggedIn ? logout() : navigate("/")),
               }}
             />
           </div>
