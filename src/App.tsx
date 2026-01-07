@@ -10,7 +10,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="max-w-dvw max-h-dvh min-w-dvw min-h-dvh w-full h-full overflow-y-scroll bg-primary-inverted text-primary">
         <div className="max-w-[1920px] w-full h-full mx-auto">
-          <Toaster position="top-right" reverseOrder={false} />
+          <Toaster position="top-center" reverseOrder={false} />
 
           <RouterProvider router={router} />
         </div>
