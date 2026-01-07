@@ -15,8 +15,14 @@ const AdminHeader = ({ onMenuClick }: AdminHeadersProps) => {
         icons={{
           right: <FaLongArrowAltRight />,
         }}
-        pattern="secondary"
-        className=" text-indigo-500 w-50!"
+        pattern="outline"
+        className="
+                         bg-black text-white
+                          border border-gray-300 hover:border-2
+                          border-b-2 border-r-2 hover:border-b-4 hover:border-r-4 border-b-gray-500 border-r-gray-500
+                          text-xs sm:text-sm
+                          py-1 sm:py-2 px-3
+                         hover:bg-white hover:text-black! hover:border-black"
         buttonProps={{
           onClick: () => navigate("/"),
         }}
