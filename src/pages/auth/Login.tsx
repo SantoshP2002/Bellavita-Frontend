@@ -102,8 +102,10 @@ const Login = () => {
 
             {/* Login Button */}
             <Button
-              pattern="secondary"
               content={isPending ? "Logging in..." : "Login"}
+              pattern="outline"
+              className="w-50! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3
+               shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
               buttonProps={{ disabled: isPending, type: "submit" }}
             />
 
