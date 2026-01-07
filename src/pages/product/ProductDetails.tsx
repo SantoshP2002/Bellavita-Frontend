@@ -141,13 +141,25 @@ const ProductDetails = () => {
           <div className="text-gray-600 text-sm sm:text-base">
             <QuillContent content={product?.description} />
           </div>
-          <img
-            src="https://bellavitaorganic.com/cdn/shop/files/UPD_-_Pdp_banner.jpg?v=1739267213&width=500"
-            alt="ultimate image"
-            className="mt-10 cursor-pointer w-full max-w-[500px] rounded"
-          />
         </div>
       </div>
+      <div className="mt-10 w-full">
+        <picture>
+          {/* Mobile image */}
+          <source
+            media="(max-width: 767px)"
+            srcSet="https://bellavitaorganic.com/cdn/shop/files/860x1200_2.jpg?v=1737012883&width=800"
+          />
+
+          {/* Desktop / Laptop image */}
+          <img
+            src="https://bellavitaorganic.com/cdn/shop/files/1920x600_72808e11-8fc9-4f49-8bf6-65bf374606f2.jpg?v=1737012884&width=1400"
+            alt="ultimate image"
+            className="w-full rounded cursor-pointer object-cover"
+          />
+        </picture>
+      </div>
+
       <div>
         <ProductInfo product={product} />
 
