@@ -193,7 +193,7 @@ const CartProducts = () => {
               </AnimatePresence>
             </div>
           </div>
-
+          {/* ORDER SUMMARY  */}
           {/* Right Summary  */}
           <AnimatePresence>
             {products && products.length > 0 && (
@@ -222,8 +222,9 @@ const CartProducts = () => {
                 </div>
                 <Button
                   content="Continue"
-                  pattern="secondary"
-                  className="mt-4 hover:scale-105 gap-1"
+                  pattern="outline"
+                  className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
                   icons={{ right: <FaArrowRight /> }}
                   buttonProps={{
                     onClick: () => navigate("/address"),

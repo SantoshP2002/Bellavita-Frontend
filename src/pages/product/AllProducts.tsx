@@ -77,7 +77,7 @@ const AllProducts = () => {
           <Button
             content="FILTER +"
             pattern="outline"
-            className="!w-fit !h-9 text-sm px-4 py-1.5 rounded bg-black text-white"
+            className="!w-fit !h-9 text-sm px-4 py-1.5 rounded bg-black text-white!"
             buttonProps={{
               onClick: handleFilter,
             }}

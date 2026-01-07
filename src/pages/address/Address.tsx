@@ -45,8 +45,9 @@ const Address = () => {
             {addresses.length < 5 && addresses.length !== 0 && (
               <Button
                 content="ADD ADDRESS"
-                pattern="secondary"
-                className="!w-fit"
+                pattern="outline"
+                className="w-fit! mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
                 buttonProps={{ onClick: () => setParams({ add: "true" }) }}
               />
             )}
@@ -70,8 +71,9 @@ const Address = () => {
       )}
       <Button
         content="Checkout"
-        pattern="secondary"
-        className="mt-8"
+        pattern="outline"
+        className="mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
         buttonProps={{
           onClick: () => {
             if (!selectedAddress) {
