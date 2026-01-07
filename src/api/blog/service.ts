@@ -6,7 +6,7 @@ import {
   get_blog_By_Id,
   update_blog,
 } from "./api";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export const useUploadBlog = () => {
   return useMutation({

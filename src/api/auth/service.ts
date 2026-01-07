@@ -6,10 +6,10 @@ import {
   update_password,
   type TChangePasswordPayload,
 } from "./api";
-import { toast } from "react-toastify";
 import { useUserStore } from "../../store/user";
 import { saveLocalToken } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const useRegisterUser = () => {
   const { setUser } = useUserStore();

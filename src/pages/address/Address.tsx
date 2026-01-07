@@ -7,8 +7,8 @@ import AddressFormModal from "../../components/modal/children/AddressFormModal";
 import useQueryParams from "../../hooks/useQueryParams";
 import AddressCard from "./components/AddressCard";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Address = () => {
   const navigate = useNavigate();

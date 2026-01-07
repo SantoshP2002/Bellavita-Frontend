@@ -1,4 +1,5 @@
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+
 
 
 export const toastCatchErrorMessage = (error: unknown, message?: string) => {

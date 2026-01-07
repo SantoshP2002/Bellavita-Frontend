@@ -22,9 +22,9 @@ import {
 import LoadingScreen from "../../../components/LoadingScreen";
 import { deepEqual } from "../../../utils";
 import type { TBaseProduct, TProduct } from "../../../types";
-import { toast } from "react-toastify";
 import QuillEditor from "../../../components/QuillEditor/QuillEditor";
 import type Quill from "quill";
+import toast from "react-hot-toast";
 
 const EditProduct = () => {
   const quillRefs = {

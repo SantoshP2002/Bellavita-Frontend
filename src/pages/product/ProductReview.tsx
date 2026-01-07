@@ -3,8 +3,8 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import { Button } from "../../components/Button";
 import Input from "../../components/Input";
 import { useCreateReviews } from "../../api/review/service";
-import { toast } from "react-toastify";
 import type { IReview } from "../../types";
+import toast from "react-hot-toast";
 
 const ProductReview = ({
   reviews: initialReviews = [],

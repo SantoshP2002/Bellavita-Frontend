@@ -9,7 +9,7 @@ import { ADDRESS_INITIAL_VALUES } from "../constants";
 import type { IAddress, IBaseAddress } from "../types";
 import useQueryParams from "../hooks/useQueryParams";
 import { deepEqual } from "../utils";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 const AddressForm = ({
   addresses,
@@ -42,7 +42,7 @@ const AddressForm = ({
       });
 
       if (!Object.keys(changedFields).length) {
-        toast.warning("No changes made to update address!");
+        toast("No changes made to update address!");
         return;
       }
 

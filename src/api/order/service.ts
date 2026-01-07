@@ -5,7 +5,7 @@ import {
   get_order,
   get_order_By_Id,
 } from "./api";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export const useCreateOrder = () => {
   return useMutation({

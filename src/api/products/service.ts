@@ -9,8 +9,8 @@ import {
   get_product_by_id,
   update_Product,
 } from "./api";
-import { toast } from "react-toastify";
 import type {  TQueryParams } from "../../types";
+import toast from "react-hot-toast";
 
 // upload product
 export const useUploadProduct = () => {

@@ -5,7 +5,7 @@ import {
   get_address,
   update_address,
 } from "./api";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export const useAddAddress = () => {
   const queryClient = useQueryClient();

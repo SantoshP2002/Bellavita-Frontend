@@ -5,8 +5,8 @@ import {
   delete_cart_Product,
   get_user_cart,
   update_cart_product_quantity,
-} from "./api";
-import { toast } from "react-toastify";
+} from "./api"
+import toast from "react-hot-toast";
 
 export const useAddToCart = () => {
   return useMutation({

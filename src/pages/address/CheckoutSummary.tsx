@@ -3,7 +3,6 @@ import { useGetUserCart } from "../../api/cart/service";
 import { useGetAddress } from "../../api/address/service";
 import { Button } from "../../components/Button";
 import LoadingScreen from "../../components/LoadingScreen";
-import { toast } from "react-toastify";
 import axios from "axios";
 import { getUserToken } from "../../utils";
 import {
@@ -14,6 +13,7 @@ import {
 import { useUserStore } from "../../store/user";
 import type { IOrder, TProductCart } from "../../types";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const CheckoutSummary = () => {
   const navigate = useNavigate();

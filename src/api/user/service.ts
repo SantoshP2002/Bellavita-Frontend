@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { get_user, update_user } from "./api";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export const useGetUser = () => {
   return useQuery({
