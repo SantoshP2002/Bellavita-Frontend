@@ -80,8 +80,12 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               {/* Section  Body */}
 
               <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out
-                      ${isOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"}`}
+                className={`overflow-hidden transition-all duration-800 ease-in-out
+                      ${
+                        isOpen
+                          ? "max-h-screen opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
               >
                 <QuillContent
                   content={content || ""}
