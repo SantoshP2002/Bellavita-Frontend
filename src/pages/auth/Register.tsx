@@ -1,16 +1,8 @@
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  FaRegUser,
-  FaLock,
-  FaGoogle,
-  FaFacebookF,
-  FaGithub,
-  FaLinkedin,
-  FaArrowRight,
-} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaRegUser, FaLock, FaArrowRight } from "react-icons/fa";
 import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
@@ -18,6 +10,7 @@ import { ALLOWED_IMAGE_TYPES } from "../../constants";
 import { Button } from "../../components/Button";
 import Input from "../../components/Input";
 import LoadingScreen from "../../components/LoadingScreen";
+import { VITE_BACKEND_URI } from "../../env";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -59,6 +52,10 @@ const Register = () => {
 
   const profilePic = watch("profilePic") ?? null;
 
+  const handleGoogleLogin = () => {
+    window.location.href = `${VITE_BACKEND_URI}/api/google`;
+  };
+
   return (
     <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4">
       {/* MAIN CARD */}
@@ -78,8 +75,12 @@ const Register = () => {
             className="max-w-md mx-auto flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1 className="text-3xl font-bold text-center text-gray-800">
-              Create Account 🚀
+            <h1
+              className="text-3xl font-bold text-center
+               bg-gradient-to-r from-blue-400 to-purple-700 
+               text-transparent bg-clip-text"
+            >
+              REGISTER
             </h1>
 
             {/* Profile Preview */}
@@ -99,7 +100,7 @@ const Register = () => {
                 render={({ field }) => (
                   <Input
                     label="Upload Image"
-                    className="w-full pl-8 border-b-4 rounded-lg px-4 py-3 focus:outline-none focus:ring-indigo-400 text-sm"
+                    className="w-full pl-8 border-b-4 rounded-lg px-4 focus:outline-none text-sm"
                     inputProps={{
                       type: "file",
                       accept: ALLOWED_IMAGE_TYPES.join(","),
@@ -207,39 +208,69 @@ const Register = () => {
             />
 
             {/* Social */}
-            <div className="text-center text-gray-600 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex-1 h-px bg-black/30" />
-                OR
-                <div className="flex-1 h-px bg-black/30" />
+            <div>
+              <div className="flex-1 h-px bg-black/30" />
+            </div>
+
+            {/* SOCIAL ICON GOOGLE */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+              {/* Google */}
+              <Button
+                pattern="outline"
+                buttonProps={{
+                  onClick: handleGoogleLogin,
+                  type: "button",
+                }}
+                className="w-full sm:w-60 h-10 bg-white text-gray-800 border border-gray-300 rounded-lg text-sm shadow-[2px_2px_0_0_#000]"
+                content={
+                  <span className="flex items-center justify-center gap-2">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
+                      alt="Google"
+                      className="w-4 h-4"
+                    />
+                    <span className="whitespace-nowrap">
+                      Continue with Google
+                    </span>
+                  </span>
+                }
+              />
+
+              {/* Back Home */}
+              <Button
+                content="🏠 Back to Home"
+                pattern="outline"
+                className="w-full sm:w-60 h-10 rounded bg-black text-white border-2 border-black text-xs sm:text-sm transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]
+    "
+                icons={{ right: <FaArrowRight /> }}
+                buttonProps={{
+                  type: "button",
+                  onClick: () => navigate("/")
+                }}
+              />
+            </div>
+
+            {/* LOGIN  */}
+            <div className="mt-3 flex justify-center">
+              <div className="flex flex-col justify-center items-center gap-3 text-xs">
+                <span>Already have an account?</span>
+
+                <Button
+                  content="LOGIN"
+                  className="transition-all duration-300 hover:bg-gray-200 hover:rounded-full hover:shadow-2xl hover:shadow-blue-900 px-5 py-2"
+                  icons={{
+                    right: <FaArrowRight className="ml-1" />,
+                  }}
+                  buttonProps={{
+                    type: "button",
+                    onClick: () => navigate("/login"),
+                  }}
+                />
               </div>
             </div>
-
-            <div className="flex justify-center gap-4 text-xl">
-              <FaGoogle className="text-red-500 hover:scale-110 transition" />
-              <FaFacebookF className="text-blue-600 hover:scale-110 transition" />
-              <FaGithub className="text-gray-800 hover:scale-110 transition" />
-              <FaLinkedin className="text-blue-500 hover:scale-110 transition" />
-            </div>
-
-            <p className="text-center text-sm">
-              Already have an account?{" "}
-              <Link to="/login" className="text-indigo-600 font-semibold">
-                Login <FaArrowRight className="inline-block ml-1" />
-              </Link>
-            </p>
           </form>
         </div>
       </div>
-
-      {/* Back Home */}
-      <Button
-        content="🏠 Back to Home"
-        pattern="secondary"
-        className="fixed bottom-4 right-4 !h-10 w-50!"
-        icons={{ right: <FaArrowRight /> }}
-        buttonProps={{ onClick: () => navigate("/") }}
-      />
     </div>
   );
 };

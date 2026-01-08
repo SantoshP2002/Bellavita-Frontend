@@ -1,14 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  FaArrowRight,
-  FaFacebookF,
-  FaGithub,
-  FaGoogle,
-  FaLinkedin,
-  FaLock,
-  FaRegUser,
-} from "react-icons/fa";
+import { FaArrowRight, FaLock, FaRegUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import type { TBaseUser } from "../../types";
 import { loginSchema } from "../../validations/auth";
@@ -39,26 +31,30 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-dvh w-dvw flex flex-col gap-5 items-center justify-center bg-gradient-to-tr px-4">
+    <div className="min-h-dvh w-dvw flex flex-col gap-5 items-center justify-center px-4">
       {/* MAIN CARD */}
-      <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl shadow-xl bg-white animate-fade-in-up">
+      <div className="flex w-full max-w-5xl overflow-hidden">
         {/* LEFT IMAGE SECTION */}
         <div className="hidden md:flex md:w-1/2">
           <img
             src="https://www.shutterstock.com/image-photo/cute-character-3d-image-ai-600nw-2574802489.jpg"
             alt="Login visual"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover rounded-xl"
           />
         </div>
 
         {/* RIGHT FORM SECTION */}
-        <div className="w-full md:w-1/2 p-8 sm:p-10 bg-slate-100 flex items-center">
+        <div className="w-full md:w-1/2 p-8 sm:p-10 flex items-center">
           <form
             className="w-full max-w-md mx-auto"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
-              Please Login 👋
+            <h1
+              className="text-3xl font-bold text-center mb-6 
+               bg-gradient-to-r from-blue-400 to-purple-700 
+               text-transparent bg-clip-text"
+            >
+              LOGIN
             </h1>
 
             {/* Email */}
@@ -110,37 +106,58 @@ const Login = () => {
             />
 
             {/* Divider */}
-            <div className="text-center mt-4 text-gray-600">
+            <div className="text-center mt-7">
               <div className="flex items-center gap-3 mb-2">
                 <div className="flex-1 h-px bg-black/30" />
-                <span className="text-sm">OR</span>
-                <div className="flex-1 h-px bg-black/30" />
               </div>
-              <span className="text-xs">Login with social platform</span>
             </div>
 
             {/* Social Icons */}
             <div className="flex justify-center gap-5 mt-4 text-xl">
-              <FaGoogle
-                className="text-red-500 hover:scale-150 transition"
-                onClick={handleGoogleLogin}
+              <Button
+                pattern="outline"
+                buttonProps={{
+                  onClick: handleGoogleLogin,
+                  type: "button",
+                }}
+                className=" w-60! bg-white text-gray-800 border border-gray-300 
+                rounded-lg text-sm shadow-[2px_2px_0_0_#000]"
+                content={
+                  <span className="flex items-center gap-2">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/300/300221.png"
+                      alt="Google"
+                      className="w-4 h-4"
+                    />
+                    <span className="whitespace-nowrap">
+                      Continue with Google
+                    </span>
+                  </span>
+                }
               />
-              <FaFacebookF className="text-blue-600 hover:scale-150 transition" />
-              <FaGithub className="text-gray-800 hover:scale-150 transition" />
-              <FaLinkedin className="text-blue-500 hover:scale-150 transition" />
             </div>
 
             {/* Register */}
-            <p className="text-center mt-6 text-sm">
-              Don’t have an account?{" "}
-              <Link to="/register" className="text-indigo-600 font-semibold">
-                Register <FaArrowRight className="inline-block ml-1" />
-              </Link>
-            </p>
+            <div className="mt-6 flex justify-center">
+              <div className="flex flex-col justify-center items-center text-xs">
+                <span>Don’t have an account?</span>
+
+                <Button
+                  content="REGISTER"
+                  className="transition-all duration-300 hover:bg-gray-200 hover:rounded-full hover:shadow-2xl hover:shadow-blue-900 px-5 py-2"
+                  icons={{
+                    right: <FaArrowRight className="ml-1" />,
+                  }}
+                  buttonProps={{
+                    type:"button",
+                    onClick: () => navigate("/register"),
+                  }}
+                />
+              </div>
+            </div>
           </form>
         </div>
       </div>
-
       {/* Back to Home */}
       <Button
         content="🏠 Back to Home"
@@ -148,7 +165,10 @@ const Login = () => {
         className="h-10! w-50! mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
                      duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
         icons={{ right: <FaArrowRight /> }}
-        buttonProps={{ onClick: () => navigate("/") }}
+        buttonProps={{
+          type:"button",
+          onClick: () => navigate("/")
+        }}
       />
     </div>
   );
