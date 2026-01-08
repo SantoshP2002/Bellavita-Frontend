@@ -24,7 +24,7 @@ const perfumes = [
     id: 3,
     name: "Luxury Perfume Gift Set For Men - 4 x 20ml",
     brand: "BELLAVITA (Pack of 10 x 5ml perfumes.)",
-    price:1234,
+    price: 1234,
     sellingPrice: 1000,
     image:
       "https://bellavitaorganic.com/cdn/shop/files/download_05e5f4e5-e803-430c-9b8e-2280519f4977.jpg?v=1732892512&width=500",
