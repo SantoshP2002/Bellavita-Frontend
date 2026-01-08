@@ -231,3 +231,49 @@ export const USER_VALUE = {
   lastName: "",
   email: "",
 };
+
+export const categoryVideoMap: Record<
+  string,
+  Record<
+    string,
+    {
+      mobile: string;
+      desktop: string;
+    }
+  >
+> = {
+  cosmetic: {
+    flawless_base_range: {
+      mobile:
+        "https://cdn.shopify.com/videos/c/o/v/e49d6a8ef8234201a79a90be4ca39eda.mp4",
+      desktop:
+        "https://cdn.shopify.com/videos/c/o/v/a0256e76c2a24e6ab1d42d2d7ca153c0.mp4",
+    },
+    makeup_brushes: {
+      mobile:
+        "https://cdn.shopify.com/videos/c/o/v/e0bed43876af486386a3dbea61910890.mp4",
+      desktop:
+        "https://cdn.shopify.com/videos/c/o/v/2df0125f451e413faea6116085fd022e.mp4",
+    },
+    face_blush: {
+      mobile:
+        "https://cdn.shopify.com/videos/c/o/v/4cfa980361824a39bd3a92167f6ad9b6.mp4",
+      desktop:
+        "https://cdn.shopify.com/videos/c/o/v/291319ecfa6c4fbf913a21c67e4f4d20.mp4",
+    },
+    airbrush_compact: {
+      mobile:
+        "https://cdn.shopify.com/videos/c/o/v/334b0d41279a449782cff51999f40fa9.mp4",
+      desktop:
+        "https://cdn.shopify.com/videos/c/o/v/be008f0d52bb4664937ef7afad10a527.mp4",
+    },
+  },
+  skincare: {
+    lip_care: {
+      mobile:
+        "https://cdn.shopify.com/videos/c/o/v/f6d57d919ae84bf0bcf6037a0b984106.mp4",
+      desktop:
+        "https://cdn.shopify.com/videos/c/o/v/2b1cf44df9714e7487d3a1ff7a9ee3c9.mp4",
+    },
+  },
+};
