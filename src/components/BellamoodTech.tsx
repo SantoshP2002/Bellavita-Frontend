@@ -31,9 +31,9 @@ const BellamoodTech = () => {
   );
 
   return (
-    <div className="flex flex-col md:flex-row items-stretch justify-center p-6 md:p-16 gap-12 md:gap-20 mt-4">
+    <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-center p-4 sm:p-6 lg:p-16 gap-6 sm:gap-10 lg:gap-20 mt-4">
       {/* 🖼️ LEFT SIDE IMAGE SECTION */}
-      <div className="flex-1 relative w-full max-w-2xl h-full max-h-[800px] bg-white overflow-hidden rounded-lg shadow-md flex items-center justify-center">
+      <div className="relative w-full lg:flex-1 max-w-2xl bg-white overflow-hidden rounded-lg flex items-center justify-center h-[260px] sm:h-[380px] md:h-[480px] lg:h-[600px]">
         <img
           src="https://bellavitaorganic.com/cdn/shop/files/BV-Home-banner.jpg?v=1733382169&width=1500"
           alt="Perfume Banner"
@@ -41,34 +41,29 @@ const BellamoodTech = () => {
         />
 
         {/* 🧴 Overlay Buttons */}
-        <div className="absolute bottom-6 md:bottom-10 flex justify-center w-full gap-4 md:gap-6">
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex justify-center gap-3 sm:gap-4 md:gap-6 w-[60%] sm:w-[47%] md:w-[75%] max-w-full">
           {perfumes.map((perfume) => (
             <Button
               key={perfume.id}
               content={
-                <div className="flex justify-center gap-2">
-                  <span
-                    className={`md:w-4 md:h-4 rounded-full border border-white transition 
-                    ${
-                      selectedPerfume?.id === perfume.id
-                        ? "bg-white"
-                        : "bg-transparent"
-                    }`}
-                  ></span>
-                </div>
+                <span
+                  className={`w-3! h-3! sm:w-4! sm:h-4!  rounded-full transition ${
+                    selectedPerfume?.id === perfume.id
+                      ? "bg-white"
+                      : "bg-transparent"
+                  }`}
+                />
               }
               pattern="outline"
-              className="bg-black/50 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg hover:bg-black transition"
-              buttonProps={{
-                onClick: () => setSelectedPerfume(perfume),
-              }}
+              className="bg-white/30 w-8! text-white p-2 rounded hover:bg-white transition"
+              buttonProps={{ onClick: () => setSelectedPerfume(perfume) }}
             />
           ))}
         </div>
       </div>
 
       {/* 🛒 RIGHT SIDE ADD TO CART CARD */}
-      <div className="w-full max-w-sm p-6 flex flex-col m-auto gap-4 border border-gray-200 rounded-lg shadow-md bg-white h-full max-h-[700px]">
+      <div className="w-full sm:max-w-md lg:max-w-sm p-4 sm:p-6 flex flex-col gap-4 border border-gray-200 rounded-lg shadow-md bg-white">
         {selectedPerfume && (
           <>
             {/* Product Image */}
@@ -80,29 +75,21 @@ const BellamoodTech = () => {
               />
             </div>
 
-            {/* Brand */}
-            {/* <p className="text-sm text-gray-500 font-medium">
-              {selectedPerfume.brand || "Bellamood"}
-            </p> */}
-
             {/* Title */}
-            <h3 className="font-semibold text-gray-800 line-clamp-1 text-lg">
+            <h3 className="font-semibold text-gray-800 text-base sm:text-lg line-clamp-1">
               {selectedPerfume.name}
             </h3>
 
             {/* Price */}
-            <div className="flex items-center gap-2">
-              <p className="text-xl font-bold text-black">
-                ₹{selectedPerfume.price}
-              </p>
-            </div>
+            <p className="text-lg sm:text-xl font-bold text-black">
+              ₹{selectedPerfume.price}
+            </p>
 
             {/* Add To Cart Button */}
             <Button
               content="Add To Cart"
               pattern="outline"
-              className="w-full bg-black text-white rounded-lg hover:bg-gray-900 py-3 text-base font-medium transition"
-              
+              className="w-full bg-black text-white rounded-lg hover:bg-gray-900 py-3 text-sm sm:text-base font-medium transition"
             />
           </>
         )}
