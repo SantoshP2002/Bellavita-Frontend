@@ -108,7 +108,7 @@ const EditProfile = () => {
           buttonProps={{
             type: "submit",
             disabled: isSubmitting,
-            className: `
+            className: `hover:text-white!
               w-full py-2.5 sm:py-3
               text-base sm:text-lg
               font-semibold
@@ -127,14 +127,8 @@ const EditProfile = () => {
         pattern="outline"
         buttonProps={{
           onClick: () => navigate("/profile"),
-          className: ` flex! flex-col!
-              w-20!
-              font-semibold
-              rounded-lg
-             
-              hover:scale-[1.02]
-              
-            `,
+          className:
+            "flex! flex-col! w-20! hover:text-white! font-semibold rounded-lg hover:scale-[1.02]",
         }}
       />
     </div>

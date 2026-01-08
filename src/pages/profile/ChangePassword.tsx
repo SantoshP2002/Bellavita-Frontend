@@ -145,9 +145,7 @@ const ChangePassword = () => {
         <Button
           content={isPending ? "Updating..." : "Update Password"}
           pattern="outline"
-          className="w-full py-2.5 sm:py-3
-              rounded-lg
-              hover:scale-[1.02]"
+          className="w-full py-2.5 sm:py-3 hover:text-white! rounded-lg hover:scale-[1.02]"
           buttonProps={{ disabled: isPending, type: "submit" }}
         />
       </form>
@@ -156,13 +154,8 @@ const ChangePassword = () => {
         pattern="outline"
         buttonProps={{
           onClick: () => navigate("/profile"),
-          className: ` flex! flex-col!
-              w-20!
-              font-semibold
-              rounded-lg
-              hover:scale-[1.02]
-              
-            `,
+          className:
+            "flex! flex-col! hover:text-white! w-20! font-semibold rounded-lg hover:scale-[1.02]",
         }}
       />
     </div>
