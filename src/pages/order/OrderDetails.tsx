@@ -54,11 +54,18 @@ const OrderDetails = () => {
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Order Details</h1>
+        <h1
+          className="text-3xl font-bold text-center mb-6 
+               bg-gradient-to-r from-blue-400 to-purple-700 
+               text-transparent bg-clip-text"
+        >
+          Order Details
+        </h1>
         <Button
           content="Back To Order"
-          pattern="secondary"
-          // className="w-40! underline bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400 text-white"
+          pattern="outline"
+          className="w-50! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3
+               shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
           icons={{
             left: <FaLongArrowAltLeft />,
           }}
