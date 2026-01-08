@@ -4,22 +4,28 @@ import { Button } from "./Button";
 const perfumes = [
   {
     id: 1,
-    name: "CEO Man",
-    price: 999,
+    name: "OCEAN Man Perfume - 100 mL",
+    brand: "BELLAVITA (Perfume Gift Set for Men)",
+    price: 2345,
+    sellingPrice: 1000,
     image:
       "http://bellavitaorganic.com/cdn/shop/files/download_5bea8eae-fa1f-45d3-95bc-81ced6860f9d.jpg?v=1732892381&width=500",
   },
   {
     id: 2,
-    name: "Skai Aquatic",
-    price: 999,
+    name: "Luxury Collection Gift Set - 4 x 20ml",
+    brand: "BELLAVITA (EAU DE PARFUM)",
+    price: 5432,
+    sellingPrice: 1000,
     image:
       "https://bellavitaorganic.com/cdn/shop/files/download_7e6fb342-20d2-42be-8b82-ca93a466d61f.jpg?v=1732892400&width=500",
   },
   {
     id: 3,
-    name: "OUD Gold",
-    price: 999,
+    name: "Luxury Perfume Gift Set For Men - 4 x 20ml",
+    brand: "BELLAVITA (Pack of 10 x 5ml perfumes.)",
+    price:1234,
+    sellingPrice: 1000,
     image:
       "https://bellavitaorganic.com/cdn/shop/files/download_05e5f4e5-e803-430c-9b8e-2280519f4977.jpg?v=1732892512&width=500",
   },
@@ -75,21 +81,32 @@ const BellamoodTech = () => {
               />
             </div>
 
-            {/* Title */}
+            {/* name */}
             <h3 className="font-semibold text-gray-800 text-base sm:text-lg line-clamp-1">
               {selectedPerfume.name}
             </h3>
+            {/* brand */}
+            <h3 className=" text-gray-500 text-base sm:text-sm">
+              {selectedPerfume.brand}
+            </h3>
 
-            {/* Price */}
-            <p className="text-lg sm:text-xl font-bold text-black">
-              ₹{selectedPerfume.price}
-            </p>
+            <div className="flex items-center gap-5">
+              {/* Price */}
+              <p className="text-lg sm:text-xl font-bold text-black">
+                ₹{selectedPerfume.price}
+              </p>
+              {/* selling Price */}
+              <p className="text-lg sm:text-xs font-bold text-gray-500 line-through">
+                ₹{selectedPerfume.sellingPrice}
+              </p>
+            </div>
 
             {/* Add To Cart Button */}
             <Button
               content="Add To Cart"
               pattern="outline"
-              className="w-full bg-black text-white rounded-lg hover:bg-gray-900 py-3 text-sm sm:text-base font-medium transition"
+              className="  mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3
+               shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
             />
           </>
         )}
