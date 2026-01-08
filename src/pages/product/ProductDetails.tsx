@@ -7,6 +7,7 @@ import ProductInfo from "./ProductInfo";
 import ProductReview from "./ProductReview";
 import AllReviews from "./AllReviews";
 import QuillContent from "../../components/quillContent";
+import { categoryVideoMap } from "../../constants";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ const ProductDetails = () => {
   const handleAddToCart = (id: string) => {
     addToCart(id);
   };
+
+  const videoData =
+    categoryVideoMap?.[product?.category?.value]?.[product?.subCategory?.value];
 
   return (
     <div>
@@ -161,36 +165,31 @@ const ProductDetails = () => {
           />
         </picture>
       </div>
-      {/* VIDEO  */}
-      <div className="mt-10">
-        {/* 📱 Mobile video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-[560px] object-cover block md:hidden"
-        >
-          <source
-            src="https://cdn.shopify.com/videos/c/o/v/4cfa980361824a39bd3a92167f6ad9b6.mp4"
-            type="video/mp4"
-          />
-        </video>
 
-        {/* 💻 Desktop video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-[560px] object-cover hidden md:block"
-        >
-          <source
-            src="https://cdn.shopify.com/videos/c/o/v/291319ecfa6c4fbf913a21c67e4f4d20.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </div>
+      {/* VIDEO  */}
+      {videoData && (
+        <div className="mt-10">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-[560px] object-cover block md:hidden"
+          >
+            <source src={videoData.mobile} type="video/mp4" />
+          </video>
+
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-[560px] object-cover hidden md:block"
+          >
+            <source src={videoData.desktop} type="video/mp4" />
+          </video>
+        </div>
+      )}
 
       <div>
         <ProductInfo product={product} />
