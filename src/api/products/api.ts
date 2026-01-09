@@ -52,7 +52,7 @@ export const get_product_by_id = async (id: string) => {
 
 // get My Products
 export const get_my_Products = async (
-  params: Record<string, number | string>
+  params: Record<string, number | string | undefined>
 ) => {
   try {
     const token = getUserToken();
