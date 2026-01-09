@@ -3,13 +3,14 @@ import { Button } from "../../components/Button";
 import { useUserStore } from "../../store/user";
 import { CiUser } from "react-icons/ci";
 import { MdOutlineLogout } from "react-icons/md";
+import { IoIosArrowBack } from "react-icons/io";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user, isLoggedIn, logout } = useUserStore();
+  const { user, logout } = useUserStore();
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
+    <div className="flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-[280px_1fr]">
         {/* ================= LEFT SIDEBAR ================= */}
         <div className="bg-gradient-to-b from-indigo-500 to-purple-300 p-8 flex flex-col items-center text-center">
@@ -77,19 +78,26 @@ const Profile = () => {
           </div>
 
           {/* Logout */}
-          <div className="pt-10">
+          <div className="pt-10 flex items-center gap-5">
             <Button
               content="Logout"
               pattern="outline"
-              className="bg-black text-white
-                           border-gray-300 hover:border-2
-                          border-b-2 border-r-2 hover:border-b-4 hover:border-r-4 border-b-gray-500 border-r-gray-500
-                          text-xs sm:text-sm
-                          py-1 sm:py-2 px-3
-                         hover:bg-white hover:text-black! hover:border-black"
+              className=" bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
               icons={{ right: <MdOutlineLogout size={18} /> }}
               buttonProps={{
-                onClick: () => (isLoggedIn ? logout() : navigate("/")),
+                onClick: () => {
+                  logout();
+                  navigate("/");
+                },
+              }}
+            />
+            <Button
+              content="BACK"
+              pattern="outline"
+              className="w-60! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+              icons={{ left: <IoIosArrowBack size={18} /> }}
+              buttonProps={{
+                onClick: () => navigate("/"),
               }}
             />
           </div>
