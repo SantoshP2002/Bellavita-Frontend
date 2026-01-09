@@ -71,7 +71,7 @@ const CartProducts = () => {
               products && products.length > 0
                 ? "lg:col-span-2"
                 : "lg:col-span-3"
-            } flex flex-col bg-gray-100 rounded-xl p-2 sm:p-4 h-full`}
+            } flex flex-col rounded-xl p-2 sm:p-4 h-full`}
           >
             <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4">
               Shopping Cart
