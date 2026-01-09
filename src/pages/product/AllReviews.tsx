@@ -126,7 +126,7 @@ const AllReviews = () => {
       {/* 🛍 Recommended Products Section */}
       {products.length > 0 && (
         <div className="mt-12">
-          <h2 className="font-bold text-2xl text-center mb-6 uppercase">
+          <h2 className="font-bold text-2xl text-center uppercase">
             You May Also Like
           </h2>
 
@@ -139,7 +139,7 @@ const AllReviews = () => {
               {products.map((p) => (
                 <div
                   key={p._id}
-                  className="flex flex-col justify-between bg-white transition-shadow duration-200 w-full overflow-hidden"
+                  className="flex flex-col justify-between bg-white transition-shadow duration-200 w-full"
                 >
                   {/* Image & Info */}
                   <div
@@ -178,8 +178,8 @@ const AllReviews = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="mt-3 w-full bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-            duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+                    className="mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3
+               shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
