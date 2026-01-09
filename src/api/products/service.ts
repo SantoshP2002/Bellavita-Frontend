@@ -9,7 +9,7 @@ import {
   get_product_by_id,
   update_Product,
 } from "./api";
-import type {  TQueryParams } from "../../types";
+import type { TQueryParams } from "../../types";
 import toast from "react-hot-toast";
 
 // upload product
@@ -26,7 +26,7 @@ export const useUploadProduct = () => {
 };
 
 // get all products
-export const useGetAllProducts = (params: TQueryParams, enabled? : boolean) => {
+export const useGetAllProducts = (params: TQueryParams, enabled?: boolean) => {
   return useQuery({
     queryKey: ["get_all_products", params],
     queryFn: () => get_all_products(params),
@@ -54,15 +54,21 @@ export const useGetAllProductsInfinite = (
   });
 };
 
-export const useGetMyProductsInfinite = (
-  params: Record<string, number | string>
-) => {
+export const useGetMyProductsInfinite = (params: {
+  limit: number;
+  search?: string;
+}) => {
   return useInfiniteQuery({
-    queryKey: ["get_my_products_infinite", params],
+    queryKey: ["get_my_products_infinite", params.search || "", params.limit],
+
     initialPageParam: 1,
 
     queryFn: ({ pageParam = 1 }) =>
-      get_my_Products({ page: pageParam, ...params }),
+      get_my_Products({
+        page: pageParam,
+        limit: params.limit,
+        ...(params.search ? { search: params.search } : {}),
+      }),
 
     getNextPageParam: (lastPage) => {
       if (lastPage?.currentPage < lastPage?.totalPages) {
@@ -72,7 +78,6 @@ export const useGetMyProductsInfinite = (
     },
   });
 };
-
 
 // get product by ID
 export const useGetProductById = (id: string) => {
