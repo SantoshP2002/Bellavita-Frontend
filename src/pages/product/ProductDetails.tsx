@@ -215,13 +215,7 @@ const ProductDetails = () => {
                         key={ind}
                         src={img}
                         alt={`Product image ${ind + 2}`}
-                        className="
-          w-[241px] h-[370px]
-          object-cover
-          rounded
-          cursor-pointer
-          shrink-0
-        "
+                        className="w-[241px] h-[370px] object-cover rounded cursor-pointer shrink-0"
                       />
                     ))}
                 </div>
