@@ -135,41 +135,51 @@ const AllReviews = () => {
           ) : productsError ? (
             <EmptyData content="Product Not Found 😕" />
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:px-4">
               {products.map((p) => (
-                <div key={p._id} className="p-4  flex flex-col justify-between">
+                <div
+                  key={p._id}
+                  className="flex flex-col justify-between bg-white transition-shadow duration-200 w-full overflow-hidden"
+                >
+                  {/* Image & Info */}
                   <div
                     onClick={() => navigate(`/products/${p._id}`)}
-                    className="cursor-pointer"
+                    className="cursor-pointer flex flex-col flex-1 w-full"
                   >
-                    <img
-                      src={p.images?.[0]}
-                      alt={p.title}
-                      className="object-contain mb-2"
-                    />
-                    <div className="p-2 py-4">
-                      <p className="text-xs text-gray-500 font-medium line-clamp-1">
+                    <div className="w-full h-40 sm:h-44 md:h-48 lg:h-52 flex items-center justify-center bg-gray-100 rounded">
+                      <img
+                        src={p.images?.[0] || "/placeholder.png"}
+                        alt={p.title}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+
+                    <div className="p-2 flex-1 flex flex-col justify-between">
+                      <p className="text-xs text-gray-500 sm:font-medium line-clamp-1">
                         {p.brand}
                       </p>
-                      <h3 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-2">
+                      <h3 className="text-sm mt-1  sm:font-semibold text-gray-800 line-clamp-2">
                         {p.title}
                       </h3>
-                      <div className="flex items-center gap-5 mt-3">
-                        <p className="text-lg font-bold text-black">
+                      <div className="flex items-center gap-2 mt-2">
+                        <p className="text-lg font- text-black">
                           ₹{p.sellingPrice.toFixed(2)}
                         </p>
-                        <p className="text-sm text-gray-400 line-through">
-                          ₹{p.price.toFixed(2)}
-                        </p>
+                        {p.price > p.sellingPrice && (
+                          <p className="text-sm text-gray-400 line-through">
+                            ₹{p.price.toFixed(2)}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
 
+                  {/* Add to Cart Button */}
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className=" bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+                    className="mt-3 w-full bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+            duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
