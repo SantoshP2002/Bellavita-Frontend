@@ -27,7 +27,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
     () =>
       debounce((value: string) => {
         setDebouncedQuery(value.trim());
-      }, 300),
+      }, 100),
     []
   );
 
@@ -39,7 +39,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
   const queryParams = useMemo(
     () => ({
       page: 1,
-      limit: 5,
+      limit: 100,
       search: debouncedQuery,
     }),
     [debouncedQuery]
@@ -49,11 +49,10 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
   const productsQuery = useGetAllProducts(queryParams, Boolean(debouncedQuery));
 
   const products = productsQuery.data ?? [];
-  console.log("PRODUCTS2222", products);
 
   const handleSubmit = (id?: string) => {
     if (id) {
-      navigate(`/product/${id}`);
+      navigate(`/products/${id}`);
     } else if (searchQuery.trim()) {
       navigate(`/search?search=${searchQuery.trim()}`);
     }
