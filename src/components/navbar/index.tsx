@@ -110,7 +110,7 @@ const Navbar = () => {
               className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
             >
               <span
-                className="uppercase cursor-pointer text-sm"
+                className="uppercase cursor-pointer text-xs"
                 onClick={() => navigate(`/products?category=${item.value}`)}
               >
                 {item.name}
@@ -125,7 +125,7 @@ const Navbar = () => {
                   {item.options.map((option, index) => (
                     <div
                       key={index}
-                      className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-sm"
+                      className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-xs"
                       onClick={() => {
                         navigate(
                           `/products?category=${item.value}&subCategory=${option.value}`
