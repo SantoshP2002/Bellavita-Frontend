@@ -1,7 +1,7 @@
 import { useInView } from "react-intersection-observer";
 
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "../../../components/Button";
 import {
   useDeleteProductById,
@@ -27,6 +27,16 @@ const Products = () => {
     }
   };
 
+  const params = useMemo(
+    () => ({
+      limit: 8,
+      search: debouncedSearch,
+    }),
+    [debouncedSearch]
+  );
+
+  console.log("PARAMS", params);
+
   const {
     data,
     isLoading,
@@ -35,7 +45,7 @@ const Products = () => {
     hasNextPage,
     isError,
     refetch,
-  } = useGetMyProductsInfinite({ limit: 8, search: debouncedSearch });
+  } = useGetMyProductsInfinite(params);
 
   useEffect(() => {
     if (inView && hasNextPage) {
