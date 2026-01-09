@@ -10,6 +10,8 @@ import type { IAddress, IBaseAddress } from "../types";
 import useQueryParams from "../hooks/useQueryParams";
 import { deepEqual } from "../utils";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 
 const AddressForm = ({
   addresses,
@@ -98,7 +100,7 @@ const AddressForm = ({
           label="Alt. Phone Number"
           className="border-b-4 border-r-4"
           register={register("altPhoneNumber")}
-          inputProps={{ placeholder: "Enter Alt. Number", type:"number" }}
+          inputProps={{ placeholder: "Enter Alt. Number", type: "number" }}
         />
         <Input
           label="Address"
@@ -137,12 +139,24 @@ const AddressForm = ({
           inputProps={{ placeholder: "Enter Country" }}
         />
       </div>
-      <Button
-        content={isPending ? "Saving..." : "Save Address"}
-        pattern="outline"
-        className="w-50! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
-        buttonProps={{ type: "submit", disabled: isPending }}
-      />
+      <div className="flex gap-5 items-center">
+        <Button
+          content={isPending ? "Saving..." : "Save Address"}
+          pattern="outline"
+          className="w-50! h-10! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+          buttonProps={{ type: "submit", disabled: isPending }}
+        />
+        <Link to="/cart">
+          <Button
+            content="BACK"
+            pattern="outline"
+            className="w-20! h-8! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+            icons={{
+              left: <IoIosArrowBack size={10} />,
+            }}
+          />
+        </Link>
+      </div>
     </form>
   );
 };
