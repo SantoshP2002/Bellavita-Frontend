@@ -145,17 +145,17 @@ const AllReviews = () => {
                       alt={p.title}
                       className="object-contain mb-2"
                     />
-                    <p className="text-xs md:text-sm text-gray-500 font-medium">
+                    <p className="text-xs text-gray-500 font-medium line-clamp-1">
                       {p.brand}
                     </p>
-                    <h3 className="font-semibold text-gray-800 line-clamp-1">
+                    <h3 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-2">
                       {p.title}
                     </h3>
                     <div className="flex items-center gap-5">
-                      <p className="text-xs md:text-sm font-bold text-black mt-1">
+                      <p className="text-lg font-bold text-black">
                         ₹{p.sellingPrice.toFixed(2)}
                       </p>
-                      <p className="text-xs md:text-sm line-through text-gray-400 mt-1">
+                      <p className="text-sm text-gray-400 line-through">
                         ₹{p.price.toFixed(2)}
                       </p>
                     </div>
