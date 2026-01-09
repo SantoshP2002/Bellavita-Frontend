@@ -59,7 +59,7 @@ const Register = () => {
   return (
     <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4">
       {/* MAIN CARD */}
-      <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl shadow-xl bg-white animate-fade-in-up">
+      <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl animate-fade-in-up">
         {/* LEFT IMAGE SECTION */}
         <div className="hidden md:flex md:w-1/2 bg-black items-center justify-center">
           <img
@@ -70,7 +70,7 @@ const Register = () => {
         </div>
 
         {/* RIGHT FORM SECTION */}
-        <div className="w-full md:w-1/2 p-8 sm:p-10 bg-slate-100">
+        <div className="w-full md:w-1/2 p-8 sm:p-10">
           <form
             className="max-w-md mx-auto flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
@@ -245,7 +245,7 @@ const Register = () => {
                 icons={{ right: <FaArrowRight /> }}
                 buttonProps={{
                   type: "button",
-                  onClick: () => navigate("/")
+                  onClick: () => navigate("/"),
                 }}
               />
             </div>
