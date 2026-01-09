@@ -73,35 +73,37 @@ const Address = () => {
           )}
         </div>
       )}
-      <div className="flex gap-10 items-center">
-        <Button
-          content="Checkout"
-          pattern="outline"
-          className="w-60! mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
-          buttonProps={{
-            onClick: () => {
-              if (!selectedAddress) {
-                toast.error("Please select an address before proceeding!");
-                return;
-              }
-              navigate("/checkout", {
-                state: {
-                  addressId: selectedAddress,
-                },
-              });
-            },
-          }}
-        />
-
-        <Link to={"/cart"}>
+      {addresses.length > 0 && (
+        <div className="flex gap-10 items-center">
           <Button
-            content="BACK"
+            content="Checkout"
             pattern="outline"
-            className="w-20! h-8! mt-10 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+            className="w-60! mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+        duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+            buttonProps={{
+              onClick: () => {
+                if (!selectedAddress) {
+                  toast.error("Please select an address before proceeding!");
+                  return;
+                }
+                navigate("/checkout", {
+                  state: {
+                    addressId: selectedAddress,
+                  },
+                });
+              },
+            }}
           />
-        </Link>
-      </div>
+
+          <Link to={"/cart"}>
+            <Button
+              content="BACK"
+              pattern="outline"
+              className="w-20! h-8! mt-10 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+            />
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
