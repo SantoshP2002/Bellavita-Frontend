@@ -18,11 +18,11 @@ const AddressCard = ({
   const { mutateAsync } = useDeleteAddress();
   return (
     <div
-      className={`border ${
+      className={`border border-black ${
         isSelected
-          ? "shadow-xl rounded-br-xl bg-gradient-to-br from-pink-100 via-pink-300 to-blue-200 text-white"
+          ? "shadow-xl rounded-br-xl bg-gradient-to-br from-purple-100 via-pink-100 to-blue-200 text-white"
           : "border-black shadow-sm hover:shadow-md"
-      } rounded-2xl p-5 transition-transform duration-200 hover:scale-[1.02] relative w-full bg-white`}
+      } rounded-2xl p-5 transition-transform duration-200 hover:scale-[1.02] relative bg-white`}
     >
       <div className="absolute top-3 right-3 flex gap-2">
         <Button

@@ -9,6 +9,8 @@ import AddressCard from "./components/AddressCard";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import EmptyData from "../../components/empty-data/EmptyData";
+import { Link } from "react-router-dom";
 
 const Address = () => {
   const navigate = useNavigate();
@@ -34,13 +36,15 @@ const Address = () => {
       {isLoading ? (
         <LoadingScreen />
       ) : isError ? (
-        <div className="text-center text-red-600">Error loading addresses</div>
+        <div className="text-center text-red-600">
+          <EmptyData content="Address Not Found" />
+        </div>
       ) : (
         <div>
           {/* Header with button */}
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-indigo-600">
-              {addresses.length ? "📍 Your Addresses" : "Add address"}
+              {addresses.length ? "Your Addresses" : "Add address"}
             </h2>
             {addresses.length < 5 && addresses.length !== 0 && (
               <Button
@@ -69,25 +73,35 @@ const Address = () => {
           )}
         </div>
       )}
-      <Button
-        content="Checkout"
-        pattern="outline"
-        className="mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+      <div className="flex gap-10 items-center">
+        <Button
+          content="Checkout"
+          pattern="outline"
+          className="w-60! mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
                      duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
-        buttonProps={{
-          onClick: () => {
-            if (!selectedAddress) {
-              toast.error("Please select an address before proceeding!");
-              return;
-            }
-            navigate("/checkout", {
-              state: {
-                addressId: selectedAddress,
-              },
-            });
-          },
-        }}
-      />
+          buttonProps={{
+            onClick: () => {
+              if (!selectedAddress) {
+                toast.error("Please select an address before proceeding!");
+                return;
+              }
+              navigate("/checkout", {
+                state: {
+                  addressId: selectedAddress,
+                },
+              });
+            },
+          }}
+        />
+
+        <Link to={"/cart"}>
+          <Button
+            content="BACK"
+            pattern="outline"
+            className="w-20! h-8! mt-10 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+          />
+        </Link>
+      </div>
     </div>
   );
 };
