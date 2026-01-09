@@ -6,6 +6,8 @@ import { FiUser } from "react-icons/fi";
 import { useGetAllProductsInfinite } from "../../api/products/service";
 import { useAddToCart } from "../../api/cart/service";
 import { useNavigate } from "react-router-dom";
+import LoadingScreen from "../../components/LoadingScreen";
+import EmptyData from "../../components/empty-data/EmptyData";
 
 const AllReviews = () => {
   const navigate = useNavigate();
@@ -129,9 +131,9 @@ const AllReviews = () => {
           </h2>
 
           {productsLoading ? (
-            <p className="text-center text-gray-500">Loading products...</p>
+            <LoadingScreen />
           ) : productsError ? (
-            <p className="text-center text-red-500">Failed to load products</p>
+            <EmptyData content="Product Not Found 😕" />
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {products.map((p) => (
@@ -145,26 +147,28 @@ const AllReviews = () => {
                       alt={p.title}
                       className="object-contain mb-2"
                     />
-                    <p className="text-xs text-gray-500 font-medium line-clamp-1">
-                      {p.brand}
-                    </p>
-                    <h3 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-2">
-                      {p.title}
-                    </h3>
-                    <div className="flex items-center gap-5">
-                      <p className="text-lg font-bold text-black">
-                        ₹{p.sellingPrice.toFixed(2)}
+                    <div className="p-2 py-4">
+                      <p className="text-xs text-gray-500 font-medium line-clamp-1">
+                        {p.brand}
                       </p>
-                      <p className="text-sm text-gray-400 line-through">
-                        ₹{p.price.toFixed(2)}
-                      </p>
+                      <h3 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-2">
+                        {p.title}
+                      </h3>
+                      <div className="flex items-center gap-5 mt-3">
+                        <p className="text-lg font-bold text-black">
+                          ₹{p.sellingPrice.toFixed(2)}
+                        </p>
+                        <p className="text-sm text-gray-400 line-through">
+                          ₹{p.price.toFixed(2)}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
+                    className=" bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
                      duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
