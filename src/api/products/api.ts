@@ -51,7 +51,9 @@ export const get_product_by_id = async (id: string) => {
 };
 
 // get My Products
-export const get_my_Products = async (params: Record<string, number | string>) => {
+export const get_my_Products = async (
+  params: Record<string, number | string>
+) => {
   try {
     const token = getUserToken();
     const { method, url } = apiRoutes.products.getMyProducts;
