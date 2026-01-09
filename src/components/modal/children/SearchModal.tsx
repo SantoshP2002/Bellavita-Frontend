@@ -11,6 +11,7 @@ export interface Product {
   title: string;
   brand: string;
   commonImages: string[];
+  images: string[];
   category: {
     name: string;
   };
@@ -47,7 +48,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
   // ✅ enabled ONLY here
   const productsQuery = useGetAllProducts(queryParams, Boolean(debouncedQuery));
 
-  const products = productsQuery.data?.products ?? [];
+  const products = productsQuery.data ?? [];
   console.log("PRODUCTS2222", products);
 
   const handleSubmit = (id?: string) => {
@@ -109,7 +110,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
                 onClick={() => handleSubmit(p._id)}
               >
                 <img
-                  src={p.commonImages?.[0]}
+                  src={p.commonImages?.[0] || p.images?.[0]}
                   alt={p.title}
                   className="w-8 h-8 rounded object-cover"
                 />
