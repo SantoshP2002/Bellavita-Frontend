@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const [current, setCurrent] = useState(0);
+  const [showFullDesc, setShowFullDesc] = useState(false);
 
   const { mutateAsync: addToCart } = useAddToCart();
 
@@ -24,6 +25,14 @@ const ProductDetails = () => {
 
   const videoData =
     categoryVideoMap?.[product?.category?.value]?.[product?.subCategory?.value];
+
+  const price = product?.price;
+  const sellingPrice = product?.sellingPrice;
+
+  const discountPercent =
+    price && sellingPrice
+      ? Math.round(((price - sellingPrice) / price) * 100)
+      : 0;
 
   return (
     <div>
@@ -60,16 +69,25 @@ const ProductDetails = () => {
             {product?.title}
           </div>
           <div className="text-sm text-yellow-500">{product?.brand}</div>
-          <div className="mt-4 text-lg sm:text-xl font-bold">
-            ₹{product?.sellingPrice}
+
+          <div className="mt-4 flex items-center gap-6 py-3">
+            {discountPercent > 0 && (
+              <span className="text-green-600 font-semibold text-sm">
+                {discountPercent}% OFF
+              </span>
+            )}
+
+            <span className="text-lg sm:text-lg font-bold">
+              ₹{product?.sellingPrice}
+            </span>
           </div>
-          <div className="flex items-center gap-1 text-sm text-gray-500">
+
+          <div className="flex items-center gap-2 text-xs text-gray-500">
             MRP:
-            <div className="line-through text-red-500">₹{product?.price}</div>
+            <span className="line-through text-red-500">₹{price}</span>
           </div>
-          <p className="text-xs sm:text-sm text-gray-500">
-            Inclusive of all taxes
-          </p>
+
+          <p className="text-xs text-gray-600">Inclusive of all taxes</p>
 
           <div className="flex justify-center items-center gap-4">
             <Button
@@ -144,11 +162,23 @@ const ProductDetails = () => {
           <p className="mt-10 font-medium text-sm sm:text-base">
             DESCRIPTION :
           </p>
-          <div className="text-gray-600 text-sm sm:text-base">
+
+          <div
+            className={`text-gray-600 text-sm transition-all ${
+              showFullDesc ? "" : "line-clamp-4"
+            }`}
+          >
             <QuillContent content={product?.description} />
           </div>
+          <button
+            onClick={() => setShowFullDesc(!showFullDesc)}
+            className="mt-2 text-sm font-semibold cursor-pointer text-black hover:underline"
+          >
+            {showFullDesc ? "Show Less" : "Read More"}
+          </button>
         </div>
       </div>
+
       <div className="mt-10 w-full">
         <picture>
           {/* Mobile image */}
