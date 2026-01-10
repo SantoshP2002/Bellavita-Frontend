@@ -16,6 +16,7 @@ import { GoSearch } from "react-icons/go";
 import SearchModal from "../modal/children/SearchModal";
 import Modal from "../modal";
 import { IoCartOutline } from "react-icons/io5";
+import { useGetUserCart } from "../../api/cart/service";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, isLoggedIn, logout } = useUserStore();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const { data: cart } = useGetUserCart();
+  const cartCount = cart?.cart?.products?.length || 0;
 
   return (
     <div className="w-full shadow sticky inset-x-0 bg-white top-0 z-50">
@@ -77,11 +81,20 @@ const Navbar = () => {
                 onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
               />
             )}
-            {/* Cart Bag  */}
-            <IoCartOutline
-              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-              onClick={() => navigate("/cart")}
-            />
+            {/*Add To Cart Bag  */}
+            <div className="relative">
+              <IoCartOutline
+                className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-red-600"
+                onClick={() => navigate("/cart")}
+              />
+
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] md:text-xs font-bold rounded-full px-1.5">
+                  {cartCount}
+                </span>
+              )}
+            </div>
+
             {/* Orders icon  */}
             <CiDeliveryTruck
               onClick={() => navigate("/orders")}
@@ -93,7 +106,7 @@ const Navbar = () => {
                 {/* My Profile icon  */}
                 <CgProfile
                   onClick={() => navigate("/profile")}
-                  className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+                  className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-green-600"
                 />
               </div>
             )}
