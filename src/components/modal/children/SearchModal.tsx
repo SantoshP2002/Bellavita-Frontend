@@ -98,7 +98,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
 
       {/* Results */}
       <div className="flex flex-col flex-1 min-h-[235px] max-h-[350px] overflow-y-auto bg-white rounded shadow-inner">
-        {productsQuery && debouncedQuery ? (
+        {productsQuery.isPending && debouncedQuery ? (
           <LoadingScreen />
         ) : products.length ? (
           <ul className="flex flex-col gap-1 p-1">
