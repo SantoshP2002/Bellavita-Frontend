@@ -59,16 +59,18 @@ const HeaderAction = () => {
             />
           )}
 
-          <IoCartOutline
-            className="cursor-pointer transition-colors duration-200 hover:text-red-600 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
-            onClick={() => navigate("/cart")}
-          />
+          <div className="relative">
+            <IoCartOutline
+              className="cursor-pointer transition-colors duration-200 hover:text-red-600 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
+              onClick={() => navigate("/cart")}
+            />
 
-          {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white font-bold rounded-2xl flex items-center justify-center h-4 w-4 text-[10px] sm:h-4.5 sm:w-4.5 sm:text-[11px] md:h-5 md:w-5 md:text-xs">
-              {cartCount}
-            </span>
-          )}
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white font-bold rounded-2xl flex items-center justify-center h-4 w-4 text-[10px] sm:h-4.5 sm:w-4.5 sm:text-[11px] md:h-5 md:w-5 md:text-xs">
+                {cartCount}
+              </span>
+            )}
+          </div>
 
           <CiDeliveryTruck
             onClick={() => navigate("/orders")}
