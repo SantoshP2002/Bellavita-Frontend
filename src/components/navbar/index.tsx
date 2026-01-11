@@ -120,8 +120,8 @@ const Navbar = () => {
         </div>
 
         {!isHomePage && (
-          <div className="md:hidden bg-white">
-            <div className="flex gap-4 overflow-x-auto px-4 py-2 scrollbar-hide">
+          <div className="md:hidden">
+            <div className="flex gap-4 overflow-x-auto px-4 py-1 scrollbar-hide">
               {navMapData.map((item, index) => (
                 <span
                   key={index}
@@ -129,7 +129,7 @@ const Navbar = () => {
                     setActiveCategory(item.value);
                     navigate(`/products?category=${item.value}`);
                   }}
-                  className={`flex items-center gap-2 whitespace-nowrap text-xs font-medium px-6 py-2 border cursor-pointer
+                  className={`flex items-center gap-2 whitespace-nowrap text-xs font-medium px-6 py-2 rounded border cursor-pointer
   ${
     activeCategory === item.value
       ? "bg-black text-white border-black"
