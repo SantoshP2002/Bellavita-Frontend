@@ -42,6 +42,7 @@ import GoogleAuth from "../pages/auth/GoogleAuth";
 import Profile from "../pages/profile/Profile";
 import EditProfile from "../pages/profile/EditProfile";
 import ChangePassword from "../pages/profile/ChangePassword";
+import CrazyDealsMobile from "../components/CrazyDealsMobile";
 
 const router = createBrowserRouter([
   {
@@ -52,10 +53,7 @@ const router = createBrowserRouter([
       { path: "blogs", element: <Blog /> },
       { path: "profile", element: <Profile /> },
       { path: "edit-profile", element: <EditProfile /> },
-      {
-        path: "/blog/:id",
-        element: <BlogDetails />,
-      },
+      { path: "/blog/:id", element: <BlogDetails /> },
       { path: "newsroom", element: <NewsRoom /> },
       { path: "terms-and-condition", element: <TermsAndCondition /> },
       { path: "privacy-policy", element: <PrivacyPolicy /> },
@@ -68,6 +66,7 @@ const router = createBrowserRouter([
       { path: "all-products", element: <AllProducts /> },
       { path: "faq", element: <FAQ /> },
       { path: "sitemap", element: <Sitemap /> },
+      { path: "crazy-deals-mobile", element: <CrazyDealsMobile /> },
       {
         path: "cart",
         element: (
