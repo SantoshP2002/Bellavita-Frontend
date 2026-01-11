@@ -152,7 +152,7 @@ const Navbar = () => {
           onClick={() => setIsSidebarOpen(false)}
         >
           <div
-            className="bg-white w-64 h-full shadow-lg p-5 flex flex-col gap-6 transform transition-transform duration-300 overflow-y-auto"
+            className="bg-white w-72 h-full shadow-lg p-5 flex flex-col gap-6 transform transition-transform duration-300 overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
