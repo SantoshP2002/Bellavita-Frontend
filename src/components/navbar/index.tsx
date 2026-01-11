@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { PiUserLight } from "react-icons/pi";
+import { useState, type JSX } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { PiSprayBottleDuotone, PiUserLight } from "react-icons/pi";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
@@ -16,9 +16,24 @@ import SearchModal from "../modal/children/SearchModal";
 import Modal from "../modal";
 import { IoCartOutline } from "react-icons/io5";
 import { useGetUserCart } from "../../api/cart/service";
+import { TbPerfume } from "react-icons/tb";
+import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
+import { GiLipstick } from "react-icons/gi";
+import { ImGift } from "react-icons/im";
+
+const categoryIconMap: Record<string, JSX.Element> = {
+  Perfumes: <TbPerfume size={16} />,
+  Bestsellers: <HiOutlineArrowTrendingUp size={16} />,
+  Cosmetic: <GiLipstick size={16} />,
+  Skincare: <PiSprayBottleDuotone size={16} />,
+  Gifting: <ImGift size={16} />,
+};
 
 const Navbar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, isLoggedIn, logout } = useUserStore();
@@ -26,6 +41,8 @@ const Navbar = () => {
 
   const { data: cart } = useGetUserCart();
   const cartCount = cart?.cart?.products?.length || 0;
+
+  const isHomePage = location.pathname === "/";
 
   return (
     <div className="w-full shadow sticky inset-x-0 bg-white top-0 z-50">
@@ -101,6 +118,32 @@ const Navbar = () => {
             />
           </div>
         </div>
+
+        {!isHomePage && (
+          <div className="md:hidden bg-white">
+            <div className="flex gap-4 overflow-x-auto px-4 py-2 scrollbar-hide">
+              {navMapData.map((item, index) => (
+                <span
+                  key={index}
+                  onClick={() => {
+                    setActiveCategory(item.value);
+                    navigate(`/products?category=${item.value}`);
+                  }}
+                  className={`flex items-center gap-2 whitespace-nowrap text-xs font-medium px-6 py-2 border cursor-pointer
+  ${
+    activeCategory === item.value
+      ? "bg-black text-white border-black"
+      : "bg-gray-100 text-gray-900 border-gray-300"
+  }
+`}
+                >
+                  {categoryIconMap[item.name] && categoryIconMap[item.name]}{" "}
+                  {item.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* BOTTOM NAV (Desktop Only) */}
         <div className="hidden md:flex justify-center items-center gap-6 font-medium relative z-50 px-2 md:px-0 py-1">
