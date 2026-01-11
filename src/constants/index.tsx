@@ -1,4 +1,10 @@
+import { TbPerfume } from "react-icons/tb";
 import type { IBaseAddress, QuillToolbar, TBaseProduct } from "../types";
+import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
+import { GiLipstick } from "react-icons/gi";
+import { PiSprayBottleDuotone } from "react-icons/pi";
+import { ImGift } from "react-icons/im";
+import type { JSX } from "react";
 
 export const navMapData = [
   { name: "Crazy Deals", value: "crazy_deals" },
@@ -276,4 +282,12 @@ export const categoryVideoMap: Record<
         "https://cdn.shopify.com/videos/c/o/v/2b1cf44df9714e7487d3a1ff7a9ee3c9.mp4",
     },
   },
+};
+
+export const categoryIconMap: Record<string, JSX.Element> = {
+  Perfumes: <TbPerfume size={16} />,
+  Bestsellers: <HiOutlineArrowTrendingUp size={16} />,
+  Cosmetic: <GiLipstick size={16} />,
+  Skincare: <PiSprayBottleDuotone size={16} />,
+  Gifting: <ImGift size={16} />,
 };
