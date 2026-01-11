@@ -391,49 +391,48 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Scam Alert  */}
-      <div className="border border-red-500 rounded-md p-4 md:p-5 max-w-full mx-20">
-        <h3 className="text-red-400 font-semibold text-base md:text-lg mb-2">
+      {/* 🚨 Scam Alert */}
+      <div className="border border-red-500 rounded-lg p-4 sm:p-5 md:p-6 mx-3 sm:mx-6 md:mx-20 my-6">
+        <h3 className="text-red-500 font-semibold text-base sm:text-lg mb-2">
           🚨 Scam Alert
         </h3>
 
-        <h2 className="text-md text-white md:text-base mb-3">
+        <p className="text-sm sm:text-base text-gray-200 mb-3">
           We have noticed a rise in fraudulent activities through calls, SMS,
           WhatsApp messages, emails, and other mediums.
-        </h2>
+        </p>
 
-        <h6 className="text-sm md:text-base mb-3">
+        <p className="text-sm sm:text-base text-gray-200 mb-3">
           Please be aware that{" "}
-          <span className="font-semibold text-xs text-white">
-            BELLAVITA and its employees never ask for your financial details for
-            contests or deals
+          <span className="font-semibold text-white">
+            BELLAVITA and its employees never ask for your financial details
           </span>{" "}
-          outside our official platform. We also never request payments for any
-          promotional activities through unauthorised channels.
-        </h6>
+          for contests or deals outside our official platform. We also never
+          request payments through unauthorised channels.
+        </p>
 
-        <p className="text-sm md:text-base mb-3">
-          If you receive any such communication, stay cautious and reach out to
-          us immediately at our{" "}
-          <span className="font-semibold text-white text-xs">
-            customer care number +91 9810154380
+        <p className="text-sm sm:text-base text-gray-200 mb-3">
+          If you receive any such communication, stay cautious and contact us at{" "}
+          <span className="font-semibold text-white block sm:inline">
+            +91 9810154380
           </span>{" "}
-          or email us at{" "}
-          <span className="font-semibold underline text-xs text-white">
+          or email{" "}
+          <span className="font-semibold underline text-white block sm:inline">
             shop@bellavitaorganic.com
           </span>
-          .
         </p>
 
-        <p className="text-sm md:text-base">
-          If you suspect any scam, kindly{" "}
-          <span className="font-semibold text-xs text-white">
-            Department of Telecommunications (DoT)
+        <p className="text-sm sm:text-base text-gray-200">
+          If you suspect any scam, kindly report it to{" "}
+          <span className="font-semibold text-white">
+            the Department of Telecommunications (DoT)
           </span>
           .
         </p>
 
-        <h5 className="mt-3 font-semibold">Stay safe!</h5>
+        <h5 className="mt-4 font-semibold text-white text-sm sm:text-base">
+          Stay safe!
+        </h5>
       </div>
 
       {/* Bottom Section */}
