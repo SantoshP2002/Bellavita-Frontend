@@ -1,312 +1,62 @@
-import { useState, type JSX } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { PiSprayBottleDuotone, PiUserLight } from "react-icons/pi";
-import { CiDeliveryTruck } from "react-icons/ci";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GrUserAdmin } from "react-icons/gr";
 import { navMapData } from "../../constants";
-import Logo from "./components/Logo";
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
-import { useUserStore } from "../../store/user";
-import { Button } from "../Button";
-import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
-import { GoSearch } from "react-icons/go";
-import SearchModal from "../modal/children/SearchModal";
-import Modal from "../modal";
-import { IoCartOutline } from "react-icons/io5";
-import { useGetUserCart } from "../../api/cart/service";
-import { TbPerfume } from "react-icons/tb";
-import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
-import { GiLipstick } from "react-icons/gi";
-import { ImGift } from "react-icons/im";
-
-const categoryIconMap: Record<string, JSX.Element> = {
-  Perfumes: <TbPerfume size={16} />,
-  Bestsellers: <HiOutlineArrowTrendingUp size={16} />,
-  Cosmetic: <GiLipstick size={16} />,
-  Skincare: <PiSprayBottleDuotone size={16} />,
-  Gifting: <ImGift size={16} />,
-};
-
+import HeaderAction from "./components/HeaderAction";
+import MobileBar from "./components/MobileBar";
+import TopBar from "./components/TopBar";
 const Navbar = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { user, isLoggedIn, logout } = useUserStore();
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-
-  const { data: cart } = useGetUserCart();
-  const cartCount = cart?.cart?.products?.length || 0;
-
-  const isHomePage = location.pathname === "/";
 
   return (
-    <div className="w-full shadow sticky inset-x-0 bg-white top-0 z-50">
-      <div className="max-w-6xl mx-auto">
-        {/* TOP NAV */}
-        <div className="flex items-center justify-between px-4 md:px-10">
-          {/* Left - Logo */}
-          <Button
-            content={<FiMenu />}
-            buttonProps={{
-              onClick: () => setIsSidebarOpen(true),
-              className: "!w-fit md:hidden text-2xl text-gray-700",
-            }}
-          />
-          {/* BELLAVITA LOGO  */}
-          <Logo onClick={() => navigate("/")} />
-
-          {/* ADMIN Icons */}
-          <div className="flex items-center gap-4 md:gap-6 text-gray-700">
-            {/* Search Icon  */}
-            <GoSearch
-              onClick={() => setIsSearchOpen(true)}
-              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-            />
-            {/* Search Modal With Logic  */}
-            {isSearchOpen && (
-              <Modal
-                isOpen={isSearchOpen}
-                onClose={() => setIsSearchOpen(false)}
-                heading="Search Products"
-              >
-                <SearchModal onClose={() => setIsSearchOpen(false)} />
-              </Modal>
-            )}
-
-            {user?.role === "ADMIN" && (
-              <Link to="/admin">
-                <GrUserAdmin className="h-4 w-4 md:h-7 md:w-7 [&>path]:stroke-[1.2]" />
-              </Link>
-            )}
-
-            {user?.profilePic ? (
-              <img
-                src={user?.profilePic}
-                alt="User"
-                className="border-2 border-black h-6 w-6 md:h-7 md:w-7 rounded-full cursor-pointer"
-                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
-              />
-            ) : (
-              <PiUserLight
-                className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
-              />
-            )}
-            {/* Add To Cart Bag */}
-            <div className="relative flex items-center justify-center">
-              <IoCartOutline
-                className="cursor-pointer transition-colors duration-200 hover:text-red-600 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
-                onClick={() => navigate("/cart")}
-              />
-
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white font-bold rounded-2xl flex items-center justify-center h-4 w-4 text-[10px] sm:h-4.5 sm:w-4.5 sm:text-[11px] md:h-5 md:w-5 md:text-xs">
-                  {cartCount}
-                </span>
-              )}
-            </div>
-
-            {/* Orders icon  */}
-            <CiDeliveryTruck
-              onClick={() => navigate("/orders")}
-              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-            />
-          </div>
-        </div>
-
-        {!isHomePage && (
-          <div className="md:hidden">
-            <div className="flex gap-4 overflow-x-auto px-4 py-1 scrollbar-hide">
-              {navMapData.map((item, index) => (
-                <span
-                  key={index}
-                  onClick={() => {
-                    setActiveCategory(item.value);
-                    navigate(`/products?category=${item.value}`);
-                  }}
-                  className={`flex items-center gap-2 whitespace-nowrap text-xs font-medium px-6 py-2 rounded border cursor-pointer
-  ${
-    activeCategory === item.value
-      ? "bg-black text-white border-black"
-      : "bg-gray-100 text-gray-900 border-gray-300"
-  }
-`}
-                >
-                  {categoryIconMap[item.name] && categoryIconMap[item.name]}{" "}
-                  {item.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* BOTTOM NAV (Desktop Only) */}
-        <div className="hidden md:flex justify-center items-center gap-6 font-medium relative z-50 px-2 md:px-0 py-1">
-          {navMapData.map((item, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => setSelectedOption(item.name)}
-              onMouseLeave={() => setSelectedOption(null)}
-              className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
-            >
-              <span
-                className="uppercase cursor-pointer text-xs"
-                onClick={() => navigate(`/products?category=${item.value}`)}
-              >
-                {item.name}
-              </span>
-
-              {/* Hover underline */}
-              <div className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/nav:w-full" />
-
-              {/* Dropdown Menu */}
-              {selectedOption === item.name && item.options && (
-                <div className="absolute left-0 top-6 bg-white rounded-md p-7 flex flex-col gap-2 z-50 min-w-[200px]">
-                  {item.options.map((option, index) => (
-                    <div
-                      key={index}
-                      className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-xs"
-                      onClick={() => {
-                        navigate(
-                          `/products?category=${item.value}&subCategory=${option.value}`
-                        );
-                      }}
-                    >
-                      <span>{option.name}</span>
-                      <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+    <div className="w-full shadow sticky bg-white top-0 z-50">
+      <div className="flex items-center">
+        <MobileBar />
+        <HeaderAction />
       </div>
-
-      {/* MOBILE SIDEBAR */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-opacity-40 z-50"
-          onClick={() => setIsSidebarOpen(false)}
-        >
+      <TopBar />
+      {/* BOTTOM NAV (Desktop Only) */}
+      <div className="hidden md:flex justify-center items-center gap-6 font-medium relative z-50 px-6 py-2">
+        {navMapData.map((item, index) => (
           <div
-            className="bg-white w-72 h-full shadow-lg p-5 flex flex-col gap-6 transform transition-transform duration-300 overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
+            key={index}
+            onMouseEnter={() => setSelectedOption(item.name)}
+            onMouseLeave={() => setSelectedOption(null)}
+            className="group/nav relative flex items-center cursor-pointer whitespace-nowrap hover:text-gray-600"
           >
-            {/* Close Button */}
-            <div className="flex justify-between items-center">
-              <Logo />
+            <span
+              className="uppercase cursor-pointer text-xs"
+              onClick={() => navigate(`/products?category=${item.value}`)}
+            >
+              {item.name}
+            </span>
 
-              <Button
-                content={<FiX />}
-                buttonProps={{
-                  onClick: () => setIsSidebarOpen(false),
-                  className: "!w-fit text-2xl text-gray-700",
-                }}
-              />
-            </div>
+            {/* Hover underline */}
+            <div className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/nav:w-full" />
 
-            {/* My ORDER && Track Orders  */}
-            <div className="flex justify-center items-center gap-5 p-1 rounded-md">
-              {/* My Orders */}
-              <div
-                onClick={() => navigate("/orders")}
-                className="bg-gray-200 flex justify-center items-center gap-1 cursor-pointer px-3 py-2 rounded"
-              >
-                <img
-                  src="https://bellavitaorganic.com/cdn/shop/files/my-orders.svg?crop=center&height=18&v=1714549660&width=18"
-                  alt="My Orders"
-                  className="w-[12px] h-[12px]"
-                />
-                <span className="text-[10px] font-medium whitespace-nowrap">
-                  MY ORDERS
-                </span>
-              </div>
-
-              {/* Track Orders */}
-              <div className="bg-gray-200 flex justify-center items-center gap-1 cursor-pointer px-3 py-2 rounded">
-                <img
-                  src="https://bellavitaorganic.com/cdn/shop/files/track-order.svg?crop=center&height=18&v=1729672836&width=18"
-                  alt="Track Orders"
-                  className="w-[12px] h-[12px]"
-                />
-                <span className="text-[10px] font-medium text-gray-800 whitespace-nowrap">
-                  TRACK ORDERS
-                </span>
-              </div>
-            </div>
-
-            <div className="-mx-5 md:-mx-12">
-              <img
-                src="https://bellavitaorganic.com/cdn/shop/files/zodiac_hamburger_strip.jpg?v=1741862460"
-                alt="img"
-                className="w-full h-auto block"
-              />
-            </div>
-
-            {/* Nav Links */}
-            <div className="flex flex-col gap-4">
-              {navMapData.map((item, index) => {
-                const isOpen = selectedOption === item.name;
-
-                return (
-                  <div key={index} className="flex flex-col">
-                    {/* Parent Title */}
-                    <span
-                      onClick={() =>
-                        setSelectedOption(isOpen ? null : item.name)
-                      }
-                      className="uppercase text-gray-800 cursor-pointer flex justify-between items-center"
-                    >
-                      {item.name}
-                      <span className="text-lg">
-                        {isOpen ? (
-                          <RiArrowDropUpLine />
-                        ) : (
-                          <RiArrowDropDownLine />
-                        )}
-                      </span>
-                    </span>
-
-                    {/* Child Options (Slide Down) */}
-                    <AnimatePresence>
-                      {isOpen && item.options && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="ml-3 mt-1 flex flex-col text-sm gap-2 text-gray-600 overflow-hidden"
-                        >
-                          {item.options.map((option, idx) => (
-                            <span
-                              key={idx}
-                              onClick={() => {
-                                navigate(
-                                  `/products?category=${item.value}&subCategory=${option.value}`
-                                );
-                                setIsSidebarOpen(false);
-                              }}
-                              className="cursor-pointer hover:text-indigo-600"
-                            >
-                              {option.name}
-                            </span>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+            {/* Dropdown Menu */}
+            {selectedOption === item.name && item.options && (
+              <div className="absolute left-0 top-6 bg-white rounded-md p-7 flex flex-col gap-2 z-50 min-w-[200px]">
+                {item.options.map((option, index) => (
+                  <div
+                    key={index}
+                    className="relative w-fit whitespace-nowrap cursor-pointer group/option text-black hover:text-gray-600 text-xs"
+                    onClick={() => {
+                      navigate(
+                        `/products?category=${item.value}&subCategory=${option.value}`
+                      );
+                    }}
+                  >
+                    <span>{option.name}</span>
+                    <span className="absolute left-0 bottom-0 h-[1.5px] w-0 bg-gray-300 transition-all duration-300 group-hover/option:w-full" />
                   </div>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 };
