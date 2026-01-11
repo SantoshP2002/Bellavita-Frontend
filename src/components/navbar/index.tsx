@@ -7,7 +7,6 @@ import { GrUserAdmin } from "react-icons/gr";
 import { navMapData } from "../../constants";
 import Logo from "./components/Logo";
 import { FiMenu, FiX } from "react-icons/fi";
-import { CgProfile } from "react-icons/cg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useUserStore } from "../../store/user";
 import { Button } from "../Button";
@@ -100,16 +99,6 @@ const Navbar = () => {
               onClick={() => navigate("/orders")}
               className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
             />
-
-            {isLoggedIn && (
-              <div>
-                {/* My Profile icon  */}
-                <CgProfile
-                  onClick={() => navigate("/profile")}
-                  className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-green-600"
-                />
-              </div>
-            )}
           </div>
         </div>
 
