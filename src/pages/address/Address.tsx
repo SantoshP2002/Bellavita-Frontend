@@ -44,7 +44,7 @@ const Address = () => {
           {/* Header with button */}
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-indigo-600">
-              {addresses.length ? "Your Addresses" : "Add address"}
+              {addresses.length ? "Your Addresses" : "Add Address"}
             </h2>
             {addresses.length < 5 && addresses.length !== 0 && (
               <Button
@@ -100,6 +100,7 @@ const Address = () => {
               content="BACK"
               pattern="outline"
               className="w-20! h-8! mt-10 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+              buttonProps={{ type: "button" }}
             />
           </Link>
         </div>
