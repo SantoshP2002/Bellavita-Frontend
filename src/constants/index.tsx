@@ -291,3 +291,46 @@ export const categoryIconMap: Record<string, JSX.Element> = {
   Skincare: <PiSprayBottleDuotone size={16} />,
   Gifting: <ImGift size={16} />,
 };
+
+export const customers = [
+  {
+    id: 1,
+    name: "Sannna Thakur",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/t-1.webp?v=1725617641&width=150",
+    review:
+      "Bellavita perfumes are simply amazing! The fragrance lasts all day and feels truly luxurious. Totally worth every penny.",
+  },
+  {
+    id: 2,
+    name: "Pulkit Bangia",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/t-3.webp?v=1725617640&width=150",
+    review:
+      "Affordable yet premium quality! I love how every product feels natural incredible. Bellavita never disappoints!",
+  },
+  {
+    id: 3,
+    name: "Avantika",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/t-4.webp?v=1725617641&width=150",
+    review:
+      "I’ve tried many brands but Bellavita is my favorite. Their fragrances are elegant, long-lasting, and cruelty-free!",
+  },
+  {
+    id: 4,
+    name: "Gunveet",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/t-5.webp?v=1725617641&width=150",
+    review:
+      "Best perfumes ever! I get so many compliments every time I wear them. Bellavita has my heart forever!",
+  },
+  {
+    id: 5,
+    name: "Simran Narang",
+    image:
+      "https://bellavitaorganic.com/cdn/shop/files/t-2.webp?v=1725617641&width=150",
+    review:
+      "Bellavita products define luxury with simplicity. Every scent is unique and perfectly balanced. Highly recommend!",
+  },
+];
