@@ -113,8 +113,8 @@ export const carouselImages = [
 ];
 
 export const mobileCarouselImages = [
-  "https://bellavitaorganic.com/cdn/shop/files/860-1150_c8c7060a-c93e-47b1-b422-9643124604a4.jpg?v=1762235996&width=800",
-  "https://bellavitaorganic.com/cdn/shop/files/lip_sleeping_mask_Mobile_1_1__11zon.webp?v=1762174363&width=800",
+  "https://bellavitaorganic.com/cdn/shop/files/Mobile_3.webp?v=1767012883&width=800",
+  "https://bellavitaorganic.com/cdn/shop/files/860-1150_15.webp?v=1767891845&width=800",
 ];
 
 export const luxuryCategories = [
