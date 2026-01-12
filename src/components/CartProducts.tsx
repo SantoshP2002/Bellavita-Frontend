@@ -93,7 +93,7 @@ const CartProducts = () => {
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.2 }}
                         className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4 rounded-tr-full shadow gap-3 sm:gap-4 hover:shadow-lg transition bg-gradient-to-bl from-pink-200 via-purple-100 to-orange-200"
                       >
                         <motion.img
