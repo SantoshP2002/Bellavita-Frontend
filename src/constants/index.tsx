@@ -1,8 +1,13 @@
-import { TbPerfume } from "react-icons/tb";
+import CrazyDealsIcon from "../assets/icons/crazy-deals_sticky.svg";
+import ShopAllIcon from "../assets/icons/shop-all_sticky.svg";
+import BestsellerIcon from "../assets/icons/bestsellers_sticky.svg";
+import PerfumeIcon from "../assets/icons/perfumes_sticky.svg";
+import BathAndBodyIcon from "../assets/icons/bath-body_sticky.svg";
+import CosmeticIcon from "../assets/icons/cosmetics_sticky.svg";
+import NewArrivalsIcon from "../assets/icons/new-arrivals_sticky.svg";
+import SkinCareIcon from "../assets/icons/skincare_sticky.svg";
+
 import type { IBaseAddress, QuillToolbar, TBaseProduct } from "../types";
-import { HiOutlineArrowTrendingUp } from "react-icons/hi2";
-import { GiLipstick } from "react-icons/gi";
-import { PiSprayBottleDuotone } from "react-icons/pi";
 import { ImGift } from "react-icons/im";
 import type { JSX } from "react";
 
@@ -285,11 +290,25 @@ export const categoryVideoMap: Record<
 };
 
 export const categoryIconMap: Record<string, JSX.Element> = {
-  Perfumes: <TbPerfume size={16} />,
-  Bestsellers: <HiOutlineArrowTrendingUp size={16} />,
-  Cosmetic: <GiLipstick size={16} />,
-  Skincare: <PiSprayBottleDuotone size={16} />,
-  Gifting: <ImGift size={16} />,
+  perfumes: <img src={PerfumeIcon} alt="Perfumes" width={16} height={16} />,
+  crazy_deals: (
+    <img src={CrazyDealsIcon} alt="Crazy Deals" width={16} height={16} />
+  ),
+  shop_all: <img src={ShopAllIcon} alt="Shop All" width={16} height={16} />,
+  bestseller: (
+    <img src={BestsellerIcon} alt="Shop All" width={16} height={16} />
+  ),
+  bath_and_body: (
+    <img src={BathAndBodyIcon} alt="Bath and Body" width={16} height={16} />
+  ),
+  cosmetic: (
+    <img src={CosmeticIcon} alt="Cosmetic icon" width={16} height={16} />
+  ),
+  new_arrivals: (
+    <img src={NewArrivalsIcon} alt="New Arrivals" width={16} height={16} />
+  ),
+  skincare: <img src={SkinCareIcon} alt="Skin Care" width={16} height={16} />,
+  gifting: <ImGift size={16} />,
 };
 
 export const customers = [
@@ -332,5 +351,34 @@ export const customers = [
       "https://bellavitaorganic.com/cdn/shop/files/t-2.webp?v=1725617641&width=150",
     review:
       "Bellavita products define luxury with simplicity. Every scent is unique and perfectly balanced. Highly recommend!",
+  },
+];
+
+export const whyBellavitaData = [
+  {
+    title: "CRUELTY FREE",
+    description:
+      "Kindness in every bottle: Our commitment to cruelty-free Products.",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/036/363/698/non_2x/cruelty-free-icon-eco-friendly-natural-cruelty-free-and-gentle-on-skin-icon-free-vector.jpg",
+  },
+  {
+    title: "FRAGRANCE FORWARD",
+    description: "Luxurious & imported perfume oils in every product.",
+    image:
+      "https://c8.alamy.com/comp/2PP9RTK/fragrance-free-vector-line-circle-stamp-no-fragrances-for-cosmetics-packaging-label-2PP9RTK.jpg",
+  },
+  {
+    title: "AFFORDABLE LUXURY",
+    description: "Offering Premium Quality and Elegance at a Reasonable Price.",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/028/307/994/non_2x/wallet-icon-simple-outline-style-affordable-investment-money-cash-dollar-bill-payment-business-finance-concept-thin-line-symbol-isolated-on-white-background-svg-vector.jpg",
+  },
+  {
+    title: "GENDER NEUTRAL",
+    description:
+      "Elevate your self-care routine with bath, body and personal care for all.",
+    image:
+      "https://www.shutterstock.com/image-vector/gender-neutral-symbol-thin-line-260nw-1614585991.jpg",
   },
 ];
