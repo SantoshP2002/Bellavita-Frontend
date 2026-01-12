@@ -1,49 +1,7 @@
 import { useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
-
-const customers = [
-  {
-    id: 1,
-    name: "Sannna Thakur",
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/t-1.webp?v=1725617641&width=150",
-    review:
-      "Bellavita perfumes are simply amazing! The fragrance lasts all day and feels truly luxurious. Totally worth every penny.",
-  },
-  {
-    id: 2,
-    name: "Pulkit Bangia",
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/t-3.webp?v=1725617640&width=150",
-    review:
-      "Affordable yet premium quality! I love how every product feels natural and smells incredible. Bellavita never disappoints!",
-  },
-  {
-    id: 3,
-    name: "Avantika",
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/t-4.webp?v=1725617641&width=150",
-    review:
-      "I’ve tried many brands but Bellavita is my favorite. Their fragrances are elegant, long-lasting, and cruelty-free!",
-  },
-  {
-    id: 4,
-    name: "Gunveet",
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/t-5.webp?v=1725617641&width=150",
-    review:
-      "Best perfumes ever! I get so many compliments every time I wear them. Bellavita has my heart forever!",
-  },
-  {
-    id: 5,
-    name: "Simran Narang",
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/t-2.webp?v=1725617641&width=150",
-    review:
-      "Bellavita products define luxury with simplicity. Every scent is unique and perfectly balanced. Highly recommend!",
-  },
-];
+import { customers } from "../constants";
 
 const CustomerCarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -57,42 +15,37 @@ const CustomerCarousel = () => {
   };
 
   return (
-    <div className="w-full py-12 px-4 md:px-16 mt-4 text-center overflow-hidden">
+    <div className="w-full py-8 sm:py-10 px-4 sm:px-8 md:px-16 text-center overflow-hidden">
       {/* Title */}
-      <h2 className="text-xl md:text-2xl mb- tracking-wide">
+      <h2 className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-8 tracking-wide">
         WHAT OUR CUSTOMERS HAVE TO SAY
       </h2>
 
-      {/* Carousel Section */}
+      {/* Carousel */}
       <div className="relative flex items-center justify-center">
         {/* Left Arrow */}
-        <button
+        <BsArrowLeft
           onClick={prevSlide}
-          className="absolute left-2 sm:left-10 p-2 bg-white rounded-full shadow hover:scale-105 transition"
-        >
-          <BsArrowLeft className="w-5 h-5" />
-        </button>
+          className="size-4 lg:size-6 sm:flex absolute left-2 md:left-10 bg-white rounded-full"
+        />
 
-        {/* Images Container */}
-        <div className="relative flex items-center justify-center w-[90%] sm:w-[70%] md:w-[50%] h-48 sm:h-60">
+        {/* Images */}
+        <div className="relative flex items-center justify-center w-full sm:w-[85%] md:w-[60%] h-32 sm:h-48 md:h-60">
           {customers.map((customer, index) => {
             const position =
               (index - current + customers.length) % customers.length;
 
             let className =
-              "absolute rounded-full overflow-hidden shadow-md border-2 border-white transition-all duration-500 ease-in-out";
+              "absolute rounded-full overflow-hidden transition-all duration-500";
 
-            // 👉 Adjusted spacing by increasing translate-x values
             if (position === 0) {
-              className += " scale-125 opacity-100 z-20 translate-x-0";
+              className += " scale-125 z-20";
             } else if (position === 1) {
-              className += " scale-110 opacity-80 translate-x-[180px] z-10"; // right-1
-            } else if (position === 2) {
-              className += " scale-95 opacity-60 translate-x-[360px] z-0"; // right-2
+              className +=
+                " scale-105 opacity-50 translate-x-[90px] sm:translate-x-[140px] md:translate-x-[200px]";
             } else if (position === customers.length - 1) {
-              className += " scale-110 opacity-80 -translate-x-[180px] z-10"; // left-1
-            } else if (position === customers.length - 2) {
-              className += " scale-95 opacity-60 -translate-x-[360px] z-0"; // left-2
+              className +=
+                " scale-105 opacity-50 -translate-x-[90px] sm:-translate-x-[140px] md:-translate-x-[200px]";
             } else {
               className += " opacity-0 scale-75";
             }
@@ -102,7 +55,7 @@ const CustomerCarousel = () => {
                 <img
                   src={customer.image}
                   alt={customer.name}
-                  className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full object-cover"
+                  className="w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full object-cover"
                 />
               </div>
             );
@@ -110,31 +63,30 @@ const CustomerCarousel = () => {
         </div>
 
         {/* Right Arrow */}
-        <button
+        <BsArrowRight
           onClick={nextSlide}
-          className="absolute right-2 sm:right-10 p-2 bg-white rounded-full shadow hover:scale-105 transition"
-        >
-          <BsArrowRight className="w-5 h-5" />
-        </button>
+          className="size-4 lg:size-6 sm:flex absolute right-2 md:right-10 bg-white rounded-full"
+        />
       </div>
 
-      {/* Review Info */}
-      <div className="mt-10 max-w-xl mx-auto">
-        <div className="flex justify-center mb-3">
+      {/* Review */}
+      <div className="mt-6 sm:mt-10 max-w-xl mx-auto px-2">
+        <div className="flex justify-center mb-2 sm:mb-3">
           {Array(5)
             .fill(0)
             .map((_, i) => (
               <FaStar
                 key={i}
-                className="w-5 h-5 text-yellow-500 fill-yellow-500"
+                className="text-yellow-500 w-4 h-4 sm:w-5 sm:h-5"
               />
             ))}
         </div>
 
-        <p className="text-gray-700 text-sm sm:text-base  leading-relaxed">
+        <p className="text-gray-700 text-xs sm:text-base leading-relaxed">
           “{customers[current].review}”
         </p>
-        <p className="mt-3 text-gray-500 italic font-semibold">
+
+        <p className="mt-2 sm:mt-3 text-gray-500 italic font-semibold text-sm sm:text-base">
           - {customers[current].name}
         </p>
       </div>
