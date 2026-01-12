@@ -20,13 +20,13 @@ const TopBar = () => {
                   setActiveCategory(item.value);
                   navigate(`/products?category=${item.value}`);
                 }}
-                className={`flex items-center gap-2 whitespace-nowrap text-xs font-medium px-6 py-2 rounded border cursor-pointer ${
+                className={`flex items-center gap-2 whitespace-nowrap text-xs font-medium px-6 py-2 rounded cursor-pointer ${
                   activeCategory === item.value
                     ? "bg-gray-900 text-white border-black"
                     : "bg-gray-100 text-gray-900 border-gray-300"
                 } `}
               >
-                {categoryIconMap[item.name] && categoryIconMap[item.name]}{" "}
+                {categoryIconMap[item.value] && categoryIconMap[item.value]}{" "}
                 {item.name}
               </span>
             ))}
