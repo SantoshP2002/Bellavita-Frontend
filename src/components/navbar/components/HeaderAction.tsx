@@ -11,6 +11,7 @@ import { GrUserAdmin } from "react-icons/gr";
 import { PiUserLight } from "react-icons/pi";
 import { IoCartOutline } from "react-icons/io5";
 import { CiDeliveryTruck } from "react-icons/ci";
+import { RiAccountBox2Line } from "react-icons/ri";
 
 const HeaderAction = () => {
   const navigate = useNavigate();
@@ -75,6 +76,10 @@ const HeaderAction = () => {
           <CiDeliveryTruck
             onClick={() => navigate("/orders")}
             className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+          />
+          <RiAccountBox2Line
+            onClick={() => navigate("/profile")}
+            className="hidden md:block h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
           />
         </div>
       </div>
