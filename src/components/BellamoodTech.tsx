@@ -1,35 +1,6 @@
 import { useState } from "react";
 import { Button } from "./Button";
-
-const perfumes = [
-  {
-    id: 1,
-    name: "OCEAN Man Perfume - 100 mL",
-    brand: "BELLAVITA (Perfume Gift Set for Men)",
-    price: 2345,
-    sellingPrice: 1000,
-    image:
-      "http://bellavitaorganic.com/cdn/shop/files/download_5bea8eae-fa1f-45d3-95bc-81ced6860f9d.jpg?v=1732892381&width=500",
-  },
-  {
-    id: 2,
-    name: "Luxury Collection Gift Set - 4 x 20ml",
-    brand: "BELLAVITA (EAU DE PARFUM)",
-    price: 5432,
-    sellingPrice: 1000,
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/download_7e6fb342-20d2-42be-8b82-ca93a466d61f.jpg?v=1732892400&width=500",
-  },
-  {
-    id: 3,
-    name: "Luxury Perfume Gift Set For Men - 4 x 20ml",
-    brand: "BELLAVITA (Pack of 10 x 5ml perfumes.)",
-    price: 1234,
-    sellingPrice: 1000,
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/download_05e5f4e5-e803-430c-9b8e-2280519f4977.jpg?v=1732892512&width=500",
-  },
-];
+import { perfumes } from "../constants";
 
 const BellamoodTech = () => {
   const [selectedPerfume, setSelectedPerfume] = useState<(typeof perfumes)[0]>(
@@ -37,9 +8,9 @@ const BellamoodTech = () => {
   );
 
   return (
-    <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-center p-4 sm:p-6 lg:p-16 gap-6 sm:gap-10 lg:gap-20 mt-4">
+    <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-center p-4 sm:p-6 lg:p-16 gap-6 sm:gap-10 lg:gap-20 dark:bg-black daek:text-white">
       {/* 🖼️ LEFT SIDE IMAGE SECTION */}
-      <div className="relative w-full lg:flex-1 max-w-2xl bg-white overflow-hidden rounded-lg flex items-center justify-center h-[260px] sm:h-[380px] md:h-[480px] lg:h-[600px]">
+      <div className="relative w-full lg:flex-1 max-w-2xl bg-white overflow-hidden rounded flex items-center justify-center h-[260px] sm:h-[380px] md:h-[480px] lg:h-[600px]">
         <img
           src="https://bellavitaorganic.com/cdn/shop/files/BV-Home-banner.jpg?v=1733382169&width=1500"
           alt="Perfume Banner"
@@ -69,7 +40,7 @@ const BellamoodTech = () => {
       </div>
 
       {/* 🛒 RIGHT SIDE ADD TO CART CARD */}
-      <div className="w-full sm:max-w-md lg:max-w-sm p-4 sm:p-6 flex flex-col gap-4 border border-gray-200 rounded-lg shadow-md bg-white">
+      <div className="w-full sm:max-w-md lg:max-w-sm p-4 sm:p-6 flex flex-col gap-4  rounded-lg shadow-md dark:text-white">
         {selectedPerfume && (
           <>
             {/* Product Image */}
@@ -82,7 +53,7 @@ const BellamoodTech = () => {
             </div>
 
             {/* name */}
-            <h3 className="font-semibold text-gray-800 text-base sm:text-lg line-clamp-1">
+            <h3 className="font-semibold text-base sm:text-lg line-clamp-1">
               {selectedPerfume.name}
             </h3>
             {/* brand */}
@@ -92,7 +63,7 @@ const BellamoodTech = () => {
 
             <div className="flex items-center gap-5">
               {/* Price */}
-              <p className="text-lg sm:text-xl font-bold text-black">
+              <p className="text-lg sm:text-xl font-bold ">
                 ₹{selectedPerfume.price}
               </p>
               {/* selling Price */}
