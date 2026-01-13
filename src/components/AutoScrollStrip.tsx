@@ -1,13 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
-const images = [
-  "https://bellavitaorganic.com/cdn/shop/files/HT_4a741228-3740-4f84-97bc-3c093ceec75a.jpg?height=80&v=1716360141",
-  "https://bellavitaorganic.com/cdn/shop/files/Elle_480x_db18e8ef-2f25-4299-9c39-73af4c300969.jpg?height=80&v=1716878217",
-  "https://bellavitaorganic.com/cdn/shop/files/Ani_480x_14446b4e-c91a-46df-a133-a95092fe484e.jpg?height=80&v=1716878217",
-  "https://bellavitaorganic.com/cdn/shop/files/IDiva_480x_1617c636-c0ed-4ed2-bb06-36e1906728ff.jpg?height=80&v=1716878216",
-  "https://bellavitaorganic.com/cdn/shop/files/Pinkvilla_480x_a664ac7e-bd4f-45ae-b43a-b5ce25e0b530.jpg?height=80&v=1716878216",
-  "https://bellavitaorganic.com/cdn/shop/files/BW_460x460_dcd6c999-6863-4ea2-ae4a-5621f5a51507.png?height=80&v=1717310549",
-];
+import { images } from "../constants";
 
 const AutoScrollStrip: React.FC = () => {
   const stripRef = useRef<HTMLDivElement | null>(null);
@@ -51,7 +43,7 @@ const AutoScrollStrip: React.FC = () => {
   return (
     <div
       ref={stripRef}
-      className="w-full overflow-hidden whitespace-nowrap relative mt-4"
+      className="w-full overflow-hidden whitespace-nowrap relative"
       style={{
         maskImage:
           "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
