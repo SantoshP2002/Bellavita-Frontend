@@ -62,7 +62,7 @@ const AllProducts = () => {
   if (isError) return <h1>{error.message}</h1>;
 
   return (
-    <div className="py-4 px-3 sm:px-6 md:px-12 lg:px-24">
+    <div className="py-4 px-3 sm:px-6 md:px-12 lg:px-24 dark:bg-black dark:text-white">
       <p className="text-xl mt-3 sm:text-2xl text-center capitalize">
         -{" "}
         {queryParams.subCategory
@@ -74,17 +74,18 @@ const AllProducts = () => {
       {/* Filter and Sort Bar */}
       <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
         <div className="flex flex-wrap gap-2 items-center w-full sm:w-auto justify-center sm:justify-start">
+          {/* FILTER BUTTON */}
           <Button
             content="FILTER +"
             pattern="outline"
-            className="!w-fit !h-9 text-sm px-4 py-1.5 rounded bg-black text-white!"
+            className="!w-fit !h-9 text-sm px-4 py-1.5 rounded bg-black text-white! dark:bg-white dark:text-black!"
             buttonProps={{
               onClick: handleFilter,
             }}
           />
-
+          {/* SORT SELECT OPTIONS */}
           <Select
-            containerClassName="!w-40 sm:!w-50 !h-9 !m-1 cursor-pointer"
+            containerClassName="!w-40 sm:!w-50 !h-10 !m-1 cursor-pointer"
             icons={{
               right: {
                 icon: <IoIosArrowDown className="text-base cursor-pointer" />,
@@ -98,7 +99,7 @@ const AllProducts = () => {
           />
         </div>
 
-        <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1 sm:mt-0">
+        <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1 sm:mt-0 dark:text-green-500">
           {totalProducts} Product{totalProducts !== 1 ? "s" : ""}
         </p>
       </div>
@@ -107,17 +108,16 @@ const AllProducts = () => {
       {isLoading ? (
         <LoadingScreen />
       ) : isError ? (
-        <p className="text-red-500">Failed to load products</p>
+        <EmptyData content="Product Not Found " />
       ) : products.length > 0 ? (
-        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="py-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6">
           {products.map((p, index) => {
             const isLastItem = index === products.length - 4;
             return (
               <div
                 key={p._id}
                 ref={isLastItem ? ref : null}
-                className="w-full bg-white rounded-xl overflow-hidden
-             transition-shadow duration-300 shadow-sm hover:shadow-md"
+                className="w-full bg-white dark:bg-black rounded- overflow-hidden transition-shadow duration-300"
               >
                 {/* Image */}
                 <div className="relative h-64 sm:h-60 md:h-72 w-full bg-gray-100">
@@ -130,15 +130,15 @@ const AllProducts = () => {
                 </div>
 
                 {/* Details */}
-                <div className="p-2 sm:p-3">
-                  <p className="text-[10px] sm:text-xs text-gray-500 font-medium line-clamp-1">
+                <div className="p-2 sm:p-3 dark:bg-black dark:text-white">
+                  <p className="text-[10px] sm:text-xs text-gray-300 font-medium line-clamp-1">
                     {p.brand}
                   </p>
-                  <h2 className="text-xs sm:text-sm mt-1 font-semibold text-gray-800 line-clamp-1">
+                  <h2 className="text-xs sm:text-sm mt-1 font-semibold line-clamp-1">
                     {p.title}
                   </h2>
                   <div className="mt-2 flex items-center gap-2">
-                    <p className="text-sm sm:text-base font-bold text-black">
+                    <p className="text-sm sm:text-base font-bold">
                       ₹{p.sellingPrice.toFixed(2)}
                     </p>
                     {p.price > p.sellingPrice && (
@@ -150,12 +150,11 @@ const AllProducts = () => {
                 </div>
 
                 {/* Add to Cart */}
-                <div className="p-2">
+                <div className="py-1 px-3">
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+                    className=" bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
                     icons={{
                       right: <IoCartOutline className="size-5" />,
                     }}
