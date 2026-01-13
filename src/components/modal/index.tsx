@@ -39,7 +39,7 @@ const Modal = ({
     >
       <div
         className={`bg-gray-200 rounded-xl shadow-lg w-full max-w-md max-h-[90vh] relative overflow-hidden ${className}`}
-        onClick={(e) => e.stopPropagation()} 
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Scrollable area */}
         {showGradient.top && (
@@ -60,7 +60,7 @@ const Modal = ({
             }`}
           >
             {heading && (
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold flex-1 text-center bg-clip-text text-transparent bg-black">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold flex-1 text-center bg-clip-text bg-black text-shadow-white">
                 {heading}
               </h2>
             )}
