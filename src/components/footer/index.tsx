@@ -30,21 +30,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#434343] text-gray-300 mt-6">
+    <footer className="bg-[#434343] text-gray-300 dark:bg-black dark:text-white">
       {/* Top Section */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-6 md:px-12 py-8 md:py-12 grid grid-cols-1 md:grid-cols-5 gap-6">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 md:px-20 py-8 grid grid-cols-1 md:grid-cols-5 gap-6">
         {/* EXCLUSIVE Section */}
         <div className="order-1 md:order-5 border-b border-gray-500 pb-5 md:border-none">
-          <h2 className="text-white text-base md:text-lg mb-3 md:mb-6 pb-2 md:border-none">
+          <h2 className="text-white text-xs md:text-sm mb-3 md:mb-6 pb-2 md:border-none">
             EXCLUSIVE
           </h2>
 
           {/* Input + Icon container */}
           <div className="relative w-full">
-            <Input
-              inputProps={{ placeholder: "Enter Email Here..." }}
-              className="p-3"
-            />
+            <Input inputProps={{ placeholder: "Enter Email Here..." }} />
             <FaArrowRight className="absolute right-3 top-1/2 -translate-y-1/2 text-black text-md cursor-pointer" />
           </div>
 
@@ -63,7 +60,7 @@ const Footer = () => {
             className="flex items-center justify-between md:block cursor-pointer md:cursor-default"
             onClick={() => toggleSection("bestseller")}
           >
-            <h2 className="text-white text-base md:text-lg pb-2 md:pb-0 mb-0 md:mb-6 md:border-none">
+            <h2 className="text-white text-xs md:text-sm pb-2 md:pb-0 mb-0 md:mb-6 md:border-none">
               BESTSELLER
             </h2>
             <span className="md:hidden text-lg flex items-center">
@@ -106,7 +103,7 @@ const Footer = () => {
             className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
             onClick={() => toggleSection("information")}
           >
-            <h2 className="text-white text-base md:text-lg mb-2 md:mb-6 pb-2 md:border-none">
+            <h2 className="text-white text-xs md:text-sm mb-2 md:mb-6 pb-2 md:border-none">
               INFORMATION
             </h2>
             <span className="md:hidden text-lg">
@@ -218,7 +215,7 @@ const Footer = () => {
             className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
             onClick={() => toggleSection("support")}
           >
-            <h2 className="text-white text-base md:text-lg mb-2 md:mb-6 pb-2 md:border-none">
+            <h2 className="text-white text-xs md:text-sm mb-2 md:mb-6 pb-2 md:border-none">
               SUPPORT
             </h2>
             <span className="md:hidden text-lg">
@@ -314,7 +311,7 @@ const Footer = () => {
             className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
             onClick={() => toggleSection("contact")}
           >
-            <h2 className="text-white text-base md:text-lg mb-2 md:mb-6 pb-2 md:border-none">
+            <h2 className="text-white text-xs md:text-sm mb-2 md:mb-6 pb-2 md:border-none">
               CONTACT US
             </h2>
             <span className="md:hidden text-lg">
