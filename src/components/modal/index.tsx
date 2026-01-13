@@ -38,7 +38,7 @@ const Modal = ({
       }`}
     >
       <div
-        className={`bg-gray-200 rounded-xl shadow-lg w-full max-w-md max-h-[90vh] relative overflow-hidden ${className}`}
+        className={`bg-gray-200 rounded-xl shadow-lg w-full max-w-md max-h-[90vh] relative overflow-hidden dark:bg-black ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Scrollable area */}
@@ -55,18 +55,18 @@ const Modal = ({
           <div
             className={`z-20 ${
               heading
-                ? "border-b h-16 flex items-center justify-between sticky top-0 "
+                ? "border-b h-16 flex items-center justify-between sticky top-0"
                 : ""
             }`}
           >
             {heading && (
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold flex-1 text-center bg-clip-text bg-black text-shadow-white">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold flex-1 text-center bg-clip-text text-black bg-black dark:text-white">
                 {heading}
               </h2>
             )}
             <IoMdCloseCircleOutline
               onClick={onClose}
-              className={`w-4 h-4 sm:w-5 sm:h-5 stroke-tertiary hover:stroke-2 cursor-pointer ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 stroke-tertiary hover:stroke-2 cursor-pointer dark:text-white ${
                 !heading ? "absolute top-2.5 right-2.5" : ""
               }`}
             />
