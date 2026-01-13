@@ -62,15 +62,19 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="w-full h-full flex flex-col gap-2 pt-2">
       {/* Search Input */}
+
       <Input
         icons={{
           left: {
             icon: (
-              <IoSearchOutline className="stroke-tertiary w-4 h-4 md:w-5 md:h-5" />
+              <IoSearchOutline className="w-4 h-4 md:w-5 md:h-5 text-tertiary dark:text-white" />
             ),
           },
         }}
+        className="dark:bg-black dark:border-white shadow-sm dark:shadow-white"
         inputProps={{
+          className: "dark:text-white",
+          autoFocus: true,
           placeholder: "Search products here...",
           value: searchQuery,
           type: "text",
@@ -85,19 +89,19 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
 
       {/* Query Info */}
       {searchQuery.trim() && (
-        <div className="flex items-center justify-between px-3 py-2 text-tertiary bg-white rounded shadow-sm mb-1">
-          <span className="text-xs">
+        <div className="flex items-center justify-between px-3 py-2 text-tertiary rounded shadow-sm mb-1 dark:bg-black  dark:border-white dark:shadow-white">
+          <span className="text-xs dark:text-white">
             Results for: <strong>{searchQuery}</strong>
           </span>
           <IoCloseOutline
-            className="w-4 h-4 cursor-pointer"
+            className="w-4 h-4 cursor-pointer dark:text-white"
             onClick={() => setSearchQuery("")}
           />
         </div>
       )}
 
       {/* Results */}
-      <div className="flex flex-col flex-1 min-h-[235px] max-h-[350px] overflow-y-auto bg-white rounded shadow-inner">
+      <div className="flex flex-col flex-1 min-h-[235px] max-h-[350px] overflow-y-auto dark:bg-black rounded shadow-inner">
         {productsQuery.isPending && debouncedQuery ? (
           <LoadingScreen />
         ) : products.length ? (
@@ -105,7 +109,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
             {products.map((p: Product) => (
               <li
                 key={p._id}
-                className="flex gap-2 p-1 border rounded cursor-pointer hover:bg-gray-50"
+                className="flex gap-2 p-1 rounded cursor-pointer dark:hover:border-2"
                 onClick={() => handleSubmit(p._id)}
               >
                 <img
@@ -114,7 +118,9 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
                   className="w-8 h-8 rounded object-cover"
                 />
                 <div>
-                  <p className="text-xs font-medium">{p.title}</p>
+                  <p className="text-xs font-medium dark:text-white">
+                    {p.title}
+                  </p>
                   <p className="text-[10px] text-gray-500">
                     {p.brand} · {p.category.name}
                   </p>
