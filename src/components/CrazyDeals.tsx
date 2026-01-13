@@ -1,33 +1,8 @@
-const crazyDealsData = [
-  {
-    id: 1,
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/678-548-01_eea37bd3-72d6-4d36-be25-1f2a754829d3.webp?v=1729493571&width=800",
-    name: "SELF CARE KIT",
-  },
-  {
-    id: 2,
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/678-548-01_69ed5841-67fb-420d-a671-e48ce7508e78.jpg?v=1752841390&width=800",
-    name: "SELF LOVE KIT",
-  },
-  {
-    id: 3,
-    image:
-      "https://bellavitaorganic.com/cdn/shop/files/678-548_eb6ded9c-5f74-4726-baa0-fb6a86472da3.webp?v=1727433124&width=800",
-    name: "BADE MIYA CHHOTE MIYA",
-  },
-];
-
-const mappedData = [
-  { id: 1, title: "Extra 10% Off" },
-  { id: 2, title: "Buy 1 Get 1 Free" },
-  { id: 3, title: "Limited Time Offer" },
-];
+import { crazyDealsData, mappedData } from "../constants";
 
 const CrazyDeals = () => {
   return (
-    <div className="p-6">
+    <div className="p-6 dark:bg-black dark:text-white">
       {/* Heading */}
       <div>
         <h5 className="text-xl sm:text-xl md:text-2xl text-center mb-6">
@@ -49,7 +24,7 @@ const CrazyDeals = () => {
             </div>
 
             {/* Name below image */}
-            <p className="mt-3 text-xs text-gray-800">{deal.name}</p>
+            <p className="mt-3 text-xs dark:text-gray-200">{deal.name}</p>
           </div>
         ))}
       </div>
