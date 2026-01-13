@@ -105,7 +105,7 @@ const Login = () => {
             {/* Divider */}
             <div className="h-px dark:bg-white bg-black mt-7" />
 
-            {/* Social Icons */}
+            {/* Social Icons GOOGLE */}
             <div className="flex justify-center gap-5 mt-4 text-xl">
               <Button
                 pattern="outline"

@@ -11,6 +11,7 @@ import { Button } from "../../components/Button";
 import Input from "../../components/Input";
 import LoadingScreen from "../../components/LoadingScreen";
 import { VITE_BACKEND_URI } from "../../env";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4">
+    <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4 dark:bg-black border border-[red]">
       {/* MAIN CARD */}
       <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl animate-fade-in-up">
         {/* LEFT IMAGE SECTION */}
@@ -75,11 +76,7 @@ const Register = () => {
             className="max-w-md mx-auto flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1
-              className="text-3xl font-bold text-center
-               bg-gradient-to-r from-blue-400 to-purple-700 
-               text-transparent bg-clip-text"
-            >
+            <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-700 text-transparent bg-clip-text">
               REGISTER
             </h1>
 
@@ -100,7 +97,7 @@ const Register = () => {
                 render={({ field }) => (
                   <Input
                     label="Upload Image"
-                    className="w-full pl-8 border-b-4 rounded-lg px-4 focus:outline-none text-sm"
+                    className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                     inputProps={{
                       type: "file",
                       accept: ALLOWED_IMAGE_TYPES.join(","),
@@ -124,7 +121,7 @@ const Register = () => {
                 <Input
                   label="First Name"
                   register={register("firstName")}
-                  className="pl-8 w-full px-4 py-3 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                  className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "First name" }}
                 />
                 <FaRegUser className="absolute top-4 left-3 text-gray-500" />
@@ -139,7 +136,7 @@ const Register = () => {
                 <Input
                   label="Last Name"
                   register={register("lastName")}
-                  className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                  className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "Last name" }}
                 />
                 <FaRegUser className="absolute top-4 left-3 text-gray-500" />
@@ -156,7 +153,7 @@ const Register = () => {
               <Input
                 label="Email"
                 register={register("email")}
-                className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                 inputProps={{ placeholder: "Email" }}
               />
               <FaRegUser className="absolute top-4 left-3 text-gray-500" />
@@ -171,7 +168,7 @@ const Register = () => {
                 <Input
                   label="Password"
                   register={register("password")}
-                  className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                  className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "Password" }}
                 />
                 <FaLock className="absolute top-4 left-3 text-gray-500" />
@@ -186,7 +183,7 @@ const Register = () => {
                 <Input
                   label="Confirm Password"
                   register={register("confirmPassword")}
-                  className="w-full px-4 py-3 pl-9 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+                  className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "Confirm password" }}
                 />
                 <FaLock className="absolute top-4 left-3 text-gray-500" />
@@ -198,22 +195,21 @@ const Register = () => {
               </div>
             </div>
 
-            {/* Submit */}
+            {/* REGISTER BUTTON */}
             <Button
               pattern="outline"
               content={isSubmitting ? "Registering..." : "Register"}
-              className="w-60! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm 
-              py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+              className="w-60! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{ type: "submit", disabled: isSubmitting }}
             />
 
             {/* Social */}
             <div>
-              <div className="flex-1 h-px bg-black/30" />
+              <div className="flex-1 h-px dark:bg-white bg-black" />
             </div>
 
             {/* SOCIAL ICON GOOGLE */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-3">
               {/* Google */}
               <Button
                 pattern="outline"
@@ -221,7 +217,7 @@ const Register = () => {
                   onClick: handleGoogleLogin,
                   type: "button",
                 }}
-                className="w-full sm:w-60 h-10 bg-white text-gray-800 border border-gray-300 rounded-lg text-sm shadow-[2px_2px_0_0_#000]"
+                className="w-60! bg-white rounded-xl text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[2px_2px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[2px_2px_0_0_#fff]"
                 content={
                   <span className="flex items-center justify-center gap-2">
                     <img
@@ -240,8 +236,7 @@ const Register = () => {
               <Button
                 content="🏠 Back to Home"
                 pattern="outline"
-                className="w-full sm:w-60 h-10 rounded bg-black text-white border-2 border-black text-xs sm:text-sm transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]
-    "
+                className=" w-50! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
                 icons={{ right: <FaArrowRight /> }}
                 buttonProps={{
                   type: "button",
@@ -253,19 +248,15 @@ const Register = () => {
             {/* LOGIN  */}
             <div className="mt-3 flex justify-center">
               <div className="flex flex-col justify-center items-center gap-3 text-xs">
-                <span>Already have an account?</span>
-
-                <Button
-                  content="LOGIN"
-                  className="transition-all duration-300 hover:bg-gray-200 hover:rounded-full hover:shadow-2xl hover:shadow-blue-900 px-5 py-2"
-                  icons={{
-                    right: <FaArrowRight className="ml-1" />,
-                  }}
-                  buttonProps={{
-                    type: "button",
-                    onClick: () => navigate("/login"),
-                  }}
-                />
+                <span className="text-black dark:text-gray-300">
+                  Already have an account?
+                </span>
+                <Link
+                  to="/login"
+                  className="transition-all duration-300 hover:bg-gray-200 hover:rounded-full hover:shadow-2xl hover:shadow-blue-900 px-5 py-2 dark:text-white dark:hover:bg-gray-800 dark:hover:shadow-blue-400"
+                >
+                  LOGIN
+                </Link>
               </div>
             </div>
           </form>
