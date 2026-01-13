@@ -28,7 +28,7 @@ const Address = () => {
   }, [data?.userAddress?.defaultAddress]);
 
   return (
-    <div className="w-full h-full p-6">
+    <div className="max-w-lvw h-full p-6 dark:bg-black">
       <AddressFormModal
         onClose={() => (removeParam("add"), removeParam("edit"))}
         addresses={queryParams.edit ? addresses : undefined}
@@ -40,25 +40,24 @@ const Address = () => {
           <EmptyData content="Address Not Found" />
         </div>
       ) : (
-        <div>
+        <div className="p-3 dark:bg-black">
           {/* Header with button */}
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-indigo-600">
+          <div className="flex justify-between items-center py-2 dark:bg-black">
+            <h2 className="text-2xl font-bold dark:text-purple-300">
               {addresses.length ? "Your Addresses" : "Add Address"}
             </h2>
             {addresses.length < 5 && addresses.length !== 0 && (
               <Button
                 content="ADD ADDRESS"
                 pattern="outline"
-                className="w-fit! mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+                className="w-40! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
                 buttonProps={{ onClick: () => setParams({ add: "true" }) }}
               />
             )}
           </div>
 
           {addresses.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {addresses.map((address, index) => (
                 <AddressCard
                   key={index}
@@ -78,8 +77,7 @@ const Address = () => {
           <Button
             content="Checkout"
             pattern="outline"
-            className="w-60! mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-        duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+            className="mt-10 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
             buttonProps={{
               onClick: () => {
                 if (!selectedAddress) {
@@ -99,7 +97,7 @@ const Address = () => {
             <Button
               content="BACK"
               pattern="outline"
-              className="w-20! h-8! mt-10 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+              className="w-40! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{ type: "button" }}
             />
           </Link>

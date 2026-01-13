@@ -79,16 +79,16 @@ const AddressForm = ({
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={`${className}`}>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 dark:bg-black py-2">
         {/* FIRST NAME */}
         <div className="relative">
           <Input
             label="First Name"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("firstName")}
             inputProps={{ placeholder: "Enter First Name" }}
           />
-          <FaRegUser className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
+          <FaRegUser className="absolute top-3 lg:top-4 left-3 dark:text-gray-400 text-gray-500 size-3 lg:size-4" />
           {errors.firstName && (
             <p className="text-red-500 text-sm mt-1">
               {errors.firstName.message}
@@ -99,7 +99,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Last Name"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("lastName")}
             inputProps={{ placeholder: "Enter Last Name" }}
           />
@@ -114,7 +114,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Email"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("email")}
             inputProps={{ placeholder: "Enter Email", type: "email" }}
           />
@@ -127,7 +127,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Phone Number"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("phoneNumber")}
             inputProps={{
               placeholder: "Phone Number",
@@ -145,7 +145,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Alt. Phone Number"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("altPhoneNumber")}
             inputProps={{
               placeholder: "Alt. Number",
@@ -163,7 +163,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Address"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("address")}
             inputProps={{ placeholder: "Enter Address" }}
           />
@@ -178,7 +178,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Landmark"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("landmark")}
             inputProps={{ placeholder: "Enter Landmark" }}
           />
@@ -193,7 +193,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="City"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("city")}
             inputProps={{ placeholder: "Enter City" }}
           />
@@ -206,7 +206,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Pincode"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("pinCode")}
             inputProps={{
               placeholder: "Pin-Code",
@@ -224,7 +224,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="State"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("state")}
             inputProps={{ placeholder: "Enter State" }}
           />
@@ -237,7 +237,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Country"
-            className="border-b-4 border-r-4 px-5 lg:px-8"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("country")}
             inputProps={{ placeholder: "Enter Country" }}
           />
@@ -253,14 +253,14 @@ const AddressForm = ({
         <Button
           content={isPending ? "Saving..." : "Save Address"}
           pattern="outline"
-          className="w-50! h-10! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+          className="w-50! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
           buttonProps={{ type: "submit", disabled: isPending }}
         />
         <Link to="/cart">
           <Button
             content="BACK"
             pattern="outline"
-            className="w-20! h-8! mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+            className="w-40! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
             icons={{
               left: <IoIosArrowBack size={10} />,
             }}
