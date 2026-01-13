@@ -23,18 +23,18 @@ const Select = ({
 
   return (
     <div
-      className={`w-full flex flex-col gap-1.5 relative ${containerClassName}`}
+      className={`w-full flex flex-col gap-1.5 relative dark:bg-black dark:text-white ${containerClassName}`}
     >
       {label && <span className="text-xs text-black mb-1">{label}</span>}
 
       {/* Select box */}
       <div
-        className={`relative border border-gray-300 rounded-lg p-2 flex justify-between items-center bg-white ${
+        className={`relative border border-gray-300 rounded-lg p-2 flex justify-between items-center bg-white dark:bg-black dark:text-white dark:border-b-2 border-b-2 shadow-sm hover:shadow-black dark:shadow-white ${
           selectProps.disabled ? "cursor-not-allowed" : "cursor-pointer"
         } ${className}`}
         onClick={() => !selectProps.disabled && setIsOpen((prev) => !prev)}
       >
-        <div className="flex-1 text-sm text-gray-700">
+        <div className="flex-1 text-sm text-gray-700 dark:text-white">
           {selected ? selected.name : selectProps?.placeholder || "Select"}
         </div>
 
@@ -50,13 +50,13 @@ const Select = ({
 
       {/* Dropdown */}
       {isOpen && selectProps?.options.length > 0 && (
-        <div className="absolute top-full left-0 w-full bg-white border border-gray-200 rounded-lg z-50 mt-1 overflow-hidden shadow-md">
+        <div className="absolute top-full left-0 w-full bg-white border border-gray-200 rounded-lg z-50 mt-1 overflow-hidden shadow-md dark:bg-black dark:text-white">
           {selectProps.options.map((opt) => (
             <div
               key={opt.value}
               onClick={() => handleSelect(opt)}
-              className={`px-4 py-2 text-sm cursor-pointer hover:bg-gray-100 ${
-                selected?.value === opt.value ? "bg-gray-200 font-medium" : ""
+              className={`px-4 py-2 text-sm cursor-pointer dark:hover:bg-white dark:hover:text-black ${
+                selected?.value === opt.value ? "bg-blue-400" : ""
               }`}
             >
               {opt.name}
@@ -69,7 +69,9 @@ const Select = ({
       {error && (
         <p className="w-full text-start flex gap-1 items-center text-[11px] text-red-500 mt-1">
           <MdErrorOutline className="w-4 h-4" />
-          <span>{error}</span>
+          <span className="dark:text-white">
+            {error || "Error In Select Option"}
+          </span>
         </p>
       )}
     </div>
