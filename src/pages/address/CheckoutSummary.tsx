@@ -51,6 +51,8 @@ const CheckoutSummary = () => {
     (addr: IOrder) => addr._id === addressId
   );
 
+  console.log("SELECTEDADDRESS", selectedAddress);
+
   const products: TProductCart[] = cartData?.cart?.products || [];
 
   console.log("PRODUCTS", products);
@@ -155,41 +157,46 @@ const CheckoutSummary = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-10 text-gray-800">
+    <div className="max-w-lvw mx-auto px-4 py-10 dark:bg-black">
+      <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-10 text-gray-800 dark:text-gray-500">
         Checkout Summary 🛍️
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Address Section */}
-        <div className="bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
+        <div className="bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-2xl shadow-lg transition-all duration-300 p-6 dark:border-white border-l-2 border-b-2">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 flex items-center gap-2">
             <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
             Shipping Address
           </h2>
 
-          <div className="space-y-2 text-gray-700 leading-relaxed">
-            <p className="font-medium text-lg">{selectedAddress.name}</p>
-            <p className="text-sm">{selectedAddress.phone}</p>
+          <div className="space-y-2 text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="font-medium text-xs lg:text-base text-gray-900 dark:text-gray-100">
+              NAME : {selectedAddress.firstName}
+            </p>
+            <p className="font-medium text-xs lg:text-base text-gray-900 dark:text-gray-100">
+              Phone.No : {selectedAddress.phoneNumber}
+            </p>
             <p className="text-sm">
               {selectedAddress.address}, {selectedAddress.city},{" "}
-              {selectedAddress.state} - {selectedAddress.pinCode}
+              {selectedAddress.state} - {selectedAddress.pinCode},{" "}
+              {selectedAddress.landmark} - {selectedAddress.email}
             </p>
           </div>
         </div>
 
         {/* Products Section */}
-        <div className="border border-gray-200 bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 rounded-b-full shadow-lg hover:shadow-xl transition-all duration-300 p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
+        <div className=" bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-b-full transition-all duration-300 p-6">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full"></span>
             Products
           </h2>
 
-          <div className="space-y-4 max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
+          <div className="space-y-4 max-h-80 overflow-y-auto pr-2">
             {products.map((item) => (
               <div
                 key={item._id}
-                className="flex items-center gap-4 pb-4 rounded-lg transition-colors duration-200"
+                className="flex items-center gap-4 pb-4 rounded-lg"
               >
                 <img
                   src={item.product.images?.[0]}
@@ -197,10 +204,10 @@ const CheckoutSummary = () => {
                   className="w-20 h-20 rounded-xl object-cover shadow"
                 />
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900">
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
                     {item.product.title}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
                     ₹{item.product.sellingPrice} × {item.quantity}
                   </p>
                 </div>
@@ -208,7 +215,7 @@ const CheckoutSummary = () => {
             ))}
           </div>
 
-          <div className="flex justify-center gap-12 items-center mt-6 text-lg font-semibold text-gray-800 border- pt-4">
+          <div className="flex justify-center gap-12 items-center mt-6 text-lg font-semibold text-gray-800 dark:text-gray-100 pt-4">
             <span>Total:</span>
             <span className="text-red-500 text-xl">₹{subtotal}</span>
           </div>
@@ -219,11 +226,10 @@ const CheckoutSummary = () => {
       <div className="flex justify-center mt-10">
         <Button
           content={
-            <span className="flex items-center gap-2"> Make Payment</span>
+            <span className="flex items-center gap-2">Make Payment</span>
           }
           pattern="outline"
-          className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+          className=" w-70! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
           buttonProps={{ onClick: handlePayment }}
         />
       </div>
