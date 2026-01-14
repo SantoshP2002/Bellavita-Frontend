@@ -45,20 +45,15 @@ const EditProfile = () => {
   };
 
   return (
-    <div
-      className="
-        min-h-[500px] flex flex-col items-center justify-center
-        px-4 sm:px-6 bg-gray-100
-      "
-    >
+    <div className="min-h-[500px] flex flex-col items-center justify-center px-4 sm:px-6 bg-gray-100 dark:bg-black dark:text-white">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="
-          w-full max-w-sm sm:max-w-md  bg-white/90 backdrop-blur-xl p-6 sm:p-8 shadow-2x space-y-4 sm:space-y-5
+          w-full max-w-sm sm:max-w-md   bg-white/90 dark:bg-black/60 shadow-md dark:shadow-white backdrop-blur-xl p-6 sm:p-8 shadow-2x space-y-4 sm:space-y-5
           animate-[scaleIn_0.4s_ease-out]  rounded-tl-full rounded-br-full
         "
       >
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 text-start mb-8 uppercase">
+        <h2 className="text-xl sm:text-2xl font-bold dark:text-white text-start mb-8 uppercase">
           Edit Profile ✏️
         </h2>
 
@@ -66,7 +61,7 @@ const EditProfile = () => {
         <div className="relative w-full">
           <Input
             label="First Name"
-            className="w-full px-4 py-3 pl-7 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("firstName")}
             inputProps={{
               placeholder: "Enter First Name",
@@ -79,7 +74,7 @@ const EditProfile = () => {
         <div className="relative w-full">
           <Input
             label="Last Name"
-            className="w-full px-4 py-3 pl-7 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("lastName")}
             inputProps={{
               placeholder: "Enter Last Name",
@@ -92,7 +87,7 @@ const EditProfile = () => {
         <div className="relative w-full">
           <Input
             label="Email"
-            className="w-full px-4 py-3 pl-7 border-b-4 rounded-lg focus:outline-none focus:ring-indigo-400 text-sm"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("email")}
             inputProps={{
               placeholder: "Enter Email",
@@ -108,15 +103,7 @@ const EditProfile = () => {
           buttonProps={{
             type: "submit",
             disabled: isSubmitting,
-            className: `hover:text-white!
-              w-full py-2.5 sm:py-3
-              text-base sm:text-lg
-              font-semibold
-              rounded-xl
-              transition-all duration-300
-              hover:scale-[1.02]
-              hover:shadow-lg
-              active:scale-95
+            className: `w-full py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale text-black bg-white hover:bg-black hover:text-white dark:text-black! dark:bg-white! dark:border-white! dark:hover:bg-black! dark:hover:text-white!
               ${isSubmitting ? "animate-pulse" : ""}
             `,
           }}
@@ -128,7 +115,7 @@ const EditProfile = () => {
         buttonProps={{
           onClick: () => navigate("/profile"),
           className:
-            "flex! flex-col! w-20! hover:text-white! font-semibold rounded-lg hover:scale-[1.02]",
+            "w-40! py-2.5 sm:py-3 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 hover:scale text-black bg-white hover:bg-black hover:text-white dark:text-black! dark:bg-white! dark:border-white! dark:hover:bg-black! dark:hover:text-white!",
         }}
       />
     </div>

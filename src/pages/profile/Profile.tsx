@@ -10,10 +10,10 @@ const Profile = () => {
   const { user, logout } = useUserStore();
 
   return (
-    <div className="flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-[280px_1fr]">
+    <div className="flex items-center justify-center px-4 py-10 border dark:bg-black">
+      <div className="w-full max-w-5xl bg-white rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-[280px_1fr] dark:bg-black dark:text-white shadow-md dark:shadow-white shadow-black">
         {/* ================= LEFT SIDEBAR ================= */}
-        <div className="bg-gradient-to-b from-indigo-500 to-purple-300 p-8 flex flex-col items-center text-center">
+        <div className="bg-gradient-to-b from-indigo-500 to-purple-300 dark:to-purple-800 p-8 flex flex-col items-center text-center">
           {user?.profilePic ? (
             <img
               src={user.profilePic}
@@ -58,19 +58,19 @@ const Profile = () => {
           {/* Info */}
           <div className="space-y-8">
             <div>
-              <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+              <p className="text-xs uppercase tracking-widest dar:text-white mb-1">
                 Email Address
               </p>
-              <p className="text-gray-800 font-medium break-all">
+              <p className="dark:text-blue-500 font-medium break-all">
                 {user?.email}
               </p>
             </div>
 
             <div>
-              <p className="text-xs uppercase tracking-widest text-gray-400 mb-1">
+              <p className="text-xs uppercase tracking-widest dark:text-white mb-1">
                 Bio
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="dark:text-gray-300 leading-relaxed">
                 Welcome to your personal profile space. You can manage your
                 account, update your details, or secure your account from here.
               </p>
@@ -82,7 +82,7 @@ const Profile = () => {
             <Button
               content="Logout"
               pattern="outline"
-              className=" bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+              className=" bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
               icons={{ right: <MdOutlineLogout size={18} /> }}
               buttonProps={{
                 onClick: () => {
@@ -94,7 +94,7 @@ const Profile = () => {
             <Button
               content="BACK"
               pattern="outline"
-              className="w-60! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+              className="w-60! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               icons={{ left: <IoIosArrowBack size={18} /> }}
               buttonProps={{
                 onClick: () => navigate("/"),
