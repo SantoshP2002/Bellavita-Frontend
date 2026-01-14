@@ -25,25 +25,30 @@ const Dashboard = () => {
 
   return (
     <div className="w-full">
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <section className="grid grid-cols-1 md:grid-cols-5 gap-12">
         {/* USERS */}
-        <div className="p-6 rounded-md shadow-md bg-gradient-to-bl from-blue-200 via-violet-300 to-blue-100">
-          <h2 className="text-gray-600">Users</h2>
-          <p className="text-2xl font-bold">
+        <div className="p-6 rounded-xl bg-white shadow-md dark:shadow-white shadow-black transition-all duration-300 dark:bg-[#0b0f19] dark:border dark:border-gray-200">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-gray-800 dark:text-gray-300">
+            Users
+          </h2>
+
+          <p className="font-medium text-xl">
             {userLoading ? "..." : usersCount}
           </p>
         </div>
 
         {/* PRODUCTS */}
-        <div className="p-6 rounded-md shadow-md bg-gradient-to-bl from-blue-200 via-pink-300 to-blue-100">
-          <h2 className="text-gray-600">Products</h2>
+        <div className="p-6 rounded-xl bg-white shadow-md dark:shadow-white shadow-black transition-all duration-300 dark:bg-[#0b0f19] dark:border dark:border-gray-200">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-gray-800 dark:text-gray-300">
+            Products
+          </h2>
           <p className="text-2xl font-bold">
             {productLoading ? "..." : productsCount}
           </p>
         </div>
 
         {/* BLOGS */}
-        <div className="p-6 rounded-md shadow-md bg-gradient-to-bl from-blue-200 via-green-300 to-blue-100">
+        <div className="p-6 rounded-xl bg-white shadow-md dark:shadow-white shadow-black transition-all duration-300 dark:bg-[#0b0f19] dark:border dark:border-gray-200">
           <h2 className="text-gray-600">Blogs</h2>
           <p className="text-2xl font-bold">
             {blogLoading ? "..." : blogsCount}

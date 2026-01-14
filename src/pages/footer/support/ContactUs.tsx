@@ -5,7 +5,7 @@ import Textarea from "../../../components/TextArea";
 
 const ContactUs = () => {
   return (
-    <section className="bg-white text-gray-800">
+    <section className="bg-white  dark:bg-black dark:text-white py-10 p-3">
       <div className="mx-auto max-w-4xl px-4 py-16">
         <h1 className="text-2xl text-center">DROP US A LINE</h1>
         <p className="text-lg text-center">
@@ -19,7 +19,7 @@ const ContactUs = () => {
         </p>
       </div>
       {/* Bottom Part  */}
-      <div className="mx-auto max-w-6xl px-4 py-16">
+      <div className="mx-auto max-w-6xl px-4 py-16 shadow-lg dark:shadow-white shadow-black">
         <div className="flex flex-col gap-14 lg:flex-row">
           {/* 70% SECTION – FORM */}
           <div className="w-full lg:w-[70%]">
@@ -28,25 +28,25 @@ const ContactUs = () => {
 
               <Input
                 label="Name"
-                className="border border-b-4 border-b-gray-300"
+                className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                 inputProps={{ placeholder: "Enter Name" }}
               />
 
               <Input
                 label="Email"
-                className="border border-b-4 border-b-gray-300"
+                className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                 inputProps={{ placeholder: "Enter Email" }}
               />
 
               <Input
                 label="Phone Number"
-                className="border border-b-4 border-b-gray-300"
+                className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                 inputProps={{ placeholder: "Enter Phone Number" }}
               />
 
               <Textarea
                 label="Comment"
-                className="border border-b-4 border-b-gray-300"
+                className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                 textareaProps={{
                   placeholder: "Enter Comment",
                 }}

@@ -9,7 +9,7 @@ const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex">
+    <div className="flex dark:bg-black dark:text-white">
       {/* Sidebar */}
       <Sidebar
         onClose={() => setIsOpen(false)}
@@ -22,7 +22,7 @@ const AdminLayout = () => {
       />
 
       {/* Main Content */}
-      <main className="min-h-dvh flex-1 flex flex-col gap-4 p-4 bg-gray-200 rounded-xl m-2">
+      <main className="min-h-dvh flex-1 flex flex-col gap-4 p-4 dark:bg-black dark:text-white rounded-xl m-2">
         {/* Header */}
         <ScrollToTop />
         <AdminHeader onMenuClick={() => setIsOpen(!isOpen)} />
