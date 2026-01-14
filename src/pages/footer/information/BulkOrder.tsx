@@ -5,15 +5,15 @@ import { FaRegThumbsUp } from "react-icons/fa";
 
 const BulkOrder = () => {
   return (
-    <div className="">
+    <div>
       <img
         className="w-full"
         src="https://bellavitaorganic.com/cdn/shop/files/1200_X235_0b857eca-9439-47b6-86f5-266721e1f330.jpg?v=1686207597&width=1500"
         alt="Bulk order top image"
       />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen dark:bg-black dark:text-white ">
         {/* Input Part  */}
-        <div className="mx-auto max-w-3xl px-4 py-8">
+        <div className="mx-auto max-w-3xl px-4 py-8 shadow-lg dark:shadow-white shadow-black">
           <p className="mt-14 text-2xl font-semibold">
             Bulk Order Inquiry / Corporate Gifting Form
           </p>
@@ -21,32 +21,32 @@ const BulkOrder = () => {
           <div className="py-10 flex flex-col gap-6">
             <Input
               label="Name"
-              className="border border-b-4 border-b-gray-300"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{ placeholder: "Enter Name" }}
             />
             <Input
               label="Email"
-              className="border border-b-4 border-b-gray-300"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{ placeholder: "Enter Email" }}
             />
             <Input
               label="Phone"
-              className="border border-b-4 border-b-gray-300"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{ placeholder: "Enter Phone" }}
             />
             <Input
               label="Item Name"
-              className="border border-b-4 border-b-gray-300"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{ placeholder: "Enter Item Name" }}
             />
             <Input
               label="No of Item"
-              className="border border-b-4 border-b-gray-300"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{ placeholder: "Enter No. of Item" }}
             />
             <Textarea
               label="Additional Information (optional)"
-              className="border border-b-4 border-b-gray-300"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               textareaProps={{
                 placeholder: "Write Additional Information (optional)",
               }}

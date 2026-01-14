@@ -1,13 +1,11 @@
 const RefundReturnPolicy = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen bg-gray-50 text-black dark:bg-black dark:text-white">
       <div className="mx-auto max-w-5xl px-4 py-8">
         {/* Header */}
-        <h1 className="mb-6 text-3xl font-bold text-gray-900">
-          Refund & Return Policy
-        </h1>
+        <h1 className="mb-6 text-3xl font-bold">Refund & Return Policy</h1>
 
-        <div className="space-y-6 rounded-lg bg-white p-6 shadow">
+        <div className="space-y-6 rounded-lg bg-white p-6 dark:bg-black shadow-md dark:shadow-white shadow-black">
           {/* REFUND AND RETURN POLICY */}
           <div>
             <p className="text-center my-5 text-xl font-bold">

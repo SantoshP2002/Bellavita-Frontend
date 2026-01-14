@@ -1,20 +1,20 @@
 const TermsAndCondition = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen bg-gray-50 dark:bg-black ">
       {/* Container */}
       <div className="mx-auto max-w-5xl px-4 py-8">
         {/* Header */}
-        <h1 className="mb-6 text-3xl font-bold text-gray-900">
+        <h1 className="mb-6 text-3xl font-bold text-black dark:text-white">
           Terms and Conditions
         </h1>
 
-        <div className="space-y-7 rounded-lg bg-white p-6 shadow">
+        <div className="space-y-7 rounded-lg bg-white p-6 dark:bg-black dark:text-white shadow-lg dark:shadow-white shadow-black">
           {/* Intro */}
           <p className="text-lg leading-relaxed font-extrabold">
             Bella Vita Organic’s <strong>Terms of Use</strong>
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-sm lg:text-lg leading-relaxed">
             This document is an electronic record in terms of Information
             Technology Act, 2000 and rules framed there under as applicable and
             the amended provisions relating to electronic records in various
@@ -32,7 +32,7 @@ const TermsAndCondition = () => {
 
           {/* Section */}
           <Section title="USER AGREEMENT">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               PLEASE READ THIS TERMS OF SERVICE AGREEMENT CAREFULLY. BY USING
               THIS WEBSITE OR ORDERING PRODUCTS FROM THIS WEBSITE YOU AGREE TO
               BE BOUND BY ALL THE TERMS AND CONDITIONS OF THIS AGREEMENT. This
@@ -76,13 +76,13 @@ const TermsAndCondition = () => {
           {/* Disclaimers */}
           <Section title="IMPORTANT DISCLAIMERS">
             <ul className="list-disc space-y-2 pl-5">
-              <p className="text-lg leading-relaxed">
+              <p className="text-sm lg:text-lg leading-relaxed">
                 The following disclaimers are essential for determining any
                 relationship between You and the Bella Vita Organic for your use
                 of any services on the website :
               </p>
               <li className="text-md leading-relaxed">
-                • Bella Vita Organic, its associates, affiliates and service
+                Bella Vita Organic, its associates, affiliates and service
                 providers and technology partners make no representations or
                 Warranties about the accuracy, reliability, completeness, and/or
                 timelines of any content, information, software, text, graphics,
@@ -91,7 +91,7 @@ const TermsAndCondition = () => {
                 and/or uninterrupted.
               </li>
               <li className="text-md leading-relaxed">
-                • You understand, agree and acknowledge that Bella Vita Organic
+                You understand, agree and acknowledge that Bella Vita Organic
                 uses third party services providers to store and process your
                 personal information and other information which you provide to
                 the Bella Vita Organic (as more specifically identified in the
@@ -110,7 +110,7 @@ const TermsAndCondition = () => {
                 under public policy) of these third parties.
               </li>
               <li className="text-md  leading-relaxed">
-                • You understand, agree and acknowledge that Bella Vita Organic
+                You understand, agree and acknowledge that Bella Vita Organic
                 will not be liable for any claim of recovery of damages,
                 payments, repayments or any monetary claims for banking fraud or
                 negligence or damages arising of financial losses, mental agony
@@ -137,7 +137,7 @@ const TermsAndCondition = () => {
 
           {/* Eligibility */}
           <Section title="MEMBERSHIP ELEGIBILITY">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               In order to use the service of Bella Vita Organic through website
               you may use guest login or you may create your own Bella Vita
               Organic account to use certain Bella Vita Organic Services, and
@@ -163,7 +163,7 @@ const TermsAndCondition = () => {
 
           {/* Account */}
           <Section title="YOUR ACCOUNT & REGISTRATION OBLIGATIONS">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               If you use the Website as a Registered User, you are responsible
               for maintaining the confidentiality of your User ID and Password.
               You are responsible for all activities that occur under your User
@@ -182,7 +182,7 @@ const TermsAndCondition = () => {
           </Section>
 
           <Section title="ELECTRONIC COMMUNICATIONS">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               When You use the Website or send emails or other data, information
               or communication to us, You agree and understand that You are
               communicating with us through electronic records and You consent
@@ -197,7 +197,7 @@ const TermsAndCondition = () => {
 
           {/* Products */}
           <Section title="USE OF PRODUCTS AND SERVICES">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               The products and services provided by Bella Vita Organic on this
               website are for personal use only. Selling or reselling of
               products and services obtained through Bella Vita Organic website
@@ -213,7 +213,7 @@ const TermsAndCondition = () => {
           </Section>
 
           <Section title="FEES AND SERVICES">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               Membership on this website is free. Bella Vita Organic does not
               charge for browsing and purchasing the product from this website
               except for the sale price of the product, applicable taxes as per
@@ -235,7 +235,7 @@ const TermsAndCondition = () => {
           </Section>
 
           <Section title="USE OF THE WEBSITE">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               By using this website You agree, undertake and confirm that your
               use of the Website shall be strictly governed by the following
               binding principles:
@@ -247,11 +247,11 @@ const TermsAndCondition = () => {
                   • You shall not host, display, upload, modify, publish,
                   transmit, update or share any information or share/list(s)
                 </li>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – Belongs to some other person to which You do not have any
                   right to.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – Is grossly harmful, harassing, blasphemous, defamatory,
                   obscene, pornographic, paedophilic, libellous, invasive of
                   another’s privacy, hateful, or racially, ethnically
@@ -262,39 +262,39 @@ const TermsAndCondition = () => {
                   women” within the meaning of the Indecent Representation of
                   Women (Prohibition) Act, 1986.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – Harm minors in any way.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – Violates any law for the time being in force.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – Threatens the unity, integrity, defence, security or
                   sovereignty of India, friendly relations with foreign states,
                   or public order or causes incitement to the commission of any
                   cognizable offence or prevents investigation of any offence or
                   is insulting any other nation.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – Violate any right of the Bella Vita Organic or its
                   representatives.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – You will not copy any content of this website which is the
                   proprietary interest of Bella Vita Organic, copying of which
                   may violates Intellectual Property Rights of Bella Vita
                   Organic.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – You will not use the details available on the website to
                   mislead any third person.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – You will not write anything about Bella Vita Organic on any
                   social networking or post any of its content without the
                   permission of Bella Vita Organic.
                 </p>
-                <p className="text-lg leading-relaxed">
+                <p className="text-md leading-relaxed">
                   – You will not engage into infringement of the trade mark of
                   Bella Vita Organic by adopting or using the mark Bella Vita
                   Organic or any mark wherein the mark Bella Vita Organic forms
@@ -306,7 +306,7 @@ const TermsAndCondition = () => {
 
           {/* Liability */}
           <Section title="LIMITATION OF LIABILITY">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               In no event Bella Vita Organic be liable for any indirect,
               incidental, special, incidental, consequential, punitive or
               exemplary damages, including but not limited to, damages for loss
@@ -318,7 +318,7 @@ const TermsAndCondition = () => {
           </Section>
 
           <Section title="INDEMNITY">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               You shall fully indemnify, keep indemnified, defend and hold
               harmless Bella Vita Organic its owners, licensees, subsidiaries,
               affiliates, third-parties and their respective shareholders,
@@ -337,7 +337,7 @@ const TermsAndCondition = () => {
           </Section>
 
           <Section title="DISPUTE RESOLUTIONS">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               Generally, transactions are conducted smoothly on
               www.bellavitaorganic.com. But in case if any issue arises then at
               www.bellavitaorganic.com , we have a Dispute Resolution process in
@@ -354,7 +354,7 @@ const TermsAndCondition = () => {
           </Section>
 
           <Section title="REPORT AN INTELLECTUAL PROPERTY RIGHT VIOLATION">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               In the event if You believe Your intellectual property rights have
               been violated in any manner through the Website, please write to
               us at shop@bellavitaorganic.com Bella Vita Organic will make it
@@ -371,7 +371,7 @@ const TermsAndCondition = () => {
 
           {/* Governing Law */}
           <Section title="GOVERNING LAW / JURISICTIONAL ISSUE">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               This User Agreement and all the rules and policies contained
               herein and any of Your usage of Website and Your dealings with
               Bella Vita Organic shall be governed and construed in accordance
@@ -382,7 +382,7 @@ const TermsAndCondition = () => {
 
           {/* Grievance */}
           <Section title="Bella Vita Organic – GRIEVANCE OFFICER">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               This page is published and shall be construed in accordance with
               the provisions of Rule 3(11) of the Information Technology
               (Intermediaries Guidelines) Rules, 2011 (“IT Rules”) that requires
@@ -392,14 +392,14 @@ const TermsAndCondition = () => {
               Policy and Terms of Use) by any other person, can notify their
               complaints to us.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               Further, as per Rule 3(4) of the IT Rules, the Grievance Officer
               shall acknowledge or respond to Your communication of violation of
               Rule 3, by any other person, within 36 (thirty six) hours, and the
               complaints shall be redressed within 1 (one) month from the date
               of receipt of the complaint.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               Accordingly, the Grievance Officer for the purpose of Your
               personal delicate information as governed by the Privacy Policy
               is:
@@ -420,19 +420,19 @@ const TermsAndCondition = () => {
 
           {/* Disclaimer */}
           <Section title="GENERAL">
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               None of the provisions of the User Agreement shall be deemed to
               constitute a partnership or agency between you and Bella Vita
               Organic and you shall have no authority to bind Bella Vita Organic
               in any manner whatsoever.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               If any clause of the Terms of use Agreement shall be deemed
               invalid, void or for any reason unenforceable, such clause shall
               be deemed severable and shall not affect the validity and
               enforceability of the remaining clauses of the User Agreement.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               This Agreement sets forth the entire understanding and agreement
               between You and Bella Vita Organic with respect to the subject
               matter hereof. You cannot assign or otherwise transfer this User
@@ -447,7 +447,7 @@ const TermsAndCondition = () => {
               continued use of the website thereafter constitutes your agreement
               to all such changed Terms and Conditions.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-sm lg:text-lg leading-relaxed">
               Disclaimer: Bella Vita Organic personal care products are based on
               natural and Ayurvedic formulations. Despite the fact that
               tremendous endeavours are made and safeguards are taken to deliver
@@ -485,8 +485,12 @@ const Section = ({
 }) => {
   return (
     <div className="space-y-2">
-      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-      <div className="text-sm leading-relaxed text-gray-700">{children}</div>
+      <h2 className="text-md  lg:text-lg font-semibold dark:text-gray-200 text-gray-900">
+        {title}
+      </h2>
+      <div className="text-xs leading-relaxed dark:text-gray-200 text-gray-700">
+        {children}
+      </div>
     </div>
   );
 };

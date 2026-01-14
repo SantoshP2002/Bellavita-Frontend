@@ -1,30 +1,30 @@
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-      <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="min-h-screen dark:bg-black dark:text-white">
+      <div className="mx-auto max-w-5xl px-4 py-8 dark:bg-black dark:text-white">
         {/* Header */}
-        <h1 className="mb-6 text-3xl font-bold text-gray-900">
+        <h1 className="mb-6 text-3xl font-bold dark:bg-black dark:text-white">
           Privacy Policy
         </h1>
 
-        <div className="space-y-6 rounded-lg bg-white p-6 shadow">
+        <div className="space-y-6 rounded-lg bg-white p-6  dark:bg-black dark:text-white shadow-md dark:shadow-white shadow-black">
           {/* Intro */}
-          <p className="text-lg leading-relaxed">
+          <p className="text-xs lg:text-lg  leading-relaxed">
             Bella Vita Organic insists upon the highest standards for secure
             transactions and protection of your Personal Information and its
             privacy. Please read the following statement to learn about our
             information gathering and dissemination practices.
           </p>
 
-          <p className="text-lg leading-relaxed">
+          <p className="text-xs lg:text-lg leading-relaxed">
             Note: Our privacy policy is subject to change at any time without
             notice. Please review this policy periodically.
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-xs lg:text-lg  leading-relaxed">
             Bella Vita Organic is committed to protecting and safeguarding your
             privacy.
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-xs lg:text-lg  leading-relaxed">
             This Privacy Policy describes the types of personal information that
             is collected on the Bella Vita Organic website, how we mutually
             benefit from such information, how we may use that information, and
@@ -35,16 +35,18 @@ const PrivacyPolicy = () => {
             processing of your personal information or to receiving
             communications about our products and services.
           </p>
-          <p className="text-lg leading-relaxed">
+          <p className="text-xs lg:text-lg  leading-relaxed">
             By mere use of the website, you expressly consent to our use and
             disclosure of your personal information in accordance with this
             Privacy Policy. If you do not agree please do not use or access our
             Site.
           </p>
-          <p className="text-lg leading-relaxed">TERMS AND CONDITIONS</p>
+          <p className="text-xs lg:text-lg  leading-relaxed">
+            TERMS AND CONDITIONS
+          </p>
 
           <Section title="Collection Of Personally Identifiable Information (PII) And Other Information">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Bella Vita Organic limits itself to collect information in order
               to ensure accurate service. Most of the information we collect is
               very basic and is needed to complete a purchase or provide a
@@ -54,11 +56,11 @@ const PrivacyPolicy = () => {
               language preference, the IP address and operating system of your
               computer, and the browser type and version being used by you.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We will not sell, distribute, or lease your personal information
               to third parties.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We may automatically track certain information about you based
               upon your behaviour on our site. We use this information to do
               internal research on our users' demographics, interests, and
@@ -69,10 +71,10 @@ const PrivacyPolicy = () => {
               this URL is on our site or not), your computer browser
               information, and your IP address.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Credit Card, Debit Card and Banking Information
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Bella Vita Organic does not collect or store Credit Card or Debit
               Card or any of your banking information as it is directly
               transmitted through the payment gateway provider to the payment
@@ -81,13 +83,13 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Registration">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               In order to take advantage of some features of the site, you must
               register and create a member account which is free of any cost. An
               online registration form may require you to provide information
               such as your name, email address, and a password.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Your password is a component of our security system. As such, it
               is your responsibility to protect it. Do not share your password
               with any third parties. If your password has been compromised for
@@ -96,7 +98,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Technologies That Allow Us To Customise Your Experience On Bella Vita Organic">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We use various technologies to collect information relating to
               your visit to our website, such as the Uniform Resource Locator
               (URL) that referred you to our website, Internet Protocol address,
@@ -115,7 +117,7 @@ const PrivacyPolicy = () => {
             <p className="text-xl my-5 leading-relaxed">
               Web Beacons And Tracking Links
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Web Beacons (also called clear gifs and pixel tags), tracking
               links and/or similar technology consist of a few lines of code and
               are embedded on the pages of our website. They are often used in
@@ -130,7 +132,7 @@ const PrivacyPolicy = () => {
               website features.
             </p>
             <p className="text-xl my-5 leading-relaxed">Cookies</p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We use data collection devices such as "cookies" on certain pages
               of the website to help analyze our web page flow, measure
               promotional effectiveness, and promote trust and safety. "Cookies"
@@ -149,7 +151,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Use Of Your Personal Information, Demographic And Profile Data">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We use personal information to provide the services you request.
               To the extent we use your personal information to market to you,
               we will provide you the ability to opt-out of such uses. We use
@@ -162,18 +164,18 @@ const PrivacyPolicy = () => {
               conditions; and as otherwise described to you at the time of
               collection.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               In our efforts to continually improve our product and service
               offerings, we collect and analyze demographic and profile data
               about our users' activity on our website.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We identify and use your IP address to help diagnose problems with
               our server, and to administer our website. Your IP address is also
               used to help identify you and to gather broad demographic
               information.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We will occasionally ask you to complete optional online surveys.
               These surveys may ask you for contact information and demographic
               information (like zip code, age, or income level). We use this
@@ -185,7 +187,7 @@ const PrivacyPolicy = () => {
 
           <Section title="How Do We Mutually Benefit From The Personal Information?">
             <p className="text-xl my-5 leading-relaxed">Marketing Emails</p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               In case you choose to leave your email address with us we would
               deliver to you information through emails such as our newsletters,
               surveys or other email messages containing product and event
@@ -195,9 +197,9 @@ const PrivacyPolicy = () => {
               information and consent to receive email and other communication
               in the 'Profile' section for registered users.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               <p className="text-xl my-5 leading-relaxed">Text Messages</p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-xs lg:text-lg  leading-relaxed">
                 If you have chosen to leave your mobile phone number with us,
                 you may receive text message/SMS alerts containing product and
                 event information, cosmetics tips or promotions on your mobile
@@ -210,7 +212,7 @@ const PrivacyPolicy = () => {
                 provider.
               </p>
               <p className="text-xl my-5 leading-relaxed">Telephone Calls</p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-xs lg:text-lg  leading-relaxed">
                 If you have chosen to leave your mobile phone number or landline
                 number on our website, you may receive phone calls containing
                 product and event information, cosmetics tips, or promotions on
@@ -219,7 +221,7 @@ const PrivacyPolicy = () => {
               <p className="text-xl my-5 leading-relaxed">
                 Communications To Serve You
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-xs lg:text-lg  leading-relaxed">
                 If you have chosen to provide us with your contact information,
                 we may provide you with service related announcements by any
                 means, including email, letters and concerning the website, or
@@ -231,7 +233,7 @@ const PrivacyPolicy = () => {
                 Bella Vita Organic offers its customers.
               </p>
               <p className="text-xl my-5 leading-relaxed">Customised Service</p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-xs lg:text-lg  leading-relaxed">
                 We may use your personal information you have chosen to give us
                 to provide you with customised service and use of our website.
                 For example, we may suggest products that would be of particular
@@ -241,7 +243,7 @@ const PrivacyPolicy = () => {
               <p className="text-xl my-5 leading-relaxed">
                 Special Events, Questionnaires, And Surveys
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-xs lg:text-lg  leading-relaxed">
                 On occasion, Bella Vita Organic may sponsor special events (such
                 as contests, promotions or other offerings), questionnaires and
                 surveys. There may be specific rules applicable to these
@@ -252,7 +254,7 @@ const PrivacyPolicy = () => {
                 processing of personal information is governed by this Privacy
                 Policy and the purposes it sets forth.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-xs lg:text-lg  leading-relaxed">
                 An "Affiliate" is a person or entity that directly or indirectly
                 through one or more intermediaries, controls or is controlled
                 by, or is under common control with, our company.
@@ -261,7 +263,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Advertisements On Bella Vita Organic">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We use third-party advertising companies to serve ads when you
               visit our website. These companies may use information (not
               including your name, address, email address, or telephone number)
@@ -273,7 +275,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Sharing Of Personal Information">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We may share personal information with our other corporate
               entities and affiliates who may use the said information in
               accordance with this policy to: help detect and prevent identity
@@ -284,7 +286,7 @@ const PrivacyPolicy = () => {
               you have any objection to such sharing than we request you should
               not provide us with any information.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We may retain other companies and individuals to perform functions
               on our behalf consistent with this Privacy Policy. Examples
               include web store management companies, order processing
@@ -296,7 +298,7 @@ const PrivacyPolicy = () => {
               information other than on our behalf and in accordance with this
               Privacy Policy.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               In addition, in some instances, you may be offered the opportunity
               to consent to the sharing of your information with a third party
               such as an event or promotion co-sponsor. If you consent, we will
@@ -304,7 +306,7 @@ const PrivacyPolicy = () => {
               you provide may be used by such third party for their own purposes
               and in accordance with their own policies.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We may disclose personal information if required to do so by law
               or in the good faith belief that such disclosure is reasonably
               necessary to respond to any court orders, or other legal process.
@@ -319,7 +321,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Links To Other Sites">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Occasionally, we may make available a link to a third party web
               site. These links will let you leave the portal. The linked sites
               are not under our control and we are not responsible for the
@@ -333,7 +335,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Business Transfer">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We and our affiliates will share / sell some or all of your
               personal information with another business entity should we (or
               our assets) plan to merge with, or be acquired by that business
@@ -344,7 +346,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Transfer Of Data To Other Countries">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Bella Vita Organic, our Affiliates and third parties who may
               receive your personal information in accordance with this Privacy
               Policy and the databases in which your personal information is
@@ -357,7 +359,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Choice/Opt-Out">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We provide all users with the opportunity to opt-out of receiving
               non-essential (promotional, marketing-related) communications from
               us on behalf of our partners, and from us in general, after
@@ -366,7 +368,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Policy Change">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               Our Privacy Policy may change from time to time. We will not
               reduce your rights under this Privacy Policy without your explicit
               consent. We will post any privacy policy changes on this page and,
@@ -378,7 +380,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Your Comments">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We welcome your feedback. If you have questions or comments about
               our privacy policies, feel free to drop us a message by writing to
               us at{" "}
@@ -390,7 +392,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="OUR RIGHTS">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We may elect to electronically monitor areas of the portal and may
               disclose any Content, records, or electronic communication of any
               kind (i) to satisfy any law, regulation, or government request;
@@ -398,7 +400,7 @@ const PrivacyPolicy = () => {
               portal; or (iii) to protect our rights or property or the rights
               of the users, Sponsors, Providers, Licensors, or Merchants.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               We are not responsible for screening, policing, editing, or
               monitoring such Content. If notified of allegedly infringing,
               defamatory, damaging, illegal, or offensive Content, we may
@@ -418,7 +420,7 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Children">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               The Bella Vita Organic website is not designed for persons under
               the age of 18 and we do not knowingly collect personally
               identifiable information from anyone under the age of 18. If you
@@ -441,14 +443,14 @@ const PrivacyPolicy = () => {
           </Section>
 
           <Section title="Your Consent">
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               By using the Website and/ or by providing your information, you
               consent to the collection and use of the information you disclose
               on the website in accordance with this Privacy Policy, including
               but not limited to Your consent for sharing your information as
               per this privacy policy.
             </p>
-            <p className="text-lg leading-relaxed">
+            <p className="text-xs lg:text-lg  leading-relaxed">
               If you believe that any information we are holding on you is
               incorrect or incomplete, please write to or email us as soon as
               possible, at the above address. We will promptly correct any
@@ -473,8 +475,10 @@ const Section = ({
 }) => {
   return (
     <div className="space-y-2">
-      <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-      <div className="text-sm leading-relaxed text-gray-700">{children}</div>
+      <h2 className="text-xl text-black dark:text-white">{title}</h2>
+      <div className="text-xs lg:text-xs leading-relaxed text-black dark:text-white">
+        {children}
+      </div>
     </div>
   );
 };
