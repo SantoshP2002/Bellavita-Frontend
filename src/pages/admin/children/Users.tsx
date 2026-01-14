@@ -39,12 +39,10 @@ const Users = () => {
   }
 
   return (
-    <div className="p-4 sm:p-6 bg-gray-200 min-h-screen">
+    <div className="p-4 sm:p-6 bg-gray-200 dark:bg-black rounded-lg min-h-screen">
       {/* HEADER */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-3">
-        <h1 className="text-2xl font-normal">
-          👥 User Management
-        </h1>
+        <h1 className="text-2xl font-normal">👥 User Management</h1>
 
         {/* SEARCH */}
         <div className="relative w-full sm:w-72">
@@ -72,13 +70,13 @@ const Users = () => {
               <th className="py-3 px-4 text-center">Actions</th>
             </tr>
           </thead>
-
+          {/* LAPTOP  */}
           <tbody>
             {filteredUsers.length > 0 ? (
               filteredUsers.map((user, index) => (
                 <tr
                   key={user._id}
-                  className="border-t hover:bg-gray-50 transition"
+                  className="border-t hover:bg-gray-50 transition dark:bg-black dark:text-white"
                 >
                   <td className="py-3 px-4">{index + 1}</td>
                   <td className="py-3 px-4 font-medium">{user.firstName}</td>
@@ -149,9 +147,9 @@ const Users = () => {
               className="bg-white rounded-tr-full shadow-md p-4 bg-gradient-to-bl from-pink-300 via-purple-200 to-orange-200 text-white"
             >
               <div className="flex justify-between items-start">
-                <div>
+                <div className="">
                   <p className="text-xs text-gray-500">#{index + 1}</p>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {user.firstName}
                   </h3>
                   <p className="text-sm text-gray-600">{user.email}</p>

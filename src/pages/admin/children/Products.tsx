@@ -57,14 +57,14 @@ const Products = () => {
   const products = data?.pages?.flatMap((page) => page.products) || [];
 
   return (
-    <div>
+    <div className="dark:bg-black dark:text-white">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <h3 className="text-2xl font-bold text-gray-700">ALL PRODUCTS</h3>
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h3 className="text-2xl font-bold mt-20">ALL PRODUCTS</h3>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-10 mt-20">
           {/* 🔍 Search Bar */}
           <Input
-            className="border-b-4 rounded-lg"
+            className="border-b-4 rounded-lg dark:bg-black dark:text-white dark:border-gray-200 dark:border-b-4 dark:border-r-4"
             icons={{ left: { icon: <CiSearch /> } }}
             inputProps={{
               type: "text",
@@ -85,10 +85,8 @@ const Products = () => {
         </div>
       </div>
 
-      <hr className="my-4 underline-offset-0" />
-
       {/* CARD */}
-      <div className="mt-4">
+      <div>
         {isLoading && (
           <p>
             <LoadingScreen />
@@ -101,7 +99,7 @@ const Products = () => {
             No products found
           </p>
         ) : (
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {products.map((p, index) => {
               const isLastItem = index === products.length - 1;
               return (
@@ -118,15 +116,15 @@ const Products = () => {
                     />
                   </div>
 
-                  <div className="p-4">
+                  <div className="p-4 dark:bg-black dark:text-white">
                     <p className="text-xs text-gray-500 font-medium line-clamp-1">
                       {p.brand}
                     </p>
-                    <h2 className="text-sm mt-1 font-semibold text-gray-800 line-clamp-1">
+                    <h2 className="text-sm mt-1 font-semibold  line-clamp-1">
                       {p.title}
                     </h2>
                     <div className="mt-2 flex items-center gap-2">
-                      <p className="text-lg font-bold text-black">
+                      <p className="text-lg font-bold">
                         ₹{p.sellingPrice.toFixed(2)}
                       </p>
                       {p.price > p.sellingPrice && (
@@ -139,7 +137,7 @@ const Products = () => {
                     <div className="flex flex-row gap-2">
                       <Button
                         content="Update"
-                        className="mt-4 w-full text-sm py-2 rounded-lg transition-colors duration-300 bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
+                        className="mt-4 w-full py-2 rounded-lg transition-colors duration-300 dark:text-black font-bold text-xs bg-gradient-to-bl from-pink-300 via-purple-300 to-orange-300"
                         buttonProps={{
                           onClick: () =>
                             navigate(`/admin/products/update/${p._id}`),
@@ -148,7 +146,7 @@ const Products = () => {
                       <Button
                         pattern="secondary"
                         content="Delete"
-                        className="mt-4 w-full text-sm py-2 rounded-lg bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
+                        className="mt-4 w-full py-2 rounded-lg dark:text-black font-bold text-xs bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
                         buttonProps={{
                           onClick: () => handleDelete(p._id),
                         }}
