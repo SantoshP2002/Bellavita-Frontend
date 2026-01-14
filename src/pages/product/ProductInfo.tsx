@@ -50,7 +50,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   };
 
   return (
-    <div className={`w-full mx-auto mt-6 p-10 md:p-20 ${className}`}>
+    <div
+      className={`w-full mx-auto p-10 md:p-20 dark:bg-black dark:text-white ${className}`}
+    >
       {sections
         .filter(({ content }) => content && content.trim() !== "")
         .map(({ title, content }, index) => {
@@ -58,7 +60,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
           return (
             <div
               key={index}
-              className={`border-b border-gray-300 p-1 transition-all duration-300`}
+              className={`border-b dark:border-gray-800 p-1 transition-all duration-300`}
             >
               {/* Accordion Header */}
               <button
@@ -67,7 +69,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   `}
                 onClick={() => toggleDropdown(index)}
               >
-                <span className="uppercase text-xl font-medium hover:cursor-pointer">
+                <span className="uppercase text-xl font-medium hover:cursor-pointer dark:text-gray-300">
                   {title}
                 </span>
                 {isOpen ? (
@@ -78,7 +80,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               </button>
 
               {/* Section  Body */}
-
               <div
                 className={`overflow-hidden transition-all duration-800 ease-in-out
                       ${
@@ -89,7 +90,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               >
                 <QuillContent
                   content={content || ""}
-                  className="px-4 pb-5 pt-2 text-gray-700 text-sm leading-relaxed
+                  className=" dark:text-gray-300 text-sm leading-relaxed
                prose prose-sm max-w-none"
                 />
               </div>

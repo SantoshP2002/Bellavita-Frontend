@@ -36,14 +36,15 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row justify-center gap-10 p-5 md:p-10 max-w-6xl mx-auto">
-        {/* LEFT IMAGE  */}
+      <div className="flex flex-col md:flex-row justify-center gap-10 p-5 md:p-10 max-w-lvw mx-auto bg-white text-black dark:bg-black dark:text-white">
+        {/* LEFT IMAGE */}
         <div className="flex flex-col gap-4 items-center md:items-start lg:max-w-1/2">
           <img
             src={product?.images?.[current]}
-            alt={`Product image`}
-            className="w-full h-auto object-cover rounded"
+            alt="Product image"
+            className="w-full h-auto object-cover rounded-2xl shadow-md dark:shadow-[0_0_25px_rgba(255,255,255,0.06)]"
           />
+
           {product?.images?.length > 1 && (
             <div className="flex items-center overflow-x-scroll scroll-smooth">
               <div className="flex flex-nowrap gap-2 shrink-0">
@@ -51,11 +52,14 @@ const ProductDetails = () => {
                   <img
                     key={ind}
                     src={img}
-                    alt={`Product image ${ind + 1}`}
                     onClick={() => setCurrent(ind)}
-                    className={`w-20 h-20 object-cover rounded cursor-pointer border hover:border-black/80 ${
-                      current === ind ? "border-black" : "border-black/30"
-                    }`}
+                    className={`w-20 h-20 object-cover rounded-xl cursor-pointer border transition-all
+                ${
+                  current === ind
+                    ? "border-black dark:border-white scale-105"
+                    : "border-black/30 dark:border-white/30 opacity-70"
+                }
+              `}
                   />
                 ))}
               </div>
@@ -63,62 +67,66 @@ const ProductDetails = () => {
           )}
         </div>
 
-        {/* RIGHT DETAILS  */}
+        {/* RIGHT DETAILS */}
         <div className="flex-1 mt-6 md:mt-0">
-          <div className="text-xl sm:text-2xl md:text-3xl font-bold">
+          <div className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
             {product?.title}
           </div>
-          <div className="text-sm text-yellow-500">{product?.brand}</div>
+
+          <div className="text-sm text-yellow-500 font-medium">
+            {product?.brand}
+          </div>
 
           <div className="mt-4 flex items-center gap-6 py-3">
             {discountPercent > 0 && (
-              <span className="text-green-600 font-semibold text-sm">
+              <span className="text-green-500 font-semibold text-sm">
                 {discountPercent}% OFF
               </span>
             )}
 
-            <span className="text-lg sm:text-lg font-bold">
-              ₹{product?.sellingPrice}
-            </span>
+            <span className="text-lg font-bold">₹{product?.sellingPrice}</span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-gray-500">
+          <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
             MRP:
             <span className="line-through text-red-500">₹{price}</span>
           </div>
 
-          <p className="text-xs text-gray-600">Inclusive of all taxes</p>
+          <p className="text-xs text-gray-600 dark:text-gray-400">
+            Inclusive of all taxes
+          </p>
 
-          <div className="flex justify-center items-center gap-4">
+          {/* ACTION BUTTONS */}
+          <div className="flex justify-center items-center gap-4 mt-4">
             <Button
               content="Add To Cart"
               pattern="outline"
-              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+              className="bg-black text-white border-2 border-black text-xs sm:text-sm py-2 px-4 transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{
                 onClick: () => handleAddToCart(product._id),
               }}
             />
+
             <Button
-              content="Go To Cart "
+              content="Go To Cart"
               pattern="outline"
-              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+              className="bg-black text-white border-2 border-black text-xs sm:text-sm py-2 px-4 transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{
                 onClick: () => navigate("/cart"),
               }}
             />
           </div>
 
-          <div className="p-3 sm:p-4 bg-gray-100 mt-5 rounded">
+          {/* PERSONALIZE CARD */}
+          <div className="p-4 mt-5 rounded-xl bg-gray-100 text-black dark:bg-[#111] dark:text-white border dark:border-gray-700">
             <div className="font-semibold text-sm sm:text-base">
               Personalize Perfume
             </div>
-            <div className="text-xs sm:text-sm text-gray-500">
+            <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
               Personalize with your name or message for just
             </div>
             <span className="font-bold"> ₹75</span>{" "}
-            <span className="text-xs sm:text-sm text-gray-500">
+            <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
               extra - prepaid only!
             </span>
           </div>
@@ -145,14 +153,10 @@ const ProductDetails = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="w-full h-24 sm:h-28 bg-gray-100 rounded-xl flex flex-col justify-center items-center shadow-sm hover:shadow-md transition-all p-3"
+                className="w-full h-24 sm:h-28 rounded-xl flex flex-col justify-center items-center p-3 bg-gray-100 dark:bg-[#111] border dark:border-gray-700 shadow-sm hover:shadow-md transition-all"
               >
-                <img
-                  className="w-10 h-10 sm:w-12 sm:h-12"
-                  src={item.img}
-                  alt={item.text}
-                />
-                <p className="text-[10px] sm:text-xs text-center font-semibold mt-2">
+                <img className="w-10 h-10 sm:w-12 sm:h-12" src={item.img} />
+                <p className="text-[10px] sm:text-xs font-semibold mt-2">
                   {item.text}
                 </p>
               </div>
@@ -164,22 +168,23 @@ const ProductDetails = () => {
           </p>
 
           <div
-            className={`text-gray-600 text-sm transition-all ${
+            className={`text-sm text-gray-600 dark:text-gray-300 ${
               showFullDesc ? "" : "line-clamp-4"
             }`}
           >
             <QuillContent content={product?.description} />
           </div>
+
           <button
             onClick={() => setShowFullDesc(!showFullDesc)}
-            className="mt-2 text-sm font-semibold cursor-pointer text-black hover:underline"
+            className="mt-2 text-sm font-semibold text-black dark:text-white hover:underline"
           >
             {showFullDesc ? "Show Less" : "Read More"}
           </button>
         </div>
       </div>
 
-      <div className="mt-10 w-full">
+      <div className="py-10 w-full dark:bg-black">
         <picture>
           {/* Mobile image */}
           <source
@@ -198,7 +203,7 @@ const ProductDetails = () => {
 
       {/* VIDEO  */}
       {videoData && (
-        <div className="mt-10">
+        <div>
           <video
             autoPlay
             loop
@@ -224,9 +229,9 @@ const ProductDetails = () => {
       <div>
         <ProductInfo product={product} />
 
-        <div>
+        <div className="dark:bg-black dark:text-white">
           {product?.images?.length > 0 ? (
-            <h1 className="text-lg sm:text-xl m-6 sm:m-8 text-center">
+            <h1 className="text-lg sm:text-xl mb-15 sm:m- text-center">
               COLORFUL CAPTIVATION
             </h1>
           ) : (
@@ -261,15 +266,7 @@ const ProductDetails = () => {
                         key={ind}
                         src={img}
                         alt={`Product image ${ind + 2}`}
-                        className="
-                w-[180px] h-[260px]
-                md:w-[240px] md:h-[330px]
-                lg:w-[240px] lg:h-[370px]
-                object-cover
-                cursor-pointer
-                rounded
-                shrink-0
-              "
+                        className="w-[180px] h-[260px] md:w-[240px] md:h-[330px] lg:w-[240px] lg:h-[370px] object-cover cursor-pointer rounded shrink-0"
                       />
                     ))}
                 </div>

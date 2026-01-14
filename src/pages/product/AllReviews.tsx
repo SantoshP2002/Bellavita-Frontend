@@ -38,12 +38,10 @@ const AllReviews = () => {
   const allReviews = data?.pages.flatMap((page) => page?.reviews || []) || [];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 mt-10">
+    <div className="max-w-lvw mx-auto px-10 py-10 dark:bg-black dark:text-white">
       <h2 className="text-2xl font-bold text-center mb-6">All Reviews</h2>
 
-      {isLoading && (
-        <p className="text-center text-gray-500">Loading reviews...</p>
-      )}
+      {isLoading && <LoadingScreen />}
       {isError && (
         <p className="text-center text-red-500">Failed to load reviews.</p>
       )}
@@ -55,7 +53,7 @@ const AllReviews = () => {
         {allReviews.map((review: IReview) => (
           <div
             key={review._id}
-            className="border-b-[1px] border-gray-300 p-2 pb-5"
+            className="border-b-[1px] border-gray-600 p-5 py-5"
           >
             {/* ⭐ Rating */}
             <div className="flex items-center mb-2 gap-1.5">
@@ -69,18 +67,18 @@ const AllReviews = () => {
             </div>
 
             {/* 👤 Name */}
-            <h3 className="text-lg text-gray-900 flex flex-row items-center gap-3">
+            <h3 className="text-lg dark:text-gray-200 flex flex-row items-center gap-3">
               <FiUser className="text-3xl" />
               {review.name || "Anonymous"}
             </h3>
 
             {/* 📝 Title */}
-            <p className="text-gray-700 font-bold text-lg mt-2">
+            <p className="dark:text-gray-300 font-bold text-lg mt-2">
               {review.title || "No title provided"}
             </p>
 
             {/* 💬 Description */}
-            <p className="text-gray-600 leading-relaxed overflow-hidden">
+            <p className="dark:text-gray-300 leading-relaxed overflow-hidden">
               {review.description}
             </p>
 
@@ -109,12 +107,11 @@ const AllReviews = () => {
               isFetchingNextPage ? (
                 <span className="flex items-center gap-2">Loading...</span>
               ) : (
-                "Load More Reviews"
+                "Load More"
               )
             }
             pattern="outline"
-            className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+            className="w-100! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
             buttonProps={{
               onClick: () => fetchNextPage(),
               disabled: isFetchingNextPage,
@@ -125,8 +122,8 @@ const AllReviews = () => {
 
       {/* 🛍 Recommended Products Section */}
       {products.length > 0 && (
-        <div className="mt-12">
-          <h2 className="font-bold text-2xl text-center uppercase">
+        <div className="py-3">
+          <h2 className="font-bold text-2xl text-center uppercase py-10">
             You May Also Like
           </h2>
 
@@ -135,11 +132,11 @@ const AllReviews = () => {
           ) : productsError ? (
             <EmptyData content="Product Not Found 😕" />
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:px-4">
+            <div className=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:px-4">
               {products.map((p) => (
                 <div
                   key={p._id}
-                  className="flex flex-col justify-between bg-white transition-shadow duration-200 w-full"
+                  className="flex flex-col justify-between bg-white transition-shadow duration-200 dark:bg-black dark:text-white"
                 >
                   {/* Image & Info */}
                   <div
@@ -155,18 +152,18 @@ const AllReviews = () => {
                     </div>
 
                     <div className="p-2 flex-1 flex flex-col justify-between">
-                      <p className="text-xs text-gray-500 sm:font-medium line-clamp-1">
+                      <p className="text-xs dark:text-gray-300 sm:font-medium line-clamp-1">
                         {p.brand}
                       </p>
-                      <h3 className="text-sm mt-1  sm:font-semibold text-gray-800 line-clamp-2">
+                      <h3 className="text-sm mt-1  sm:font-semibold dark:text-gray-300 line-clamp-2">
                         {p.title}
                       </h3>
-                      <div className="flex items-center gap-2 mt-2">
-                        <p className="text-lg font- text-black">
+                      <div className="flex items-center gap-5 mt-2">
+                        <p className="text-lg font- dark:text-white">
                           ₹{p.sellingPrice.toFixed(2)}
                         </p>
                         {p.price > p.sellingPrice && (
-                          <p className="text-sm text-gray-400 line-through">
+                          <p className="text-sm text-gray-500 line-through">
                             ₹{p.price.toFixed(2)}
                           </p>
                         )}
@@ -178,8 +175,7 @@ const AllReviews = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="mt-4 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3
-               shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out"
+                    className=" bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-5 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}

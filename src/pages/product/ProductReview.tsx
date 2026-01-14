@@ -112,7 +112,7 @@ const ProductReview = ({
   useEffect(() => setReviews(initialReviews), [initialReviews]);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 mt-10 text-center">
+    <div className="mx-auto px-5 py-10 text-center dark:bg-black dark:text-white">
       <h2 className="text-2xl font-bold mb-6 text-center">Customer Reviews</h2>
 
       {/* Review Summary Section */}
@@ -173,8 +173,7 @@ const ProductReview = ({
           <Button
             content={showForm ? "Cancel Review" : "Write Review"}
             pattern="outline"
-            className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+            className="w-60! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
             buttonProps={{
               onClick: () => setShowForm((prev) => !prev),
             }}
@@ -188,7 +187,7 @@ const ProductReview = ({
           showForm ? "max-h-[1000px] opacity-100 mt-8" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="border border-gray-200 rounded-lg p-6 mt-6 bg-gray-50">
+        <div className="rounded-lg p-6 bg-gray-50 dark:bg-black dark:text-white">
           <h3 className="text-xl font-bold mb-4 text-center">Write a Review</h3>
 
           {/* Rating */}
@@ -223,6 +222,7 @@ const ProductReview = ({
           <div className="">
             <Input
               label="Review"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{
                 type: "text",
                 placeholder: "Review Title",
@@ -240,7 +240,7 @@ const ProductReview = ({
                 setReviewData({ ...reviewData, description: e.target.value })
               }
               rows={4}
-              className="w-full mt-4 border border-gray-300 rounded px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              className="w-full mt-4 px-5 lg:px-8 py-2 bg-white text-black border rounded-xl border-b-4 border-r-4 border-black focus:outline-none dark:bg-black dark:text-white dark:border-gray-700"
             />
           </div>
 
@@ -252,6 +252,7 @@ const ProductReview = ({
 
             {/* File input */}
             <Input
+              className="cursor-pointer border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
               inputProps={{
                 type: "file",
                 multiple: true,
@@ -294,7 +295,7 @@ const ProductReview = ({
                 onChange: (e) =>
                   setReviewData({ ...reviewData, name: e.target.value }),
               }}
-              className="border-2"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             />
             <Input
               label="Email"
@@ -305,18 +306,17 @@ const ProductReview = ({
                 onChange: (e) =>
                   setReviewData({ ...reviewData, email: e.target.value }),
               }}
-              className="border-2"
+              className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             />
           </div>
 
           {/* Buttons cancel and submit */}
-          <div className="flex justify-center items-center gap-4">
+          <div className="flex justify-center items-center gap-10">
             <Button
               content="Cancel Review"
               key="button1"
               pattern="outline"
-              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+              className="w-100! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{
                 onClick: () => setShowForm(false),
               }}
@@ -326,8 +326,7 @@ const ProductReview = ({
               key="button2"
               content={isPending ? "Submitting..." : "Submit Review"}
               pattern="outline"
-              className="mt-4 bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all
-                     duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000]"
+              className="w-100! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{
                 type: "button",
                 onClick: handleSubmit,
