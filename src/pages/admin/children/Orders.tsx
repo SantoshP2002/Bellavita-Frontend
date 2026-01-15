@@ -25,7 +25,7 @@ const Orders = () => {
   const orders: IOrder[] = data?.orders ?? [];
 
   return (
-    <div className="p-4 md:p-8 min-h-screen bg-gray-200">
+    <div className="p-4 md:p-8 min-h-screen rounded-xl bg-gray-100 dark:bg-black dark:text-white">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
         🧾 Admin Orders
       </h2>
@@ -46,9 +46,9 @@ const Orders = () => {
               orders.map((order, index) => (
                 <tr
                   key={order._id}
-                  className={`${
+                  className={`dark:bg-gray-700 dark:text-white ${
                     index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                  } hover:bg-gray-100`}
+                  }`}
                 >
                   <td className="px-6 py-4">{order._id}</td>
                   <td className="px-6 py-4">{order.user?.email || "N/A"}</td>
@@ -82,11 +82,15 @@ const Orders = () => {
           orders.map((order, index) => (
             <div
               key={order._id}
-              className="bg-white rounded-xl shadow p-4 bg-gradient-to-bl from-pink-300 via-purple-200 to-orange-200"
+              className="rounded-xl shadow p-4 bg-gradient-to-bl from-pink-300 via-purple-200 to-orange-200"
             >
-              <p className="text-xs text-gray-400 mb-1">#{index + 1}</p>
+              <p className="text-xs text-gray-400 mb-1 dark:text-black">
+                #{index + 1}
+              </p>
 
-              <p className="text-sm text-black font-semibold break-all">{order._id}</p>
+              <p className="text-sm text-black font-semibold break-all dark:text-purple-400">
+                {order._id}
+              </p>
 
               <p className="text-sm text-gray-600 mt-2">
                 📧 {order.user?.email || "N/A"}
@@ -111,7 +115,7 @@ const Orders = () => {
       </div>
 
       {/* FOOTER COUNT */}
-      <div className="mt-8 text-center text-sm text-gray-600">
+      <div className="mt-8 text-center text-sm text-gray-600 dark:text-green-400">
         Showing {orders.length} {orders.length === 1 ? "order" : "orders"}
       </div>
     </div>
