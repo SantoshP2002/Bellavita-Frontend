@@ -175,7 +175,8 @@ const BlogUpload = () => {
               name: "description",
               id: "description",
               placeholder: "Write a Description",
-              className: "dark:text-white! dark:placeholder:text-gray-200!",
+              className:
+                "dark:text-white! dark:placeholder:text-gray-200! h-50!",
             }}
           />
 
