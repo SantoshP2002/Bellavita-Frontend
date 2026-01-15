@@ -63,7 +63,7 @@ const CartProducts = () => {
 
   return (
     <div className="flex-1 p-2 sm:p-4 lg:p-12 dark:bg-black dark:text-white">
-      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 border-black shadow-black dark:bg-black dark:border-white shadow-sm dark:shadow-white">
+      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 border-black lg:shadow-black dark:bg-black dark:border-white shadow-sm dark:shadow-white">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 h-full">
           {/* Left: Products */}
           <div
@@ -202,7 +202,7 @@ const CartProducts = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.3 }}
-                className="bg-gray-50 p-3 sm:p-6 rounded-xl flex flex-col h-full mt-4 lg:mt-0 dark:bg-black dark:text-white border-b-2 border-l-2 dark:border-white shadow-sm dark:shadow-white"
+                className="bg-gray-50 p-3 sm:p-6 rounded-xl flex flex-col h-full dark:bg-black dark:text-white border-b-2 border-l-2 dark:border-white shadow-sm dark:shadow-white"
               >
                 <h2 className="text-base sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left">
                   Order Summary
