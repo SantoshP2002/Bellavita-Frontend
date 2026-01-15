@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetUserCart } from "../../../api/cart/service";
 import { useUserStore } from "../../../store/user";
 import Logo from "./Logo";
@@ -9,18 +9,35 @@ import SearchModal from "../../modal/children/SearchModal";
 import { Link } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { PiUserLight } from "react-icons/pi";
-import { IoCartOutline } from "react-icons/io5";
+import { IoCartOutline, IoCloudyNightSharp } from "react-icons/io5";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { RiAccountBox2Line } from "react-icons/ri";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+
+type TTheme = "light" | "dark";
+const activeTheme = (localStorage.getItem("theme") || "light") as TTheme;
 
 const HeaderAction = () => {
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [theme, setTheme] = useState<TTheme>(activeTheme);
 
   const { user, isLoggedIn, logout } = useUserStore();
 
   const { data: cart } = useGetUserCart();
   const cartCount = cart?.cart?.products?.length || 0;
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
   return (
     <>
       {isSearchOpen && (
@@ -33,12 +50,24 @@ const HeaderAction = () => {
           <SearchModal onClose={() => setIsSearchOpen(false)} />
         </Modal>
       )}
-      <div className="flex-1 flex items-center justify-between dark:text-white px-4 md:px-8 py-3">
+      <div className="flex-1 flex items-center justify-between dark:text-white">
         <Logo />
         <div className="flex items-center gap-5 text-gray-700 px-8">
+          {/* DARK MODE BUTTON  */}
+          <button
+            className="mx-auto my-3 flex items-center justify-center rounded-full border-t border-l shadow border-4 border-gray-800 dark:border-gray-300 cursor-pointer px-2 py-2 "
+            onClick={toggleTheme}
+          >
+            {theme === "dark" ? (
+              <TiWeatherPartlySunny className="dark:text-white" />
+            ) : (
+              <IoCloudyNightSharp className="text-black" />
+            )}
+          </button>
+          {/* SEARCH ICON  */}
           <GoSearch
             onClick={() => setIsSearchOpen(true)}
-            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 dark:text-white"
+            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 dark:text-white"
           />
 
           {user?.role === "ADMIN" && (
@@ -76,7 +105,7 @@ const HeaderAction = () => {
 
           <CiDeliveryTruck
             onClick={() => navigate("/orders")}
-            className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 dark:text-white"
+            className="h-6 w-6 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 dark:text-white"
           />
           <RiAccountBox2Line
             onClick={() => navigate("/profile")}

@@ -15,7 +15,7 @@ const CustomerCarousel = () => {
   };
 
   return (
-    <div className="w-full py-8 sm:py-10 px-4 sm:px-8 md:px-16 text-center overflow-hidden">
+    <div className="w-full py-8 sm:py-10 px-4 sm:px-8 md:px-16 text-center overflow-hidden dark:bg-black dark:text-white">
       {/* Title */}
       <h2 className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-8 tracking-wide">
         WHAT OUR CUSTOMERS HAVE TO SAY
@@ -26,7 +26,7 @@ const CustomerCarousel = () => {
         {/* Left Arrow */}
         <BsArrowLeft
           onClick={prevSlide}
-          className="size-4 lg:size-6 sm:flex absolute left-2 md:left-10 bg-white rounded-full"
+          className="size-4 lg:size-6 sm:flex absolute left-2 md:left-10 dark:text-white"
         />
 
         {/* Images */}
@@ -65,7 +65,7 @@ const CustomerCarousel = () => {
         {/* Right Arrow */}
         <BsArrowRight
           onClick={nextSlide}
-          className="size-4 lg:size-6 sm:flex absolute right-2 md:right-10 bg-white rounded-full"
+          className="size-4 lg:size-6 sm:flex absolute right-2 md:right-10 dark:text-white"
         />
       </div>
 

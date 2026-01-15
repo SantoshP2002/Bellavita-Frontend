@@ -35,24 +35,25 @@ const HomeCarousel = ({
 
   return (
     <div>
-      <div className="mt-5 relative overflow-hidden h-full">
-        {activeImages.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt={`Slide ${index + 1}`}
-            className={`w-full h-full object-cover transition-opacity duration-1000 ${
-              index === current
-                ? "opacity-100"
-                : "opacity-0 absolute top-0 left-0"
-            }`}
-          />
-        ))}
+      <div className="pt-5 dark:bg-black relative overflow-hidden h-full">
+        <div
+          className="flex transition-transform duration-500"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {activeImages.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover flex-shrink-0"
+            />
+          ))}
+        </div>
       </div>
 
       {/* Dots */}
       {needDots && activeImages.length > 1 && (
-        <div className="flex justify-center mt-4 gap-2">
+        <div className="flex justify-center pt-4 dark:bg-black gap-2">
           {activeImages.map((_, index) => (
             <button
               key={index}
