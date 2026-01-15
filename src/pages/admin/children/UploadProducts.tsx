@@ -137,7 +137,7 @@ const UploadProducts = () => {
           {/* TITLE */}
           <Input
             label="Title"
-            className="w-full bg-white text-black"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("title")}
             error={errors.title?.message}
             inputProps={{ placeholder: "Enter Title", name: "title" }}
@@ -145,7 +145,7 @@ const UploadProducts = () => {
           {/* BRAND */}
           <Input
             label="Brand"
-            className="w-full bg-white text-black"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             register={register("brand")}
             error={errors?.brand?.message}
             inputProps={{ placeholder: "Enter Brand", name: "brand" }}
@@ -154,6 +154,7 @@ const UploadProducts = () => {
           <Input
             label="Price"
             error={errors?.price?.message}
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             inputProps={{
               type: "number",
               name: "price",
@@ -170,6 +171,7 @@ const UploadProducts = () => {
           <Input
             label="Selling Price"
             error={errors?.sellingPrice?.message}
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
             inputProps={{
               type: "number",
               name: "sellingPrice",
@@ -323,7 +325,7 @@ const UploadProducts = () => {
                       icon: (
                         <label
                           htmlFor="images"
-                          className="flex items-center p-3 text-sm text-black/50 w-full cursor-pointer"
+                          className="flex items-center p-3 text-sm text-black/50 w-full cursor-pointer dark:text-white/50"
                         >
                           {images?.length
                             ? "Add Product Images"
@@ -332,7 +334,7 @@ const UploadProducts = () => {
                       ),
                     },
                   }}
-                  className="[&>span]:w-full [&>span]:p-0"
+                  className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{
                     type: "file",
                     accept: "image/*",
@@ -340,6 +342,7 @@ const UploadProducts = () => {
                     className: "sr-only",
                     id: "images",
                     name: "images",
+
                     onChange: (e) => {
                       const files = Array.from(e.target.files || []);
                       const newFiles = [...images, ...files];
