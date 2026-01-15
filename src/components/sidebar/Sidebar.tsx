@@ -26,7 +26,7 @@ const Sidebar = ({ className, onClose }: SidebarProps) => {
         <IoMdClose onClick={onClose} size={20} className="md:hidden" />
       </div>
 
-      <nav className="p-5 space-y-2 text-black dark:bg-black dark:text-white">
+      <nav className="p-5 space-y-6 text-black dark:bg-black dark:text-white">
         {/* DASHBOARD  */}
         <Link
           to="/admin"
