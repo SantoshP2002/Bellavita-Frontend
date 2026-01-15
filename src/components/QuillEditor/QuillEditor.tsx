@@ -136,18 +136,18 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
       <div className={`w-full space-y-1.5 ${className}`}>
         <div className="relative">
           {label && (
-            <span className="text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded">
+            <span className="text-[10px] lg:text-xs dark:bg-black dark:text-gray-300 dark:border-gray-300 text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer">
               {label}
             </span>
           )}
           <div
             ref={containerRef}
             id="custom-editor"
-            className="w-full bg-white rounded-lg border border-black/10 text-black flex flex-col gap-2"
+            className="w-full rounded-lg border border-black/10 flex flex-col gap-2 dark:bg-black dark:text-white dark:border-white/40"
           />
         </div>
         {!readOnly && errorText && (
-          <p className="w-full text-start flex gap-1 items-center text-[11px] leading-tight mt-2 text-red-500">
+          <p className="w-full text-start flex gap-1 items-center text-[11px] leading-tight mt-2 text-red-500 border border-[red]">
             <IoMdInformationCircleOutline className="w-3 h-3 md:w-4 md:h-4 fill-red-500" />
             <span>{errorText}</span>
           </p>

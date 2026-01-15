@@ -23,8 +23,8 @@ const AllBlogs = () => {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <h3 className="text-2xl font-bold text-gray-700">ALL BLOGS</h3>
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-10">
+        <h3 className="text-2xl font-bold dark:text-white">ALL BLOGS</h3>
 
         <Button
           content="UPLOAD BLOG"
@@ -38,8 +38,6 @@ const AllBlogs = () => {
           }}
         />
       </div>
-
-      <hr className="my-4" />
 
       {/* ALL BLOGS LIST */}
       <div>
@@ -63,7 +61,7 @@ const AllBlogs = () => {
             {blog.map((blog) => (
               <div
                 key={blog._id}
-                className="bg-white rounded-lg p-4 hover:shadow-sm"
+                className="bg-gray-200 rounded-lg p-4 hover:shadow-sm dark:bg-black"
               >
                 <img
                   src={blog.image}

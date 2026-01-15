@@ -17,17 +17,17 @@ const Textarea = ({
 
   return (
     <div className={`w-full flex flex-col gap-1.5 ${containerClassName}`}>
-      <div className="relative h-32 lg:h-40">
+      <div className="relative min-h-[120px] sm:min-h-[140px] lg:min-h-[160px]">
         {label && (
           <label
             htmlFor={textareaProps.name}
-            className="text-[10px] lg:text-xs text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer"
+            className="text-[10px] lg:text-xs dark:bg-black dark:text-gray-300 dark:border-gray-300 text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer"
           >
             {label}
           </label>
         )}
         <div
-          className={`w-full h-full flex items-center gap-1 border border-black/10 bg-white rounded-lg overflow-hidden ${className}`}
+          className={`w-full h-full flex items-center gap-1 rounded-lg bg-white dark:bg-black dark:text-white  overflow-hidden ${className}`}
         >
           {/* Textarea */}
           <textarea
@@ -38,7 +38,7 @@ const Textarea = ({
             id={textareaProps.id}
             disabled={textareaProps?.disabled}
             onChange={handleChange}
-            className={`flex-1 w-full h-full outline-none border-none focus:outline-none focus:border-none bg-transparent font-normal text-sm p-3 text-black placeholder:text-black/50 placeholder:text-sm autofill-effect line-clamp-1 ${
+            className={`flex-1 w-full h-full outline-none mx-1 rounded-lg border border-slate-300 dark:border-gray-600 border-b-4 border-r-4 bg-transparent font-normal text-sm p-3 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-200 autofill-effect resize-none ${
               textareaProps?.className ?? ""
             }`}
           />
