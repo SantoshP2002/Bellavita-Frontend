@@ -1,42 +1,4 @@
 @import url("./fonts.style.css");
-/* Variable name format dark-light */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* Common variables */
-:root {
-  --picton-blue-c: #25adf9;
-  --blue-crayola-c: #07f;
-  --sky-blue-burst: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    linear-gradient(107deg, #2579f9 -65.15%, #244cf8 90.95%);
-  --beautinique-gradient: linear-gradient(
-    135deg,
-    #00b0ff 0%,
-    #2f63f5 33%,
-    #b519df 66%,
-    #fe026c 100%
-  );
-  --light-pink-gradient: linear-gradient(
-    57deg,
-    rgba(249, 119, 255, 0.84) 40%,
-    rgba(54, 212, 255, 1) 88%,
-    rgba(177, 231, 201, 1) 100%
-  );
-}
 
-[theme="dark"] {
-  /* Colors */
-  --primary: #ffffff;
-}
-
-/* Light Theme Variables */
-[theme="light"] {
-  /* Colors */
-  --primary: #000000;
-}

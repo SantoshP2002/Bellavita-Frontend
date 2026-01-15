@@ -4,11 +4,12 @@ import { Toaster } from "react-hot-toast";
 import "./styles/global.style.css";
 import router from "./routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="max-w-dvw max-h-dvh min-w-dvw min-h-dvh w-full h-full bg-primary-inverted text-primary">
+      <div className="max-w-dvw max-h-dvh min-w-dvw min-h-dvh w-full h-full text-primary">
         <div className="max-w-[1920px] w-full h-full mx-auto">
           <Toaster position="bottom-center" reverseOrder={false} />
 
