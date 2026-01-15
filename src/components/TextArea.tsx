@@ -17,7 +17,7 @@ const Textarea = ({
 
   return (
     <div className={`w-full flex flex-col gap-1.5 ${containerClassName}`}>
-      <div className="relative min-h-[120px] sm:min-h-[140px] lg:min-h-[160px]">
+      <div className="relative">
         {label && (
           <label
             htmlFor={textareaProps.name}
@@ -27,7 +27,7 @@ const Textarea = ({
           </label>
         )}
         <div
-          className={`w-full h-full flex items-center gap-1 rounded-lg bg-white dark:bg-black dark:text-white  overflow-hidden ${className}`}
+          className={`min-h-[200px] flex items-center gap-1 rounded-lg bg-white dark:bg-black dark:text-white  overflow-hidden ${className}`}
         >
           {/* Textarea */}
           <textarea
@@ -38,7 +38,7 @@ const Textarea = ({
             id={textareaProps.id}
             disabled={textareaProps?.disabled}
             onChange={handleChange}
-            className={`flex-1 w-full h-full outline-none mx-1 rounded-lg border border-slate-300 dark:border-gray-600 border-b-4 border-r-4 bg-transparent font-normal text-sm p-3 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-200 autofill-effect resize-none ${
+            className={`flex-1 outline-none mx-1 rounded-lg border border-slate-300 dark:border-gray-600 border-b-4 border-r-4 bg-transparent font-normal text-sm p-3 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-200  ${
               textareaProps?.className ?? ""
             }`}
           />
