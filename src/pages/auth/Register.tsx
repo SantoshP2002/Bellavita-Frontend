@@ -58,7 +58,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4 dark:bg-black border border-[red]">
+    <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4 dark:bg-black">
       {/* MAIN CARD */}
       <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl animate-fade-in-up">
         {/* LEFT IMAGE SECTION */}
