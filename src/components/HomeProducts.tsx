@@ -120,7 +120,7 @@ const HomeProducts = () => {
       <Button
         content="VIEW ALL"
         pattern="outline"
-        className="!w-60 !h-12 font-semibold mx-auto rounded dark:border-white dark:text-white hover:text-white!"
+        className="!w-60 mx-auto rounded"
         buttonProps={{
           onClick: () => navigate("/products"),
         }}

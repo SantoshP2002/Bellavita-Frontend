@@ -26,7 +26,7 @@ export const Button = ({
     } else if (pattern === "tertiary") {
       return "bg-gray-400 hover:bg-green-700 text-white font-semibold text-sm rounded-lg transition duration-300";
     } else if (pattern === "outline") {
-      return "border border-black text-black relative overflow-hidden transition-all duration-300 hover:text-black";
+      return `bg-white text-black border-2 border-black shadow-[4px_4px_0_0_#000] transition-all duration-200 relative overflow-hidden hover:-translate-y-[1px] hover:shadow-[6px_6px_0_0_#000] active:translate-y-0 active:shadow-[2px_2px_0_0_#000] dark:bg-black dark:text-white dark:border-white dark:shadow-[4px_4px_0_0_#fff]`;
     } else {
       return "";
     }
@@ -44,11 +44,6 @@ export const Button = ({
         buttonProps?.className ?? ""
       } ${className}`}
     >
-      {/* Animated black background from bottom to top */}
-      {pattern === "outline" && (
-        <span className="absolute inset-0 -z-10 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-      )}
-
       {LeftIcon && LeftIcon}
       <span>{content}</span>
       {RightIcon && RightIcon}

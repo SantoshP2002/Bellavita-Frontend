@@ -253,14 +253,14 @@ const AddressForm = ({
         <Button
           content={isPending ? "Saving..." : "Save Address"}
           pattern="outline"
-          className="w-50! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+          className="w-50! mt-8"
           buttonProps={{ type: "submit", disabled: isPending }}
         />
         <Link to="/cart">
           <Button
             content="BACK"
             pattern="outline"
-            className="w-40! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+            className="w-40! mt-8"
             icons={{
               left: <IoIosArrowBack size={10} />,
             }}
