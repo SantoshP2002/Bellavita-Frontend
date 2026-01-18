@@ -30,6 +30,8 @@ const SearchPage = () => {
   const productsQuery = useGetAllProducts(queryParams, Boolean(searchQuery));
   const products = productsQuery.data ?? [];
 
+  const totalProducts = products.length;
+
   const handleAddToCart = async (id: string) => {
     if (!isLoggedIn) {
       navigate("/login");
@@ -40,9 +42,18 @@ const SearchPage = () => {
 
   return (
     <div className="p-3 sm:p-5 dark:bg-black dark:text-white">
-      <h2 className="text-lg sm:text-xl font-semibold py-3 sm:py-5">
-        Results for "{searchQuery}"
-      </h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-sm sm:text-lg font-medium text-gray-700 dark:text-gray-300 py-3 sm:py-5">
+          Result For :{" "}
+          <span className="uppercase font-semibold bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500 bg-clip-text text-transparent tracking-wide rounded shadow-md dark:shadow-white">
+            “{searchQuery}”
+          </span>
+        </h2>
+
+        <p className="dark:text-green-500 text-black">
+          {totalProducts} Product{totalProducts !== 1 ? "s" : ""}{" "}
+        </p>
+      </div>
 
       {productsQuery.isPending ? (
         <LoadingScreen content="Search Product Please Wait !" />
@@ -51,39 +62,38 @@ const SearchPage = () => {
           {products.map((p: TProduct) => (
             <div
               key={p._id}
-              className="p-2 sm:p-3 rounded flex flex-col justify-between"
+              className="group p-3 sm:p-4 rounded-xl bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/40"
             >
               {/* IMAGE */}
-              <div className="overflow-hidden">
+              <div className="overflow-hidden rounded-lg bg-gray-50 dark:bg-neutral-800">
                 <img
                   src={p.images?.[0]}
                   alt={p.title}
-                  className="w-full h-32 sm:h-40 md:h-44 lg:h-48 object-contain sm:p-3 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  className="w-full h-32 sm:h-40 md:h-44 lg:h-48 object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-110 cursor-pointer"
                   onClick={() => navigate(`/products/${p._id}`)}
                 />
               </div>
 
               {/* DETAILS */}
-              <div className="mt-2 space-y-1">
-                <p className="text-xs sm:text-sm font-medium line-clamp-1">
+              <div className="mt-3 space-y-1.5">
+                <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-gray-100 line-clamp-1">
                   {p.title}
                 </p>
 
-                <p className="text-[11px] sm:text-xs text-gray-500 line-clamp-1">
+                <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
                   {p.brand}
                 </p>
 
-                <p className="text-[11px] sm:text-sm text-red-400">
+                <p className="text-[11px] sm:text-xs font-medium text-indigo-500">
                   {p.category.name}
                 </p>
               </div>
 
               {/* BUTTON */}
-              <div className="mt-3">
+              <div className="mt-4">
                 <Button
                   content="Add To Cart"
                   pattern="outline"
-                  className="w-full text-xs sm:text-sm py-1.5 sm:py-2 bg-white text-black border-2 border-black shadow-[4px_4px_0_0_#000] transition-all duration-200 dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
                   icons={{
                     right: <IoCartOutline className="size-4 sm:size-5" />,
                   }}

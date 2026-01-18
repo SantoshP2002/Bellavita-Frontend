@@ -106,7 +106,7 @@ const AllProducts = () => {
 
       {/* Product Grid */}
       {isLoading ? (
-        <LoadingScreen content="All Product Loading Please Wait !"/>
+        <LoadingScreen content="All Product Loading Please Wait !" />
       ) : isError ? (
         <EmptyData content="Product Not Found " />
       ) : products.length > 0 ? (
@@ -154,7 +154,6 @@ const AllProducts = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className=" bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
                     icons={{
                       right: <IoCartOutline className="size-5" />,
                     }}
