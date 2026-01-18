@@ -106,7 +106,7 @@ const AllProducts = () => {
 
       {/* Product Grid */}
       {isLoading ? (
-        <LoadingScreen />
+        <LoadingScreen content="All Product Loading Please Wait !"/>
       ) : isError ? (
         <EmptyData content="Product Not Found " />
       ) : products.length > 0 ? (
