@@ -21,7 +21,6 @@ import Address from "../pages/address/Address";
 import AllOrder from "../pages/order";
 import OrderDetails from "../pages/order/OrderDetails";
 import CheckoutSummary from "../pages/address/CheckoutSummary";
-import ProductCollectionPage from "../pages/footer/bestseller/ProductCollectionPage";
 import Blog from "../pages/footer/information/Blog";
 import NewsRoom from "../pages/footer/information/NewsRoom";
 import TermsAndCondition from "../pages/footer/information/TermsAndCondition";
@@ -63,7 +62,6 @@ const router = createBrowserRouter([
       { path: "aboutUs", element: <AboutUs /> },
       { path: "contactUs", element: <ContactUs /> },
       { path: "order-tracking", element: <OrderTracking /> },
-      { path: "all-products", element: <AllProducts /> },
       { path: "faq", element: <FAQ /> },
       { path: "sitemap", element: <Sitemap /> },
       { path: "crazy-deals-mobile", element: <CrazyDealsMobile /> },
@@ -112,12 +110,6 @@ const router = createBrowserRouter([
         element: <Outlet />,
         children: [
           { index: true, element: <AllProducts /> },
-
-          {
-            path: "collections/:slug",
-            element: <ProductCollectionPage />,
-          },
-
           { path: ":productId", element: <ProductDetails /> },
         ],
       },
