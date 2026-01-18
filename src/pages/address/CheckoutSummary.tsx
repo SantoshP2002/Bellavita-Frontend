@@ -45,10 +45,11 @@ const CheckoutSummary = () => {
     rzp.open();
   };
 
-  if (isAddressLoading || isCartLoading) return <LoadingScreen content="Checkout Summary Loading Please Wait !"/>;
+  if (isAddressLoading || isCartLoading)
+    return <LoadingScreen content="Checkout Summary Loading Please Wait !" />;
 
   const selectedAddress = addressData?.userAddress?.addresses?.find(
-    (addr: IOrder) => addr._id === addressId
+    (addr: IOrder) => addr._id === addressId,
   );
 
   const products: TProductCart[] = cartData?.cart?.products || [];
@@ -65,7 +66,7 @@ const CheckoutSummary = () => {
 
   const subtotal = products.reduce(
     (acc, item) => acc + item.product.sellingPrice * item.quantity,
-    0
+    0,
   );
 
   const handlePayment = async () => {
@@ -77,7 +78,7 @@ const CheckoutSummary = () => {
         {
           headers: { Authorization: token },
           params: { addressId },
-        }
+        },
       );
 
       const options = {
@@ -102,7 +103,7 @@ const CheckoutSummary = () => {
                 razorpay_signature: response.razorpay_signature,
                 orderDBId: orderData.createOrder._id,
               },
-              { headers: { Authorization: `Bearer ${getUserToken()}` } }
+              { headers: { Authorization: `Bearer ${getUserToken()}` } },
             );
 
             console.log("Razorpay response:", response);

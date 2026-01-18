@@ -5,16 +5,12 @@ import LoadingScreen from "../components/LoadingScreen";
 import type { JSX } from "react";
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-  const { isLoading} = useAuthCheck();
+  const { isLoading } = useAuthCheck();
   const { isLoggedIn } = useUserStore();
   const location = useLocation();
 
-
-
   if (isLoading) {
-    return (
-      <LoadingScreen content="Private Route Loading Please Wait !"/>
-    );
+    return <LoadingScreen content="Private Route Loading Please Wait !" />;
   }
 
   if (!isLoading && !isLoggedIn) {

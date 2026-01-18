@@ -10,9 +10,7 @@ const RegisterRedirect = () => {
   const location = useLocation();
 
   if (isLoading)
-    return (
-      <LoadingScreen content="Redirect Register Loading Please Wait !"/>
-    );
+    return <LoadingScreen content="Redirect Register Loading Please Wait !" />;
 
   if (isLoggedIn) {
     const state = location.state as { from?: { pathname?: string } } | null;

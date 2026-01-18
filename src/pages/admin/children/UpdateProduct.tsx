@@ -53,7 +53,7 @@ const EditProduct = () => {
 
   const product: TProduct = useMemo(
     () => getProductQuery.data ?? {},
-    [getProductQuery.data]
+    [getProductQuery.data],
   );
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const EditProduct = () => {
 
   const subCategoryOptions = useMemo(
     () => navMapData.find((cat) => cat.value === category.value)?.options || [],
-    [category.value]
+    [category.value],
   );
 
   const onSubmit = async (data: TBaseProduct) => {
@@ -146,7 +146,9 @@ const EditProduct = () => {
   const images = watch("images") || [];
 
   if (getProductQuery?.isLoading) {
-    return <LoadingScreen content="Admin Update Products Loading Please Wait !"/>;
+    return (
+      <LoadingScreen content="Admin Update Products Loading Please Wait !" />
+    );
   }
 
   return (

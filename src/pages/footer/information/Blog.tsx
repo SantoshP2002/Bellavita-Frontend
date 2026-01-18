@@ -12,7 +12,7 @@ const Blog = () => {
   const blogs: IBlog[] = data?.blog || [];
 
   if (isLoading) {
-    return <LoadingScreen content="Footer Blogs Loading Please Wait !"/>;
+    return <LoadingScreen content="Footer Blogs Loading Please Wait !" />;
   }
 
   if (isError) {

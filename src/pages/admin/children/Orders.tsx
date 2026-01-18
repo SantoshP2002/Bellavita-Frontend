@@ -13,7 +13,8 @@ interface IOrder {
 const Orders = () => {
   const { data, isLoading, isError } = useGetAdminOrder();
 
-  if (isLoading) return <LoadingScreen content="Orders Loading Please Wait !"/>;
+  if (isLoading)
+    return <LoadingScreen content="Orders Loading Please Wait !" />;
 
   if (isError)
     return (

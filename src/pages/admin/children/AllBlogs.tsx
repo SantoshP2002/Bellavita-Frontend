@@ -43,7 +43,7 @@ const AllBlogs = () => {
       <div>
         {isLoading && (
           <p>
-            <LoadingScreen  content="All Blogs Loading Please Wait !"/>
+            <LoadingScreen content="All Blogs Loading Please Wait !" />
           </p>
         )}
         {isError && (

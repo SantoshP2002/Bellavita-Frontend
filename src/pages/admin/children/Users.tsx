@@ -25,10 +25,11 @@ const Users = () => {
   const filteredUsers = users.filter(
     (user) =>
       user.firstName?.toLowerCase().includes(search.toLowerCase()) ||
-      user.email?.toLowerCase().includes(search.toLowerCase())
+      user.email?.toLowerCase().includes(search.toLowerCase()),
   );
 
-  if (isLoading) return <LoadingScreen content="Admin Users Loading Please Wait !"/>;
+  if (isLoading)
+    return <LoadingScreen content="Admin Users Loading Please Wait !" />;
 
   if (isError) {
     return (
@@ -88,8 +89,8 @@ const Users = () => {
                         user.role === "ADMIN"
                           ? "bg-green-100 text-green-700"
                           : user.role === "USER"
-                          ? "bg-blue-100 text-blue-700"
-                          : "bg-gray-100 text-gray-700"
+                            ? "bg-blue-100 text-blue-700"
+                            : "bg-gray-100 text-gray-700"
                       }`}
                     >
                       {user.role}
@@ -160,8 +161,8 @@ const Users = () => {
                     user.role === "Admin"
                       ? "bg-green-100 text-green-700"
                       : user.role === "Moderator"
-                      ? "bg-blue-100 text-blue-700"
-                      : "bg-gray-100 text-gray-700"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-gray-100 text-gray-700"
                   }`}
                 >
                   {user.role}

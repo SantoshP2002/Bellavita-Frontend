@@ -34,7 +34,7 @@ const Address = () => {
         addresses={queryParams.edit ? addresses : undefined}
       />
       {isLoading ? (
-        <LoadingScreen content="Address Loading Please Wait !"/>
+        <LoadingScreen content="Address Loading Please Wait !" />
       ) : isError ? (
         <div className="text-center text-red-600">
           <EmptyData content="Address Not Found" />

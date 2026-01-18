@@ -32,7 +32,7 @@ const Products = () => {
       limit: 8,
       search: debouncedSearch,
     }),
-    [debouncedSearch]
+    [debouncedSearch],
   );
 
   console.log("PARAMS", params);
@@ -89,7 +89,7 @@ const Products = () => {
       <div>
         {isLoading && (
           <p>
-            <LoadingScreen content="Admin All Products Loading Please Wait !"/>
+            <LoadingScreen content="Admin All Products Loading Please Wait !" />
           </p>
         )}
         {error && <p className="text-red-500">Failed to load products</p>}
