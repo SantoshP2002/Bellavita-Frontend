@@ -17,7 +17,7 @@ const AddressFormModal = ({
   useEffect(() => {
     removeParam("add");
     removeParam("edit");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Modal
@@ -26,7 +26,7 @@ const AddressFormModal = ({
       heading={queryParams.edit ? "Update Address" : "Add Address"}
       className="!max-w-3xl"
     >
-      <AddressForm addresses={addresses} className="mt-2"/>
+      <AddressForm addresses={addresses} className="mt-2" />
     </Modal>
   );
 };
