@@ -9,10 +9,11 @@ import SearchModal from "../../modal/children/SearchModal";
 import { Link } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { PiUserLight } from "react-icons/pi";
-import { IoCartOutline, IoCloudyNightSharp } from "react-icons/io5";
+import { IoCloudyNightSharp } from "react-icons/io5";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { RiAccountBox2Line } from "react-icons/ri";
 import { TiWeatherPartlySunny } from "react-icons/ti";
+import { BsCartFill } from "react-icons/bs";
 
 type TTheme = "light" | "dark";
 const activeTheme = (localStorage.getItem("theme") || "light") as TTheme;
@@ -91,7 +92,7 @@ const HeaderAction = () => {
           )}
 
           <div className="relative">
-            <IoCartOutline
+            <BsCartFill
               className="cursor-pointer transition-colors duration-200 dark:text-white h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
               onClick={() => navigate("/cart")}
             />
