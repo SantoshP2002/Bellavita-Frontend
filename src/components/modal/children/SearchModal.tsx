@@ -5,17 +5,7 @@ import { useGetAllProducts } from "../../../api/products/service";
 import Input from "../../Input";
 import { IoCloseOutline, IoSearchOutline } from "react-icons/io5";
 import LoadingScreen from "../../LoadingScreen";
-
-export interface Product {
-  _id: string;
-  title: string;
-  brand: string;
-  commonImages: string[];
-  images: string[];
-  category: {
-    name: string;
-  };
-}
+import type { TProduct } from "../../../types";
 
 const SearchModal = ({ onClose }: { onClose: () => void }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -28,7 +18,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
       debounce((value: string) => {
         setDebouncedQuery(value.trim());
       }, 100),
-    []
+    [],
   );
 
   useEffect(() => {
@@ -42,7 +32,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
       limit: 100,
       search: debouncedQuery,
     }),
-    [debouncedQuery]
+    [debouncedQuery],
   );
 
   // ✅ enabled ONLY here
@@ -103,17 +93,17 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
       {/* Results */}
       <div className="flex flex-col flex-1 min-h-[235px] max-h-[350px] overflow-y-auto dark:bg-black rounded shadow-inner">
         {productsQuery.isPending && debouncedQuery ? (
-          <LoadingScreen />
+          <LoadingScreen content="Search Modal Loading Please Wait !" />
         ) : products.length ? (
           <ul className="flex flex-col gap-1 p-1">
-            {products.map((p: Product) => (
+            {products.map((p: TProduct) => (
               <li
                 key={p._id}
                 className="flex gap-2 p-1 rounded cursor-pointer dark:hover:border-2"
                 onClick={() => handleSubmit(p._id)}
               >
                 <img
-                  src={p.commonImages?.[0] || p.images?.[0]}
+                  src={p.images?.[0]}
                   alt={p.title}
                   className="w-8 h-8 rounded object-cover"
                 />
