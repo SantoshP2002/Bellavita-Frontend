@@ -10,10 +10,9 @@ import Input from "../../components/Input";
 import { TbLockPassword } from "react-icons/tb";
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ChangePassword = () => {
-  const navigate = useNavigate();
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -36,7 +35,7 @@ const ChangePassword = () => {
     });
   };
   return (
-    <div className="flex flex-col items-center justify-center px-4 dark:bg-black dark:text-white">
+    <div className="flex flex-col items-center justify-center px-4 py-14 dark:bg-black dark:text-white">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-10 mb-10 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto bg-white dark:bg-black/60 shadow-md dark:shadow-white rounded-tl-full rounded-br-full p-6"
@@ -159,15 +158,12 @@ const ChangePassword = () => {
           buttonProps={{ disabled: isPending, type: "submit" }}
         />
       </form>
-      <Button
-        content="BACK"
-        pattern="outline"
-        buttonProps={{
-          onClick: () => navigate("/profile"),
-          className:
-            "mb-10! flex! flex-col! hover:text-white! w-20! font-semibold rounded-lg hover:scale-[1.02]",
-        }}
-      />
+      <Link
+        to="/profile"
+        className="w-20! flex! flex-col! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
+      >
+        👱🏻 Back
+      </Link>
     </div>
   );
 };
