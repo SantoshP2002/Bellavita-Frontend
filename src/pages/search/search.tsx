@@ -54,12 +54,14 @@ const SearchPage = () => {
               className="p-2 sm:p-3 rounded flex flex-col justify-between"
             >
               {/* IMAGE */}
-              <img
-                src={p.images?.[0]}
-                alt={p.title}
-                className="w-full h-32 sm:h-40 md:h-44 lg:h-48 object-contain sm:p-3 hover:scale-105 transition-transform duration-300 cursor-pointer"
-                onClick={() => navigate(`/products/${p._id}`)}
-              />
+              <div className="overflow-hidden">
+                <img
+                  src={p.images?.[0]}
+                  alt={p.title}
+                  className="w-full h-32 sm:h-40 md:h-44 lg:h-48 object-contain sm:p-3 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  onClick={() => navigate(`/products/${p._id}`)}
+                />
+              </div>
 
               {/* DETAILS */}
               <div className="mt-2 space-y-1">
