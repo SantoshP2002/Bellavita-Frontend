@@ -42,7 +42,7 @@ import Profile from "../pages/profile/Profile";
 import EditProfile from "../pages/profile/EditProfile";
 import ChangePassword from "../pages/profile/ChangePassword";
 import CrazyDealsMobile from "../components/CrazyDealsMobile";
-import SearchPage from "../pages/search";
+import SearchPage from "../pages/inputsearch/SearchPage";
 
 const router = createBrowserRouter([
   {
