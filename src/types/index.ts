@@ -300,3 +300,10 @@ export interface IBlog extends Omit<TBaseBlog, "image"> {
   createdAt: string;
   updatedAt: string;
 }
+
+export type SectionType =
+  | "bestseller"
+  | "information"
+  | "support"
+  | "contact"
+  | null;
