@@ -85,10 +85,16 @@ const HeaderAction = () => {
               onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
             />
           ) : (
-            <PiUserLight
-              className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
-              onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
-            />
+            <div className="relative inline-block group">
+              <PiUserLight
+                className="h-4 w-4 md:h-7 md:w-7 cursor-pointer transition-colors duration-200 hover:text-indigo-600"
+                onClick={() => (isLoggedIn ? logout() : navigate("/login"))}
+              />
+
+              <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap z-50 pointer-events-none">
+                {isLoggedIn ? "Logout" : "Login"}
+              </span>
+            </div>
           )}
 
           <div className="relative">
