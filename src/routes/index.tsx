@@ -66,7 +66,7 @@ const router = createBrowserRouter([
       { path: "faq", element: <FAQ /> },
       { path: "sitemap", element: <Sitemap /> },
       { path: "crazy-deals-mobile", element: <CrazyDealsMobile /> },
-      { path: "search", element: <SearchPage /> },
+      { path: "/search", element: <SearchPage /> },
       {
         path: "cart",
         element: (
