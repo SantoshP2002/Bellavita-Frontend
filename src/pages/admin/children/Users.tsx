@@ -28,7 +28,7 @@ const Users = () => {
       user.email?.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (isLoading) return <LoadingScreen />;
+  if (isLoading) return <LoadingScreen content="Admin Users Loading Please Wait !"/>;
 
   if (isError) {
     return (

@@ -10,7 +10,7 @@ const BlogDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { data: blog, isLoading, isError } = useGetBlogById(id!);
 
-  if (isLoading) return <LoadingScreen />;
+  if (isLoading) return <LoadingScreen content="Footer Blogs Details Loading Please Wait !"/>;
   if (isError || !blog) return <EmptyData content="Blog not found" />;
 
   return (

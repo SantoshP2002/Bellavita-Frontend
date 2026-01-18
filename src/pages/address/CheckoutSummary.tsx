@@ -45,13 +45,11 @@ const CheckoutSummary = () => {
     rzp.open();
   };
 
-  if (isAddressLoading || isCartLoading) return <LoadingScreen />;
+  if (isAddressLoading || isCartLoading) return <LoadingScreen content="Checkout Summary Loading Please Wait !"/>;
 
   const selectedAddress = addressData?.userAddress?.addresses?.find(
     (addr: IOrder) => addr._id === addressId
   );
-
-  console.log("SELECTEDADDRESS", selectedAddress);
 
   const products: TProductCart[] = cartData?.cart?.products || [];
 

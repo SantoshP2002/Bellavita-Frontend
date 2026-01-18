@@ -9,7 +9,7 @@ const LoginRedirect = () => {
   const { isLoading } = useAuthCheck();
   const location = useLocation();
 
-  if (isLoading) return <LoadingScreen />;
+  if (isLoading) return <LoadingScreen content="Login Redirect Loading Please Wait !"/>;
 
   if (isLoggedIn) {
     const state = location.state as { from?: { pathname?: string } } | null;

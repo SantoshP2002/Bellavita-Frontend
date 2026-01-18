@@ -146,7 +146,7 @@ const EditProduct = () => {
   const images = watch("images") || [];
 
   if (getProductQuery?.isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen content="Admin Update Products Loading Please Wait !"/>;
   }
 
   return (

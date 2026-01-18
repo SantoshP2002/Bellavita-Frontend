@@ -11,7 +11,7 @@ const RegisterRedirect = () => {
 
   if (isLoading)
     return (
-      <LoadingScreen/>
+      <LoadingScreen content="Redirect Register Loading Please Wait !"/>
     );
 
   if (isLoggedIn) {

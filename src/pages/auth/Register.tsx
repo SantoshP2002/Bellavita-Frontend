@@ -46,7 +46,7 @@ const Register = () => {
   if (isPending)
     return (
       <div>
-        <LoadingScreen />
+        <LoadingScreen content="Register Loading Please Wait !"/>
       </div>
     );
   if (isError) return <div>Something went wrong</div>;

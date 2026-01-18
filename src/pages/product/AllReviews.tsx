@@ -41,7 +41,9 @@ const AllReviews = () => {
     <div className="max-w-lvw mx-auto px-10 py-10 dark:bg-black dark:text-white">
       <h2 className="text-2xl font-bold text-center mb-6">All Reviews</h2>
 
-      {isLoading && <LoadingScreen />}
+      {isLoading && (
+        <LoadingScreen content="Products All Reviews Loading Please Wait !" />
+      )}
       {isError && (
         <p className="text-center text-red-500">Failed to load reviews.</p>
       )}
@@ -62,7 +64,7 @@ const AllReviews = () => {
                   <FaStar key={i} className="text-yellow-400 text-lg" />
                 ) : (
                   <FaRegStar key={i} className="text-yellow-400 text-lg" />
-                )
+                ),
               )}
             </div>
 
@@ -128,7 +130,7 @@ const AllReviews = () => {
           </h2>
 
           {productsLoading ? (
-            <LoadingScreen />
+            <LoadingScreen content="Products All Reviews Loading Please Wait !" />
           ) : productsError ? (
             <EmptyData content="Product Not Found 😕" />
           ) : (

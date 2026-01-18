@@ -31,7 +31,7 @@ const HomeProducts = () => {
 
   return (
     <div className="min-h-[550px] px-10 dark:bg-black dark:text-white dark:hover:shadow-white">
-      {isLoading && <LoadingScreen />}
+      {isLoading && <LoadingScreen  content="Home Product Loading Please Wait !"/>}
       {isError && <p className="text-red-500">Error: {String(error)}</p>}
 
       {products.length > 0 && (

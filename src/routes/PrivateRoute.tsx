@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 
   if (isLoading) {
     return (
-      <LoadingScreen/>
+      <LoadingScreen content="Private Route Loading Please Wait !"/>
     );
   }
 

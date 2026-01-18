@@ -89,7 +89,7 @@ const Products = () => {
       <div>
         {isLoading && (
           <p>
-            <LoadingScreen />
+            <LoadingScreen content="Admin All Products Loading Please Wait !"/>
           </p>
         )}
         {error && <p className="text-red-500">Failed to load products</p>}
