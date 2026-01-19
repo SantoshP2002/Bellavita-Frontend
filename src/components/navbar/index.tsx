@@ -10,7 +10,7 @@ const Navbar = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   return (
-    <div className="w-full sticky bg-white dark:bg-black dark:text-white shadow-xs dark:shadow-white shadow-black top-0 z-50">
+    <div className="w-full sticky bg-white dark:bg-black dark:text-white top-0 z-50">
       <div className="flex items-center">
         <MobileBar />
         <HeaderAction />
@@ -44,7 +44,7 @@ const Navbar = () => {
                     className="relative w-fit whitespace-nowrap cursor-pointer group/option hover:text-gray-600 text-xs"
                     onClick={() => {
                       navigate(
-                        `/products?category=${item.value}&subCategory=${option.value}`
+                        `/products?category=${item.value}&subCategory=${option.value}`,
                       );
                     }}
                   >
