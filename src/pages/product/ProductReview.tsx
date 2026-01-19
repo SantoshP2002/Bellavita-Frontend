@@ -116,17 +116,19 @@ const ProductReview = ({
       <h2 className="text-2xl font-bold mb-6 text-center">Customer Reviews</h2>
 
       {/* Review Summary Section */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 relative pb-6 border-b border-gray-300">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 relative pb-6">
         {/* LEFT */}
         <div className="flex flex-col items-center justify-center text-center w-full md:w-1/4 md:border-r md:border-gray-300 md:pr-10">
-          <div className="text-5xl font-bold text-black">{stats.average}</div>
+          <div className="text-5xl font-bold text-black dark:text-white">
+            {stats.average}
+          </div>
           <div className="flex items-center gap-1 mt-1">
             {[1, 2, 3, 4, 5].map((star) =>
               star <= Math.round(Number(stats.average)) ? (
                 <FaStar key={star} className="text-yellow-400" />
               ) : (
                 <FaRegStar key={star} className="text-yellow-400" />
-              )
+              ),
             )}
           </div>
           <div className="text-gray-500 text-sm mt-1">
@@ -173,13 +175,18 @@ const ProductReview = ({
           <Button
             content={showForm ? "Cancel Review" : "Write Review"}
             pattern="outline"
-            className="w-60! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+            className="w-60! mt-8"
             buttonProps={{
               onClick: () => setShowForm((prev) => !prev),
             }}
           />
         </div>
+
+        {/* Gradient bottom border */}
+        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black to-transparent dark:via-white" />
       </div>
+
+      {/* <hr /> */}
 
       {/* Review Form - Slide Down */}
       <div
@@ -199,7 +206,6 @@ const ProductReview = ({
                 <Button
                   key={star}
                   pattern="outline"
-                  className="!w-auto !p-2 mx-1 border-none bg-transparent hover:bg-transparent"
                   content={
                     star <= (hover || rating) ? (
                       <FaStar className="text-yellow-400 text-2xl" />

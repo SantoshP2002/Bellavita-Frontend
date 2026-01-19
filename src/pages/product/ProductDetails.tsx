@@ -36,6 +36,7 @@ const ProductDetails = () => {
 
   return (
     <div>
+      {/* Top Part to Description  */}
       <div className="flex flex-col md:flex-row justify-center gap-10 p-5 md:p-10 max-w-lvw mx-auto bg-white text-black dark:bg-black dark:text-white">
         {/* LEFT IMAGE */}
         <div className="flex flex-col gap-4 items-center md:items-start lg:max-w-1/2">
@@ -53,11 +54,11 @@ const ProductDetails = () => {
                     key={ind}
                     src={img}
                     onClick={() => setCurrent(ind)}
-                    className={`w-20 h-20 object-cover rounded-xl cursor-pointer border transition-all
+                    className={`w-20 h-20  object-cover rounded-xl cursor-pointer border transition-all
                 ${
                   current === ind
-                    ? "border-black dark:border-white scale-105"
-                    : "border-black/30 dark:border-white/30 opacity-70"
+                    ? "border-black dark:border-white scale-95"
+                    : "border-black/30 dark:border-white/30 opacity-60"
                 }
               `}
                   />
@@ -101,7 +102,6 @@ const ProductDetails = () => {
             <Button
               content="Add To Cart"
               pattern="outline"
-              className="bg-black text-white border-2 border-black text-xs sm:text-sm py-2 px-4 transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{
                 onClick: () => handleAddToCart(product._id),
               }}
@@ -110,7 +110,6 @@ const ProductDetails = () => {
             <Button
               content="Go To Cart"
               pattern="outline"
-              className="bg-black text-white border-2 border-black text-xs sm:text-sm py-2 px-4 transition-all duration-200 hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{
                 onClick: () => navigate("/cart"),
               }}
@@ -118,11 +117,11 @@ const ProductDetails = () => {
           </div>
 
           {/* PERSONALIZE CARD */}
-          <div className="p-4 mt-5 rounded-xl bg-gray-100 text-black dark:bg-[#111] dark:text-white border dark:border-gray-700">
+          <div className="p-4 mt-5 rounded-xl dark:bg-gray-900 shadow-md dark:shadow-white">
             <div className="font-semibold text-sm sm:text-base">
               Personalize Perfume
             </div>
-            <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+            <div className="text-xs sm:text-sm text-black dark:text-white">
               Personalize with your name or message for just
             </div>
             <span className="font-bold"> ₹75</span>{" "}
@@ -153,10 +152,10 @@ const ProductDetails = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="w-full h-24 sm:h-28 rounded-xl flex flex-col justify-center items-center p-3 bg-gray-100 dark:bg-[#111] border dark:border-gray-700 shadow-sm hover:shadow-md transition-all"
+                className="w-full h-24 sm:h-28 rounded-xl flex flex-col justify-center items-center p-3 dark:bg-gray-900 shadow-md dark:hover:shadow-white hover:shadow-black"
               >
                 <img className="w-10 h-10 sm:w-12 sm:h-12" src={item.img} />
-                <p className="text-[10px] sm:text-xs font-semibold mt-2">
+                <p className="text-[10px] sm:text-xs font-semibold mt-2 ">
                   {item.text}
                 </p>
               </div>
@@ -184,6 +183,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
+      {/* Common Image  */}
       <div className="py-10 w-full dark:bg-black">
         <picture>
           {/* Mobile image */}

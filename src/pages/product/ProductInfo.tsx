@@ -60,7 +60,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
           return (
             <div
               key={index}
-              className={`border-b dark:border-gray-800 p-1 transition-all duration-300`}
+              className={`border-b dark:border-gray-600 p-1 transition-all duration-300`}
             >
               {/* Accordion Header */}
               <button

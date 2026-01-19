@@ -177,7 +177,7 @@ const AllReviews = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className=" bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-5 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+                    className="w-30! lg:w-60!"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
