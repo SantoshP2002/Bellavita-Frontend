@@ -15,12 +15,13 @@ const CustomerCarousel = () => {
   };
 
   return (
-    <div className="w-full py-8 sm:py-10 px-4 sm:px-8 md:px-16 text-center overflow-hidden dark:bg-black dark:text-white">
+    <div className="w-full  sm:py-3 px-4 sm:px-8 md:px-16 text-center overflow-hidden dark:bg-black dark:text-white">
       {/* Title */}
-      <h2 className="text-base sm:text-xl md:text-2xl mb-6 sm:mb-8 tracking-wide">
+      <h2 className="text-base sm:text-xl md:text-2xl mb-2 sm:mb-8 tracking-wide">
         WHAT OUR CUSTOMERS HAVE TO SAY
       </h2>
-
+      {/* NEEDLE LINE */}
+      <span className="mx-auto block h-[2px] w-[90%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
       {/* Carousel */}
       <div className="relative flex items-center justify-center">
         {/* Left Arrow */}
@@ -68,7 +69,6 @@ const CustomerCarousel = () => {
           className="size-4 lg:size-6 sm:flex absolute right-2 md:right-10 dark:text-white"
         />
       </div>
-
       {/* Review */}
       <div className="mt-6 sm:mt-10 max-w-xl mx-auto px-2">
         <div className="flex justify-center mb-2 sm:mb-3">
