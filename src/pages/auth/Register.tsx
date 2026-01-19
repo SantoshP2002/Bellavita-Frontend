@@ -58,28 +58,27 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-dvh w-dvw flex items-center justify-center bg-gradient-to-tr px-4 dark:bg-black">
+    <div className="w-full min-h-screen flex flex-col gap-5 items-center justify-center bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 dark:from-[#0f0c29] dark:via-[#302b63] dark:to-[#24243e]">
+      <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-700 text-transparent bg-clip-text">
+        REGISTER
+      </h1>
       {/* MAIN CARD */}
-      <div className="flex w-full max-w-5xl overflow-hidden rounded-2xl animate-fade-in-up">
+      <div className="flex w-full max-w-5xl overflow-hidden shadow-md dark:shadow-white shadow-blue-400 rounded-4xl">
         {/* LEFT IMAGE SECTION */}
         <div className="hidden md:flex md:w-1/2 bg-black items-center justify-center">
           <img
-            src="https://www.shutterstock.com/image-photo/cute-character-3d-image-ai-600nw-2574802489.jpg"
+            src="https://assets-v2.lottiefiles.com/a/b37e402a-118a-11ee-8e10-cfe9128e59f8/hmjjHOsklz.gif"
             alt="Robot"
-            className="h-full w-full object-cover"
+            className="w-full h-full object-cover"
           />
         </div>
 
         {/* RIGHT FORM SECTION */}
-        <div className="w-full md:w-1/2 p-8 sm:p-10">
+        <div className="w-full md:w-1/2 pl-5 py-5">
           <form
             className="max-w-md mx-auto flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-700 text-transparent bg-clip-text">
-              REGISTER
-            </h1>
-
             {/* Profile Preview */}
             {profilePic && (
               <img
@@ -117,7 +116,7 @@ const Register = () => {
 
             {/* Name */}
             <div className="flex gap-4">
-              <div className="relative w-full">
+              <div className="relative">
                 <Input
                   label="First Name"
                   register={register("firstName")}
@@ -132,7 +131,7 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="relative w-full">
+              <div className="relative">
                 <Input
                   label="Last Name"
                   register={register("lastName")}
@@ -164,7 +163,7 @@ const Register = () => {
 
             {/* Password */}
             <div className="flex gap-4">
-              <div className="relative w-full">
+              <div className="relative">
                 <Input
                   label="Password"
                   register={register("password")}
@@ -179,7 +178,7 @@ const Register = () => {
                 )}
               </div>
 
-              <div className="relative w-full">
+              <div className="relative">
                 <Input
                   label="Confirm Password"
                   register={register("confirmPassword")}
@@ -236,7 +235,7 @@ const Register = () => {
               <Button
                 content="🏠 Back to Home"
                 pattern="outline"
-                className=" w-50! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
+                className=" w-50!"
                 icons={{ right: <FaArrowRight /> }}
                 buttonProps={{
                   type: "button",

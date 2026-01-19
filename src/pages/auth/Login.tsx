@@ -30,15 +30,15 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-dvh w-dvw flex flex-col gap-5 items-center justify-center px-4 dark:bg-black">
+    <div className="w-full min-h-screen flex flex-col gap-5 items-center justify-center bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 dark:from-[#0f0c29] dark:via-[#302b63] dark:to-[#24243e]">
       {/* MAIN CARD */}
-      <div className="flex w-full max-w-5xl overflow-hidden">
+      <div className="flex w-full max-w-5xl overflow-hidden shadow-md dark:shadow-white shadow-blue-400 rounded-4xl">
         {/* LEFT IMAGE SECTION */}
         <div className="hidden md:flex md:w-1/2">
           <img
-            src="https://www.shutterstock.com/image-photo/cute-character-3d-image-ai-600nw-2574802489.jpg"
+            src="https://assets-v2.lottiefiles.com/a/6beb774c-1166-11ee-a6f1-4788c8724adf/E9TtaYgKZu.gif"
             alt="Login visual"
-            className="h-full w-full object-cover rounded-xl"
+            className="object-cover rounded-xl"
           />
         </div>
 
@@ -142,18 +142,18 @@ const Login = () => {
                 >
                   REGISTER
                 </Link>
+                {/* Back to Home */}
+                <Link
+                  to="/"
+                  className="mt-2 w-50! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
+                >
+                  🏠 Back to Home
+                </Link>
               </div>
             </div>
           </form>
         </div>
       </div>
-      {/* Back to Home */}
-      <Link
-        to="/"
-        className=" w-50! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
-      >
-        🏠 Back to Home
-      </Link>
     </div>
   );
 };
