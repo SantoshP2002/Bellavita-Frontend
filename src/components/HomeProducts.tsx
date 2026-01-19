@@ -39,20 +39,23 @@ const HomeProducts = () => {
       {products.length > 0 && (
         <div className="flex flex-col gap-8 py-4">
           {/* CONTENT HEADERS */}
-          <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 pt-6 sm:mt-8 text-center dark:text-white">
+          <div className="relative flex flex-wrap justify-center items-center gap-2 sm:gap-4 pt-6 sm:mt-8 text-center dark:text-white">
             <Link
               to="/products?category=bestseller"
-              className="text-lg sm:text-2xl md:text-3xl"
+              className="text-xl sm:text-4xl md:text-4xl"
             >
               BESTSELLER
             </Link>
             <span className="text-lg sm:text-2xl md:text-3xl">|</span>
             <Link
               to="/products?category=new_arrivals"
-              className="text-lg sm:text-2xl md:text-3xl"
+              className="text-xl sm:text-4xl md:text-4xl"
             >
               NEW ARRIVALS
             </Link>
+
+            {/* NEEDLE GRADIENT BORDER */}
+            <span className="absolute -bottom-3  w-full h-[2px] bg-gradient-to-r from-transparent via-black to-transparent dark:via-white" />
           </div>
 
           <div className="flex items-center justify-start overflow-x-auto gap-6 scrollbar-hide">
