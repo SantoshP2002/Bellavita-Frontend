@@ -582,3 +582,15 @@ export const deals = [
     price: 849,
   },
 ];
+
+export const CATEGORY_IMAGES: Record<string, string> = {
+  kajal:
+    "https://www.sugarcosmetics.com/cdn/shop/collections/8e09dfee-3536-44c4-b325-d3aad9a1fc5c.jpg?v=1734358078&width=1600",
+  perfume: "https://example.com/perfume.jpg",
+  lipstick:
+    "https://www.sugarcosmetics.com/cdn/shop/collections/Partner-in-Shine-Transferproof-Lip-Gloss-LP1600x400_e5970f90-cfa5-4348-9b8e-16a778a6bc44.jpg?v=1734367222&width=1600",
+  face_blush:
+    "https://www.sugarcosmetics.com/cdn/shop/collections/66c5e687-a4be-414e-ae0a-fc9e77747197.jpg?v=1734358631&width=1600",
+  airbrush_compact:
+    "https://www.sugarcosmetics.com/cdn/shop/collections/LP-1600x400_59b0cc05-1f02-43d4-998f-b9960f4f36cb.jpg?v=1734499222&width=1600",
+};
