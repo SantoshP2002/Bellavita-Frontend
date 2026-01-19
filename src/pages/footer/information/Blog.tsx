@@ -27,7 +27,8 @@ const Blog = () => {
     <div className="p-4 dark:bg-black dark:text-white">
       <h2 className="text-2xl font-bold mb-6 text-center">BLOGS</h2>
 
-      <hr className="mb-8" />
+      {/* NEEDLE LINE */}
+      <span className="mx-auto block h-[2px] w-[90%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
 
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15 p-4 rounded-lg">
