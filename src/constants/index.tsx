@@ -586,7 +586,9 @@ export const deals = [
 export const CATEGORY_IMAGES: Record<string, string> = {
   kajal:
     "https://www.sugarcosmetics.com/cdn/shop/collections/8e09dfee-3536-44c4-b325-d3aad9a1fc5c.jpg?v=1734358078&width=1600",
-  perfume: "https://example.com/perfume.jpg",
+  all_perfumes: "https://example.com/perfume.jpg",
+  nail_paints:
+    "https://www.sugarcosmetics.com/cdn/shop/collections/Nail-lacquer-homepage-banner.gif?v=1733728533&width=1600",
   lipstick:
     "https://www.sugarcosmetics.com/cdn/shop/collections/Partner-in-Shine-Transferproof-Lip-Gloss-LP1600x400_e5970f90-cfa5-4348-9b8e-16a778a6bc44.jpg?v=1734367222&width=1600",
   face_blush:
