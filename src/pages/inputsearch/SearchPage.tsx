@@ -45,7 +45,7 @@ const SearchPage = () => {
       <div className="flex justify-between items-center">
         <h2 className="text-sm sm:text-lg font-medium text-gray-700 dark:text-gray-300 py-3 sm:py-5">
           Result For :{" "}
-          <span className="uppercase font-semibold bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500 bg-clip-text text-transparent tracking-wide rounded shadow-md dark:shadow-white">
+          <span className="uppercase font-semibold bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500 bg-clip-text text-transparent tracking-wide">
             “{searchQuery}”
           </span>
         </h2>
