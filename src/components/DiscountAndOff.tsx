@@ -1,11 +1,11 @@
 const DiscountAndOff = () => {
   const images = [
-    "https://img.freepik.com/free-vector/discount-banner-template_23-2148708960.jpg",
+    "https://cdn.shopify.com/s/files/1/0906/2558/files/821875973-pop-gwp-at-1099-makeup-brushes-set-of-7-pouch_op_600-x-450.jpg?v=1767940136",
     "https://img.freepik.com/free-vector/special-offer-sale-banner-template_23-2149006613.jpg",
     "https://img.freepik.com/free-vector/black-friday-sale-banner_23-2149105226.jpg",
-    "https://img.freepik.com/free-vector/flash-sale-banner-template_23-2148897327.jpg",
-    "https://img.freepik.com/free-vector/mega-sale-banner-template_23-2149051334.jpg",
-    "https://img.freepik.com/free-vector/super-sale-banner-template_23-2149067049.jpg",
+    "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/company/5842/applications/6523fa5f41f4eb4c10a1d869/theme/pictures/free/original/theme-image-1750934960502.jpeg",
+    "https://cdn.shopify.com/s/files/1/0906/2558/files/822939108-op.jpg?v=1768204791",
+    "https://www.shutterstock.com/shutterstock/photos/2558606947/display_1500/stock-vector-a-colorful-beauty-banner-offering-a-discount-on-makeup-products-lipstick-mascara-face-foundation-2558606947.jpg",
   ];
 
   return (
