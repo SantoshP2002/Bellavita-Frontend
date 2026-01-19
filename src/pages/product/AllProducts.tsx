@@ -62,13 +62,15 @@ const AllProducts = () => {
 
   return (
     <div className="py-4 px-3 sm:px-6 md:px-12 lg:px-24 dark:bg-black dark:text-white">
-      <p className="text-xl mt-3 sm:text-2xl text-center capitalize">
+      <p className="text-xl mt-3 sm:text-2xl text-center capitalize mb-2">
         -{" "}
         {queryParams.subCategory
           ? queryParams.subCategory.replace("_", " ")
           : "All Products"}{" "}
         -
       </p>
+      {/* NEEDLE LINE */}
+      <span className="mx-auto block h-[2px] w-[40%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
 
       {/* Filter and Sort Bar */}
       <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
