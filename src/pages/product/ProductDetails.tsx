@@ -229,10 +229,15 @@ const ProductDetails = () => {
       <div>
         <ProductInfo product={product} />
 
-        <div className="dark:bg-black dark:text-white">
+        <div className="dark:bg-black dark:text-white py-10 lg:p-1">
           {product?.images?.length > 0 ? (
-            <h1 className="text-lg sm:text-xl mb-15 sm:m- text-center">
-              COLORFUL CAPTIVATION
+            <h1 className="text-lg lg:text-4xl sm:m- text-center">
+              Colorful Captivation
+              <p className="text-xs lg:text-sm text-gray-500 mb-2">
+                A colorful masterpiece designed to stop and mesmerize everyone.
+              </p>
+              {/* NEEDLE LINE */}
+              <span className="mx-auto block h-[2px] w-full lg:w-[70%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
             </h1>
           ) : (
             ""

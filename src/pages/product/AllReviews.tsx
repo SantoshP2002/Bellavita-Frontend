@@ -125,9 +125,11 @@ const AllReviews = () => {
       {/* 🛍 Recommended Products Section */}
       {products.length > 0 && (
         <div className="py-3">
-          <h2 className="font-bold text-2xl text-center uppercase py-10">
+          <h2 className="font-bold text-2xl text-center uppercase py-2">
             You May Also Like
           </h2>
+          {/* NEEDLE LINE */}
+          <span className="mx-auto block h-[2px] w-[90%] py-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
 
           {productsLoading ? (
             <LoadingScreen content="Products All Reviews Loading Please Wait !" />
