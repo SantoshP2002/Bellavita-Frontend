@@ -23,7 +23,7 @@ export const useUserStore = create<IUserStore>((set) => {
     },
     logout: () => {
       sessionStorage.removeItem(SESSION_KEY);
-      removeLocalToken()
+      removeLocalToken();
       set({ user: null, isLoggedIn: false });
     },
   };
