@@ -10,7 +10,6 @@ import Select from "../../components/Select";
 import { SORT_DATA } from "../../constants";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAddToCart } from "../../api/cart/service";
-import { IoCartOutline } from "react-icons/io5";
 import { useUserStore } from "../../store/user";
 
 const AllProducts = () => {
@@ -78,7 +77,7 @@ const AllProducts = () => {
           <Button
             content="FILTER +"
             pattern="outline"
-            className="!w-fit !h-9 text-sm px-4 py-1.5 rounded bg-black text-white! dark:bg-white dark:text-black!"
+            className="!w-fit !h-9 text-sm px-4 py-1.5 rounded"
             buttonProps={{
               onClick: handleFilter,
             }}
@@ -98,7 +97,7 @@ const AllProducts = () => {
             }}
           />
         </div>
-
+        {/* Total product count  */}
         <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1 sm:mt-0 dark:text-green-500">
           {totalProducts} Product{totalProducts !== 1 ? "s" : ""}
         </p>
@@ -154,9 +153,7 @@ const AllProducts = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    icons={{
-                      right: <IoCartOutline className="size-5" />,
-                    }}
+                    className="w-30! lg:w-60!"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
