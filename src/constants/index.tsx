@@ -113,8 +113,8 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
 };
 
 export const carouselImages = [
-  "https://bellavitaorganic.com/cdn/shop/files/1920-720_7__11zon.webp?v=1765021204&width=1920",
-  "https://bellavitaorganic.com/cdn/shop/files/1920-720_11.webp?v=1767200968&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/1920x720_2_1_78e7f165-8c56-42d5-b364-ed43aaf7f435.webp?v=1768391940&width=1920",
+  "https://bellavitaorganic.com/cdn/shop/files/A_1.webp?v=1767079304&width=1920",
 ];
 
 export const mobileCarouselImages = [
