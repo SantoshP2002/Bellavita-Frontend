@@ -127,37 +127,37 @@ export const luxuryCategories = [
     name: "COSMETIC",
     value: "cosmetic",
     image:
-      "https://bellavitaorganic.com/cdn/shop/files/cosmetics-category-card-web_a4ad6e4b-07bf-421e-8f23-fcac380118ff.webp?v=1725617238&width=800",
+      "https://thumbs.dreamstime.com/b/cosmetic-beauty-products-pastel-color-background-light-coral-blue-space-flatlay-172868764.jpg",
   },
   {
     name: "SKINCARE",
     value: "skincare",
     image:
-      "https://bellavitaorganic.com/cdn/shop/files/Category-card-for-web-skincare2.webp?v=1725617237&width=800",
+      "https://m.media-amazon.com/images/G/01/CMII/Beauty/Q12023/skin_category_750x200_EN.jpg",
   },
   {
     name: "LUXURY PERFUMES",
     value: "perfumes",
     image:
-      "https://bellavitaorganic.com/cdn/shop/files/intense_1.webp?v=1725617238&width=800",
+      "https://media.istockphoto.com/id/1399637805/photo/top-view-flat-lay-of-a-set-of-perfume-bottles-on-a-beige-blank-background.jpg?s=612x612&w=0&k=20&c=q3SEujgJ4J92jMkoldhx2HJUIBdle08uo21xyI0jSIM=",
   },
   {
     name: "BATH & BODY",
     value: "bath_and_body",
     image:
-      "https://bellavitaorganic.com/cdn/shop/files/Category-card-body-wash2.webp?v=1725617238&width=800",
+      "https://i.redd.it/anyone-else-not-liking-the-new-bath-body-works-website-v0-646zy9vw0yzf1.jpg?width=2048&format=pjpg&auto=webp&s=f05cf324c4700ecbb164ef731447555255171f5c",
   },
   {
     name: "New Arrivals",
     value: "new_arrivals",
     image:
-      "https://bellavitaorganic.com/cdn/shop/files/download_aa0adad6-f23f-47c3-85b2-f57edc95477d.jpg?v=1755846059&width=500",
+      "https://img.freepik.com/free-vector/abstract-new-arrival-composition-with-flat-design_23-2147882361.jpg?semt=ais_hybrid&w=740&q=80",
   },
   {
     name: "GIFT SETS",
     value: "gifting",
     image:
-      "https://bellavitaorganic.com/cdn/shop/files/Artboard_4_copy_05b3b2ed-5440-4463-b119-bedcd60ed5c1.webp?v=1725617237&width=800",
+      "https://img.freepik.com/free-photo/paper-near-set-gift-boxes-wraps_23-2148015284.jpg?semt=ais_hybrid&w=740&q=80",
   },
 ];
 
