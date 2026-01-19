@@ -2,6 +2,7 @@ import AutoScrollStrip from "../../components/AutoScrollStrip";
 import BellamoodTech from "../../components/BellamoodTech";
 import CrazyDeals from "../../components/CrazyDeals";
 import CustomerCarousel from "../../components/CustomerCarousel";
+import DiscountAndOff from "../../components/DiscountAndOff";
 import HomeCarousel from "../../components/HomeCarouse";
 import HomeProducts from "../../components/HomeProducts";
 import ImageStrip from "../../components/ImageStrip";
@@ -38,6 +39,7 @@ const Home = () => {
       <BellamoodTech />
       <CrazyDeals />
       <ShopByNotes />
+      <DiscountAndOff />
       <WhyBellavitaInfo />
       <CustomerCarousel />
       <ImageStrip />
