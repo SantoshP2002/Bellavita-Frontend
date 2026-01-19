@@ -68,7 +68,7 @@ const AllProducts = () => {
   return (
     <div>
       {categoryImage && (
-        <div className="mx-auto w-full h-[90px] md:h-[300px]">
+        <div className="mx-auto w-full h-[90px] md:h-[300px] dark:bg-black">
           <img
             src={categoryImage}
             alt={currentCategory}
