@@ -31,27 +31,17 @@ const Login = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-5 items-center justify-center bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 dark:from-[#0f0c29] dark:via-[#302b63] dark:to-[#24243e]">
+      <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-700 text-transparent bg-clip-text">
+        LOGIN
+      </h1>
       {/* MAIN CARD */}
-      <div className="flex w-full max-w-5xl overflow-hidden shadow-md dark:shadow-white shadow-blue-400 rounded-4xl">
-        {/* LEFT IMAGE SECTION */}
-        <div className="hidden md:flex md:w-1/2">
-          <img
-            src="https://assets-v2.lottiefiles.com/a/6beb774c-1166-11ee-a6f1-4788c8724adf/E9TtaYgKZu.gif"
-            alt="Login visual"
-            className="object-cover rounded-xl"
-          />
-        </div>
-
+      <div className="flex w-75 lg:w-90  overflow-hidden shadow-md dark:shadow-white shadow-blue-400 rounded-4xl">
         {/* RIGHT FORM SECTION */}
-        <div className="w-full md:w-1/2 p-8 sm:p-10 flex items-center">
+        <div className="w-full md:w-full p-8 sm:p-10 flex items-center">
           <form
             className="w-full max-w-md mx-auto"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h1 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-purple-700 text-transparent bg-clip-text">
-              LOGIN
-            </h1>
-
             {/* Email */}
             <div className="relative mb-4">
               <Input
@@ -69,7 +59,7 @@ const Login = () => {
             </div>
 
             {/* Password */}
-            <div className="relative mb-4">
+            <div className="relative mb-2">
               <Input
                 label="Password"
                 className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
@@ -98,22 +88,22 @@ const Login = () => {
             <Button
               content={isPending ? "Logging in..." : "Login"}
               pattern="outline"
-              className="w-60! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+              className="w-60! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{ disabled: isPending, type: "submit" }}
             />
 
-            {/* Divider */}
-            <div className="h-px dark:bg-white bg-black mt-7" />
+            {/* NEEDLE LINE */}
+            <span className="mx-auto my-5 block h-[2px] w-[100%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500" />
 
             {/* Social Icons GOOGLE */}
-            <div className="flex justify-center gap-5 mt-4 text-xl">
+            <div className="flex justify-center gap-5 text-xl">
               <Button
                 pattern="outline"
                 buttonProps={{
                   onClick: handleGoogleLogin,
                   type: "button",
                 }}
-                className="w-60! mt-8 bg-white rounded-xl text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[2px_2px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[2px_2px_0_0_#fff]"
+                className="w-60! bg-white rounded-xl text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[2px_2px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[2px_2px_0_0_#fff]"
                 content={
                   <span className="flex items-center gap-2">
                     <img
@@ -130,7 +120,7 @@ const Login = () => {
             </div>
 
             {/* Register */}
-            <div className="mt-6 flex justify-center">
+            <div className="mt-3 flex justify-center">
               <div className="flex flex-col justify-center items-center text-xs">
                 <span className="text-black dark:text-gray-300">
                   Don’t have an account?

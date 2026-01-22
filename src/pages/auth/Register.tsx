@@ -63,18 +63,9 @@ const Register = () => {
         REGISTER
       </h1>
       {/* MAIN CARD */}
-      <div className="flex w-full max-w-5xl overflow-hidden shadow-md dark:shadow-white shadow-blue-400 rounded-4xl">
-        {/* LEFT IMAGE SECTION */}
-        <div className="hidden md:flex md:w-1/2 bg-black items-center justify-center">
-          <img
-            src="https://assets-v2.lottiefiles.com/a/b37e402a-118a-11ee-8e10-cfe9128e59f8/hmjjHOsklz.gif"
-            alt="Robot"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
+      <div className="flex w-90 lg:w-130 overflow-hidden">
         {/* RIGHT FORM SECTION */}
-        <div className="w-full md:w-1/2 pl-5 py-5">
+        <div className="w-full md:w-full pl-5 py-5">
           <form
             className="max-w-md mx-auto flex flex-col gap-4"
             onSubmit={handleSubmit(onSubmit)}
@@ -198,7 +189,7 @@ const Register = () => {
             <Button
               pattern="outline"
               content={isSubmitting ? "Registering..." : "Register"}
-              className="w-60! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+              className="w-60! mt-2 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
               buttonProps={{ type: "submit", disabled: isSubmitting }}
             />
 
