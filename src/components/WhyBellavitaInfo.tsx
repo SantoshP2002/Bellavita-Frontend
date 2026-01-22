@@ -4,11 +4,11 @@ const WhyBellavitaInfo = () => {
   return (
     <div className="pt-10 pb-16 px-4 sm:px-6 md:px-8 dark:bg-black dark:text-white">
       {/* Title */}
-      <h2 className="text-xl md:text-2xl text-center mb-6 tracking-wide">
+      <h2 className="text-xl md:text-2xl text-center mb-2 tracking-wide">
         WHY BELLAVITA ?
       </h2>
       {/* NEEDLE LINE */}
-      <span className="mx-auto block h-[2px] w-[90%] lg:w-[70%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
+      <span className="mx-auto block h-[2px] w-[90%] lg:w-[50%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
 
       {/* Info Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-8 text-center">
