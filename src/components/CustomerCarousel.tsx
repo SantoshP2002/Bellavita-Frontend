@@ -15,9 +15,9 @@ const CustomerCarousel = () => {
   };
 
   return (
-    <div className="w-full  sm:py-3 px-4 sm:px-8 md:px-16 text-center overflow-hidden dark:bg-black dark:text-white">
+    <div className="w-full sm:py-3 px-4 sm:px-8 md:px-16 text-center overflow-hidden dark:bg-black dark:text-white">
       {/* Title */}
-      <h2 className="text-base sm:text-xl md:text-2xl mb-2 sm:mb-8 tracking-wide">
+      <h2 className="text-base sm:text-xl md:text-2xl mb-2 tracking-wide">
         WHAT OUR CUSTOMERS HAVE TO SAY
       </h2>
       {/* NEEDLE LINE */}
