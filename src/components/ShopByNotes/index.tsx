@@ -4,7 +4,7 @@ const ShopByNotes = () => {
   return (
     <div className="p-4 sm:p-6 md:p-8 dark:bg-black dark:text-white">
       {/* Title */}
-      <h2 className="text-xl sm:text-xl md:text-2xl text-center mb-2 sm:mb- w-max mx-auto">
+      <h2 className="text-xl md:text-4xl text-center mb-3 mt-6 sm:mb- w-max mx-auto">
         SHOP BY NOTES
       </h2>
       {/* NEEDLE LINE */}
