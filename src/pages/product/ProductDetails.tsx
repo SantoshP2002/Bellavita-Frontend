@@ -183,22 +183,27 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {/* Common Image  */}
-      <div className="py-10 w-full dark:bg-black">
-        <picture>
-          {/* Mobile image */}
-          <source
-            media="(max-width: 767px)"
-            srcSet="https://bellavitaorganic.com/cdn/shop/files/860x1200_2.jpg?v=1737012883&width=800"
+      {/* Common Images */}
+      <div className="w-full dark:bg-black">
+        <div className="relative w-full h-[130px] sm:h-[250px] md:h-[400px] overflow-hidden dark:bg-black">
+          <img
+            src="https://www.sugarcosmetics.com/cdn/shop/files/FREE-Hd-Liquid-Foundation-on-699-LP_1600-X-400.jpg?v=1768978692&width=1600"
+            className="carousel-img object-contain"
+            alt=""
           />
 
-          {/* Desktop / Laptop image */}
           <img
-            src="https://bellavitaorganic.com/cdn/shop/files/1920x600_72808e11-8fc9-4f49-8bf6-65bf374606f2.jpg?v=1737012884&width=1400"
-            alt="ultimate image"
-            className="w-full rounded cursor-pointer object-cover"
+            src="https://www.sugarcosmetics.com/cdn/shop/files/249-sugar-store---LP-1600x400.jpg?v=1767362348&width=1600"
+            className="carousel-img object-contain"
+            alt=""
           />
-        </picture>
+
+          <img
+            src="https://www.sugarcosmetics.com/cdn/shop/files/BTR-GWP-at-1499--LP-1600x400.jpg?v=1767623005&width=1600"
+            className="carousel-img object-contain"
+            alt=""
+          />
+        </div>
       </div>
 
       {/* VIDEO  */}
