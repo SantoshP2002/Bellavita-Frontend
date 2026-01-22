@@ -5,9 +5,7 @@ const CrazyDeals = () => {
     <div className="p-6 dark:bg-black dark:text-white">
       {/* Heading */}
       <div>
-        <h5 className="text-xl sm:text-xl md:text-2xl text-center mb-6">
-          CRAZY DEALS
-        </h5>
+        <h5 className="text-xl md:text-5xl text-center mb-6">CRAZY DEALS</h5>
         {/* NEEDLE LINE */}
         <span className="mx-auto block h-[2px] w-[60%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
       </div>
