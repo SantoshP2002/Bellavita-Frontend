@@ -139,7 +139,7 @@ export const luxuryCategories = [
     name: "SKINCARE",
     value: "skincare",
     image:
-      "https://t3.ftcdn.net/jpg/03/60/94/16/360_F_360941651_Vm8ut6asUMp5nfzyPZnyLnI9OLOHIyle.jpg",
+      "https://www.sugarcosmetics.com/cdn/shop/files/TMM-Website-Banner-3200x1200.jpg?v=1769067005&width=2000",
   },
   {
     name: "New Arrivals",
