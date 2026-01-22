@@ -21,11 +21,11 @@ const LuxuryCategory = () => {
 
   return (
     <div className="py-10 dark:bg-black dark:text-white">
-      <h2 className="text-xl md:text-5xl text-center mb-2">
+      <h2 className="text-xl md:text-5xl text-center mb-1">
         Product Categories
       </h2>
 
-      <p className="text-center text-gray-600 dark:text-gray-400 mb-8 lg:text-lg text-xs">
+      <p className="text-center text-gray-600 dark:text-gray-400 mb-3 lg:text-lg text-xs">
         Exclusive beauty products crafted to enhance your natural glow
       </p>
 
