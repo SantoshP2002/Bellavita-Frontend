@@ -55,7 +55,7 @@ const HomeProducts = () => {
             </Link>
 
             {/* NEEDLE GRADIENT BORDER */}
-            <span className="absolute -bottom-3  w-full h-[2px] bg-gradient-to-r from-transparent via-black to-transparent dark:via-white" />
+            <span className="absolute -bottom-5  w-[80%] h-[2px] bg-gradient-to-r from-transparent via-black to-transparent dark:via-gray-400" />
           </div>
 
           <div className="flex items-center justify-start overflow-x-auto gap-6 scrollbar-hide">
