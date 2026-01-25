@@ -15,7 +15,7 @@ const SupportSection = () => {
         className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
         onClick={() => toggleSection("support")}
       >
-        <h2 className="text-white text-xs md:text-sm mb-2 md:mb-6 pb-2 md:border-none">
+        <h2 className="dark:text-white text-shadow-lg mb-2 md:mb-6 pb-2 md:border-none">
           SUPPORT
         </h2>
         <span className="md:hidden text-lg">
@@ -24,14 +24,14 @@ const SupportSection = () => {
       </div>
 
       <ul
-        className={`flex flex-col gap-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+        className={`flex flex-col gap-2 mt-2 text-sm dark:text-white overflow-hidden transition-all duration-300 ${
           openSection === "support" || window.innerWidth >= 768
             ? "max-h-[500px] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -43,7 +43,7 @@ const SupportSection = () => {
           About Us
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -55,7 +55,7 @@ const SupportSection = () => {
           Contact Us
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -67,7 +67,7 @@ const SupportSection = () => {
           Order Tracking
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -79,7 +79,7 @@ const SupportSection = () => {
           All Products
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -91,7 +91,7 @@ const SupportSection = () => {
           FAQ
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400

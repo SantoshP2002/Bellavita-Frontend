@@ -17,7 +17,7 @@ const BestSellerSection = () => {
         className="flex items-center justify-between md:block cursor-pointer md:cursor-default"
         onClick={() => toggleSection("bestseller")}
       >
-        <h2 className="text-white text-xs md:text-sm pb-2 md:pb-0 mb-0 md:mb-6 md:border-none">
+        <h2 className="dark:text-white text-shadow-lg pb-2 md:pb-0 mb-0 md:mb-6 md:border-none">
           BESTSELLER
         </h2>
         <span className="md:hidden text-lg flex items-center">
@@ -26,7 +26,7 @@ const BestSellerSection = () => {
       </div>
 
       <ul
-        className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+        className={`space-y-2 mt-2 text-sm dark:text-white overflow-hidden transition-all duration-300 ${
           openSection === "bestseller" || window.innerWidth >= 768
             ? "max-h-[500px] opacity-100"
             : "max-h-0 opacity-0"
@@ -36,7 +36,7 @@ const BestSellerSection = () => {
           <li
             key={item.slug}
             onClick={() => navigate(`/${item.slug}`)}
-            className="relative block w-fit cursor-pointer text-white
+            className="relative block w-fit cursor-pointer dark:text-white
             after:content-['']
             after:absolute after:left-0 after:-bottom-0
             after:h-[1px] after:w-full after:bg-gray-400

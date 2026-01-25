@@ -15,7 +15,7 @@ const InformationSection = () => {
         className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
         onClick={() => toggleSection("information")}
       >
-        <h2 className="text-white text-xs md:text-sm mb-2 md:mb-6 pb-2 md:border-none">
+        <h2 className="dark:text-white text-shadow-lg md:mb-4 pb-2 md:border-none">
           INFORMATION
         </h2>
         <span className="md:hidden text-lg">
@@ -24,14 +24,14 @@ const InformationSection = () => {
       </div>
 
       <ul
-        className={`flex flex-col gap-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+        className={`flex flex-col gap-2 text-sm dark:text-white overflow-hidden transition-all duration-300 ${
           openSection === "information" || window.innerWidth >= 768
             ? "max-h-[500px] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -43,7 +43,7 @@ const InformationSection = () => {
           Blogs
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -55,7 +55,7 @@ const InformationSection = () => {
           News Room
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -67,7 +67,7 @@ const InformationSection = () => {
           Terms & Condition
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -79,7 +79,7 @@ const InformationSection = () => {
           Privacy Policy
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -91,7 +91,7 @@ const InformationSection = () => {
           Refund & Return
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400
@@ -103,7 +103,7 @@ const InformationSection = () => {
           Shipping Policy
         </Link>
         <Link
-          className="relative w-fit cursor-pointer text-white
+          className="relative w-fit cursor-pointer dark:text-white
                  after:content-['']
                  after:absolute after:left-0 after:-bottom-0
                  after:h-[1px] after:w-full after:bg-gray-400

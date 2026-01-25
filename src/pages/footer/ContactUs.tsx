@@ -26,7 +26,7 @@ const ContactUsPage = () => {
         className="flex justify-between items-center md:block cursor-pointer md:cursor-default"
         onClick={() => toggleSection("contact")}
       >
-        <h2 className="text-white text-xs md:text-sm mb-2 md:mb-6 pb-2 md:border-none">
+        <h2 className="dark:text-white text-shadow-lg mb-2 md:mb-6 pb-2 md:border-none">
           CONTACT US
         </h2>
         <span className="md:hidden text-lg">
@@ -35,7 +35,7 @@ const ContactUsPage = () => {
       </div>
 
       <ul
-        className={`space-y-2 mt-2 text-sm text-white overflow-hidden transition-all duration-300 ${
+        className={`space-y-2 mt-2 text-sm dark:text-white overflow-hidden transition-all duration-300 ${
           openSection === "contact" || window.innerWidth >= 768
             ? "max-h-[500px] opacity-100"
             : "max-h-0 opacity-0"
