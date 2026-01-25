@@ -117,7 +117,7 @@ const ProductDetails = () => {
           </div>
 
           {/* PERSONALIZE CARD */}
-          <div className="p-4 mt-5 rounded-xl dark:bg-gray-900 shadow-md dark:shadow-white">
+          <div className="p-4 mt-5 rounded-xl dark:bg-black shadow-[-4px_-4px_12px_rgba(0,0,0,0.200)] dark:shadow-[-4px_-4px_12px_rgba(247,197,253,0.35)]">
             <div className="font-semibold text-sm sm:text-base">
               Personalize Perfume
             </div>
@@ -152,7 +152,7 @@ const ProductDetails = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="w-full h-24 sm:h-28 rounded-xl flex flex-col justify-center items-center p-3 dark:bg-gray-900 shadow-md dark:hover:shadow-white hover:shadow-black"
+                className="bg-gray-50 p-3 sm:p-6 rounded-xl flex flex-col h-full dark:bg-black dark:text-white border border-gray-400  border-l-2 border-t-2 dark:hover:border-blue-400"
               >
                 <img className="w-10 h-10 sm:w-12 sm:h-12" src={item.img} />
                 <p className="text-[10px] sm:text-xs font-semibold mt-2 ">
