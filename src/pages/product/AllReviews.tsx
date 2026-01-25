@@ -24,7 +24,7 @@ const AllReviews = () => {
     data: productsData,
     isLoading: productsLoading,
     isError: productsError,
-  } = useGetAllProductsInfinite({ limit: 4 });
+  } = useGetAllProductsInfinite({ limit: 8 });
 
   const { mutateAsync: addToCart } = useAddToCart();
 
@@ -136,7 +136,7 @@ const AllReviews = () => {
           ) : productsError ? (
             <EmptyData content="Product Not Found 😕" />
           ) : (
-            <div className=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:px-4">
+            <div className="flex gap-8 overflow-x-auto scrollbar-hide px-5">
               {products.map((p) => (
                 <div
                   key={p._id}
@@ -179,7 +179,6 @@ const AllReviews = () => {
                   <Button
                     content="Add To Cart"
                     pattern="outline"
-                    className="w-30! lg:w-60!"
                     buttonProps={{
                       onClick: () => handleAddToCart(p._id),
                     }}
