@@ -33,19 +33,19 @@ const CartProducts = () => {
   const subtotal = useMemo(() => {
     return products.reduce(
       (acc, item) => acc + item?.product?.sellingPrice * item?.quantity,
-      0
+      0,
     );
   }, [products]);
 
   const handleQuantityChange = (id: string, newQuantity: number) => {
     setProducts((prevProduct) =>
       prevProduct.map((product) =>
-        product._id === id ? { ...product, quantity: newQuantity } : product
-      )
+        product._id === id ? { ...product, quantity: newQuantity } : product,
+      ),
     );
     updateQuantity(
       { _id: id, quantity: newQuantity },
-      { onError: () => setProducts(cart.products) }
+      { onError: () => setProducts(cart.products) },
     );
   };
 
@@ -73,8 +73,11 @@ const CartProducts = () => {
                 : "lg:col-span-3"
             } flex flex-col rounded-xl p-2 sm:p-4 h-full`}
           >
-            <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4 text-black dark:bg-gradient-to-l dark:from-blue-500 dark:to-blue-400 dark:bg-clip-text dark:text-transparent text-shadow-2xs">
-              Shopping Cart
+            <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4">
+              <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+                Shopping
+              </span>{" "}
+              <span className="text-blue-600">Cart</span>
             </h2>
 
             <div className="space-y-3 sm:space-y-4 py-1 flex-1 overflow-y-auto">
@@ -126,7 +129,7 @@ const CartProducts = () => {
                                 onClick: () =>
                                   handleQuantityChange(
                                     item._id,
-                                    item.quantity - 1
+                                    item.quantity - 1,
                                   ),
                                 disabled: !allowDec,
                               }}
@@ -148,7 +151,7 @@ const CartProducts = () => {
                                 onClick: () =>
                                   handleQuantityChange(
                                     item._id,
-                                    item.quantity + 1
+                                    item.quantity + 1,
                                   ),
                                 disabled: !allowInc,
                               }}
