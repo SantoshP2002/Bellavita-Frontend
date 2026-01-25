@@ -93,7 +93,9 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
+      <span className="mx-auto block h-[2px] w-full bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mt-20" />
+
+      <div className="text-center py-4 text-sm text-gray-700 dark:text-gray-300">
         © {new Date().getFullYear()} MyShop. All rights reserved.
       </div>
     </footer>
