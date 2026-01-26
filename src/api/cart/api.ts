@@ -6,11 +6,11 @@ import api from "../axios.instance";
 export const add_to_cart = async (id: string) => {
   try {
     const token = getUserToken();
-    const { method, url } = apiRoutes.cart.addToCart
+    const { method, url } = apiRoutes.cart.addToCart;
     const response = await api.request({
       method,
-      url:`${url}/${id}`,
-      headers: { Authorization: token },
+      url: `${url}/${id}`,
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     return response.data;
@@ -42,7 +42,7 @@ export const get_user_cart = async () => {
 
 export const update_cart_product_quantity = async (
   id: string,
-  quantity: number
+  quantity: number,
 ) => {
   try {
     const token = getUserToken();
