@@ -45,7 +45,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="min-h-[500px] flex flex-col items-center justify-center px-4 sm:px-6 bg-gray-100 dark:bg-black dark:text-white">
+    <div className="min-h-[500px] flex flex-col items-center justify-center px-4 sm:px-6 bg-gray-50 dark:bg-black dark:text-white">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="
