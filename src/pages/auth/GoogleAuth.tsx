@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { VITE_TOKEN_KEY } from "../../env";
+import { encryptData } from "../../utils";
 
 const GoogleAuth = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState<"success" | "fail" | "loading">(
-    "loading"
+    "loading",
   );
 
   useEffect(() => {
@@ -12,7 +14,7 @@ const GoogleAuth = () => {
     const token = params.get("token");
 
     if (token) {
-      localStorage.setItem("token", token);
+      localStorage.setItem(VITE_TOKEN_KEY, encryptData(token));
       setStatus("success");
 
       setTimeout(() => {
