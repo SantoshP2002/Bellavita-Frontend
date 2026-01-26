@@ -43,8 +43,16 @@ const Address = () => {
         <div className="p-3 dark:bg-black">
           {/* Header with button */}
           <div className="flex justify-between items-center py-2 dark:bg-black">
-            <h2 className="text-2xl font-bold dark:text-purple-300">
-              {addresses.length ? "Your Addresses" : "Add Address"}
+            <h2 className="text-2xl bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+              {addresses.length ? (
+                <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+                  Your <span className="text-blue-600">Address</span>
+                </span>
+              ) : (
+                <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+                  ADD <span className="text-blue-600">ADDRESS</span>
+                </span>
+              )}
             </h2>
             {addresses.length < 5 && addresses.length !== 0 && (
               <Button
