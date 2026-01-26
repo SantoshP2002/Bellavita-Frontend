@@ -11,6 +11,7 @@ import { TbLockPassword } from "react-icons/tb";
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const ChangePassword = () => {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -146,23 +147,15 @@ const ChangePassword = () => {
         <Button
           content={isPending ? "Updating..." : "Update Password"}
           pattern="outline"
-          className="
-    w-full py-2.5 sm:py-3 rounded-lg
-    bg-white text-black border border-black
-    hover:bg-black hover:text-white
-    hover:scale-[1.02]
-
-    dark:bg-transparent dark:text-white dark:border-white
-    dark:hover:bg-white dark:hover:text-black!
-"
           buttonProps={{ disabled: isPending, type: "submit" }}
         />
       </form>
       <Link
         to="/profile"
-        className="w-20! flex! flex-col! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
+        className="w-20 lg:w-30 flex items-center  justify-center gap-1 rounded-lg bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
       >
-        👱🏻 Back
+        <IoIosArrowRoundBack size={30} />
+        Back
       </Link>
     </div>
   );
