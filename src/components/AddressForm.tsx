@@ -84,7 +84,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="First Name"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("firstName")}
             inputProps={{ placeholder: "Enter First Name" }}
           />
@@ -99,7 +99,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Last Name"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("lastName")}
             inputProps={{ placeholder: "Enter Last Name" }}
           />
@@ -114,7 +114,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Email"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("email")}
             inputProps={{ placeholder: "Enter Email", type: "email" }}
           />
@@ -127,7 +127,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Phone Number"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("phoneNumber")}
             inputProps={{
               placeholder: "Phone Number",
@@ -145,7 +145,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Alt. Phone Number"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("altPhoneNumber")}
             inputProps={{
               placeholder: "Alt. Number",
@@ -163,7 +163,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Address"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("address")}
             inputProps={{ placeholder: "Enter Address" }}
           />
@@ -178,7 +178,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Landmark"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("landmark")}
             inputProps={{ placeholder: "Enter Landmark" }}
           />
@@ -193,7 +193,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="City"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("city")}
             inputProps={{ placeholder: "Enter City" }}
           />
@@ -206,7 +206,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Pincode"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("pinCode")}
             inputProps={{
               placeholder: "Pin-Code",
@@ -224,7 +224,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="State"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("state")}
             inputProps={{ placeholder: "Enter State" }}
           />
@@ -237,7 +237,7 @@ const AddressForm = ({
         <div className="relative">
           <Input
             label="Country"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("country")}
             inputProps={{ placeholder: "Enter Country" }}
           />
