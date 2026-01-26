@@ -144,7 +144,7 @@ const AddressForm = ({
         {/* ALTERNATIVE PHONE NUMBER */}
         <div className="relative">
           <Input
-            label="Alt. Phone Number"
+            label="Alt. P Number"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("altPhoneNumber")}
             inputProps={{
@@ -253,14 +253,14 @@ const AddressForm = ({
         <Button
           content={isPending ? "Saving..." : "Save Address"}
           pattern="outline"
-          className="w-50! mt-8"
+          className="w-30! lg:w-50! mt-8"
           buttonProps={{ type: "submit", disabled: isPending }}
         />
         <Link to="/cart">
           <Button
             content="BACK"
             pattern="outline"
-            className="w-40! mt-8"
+            className="mt-8"
             icons={{
               left: <IoIosArrowBack size={10} />,
             }}

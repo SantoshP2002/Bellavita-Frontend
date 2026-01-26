@@ -24,7 +24,7 @@ const AddressFormModal = ({
       onClose={onClose}
       isOpen={!!queryParams.add || !!queryParams.edit}
       heading={queryParams.edit ? "Update Address" : "Add Address"}
-      className="!max-w-3xl"
+      className="!max-w-4xl"
     >
       <AddressForm addresses={addresses} className="mt-2" />
     </Modal>
