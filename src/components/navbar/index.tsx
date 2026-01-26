@@ -37,7 +37,7 @@ const Navbar = () => {
 
             {/* Dropdown Menu */}
             {selectedOption === item.name && item.options && (
-              <div className="absolute left-0 top-full z-50 min-w-[200px] rounded-xl bg-white p-6 flex flex-col shadow-[0_10px_30px_rgba(0,0,0,0.12)] animate-dropdown origin-top dark:bg-black dark:text-whit">
+              <div className="absolute left-0 top-full z-50 min-w-[200px] rounded-xl bg-white p-6 flex flex-col shadow-sm shadow-blue-300  animate-dropdown origin-top dark:bg-black dark:text-white">
                 {item.options.map((option, index) => (
                   <div
                     key={index}
