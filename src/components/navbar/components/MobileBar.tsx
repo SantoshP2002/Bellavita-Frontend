@@ -83,7 +83,7 @@ const MobileBar = () => {
             />
 
             {/* Category part */}
-            <div className="flex flex-col gap-4 px-5">
+            <div className="flex flex-col gap-4 px-10">
               {navMapData.map((item, index) => {
                 const isOpen = selectedOption === item.name;
 
@@ -127,7 +127,7 @@ const MobileBar = () => {
                               key={idx}
                               onClick={() => {
                                 navigate(
-                                  `/products?category=${item.value}&subCategory=${option.value}`
+                                  `/products?category=${item.value}&subCategory=${option.value}`,
                                 );
                                 setIsSidebarOpen(false);
                               }}
