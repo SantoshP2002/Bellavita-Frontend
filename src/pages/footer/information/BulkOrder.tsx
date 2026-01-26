@@ -5,13 +5,13 @@ import { FaRegThumbsUp } from "react-icons/fa";
 
 const BulkOrder = () => {
   return (
-    <div>
+    <div className="dark:bg-black py-8">
       <img
         className="w-full"
         src="https://bellavitaorganic.com/cdn/shop/files/1200_X235_0b857eca-9439-47b6-86f5-266721e1f330.jpg?v=1686207597&width=1500"
         alt="Bulk order top image"
       />
-      <div className="min-h-screen dark:bg-black dark:text-white ">
+      <div className="min-h-screen dark:text-white ">
         {/* Input Part  */}
         <div className="mx-auto max-w-3xl px-4 py-8 shadow-lg dark:shadow-white shadow-black">
           <p className="mt-14 text-2xl font-semibold">
