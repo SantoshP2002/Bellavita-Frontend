@@ -7,6 +7,7 @@ import LoadingScreen from "./LoadingScreen";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/user";
 import toast from "react-hot-toast";
+import EmptyData from "./empty-data/EmptyData";
 
 const HomeProducts = () => {
   const { isLoggedIn } = useUserStore();
@@ -30,7 +31,7 @@ const HomeProducts = () => {
   };
 
   return (
-    <div className="min-h-[550px] px-10 dark:bg-black dark:text-white dark:hover:shadow-white">
+    <div className="min-h-[550px] px-10 py-4 dark:bg-black dark:text-white dark:hover:shadow-white">
       {isLoading && (
         <LoadingScreen content="Home Product Loading Please Wait !" />
       )}
@@ -116,14 +117,14 @@ const HomeProducts = () => {
 
       {products.length === 0 && !isLoading && (
         <p className="text-center text-gray-600 text-lg mt-4">
-          No products found
+          <EmptyData content="Product Not Found" />
         </p>
       )}
 
       <Button
         content="VIEW ALL"
         pattern="outline"
-        className="!w-60 mx-auto rounded"
+        className="!w-50 mx-auto rounded-lg"
         buttonProps={{
           onClick: () => navigate("/products"),
         }}
