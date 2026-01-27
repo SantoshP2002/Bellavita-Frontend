@@ -4,7 +4,7 @@ import { ALLOW_COUNTRIES } from "../constants";
 export const addressSchema = z.object({
   address: z
     .string("address must be a string")
-    .min(3)
+    .min(3, "Address must be a required 3 Character")
     .nonempty("address must be required"),
   landmark: z
     .union([
@@ -16,13 +16,16 @@ export const addressSchema = z.object({
     .optional(),
   city: z
     .string("city must be Required")
-    .min(2)
+    .min(2, "City must be a required 2 Character")
     .nonempty("city must be required"),
   state: z
     .string("state must be a required")
-    .min(2)
+    .min(2, "Atleaste 1 State is Required")
     .nonempty("state must be required"),
-  pinCode: z.string("pincode must be a required").min(6).max(6),
+  pinCode: z
+    .string("pincode must be a required")
+    .min(6, "PIN-CODE must be a required 6 Digit")
+    .max(6),
   country: z.enum(ALLOW_COUNTRIES),
   altPhoneNumber: z
     .union([
@@ -34,8 +37,8 @@ export const addressSchema = z.object({
     .optional(),
   phoneNumber: z
     .string("phone Number must be string")
-    .min(10)
-    .max(10)
+    .min(10, "PhoneNumber must be a required 10 Digit ")
+    .max(10, "Maximum 10 Digit number is allowed")
     .nonempty("Phone Number is required"),
   firstName: z
     .string("First Name must be a string")
@@ -54,6 +57,6 @@ export const addressSchema = z.object({
     .toLowerCase()
     .regex(
       /^[a-zA-Z0-9]+([._%+-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(-?[a-zA-Z0-9]+)*(\.[a-zA-Z]{2,})+$/,
-      "please provide a valid email address, like example@domain.com"
+      "please provide a valid email address, like example@domain.com",
     ),
 });
