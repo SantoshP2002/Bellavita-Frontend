@@ -1,4 +1,3 @@
-
 import type { IQueryParams } from "../types";
 import usePathParams from "./usePathParams";
 
