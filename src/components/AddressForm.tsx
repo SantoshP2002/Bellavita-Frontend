@@ -86,14 +86,10 @@ const AddressForm = ({
             label="First Name"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("firstName")}
+            error={errors.firstName?.message}
             inputProps={{ placeholder: "Enter First Name" }}
           />
           <FaRegUser className="absolute top-3 lg:top-4 left-3 dark:text-gray-400 text-gray-500 size-3 lg:size-4" />
-          {errors.firstName && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.firstName.message}
-            </p>
-          )}
         </div>
         {/* LASTNAME  */}
         <div className="relative">
@@ -101,14 +97,10 @@ const AddressForm = ({
             label="Last Name"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("lastName")}
+            error={errors.lastName?.message}
             inputProps={{ placeholder: "Enter Last Name" }}
           />
           <FaRegUser className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.lastName && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.lastName.message}
-            </p>
-          )}
         </div>
         {/* EMAIL  */}
         <div className="relative">
@@ -116,12 +108,10 @@ const AddressForm = ({
             label="Email"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("email")}
+            error={errors.email?.message}
             inputProps={{ placeholder: "Enter Email", type: "email" }}
           />
           <MdOutlineEmail className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
         </div>
         {/* PHONE NUMBERS  */}
         <div className="relative">
@@ -129,17 +119,13 @@ const AddressForm = ({
             label="Phone Number"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("phoneNumber")}
+            error={errors.phoneNumber?.message}
             inputProps={{
               placeholder: "Phone Number",
               type: "text",
             }}
           />
           <FiPhone className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.phoneNumber && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.phoneNumber.message}
-            </p>
-          )}
         </div>
         {/* ALTERNATIVE PHONE NUMBER */}
         <div className="relative">
@@ -153,11 +139,6 @@ const AddressForm = ({
             }}
           />
           <FiPhone className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.altPhoneNumber && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.altPhoneNumber.message}
-            </p>
-          )}
         </div>
         {/* ADDRESS */}
         <div className="relative">
@@ -165,14 +146,10 @@ const AddressForm = ({
             label="Address"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("address")}
+            error={errors.address?.message}
             inputProps={{ placeholder: "Enter Address" }}
           />
           <PiAddressBook className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.address && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.address.message}
-            </p>
-          )}
         </div>
         {/* LANDMARK  */}
         <div className="relative">
@@ -183,11 +160,6 @@ const AddressForm = ({
             inputProps={{ placeholder: "Enter Landmark" }}
           />
           <LuLandmark className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.landmark && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.landmark.message}
-            </p>
-          )}
         </div>
         {/* CITY */}
         <div className="relative">
@@ -195,12 +167,10 @@ const AddressForm = ({
             label="City"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("city")}
+            error={errors.city?.message}
             inputProps={{ placeholder: "Enter City" }}
           />
           <PiCity className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.city && (
-            <p className="text-red-500 text-sm mt-1">{errors.city.message}</p>
-          )}
         </div>
         {/* PINCODE  */}
         <div className="relative">
@@ -208,17 +178,13 @@ const AddressForm = ({
             label="Pincode"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("pinCode")}
+            error={errors.pinCode?.message}
             inputProps={{
               placeholder: "Pin-Code",
               type: "text",
             }}
           />
           <FiMapPin className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.pinCode && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.pinCode.message}
-            </p>
-          )}
         </div>
         {/* STATE */}
         <div className="relative">
@@ -226,12 +192,10 @@ const AddressForm = ({
             label="State"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("state")}
+            error={errors.state?.message}
             inputProps={{ placeholder: "Enter State" }}
           />
           <IoFlagOutline className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.state && (
-            <p className="text-red-500 text-sm mt-1">{errors.state.message}</p>
-          )}
         </div>
         {/* COUNTRY */}
         <div className="relative">
@@ -239,14 +203,10 @@ const AddressForm = ({
             label="Country"
             className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-gray-300 dark:bg-black dark:text-white dark:border-gray-700"
             register={register("country")}
+            error={errors.country?.message}
             inputProps={{ placeholder: "Enter Country" }}
           />
           <IoFlagOutline className="absolute top-3 lg:top-4 left-3 text-gray-500 size-3 lg:size-4" />
-          {errors.country && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.country.message}
-            </p>
-          )}
         </div>
       </div>
       <div className="flex gap-5 items-center">
