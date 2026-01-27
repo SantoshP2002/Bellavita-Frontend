@@ -15,6 +15,9 @@ import { FaArrowRight } from "react-icons/fa";
 const CartProducts = () => {
   const navigate = useNavigate();
   const { data } = useGetUserCart();
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [removeId, setRemoveId] = useState<string | null>(null);
+
   // const cartItems: TProductCart = data?.cart?.products || [];
   const { mutateAsync: updateQuantity } = useUpdateQuantityCartProduct();
   const { mutateAsync: removeProduct } = useDeleteCartProduct();
@@ -162,7 +165,10 @@ const CartProducts = () => {
                           content="Delete"
                           className="!w-fit !p-0 text-rose-400 hover:text-green-700 text-xs sm:text-sm mt-2 sm:mt-0"
                           buttonProps={{
-                            onClick: () => handleRemoveProductToCart(item._id),
+                            onClick: () => {
+                              setRemoveId(item._id);
+                              setConfirmOpen(true);
+                            },
                           }}
                         />
                       </motion.div>
@@ -236,6 +242,64 @@ const CartProducts = () => {
           </AnimatePresence>
         </div>
       </div>
+      <AnimatePresence>
+        {confirmOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white dark:bg-black rounded-xl p-4 w-[90%] max-w-sm shadow-lg shadow-blue-200 dark:shadow-blue-500"
+            >
+              <div className="flex justify-center mb-3">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/12517/12517928.png"
+                  alt="warning image"
+                  className="w-16 h-16"
+                />
+              </div>
+
+              <p className="text-sm text-center text-green-700 mb-4 dark:text-white">
+                Are you sure, you want to remove this item from cart ?
+              </p>
+
+              <div className="flex justify-end gap-2">
+                <Button
+                  content="Cancel"
+                  pattern="outline"
+                  buttonProps={{
+                    onClick: () => {
+                      setConfirmOpen(false);
+                      setRemoveId(null);
+                    },
+                  }}
+                />
+
+                <Button
+                  content="DELETE"
+                  pattern="outline"
+                  className="bg-red-500! text-white"
+                  buttonProps={{
+                    onClick: () => {
+                      if (removeId) {
+                        handleRemoveProductToCart(removeId);
+                      }
+                      setConfirmOpen(false);
+                      setRemoveId(null);
+                    },
+                  }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
