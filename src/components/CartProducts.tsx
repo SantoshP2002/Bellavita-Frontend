@@ -66,7 +66,7 @@ const CartProducts = () => {
 
   return (
     <div className="flex-1 p-2 sm:p-4 lg:p-12 dark:bg-black dark:text-white">
-      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 border-black lg:shadow-black dark:bg-black dark:border-white shadow-sm dark:shadow-white">
+      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 border-black lg:shadow-black dark:bg-black dark:border-white shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 h-full">
           {/* Left: Products */}
           <div
