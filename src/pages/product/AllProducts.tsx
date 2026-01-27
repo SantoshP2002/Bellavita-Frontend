@@ -89,7 +89,7 @@ const AllProducts = () => {
 
         {/* Filter and Sort Bar */}
         <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
-          <div className="flex flex-wrap gap-2 items-center w-full sm:w-auto justify-center sm:justify-start">
+          <div className="flex flex-wrap gap-4 items-center w-full sm:w-auto justify-center sm:justify-start">
             {/* FILTER BUTTON */}
             <Button
               content="FILTER +"
@@ -170,7 +170,6 @@ const AllProducts = () => {
                     <Button
                       content="Add To Cart"
                       pattern="outline"
-                      className="w-30! lg:w-60!"
                       buttonProps={{
                         onClick: () => handleAddToCart(p._id),
                       }}
