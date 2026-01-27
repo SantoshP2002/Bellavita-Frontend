@@ -2,9 +2,9 @@ import { VITE_BACKEND_URI } from "../env";
 import { Button } from "./Button";
 
 const GoogleLogin = () => {
-     const handleGoogleLogin = () => {
-       window.location.href = `${VITE_BACKEND_URI}/api/google`;
-     };
+  const handleGoogleLogin = () => {
+    window.location.href = `${VITE_BACKEND_URI}/api/google`;
+  };
   return (
     <div>
       {/* Social Icons GOOGLE */}
@@ -30,6 +30,6 @@ const GoogleLogin = () => {
       </div>
     </div>
   );
-}
+};
 
-export default GoogleLogin
+export default GoogleLogin;
