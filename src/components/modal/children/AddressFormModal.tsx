@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import useQueryParams from "../../../hooks/useQueryParams";
 import type { IAddress } from "../../../types";
 import Modal from "..";
-import AddressForm from "../../AddressForm";
+import AddressForm from "../../form/AddressForm";
 
 const AddressFormModal = ({
   onClose,

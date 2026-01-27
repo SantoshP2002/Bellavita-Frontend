@@ -1,7 +1,6 @@
 import { Button } from "../../components/Button";
 import LoadingScreen from "../../components/LoadingScreen";
 import type { IAddress } from "../../types";
-import AddressForm from "../../components/AddressForm";
 import { useGetAddress } from "../../api/address/service";
 import AddressFormModal from "../../components/modal/children/AddressFormModal";
 import useQueryParams from "../../hooks/useQueryParams";
@@ -11,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import EmptyData from "../../components/empty-data/EmptyData";
 import { Link } from "react-router-dom";
+import AddressForm from "../../components/form/AddressForm";
 
 const Address = () => {
   const navigate = useNavigate();
