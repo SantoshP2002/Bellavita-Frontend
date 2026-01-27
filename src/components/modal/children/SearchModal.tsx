@@ -50,7 +50,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col gap-2 pt-2">
+    <div className="w-full h-full flex flex-col gap-2 pt-2 animate-[fadeIn_0.25s_ease-out]">
       {/* Search Input */}
 
       <Input
@@ -79,7 +79,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
 
       {/* Query Info */}
       {searchQuery.trim() && (
-        <div className="flex items-center justify-between px-3 py-2 text-tertiary rounded shadow-sm mb-1 dark:bg-black  dark:border-white dark:shadow-white">
+        <div className="flex items-center justify-between px-3 py-2 text-tertiary rounded shadow-sm mb-1 transition-all duration-200 ease-out animate-[slideDown_0.2s_ease-out] dark:bg-black dark:border-white dark:shadow-white">
           <span className="text-xs dark:text-white">
             Results for: <strong>{searchQuery}</strong>
           </span>
@@ -91,7 +91,7 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
       )}
 
       {/* Results */}
-      <div className="flex flex-col flex-1 min-h-[235px] max-h-[350px] overflow-y-auto dark:bg-black rounded shadow-inner">
+      <div className="flex flex-col flex-1 min-h-[235px] max-h-[350px] overflow-y-auto rounded shadow-inner transition-opacity duration-200 dark:bg-black">
         {productsQuery.isPending && debouncedQuery ? (
           <LoadingScreen content="Search Modal Loading Please Wait !" />
         ) : products.length ? (
@@ -99,16 +99,16 @@ const SearchModal = ({ onClose }: { onClose: () => void }) => {
             {products.map((p: TProduct) => (
               <li
                 key={p._id}
-                className="flex gap-2 p-1 rounded cursor-pointer dark:hover:border-2"
+                className="flex gap-2 p-1 rounded cursor-pointer transition-all duration-150 hover:border-b-2 dark:hover:border-b-2 hover:border-r-2 dark:hover:border-r-2 dark:border-white dark:hover:bg-white hover:scale-[1.01] active:scale-[0.98] dark:hover:border-2"
                 onClick={() => handleSubmit(p._id)}
               >
                 <img
                   src={p.images?.[0]}
                   alt={p.title}
-                  className="w-8 h-8 rounded object-cover"
+                  className="w-8 h-8 rounded object-cover transition-opacity duration-300 opacity-0 animate-[imgFade_0.3s_ease-out_forwards]"
                 />
                 <div>
-                  <p className="text-xs font-medium dark:text-white">
+                  <p className="text-xs font-medium hover:text-black  dark:text-white">
                     {p.title}
                   </p>
                   <p className="text-[10px] text-gray-500">
