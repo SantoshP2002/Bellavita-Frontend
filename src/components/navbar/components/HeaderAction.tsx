@@ -46,7 +46,7 @@ const HeaderAction = () => {
           isOpen={isSearchOpen}
           onClose={() => setIsSearchOpen(false)}
           heading="Search Products"
-          className="dark:bg-black dark:text-white"
+          className="lg:min-w-xl bg-white shadow-md shadow-blue-200 dark:bg-black dark:text-white"
         >
           <SearchModal onClose={() => setIsSearchOpen(false)} />
         </Modal>
