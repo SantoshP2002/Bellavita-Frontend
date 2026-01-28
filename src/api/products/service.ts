@@ -37,7 +37,7 @@ export const useGetAllProducts = (params: TQueryParams, enabled?: boolean) => {
 };
 
 export const useGetAllProductsInfinite = (
-  params: Record<string, number | string>,
+  params: Record<string, number | string>
 ) => {
   return useInfiniteQuery({
     queryKey: ["get_all_products_infinite", params],
