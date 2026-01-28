@@ -47,7 +47,7 @@ const Orders = () => {
               orders.map((order, index) => (
                 <tr
                   key={order._id}
-                  className={`dark:bg-gray-700 dark:text-white ${
+                  className={`dark:bg-black/80 dark:text-white ${
                     index % 2 === 0 ? "bg-gray-50" : "bg-white"
                   }`}
                 >
@@ -83,17 +83,17 @@ const Orders = () => {
           orders.map((order, index) => (
             <div
               key={order._id}
-              className="rounded-xl shadow p-4 bg-gradient-to-bl from-pink-300 via-purple-200 to-orange-200"
+              className="rounded-xl shadow p-4 border border-r-4 border-b-4 border-gray-400"
             >
               <p className="text-xs text-gray-400 mb-1 dark:text-black">
                 #{index + 1}
               </p>
 
-              <p className="text-sm text-black font-semibold break-all dark:text-purple-400">
+              <p className="text-sm text-black font-semibold break-all dark:text-white">
                 {order._id}
               </p>
 
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-gray-400 mt-2">
                 📧 {order.user?.email || "N/A"}
               </p>
 
