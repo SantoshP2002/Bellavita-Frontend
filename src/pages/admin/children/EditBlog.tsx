@@ -96,7 +96,7 @@ const EditBlog = () => {
 
   return (
     <div className="p-2">
-      <h3>Upload Blogs</h3>
+      <h3>Update Blogs</h3>
       <div className="mt-4">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           {/* image start  */}
@@ -113,14 +113,14 @@ const EditBlog = () => {
                       icon: (
                         <label
                           htmlFor="images"
-                          className="flex items-center p-3 text-sm text-black/50 w-full cursor-pointer"
+                          className="flex items-center p-3 text-sm text-black/50 dark:text-white/50 w-full cursor-pointer"
                         >
                           {image ? "Change Blog Images" : "Upload Blog Image"}
                         </label>
                       ),
                     },
                   }}
-                  className="[&>span]:w-full [&>span]:p-0"
+                  className="[&>span]:w-full [&>span]:p-0 border border-b-4 border-r-4 border-gray-400 dark:border-gray-400 dark:text-white/50 dark:bg-black"
                   inputProps={{
                     type: "file",
                     accept: "image/*",
@@ -152,7 +152,7 @@ const EditBlog = () => {
           {/* TITLE  */}
           <Input
             label="Title"
-            className="w-full bg-white text-black"
+            className="w-full text-black  dark:bg-black border-gray-400 border-b-4 border-r-4"
             register={register("title")}
             error={errors.title?.message}
             inputProps={{ placeholder: "Enter Title", name: "title" }}
@@ -163,8 +163,10 @@ const EditBlog = () => {
             control={control}
             name="date"
             render={({ field }) => (
-              <div className="flex flex-col gap-1">
-                <label className="text-sm font-medium text-black">Date</label>
+              <div className="relative flex flex-col gap-1">
+                <label className="z-10 text-[10px] lg:text-xs dark:bg-black dark:text-gray-300 dark:border-gray-300 text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer">
+                  Date
+                </label>
 
                 <DatePicker
                   selected={field.value ? new Date(field.value) : null}
@@ -180,7 +182,7 @@ const EditBlog = () => {
                   maxDate={new Date()} // 🚫 future dates disabled
                   placeholderText="Select Date"
                   dateFormat="MMMM d, yyyy"
-                  className="w-full bg-white text-black cursor-pointer outline-none rounded px-3 py-2"
+                  className="w-full h-12 rounded-lg pl-3 bg-white dark:text-white text-black dark:bg-black border border-gray-400 border-b-4 border-r-4"
                 />
 
                 {errors.date && (
@@ -190,34 +192,36 @@ const EditBlog = () => {
             )}
           />
 
-          {/* Description  */}
-          <Textarea
-            label="Description"
-            register={register("description")}
-            error={errors.description?.message}
-            textareaProps={{
-              name: "description",
-              id: "description",
-              placeholder: "Write a Description",
-            }}
-          />
+          <div className="flex flex-col gap-4">
+            {/* Description  */}
+            <Textarea
+              label="Description"
+              register={register("description")}
+              error={errors.description?.message}
+              textareaProps={{
+                name: "description",
+                id: "description",
+                placeholder: "Write a Description",
+              }}
+            />
 
-          {/* BLOG  */}
-          <Controller
-            control={control}
-            name={"blog"}
-            render={({ field }) => (
-              <QuillEditor
-                label={"Blog"}
-                ref={quillRefs.blog}
-                blobUrlsRef={blobUrlRefs.blog}
-                onChange={field.onChange}
-                value={typeof field.value === "string" ? field.value : ""}
-                placeholder="Write Blog here..."
-                errorText={errors?.blog?.message}
-              />
-            )}
-          />
+            {/* BLOG  */}
+            <Controller
+              control={control}
+              name={"blog"}
+              render={({ field }) => (
+                <QuillEditor
+                  label={"Blog"}
+                  ref={quillRefs.blog}
+                  blobUrlsRef={blobUrlRefs.blog}
+                  onChange={field.onChange}
+                  value={typeof field.value === "string" ? field.value : ""}
+                  placeholder="Write Blog here..."
+                  errorText={errors?.blog?.message}
+                />
+              )}
+            />
+          </div>
 
           {/* Upload Product Button */}
           <Button
