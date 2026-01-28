@@ -31,23 +31,14 @@ const Input = ({
           className={`w-full h-full flex items-center gap-1 border border-black/10 bg-white rounded-lg overflow-hidden ${className}`}
         >
           {/* Left Icon */}
-          {
-            icons?.left?.icon && (
-              <span
-                onClick={icons.left.onClick}
-                className="h-full flex justify-center items-center cursor-pointer p-2"
-              >
-                {icons.left.icon}
-              </span>
-            )
-            //  : !icons?.left?.icon && icons?.left?.text ? (
-            //   <div className="h-full overflow-hidden">
-            //     <p className="h-full flex items-center justify-center text-sm text-black border-r border-r-black/10 p-3 capitalize">
-            //       {icons?.left?.text}
-            //     </p>
-            //   </div>
-            // ) : null
-          }
+          {icons?.left?.icon && (
+            <span
+              onClick={icons.left.onClick}
+              className="h-full flex justify-center items-center cursor-pointer p-2"
+            >
+              {icons.left.icon}
+            </span>
+          )}
           {/* Input */}
           <input
             aria-autocomplete="none"
@@ -63,10 +54,10 @@ const Input = ({
               icons?.left?.icon && !icons?.right?.icon
                 ? "pl-0"
                 : !icons?.left?.icon && icons?.right?.icon
-                ? "pr-0"
-                : icons?.left?.text
-                ? "pl-2"
-                : ""
+                  ? "pr-0"
+                  : icons?.left?.text
+                    ? "pl-2"
+                    : ""
             } ${
               inputProps?.type === "number"
                 ? "number-input-mouse-control-none"

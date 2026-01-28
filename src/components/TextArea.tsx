@@ -16,32 +16,27 @@ const Textarea = ({
   };
 
   return (
-    <div className={`w-full flex flex-col gap-1.5 ${containerClassName}`}>
+    <div className={`relative w-full flex flex-col ${containerClassName}`}>
       <div className="relative">
         {label && (
           <label
             htmlFor={textareaProps.name}
-            className="text-[10px] lg:text-xs dark:bg-black dark:text-gray-300 dark:border-gray-300 text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer"
+            className="absolute -top-2 left-3 z-10 text-[10px] lg:text-xs bg-white dark:bg-black text-black dark:text-gray-300 px-2 py-0.5 border border-black/10 dark:border-gray-300 rounded pointer-events-none"
           >
             {label}
           </label>
         )}
         <div
-          className={`min-h-[200px] flex items-center gap-1 rounded-lg bg-white dark:bg-black dark:text-white  overflow-hidden ${className}`}
+          className={`relative min-h-[200px] rounded-lg bg-white dark:bg-black ${className}`}
         >
           {/* Textarea */}
           <textarea
-            aria-autocomplete="none"
             {...register}
             {...textareaProps}
-            cols={textareaProps.cols ?? 4}
-            id={textareaProps.id}
-            disabled={textareaProps?.disabled}
             onChange={handleChange}
-            className={`flex-1 outline-none mx-1 rounded-lg border border-slate-300 dark:border-gray-600 border-b-4 border-r-4 bg-transparent font-normal text-sm p-3 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-200  ${
-              textareaProps?.className ?? ""
-            }`}
+            className={`w-full h-full resize-y outline-none rounded-lg border border-slate-300 dark:border-gray-600 border-b-4 border-r-4 bg-transparent p-3 pt-5 text-sm text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-200 ${textareaProps?.className ?? ""}`}
           />
+
           {/* Right Icon */}
         </div>
       </div>
