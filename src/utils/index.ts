@@ -17,13 +17,13 @@ export const encryptData = (data: object | string) => {
   const stringData = typeof data === "string" ? data : JSON.stringify(data);
   const encrypted = CryptoJS.AES.encrypt(
     stringData,
-    VITE_ENCRYPTION_SECRET_KEY
+    VITE_ENCRYPTION_SECRET_KEY,
   );
   return encrypted.toString();
 };
 
 export const decryptData = (
-  encryptedData: string | null
+  encryptedData: string | null,
 ): object | string | null => {
   if (!encryptedData) return null;
 
@@ -64,7 +64,7 @@ export const getUserToken = () => {
 
 export const debounce = <Args extends unknown[]>(
   fn: (...args: Args) => void,
-  delay = 300
+  delay = 300,
 ): ((...args: Args) => void) => {
   let timer: ReturnType<typeof setTimeout>;
   return (...args: Args) => {
@@ -113,7 +113,7 @@ export function addIdsToHeadings(quill: Quill, options: { enable: boolean }) {
 }
 
 export const buildToolbarFromOptions = (
-  options?: IToolBarOptions
+  options?: IToolBarOptions,
 ): QuillToolbar => {
   if (!options) return [];
 
@@ -144,7 +144,7 @@ export const buildToolbarFromOptions = (
 
 export const addBlobUrlToImage = (
   quill: Quill,
-  blobUrlsRef: RefObject<string[]>
+  blobUrlsRef: RefObject<string[]>,
 ) => {
   const input = document.createElement("input");
   input.setAttribute("type", "file");
@@ -179,7 +179,7 @@ export const removeDefaultCss = (delta: Delta) => {
   delta.ops = delta.ops.map((op: (typeof delta.ops)[0]) => {
     if (op.attributes) {
       ["color", "background-color", "background-image", "background"].forEach(
-        (attr) => delete op?.attributes?.[attr]
+        (attr) => delete op?.attributes?.[attr],
       );
     }
     return op;
@@ -189,21 +189,21 @@ export const removeDefaultCss = (delta: Delta) => {
 
 export const removeUnusedBlobUrls = (
   quill: Quill,
-  blobUrlsRef: RefObject<string[]>
+  blobUrlsRef: RefObject<string[]>,
 ) => {
   const editorImages = Array.from(quill.root.querySelectorAll("img")).map(
-    (img) => img.getAttribute("src")
+    (img) => img.getAttribute("src"),
   );
 
   const removedBlobUrls = blobUrlsRef.current?.filter(
-    (url) => !editorImages.includes(url)
+    (url) => !editorImages.includes(url),
   );
 
   removedBlobUrls?.forEach((url) => URL.revokeObjectURL(url));
 
   if (blobUrlsRef.current) {
     const filteredUrls = blobUrlsRef.current.filter((url) =>
-      editorImages.includes(url)
+      editorImages.includes(url),
     );
     blobUrlsRef.current.length = 0; // clear old
     blobUrlsRef.current.push(...filteredUrls); // add new
@@ -228,7 +228,7 @@ export const blockDraggedOrCopiedImage = (delta: Delta): boolean => {
   });
   if (block) {
     toastErrorMessage(
-      "You cannot copy, drag & drop images here. Please upload it using the upload image button."
+      "You cannot copy, drag & drop images here. Please upload it using the upload image button.",
     );
   }
 
@@ -290,7 +290,6 @@ export const processQuillContent = async ({
         formData.append("folderName", folderName);
 
         const data = await upload_single_image(formData);
-        // console.log("data", data);
 
         return {
           blobUrl,
@@ -304,12 +303,12 @@ export const processQuillContent = async ({
 
     const uploadedImages = await Promise.all(uploadPromises);
     const validUploadedImages = uploadedImages.filter(
-      (img): img is { blobUrl: string; cloudUrl: string } => img !== null
+      (img): img is { blobUrl: string; cloudUrl: string } => img !== null,
     );
 
     validUploadedImages.forEach(({ blobUrl, cloudUrl }) => {
       content = content.replace(blobUrl, cloudUrl);
-      
+
       console.log("blobUrl", blobUrl);
       console.log("cloudUrl", cloudUrl);
     });
