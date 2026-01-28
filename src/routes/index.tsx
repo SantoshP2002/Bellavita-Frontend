@@ -43,6 +43,7 @@ import EditProfile from "../pages/profile/EditProfile";
 import ChangePassword from "../pages/profile/ChangePassword";
 import CrazyDealsMobile from "../components/CrazyDealsMobile";
 import SearchPage from "../pages/inputsearch/SearchPage";
+import DiscountDetails from "../components/DiscountDetails";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
       { path: "sitemap", element: <Sitemap /> },
       { path: "crazy-deals-mobile", element: <CrazyDealsMobile /> },
       { path: "search", element: <SearchPage /> },
+      { path: "discount-details", element: <DiscountDetails /> },
       {
         path: "cart",
         element: (
