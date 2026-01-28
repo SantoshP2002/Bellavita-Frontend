@@ -19,7 +19,6 @@ const Users = () => {
   const { data, isLoading, isError } = useGetUser();
   const [search, setSearch] = useState("");
 
-  // SAME LOGIC
   const users: User[] = data?.user ? [data.user] : [];
 
   const filteredUsers = users.filter(
