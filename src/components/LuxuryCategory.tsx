@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { luxuryCategories } from "../constants";
+import { BottomGradient } from "./Gradients";
 
 const LuxuryCategory = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const LuxuryCategory = () => {
   };
 
   return (
-    <div className="py-10 dark:bg-black dark:text-white">
+    <div className="relative py-10 dark:bg-black dark:text-white">
       <h2 className="text-xl md:text-5xl text-center mb-1">
         Product Categories
       </h2>
@@ -45,10 +46,10 @@ const LuxuryCategory = () => {
               alt={cat.name}
               className="w-full h-[260px] lg:h-[300px] object-cover transition-transform duration-500 group-hover:scale-110"
             />
-
+            <BottomGradient className=" z-50" />
             {/* TEXT INSIDE IMAGE */}
             <div className="absolute inset-0 flex items-end justify-center pb-4">
-              <span className=" text-white px-4 py-1 text-sm uppercase tracking-wide">
+              <span className="text-white/100 px-4 py-8 text-sm uppercase tracking-wide">
                 {cat.name}
               </span>
             </div>
