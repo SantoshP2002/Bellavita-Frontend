@@ -24,57 +24,65 @@ const Blog = () => {
   }
 
   return (
-    <div className="p-4 dark:bg-black dark:text-white">
-      <h2 className="text-2xl font-bold mb-6 text-center">BLOGS</h2>
+    <div className="p-6 dark:bg-black dark:text-white min-h-screen">
+      {/* HEADER */}
+      <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500">
+        BLOGS
+      </h2>
 
       {/* NEEDLE LINE */}
-      <span className="mx-auto block h-[2px] w-[90%] bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
+      <span className="mx-auto block h-[2px] w-[90%] bg-gradient-to-r from-transparent via-sky-400 to-transparent dark:via-sky-600 mb-12" />
 
+      {/* BLOG GRID */}
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15 p-4 rounded-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (
             <div
               key={blog._id}
-              className="bg-white p-1 overflow-hidden rounded-lg group dark:bg-black"
+              className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-500 group"
             >
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="w-full h-40 object-cover rounded-md transform origin-top transition-transform duration-500 ease-out group-hover:scale-105"
-              />
+              {/* IMAGE */}
+              <div className="overflow-hidden">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-48 md:h-52 lg:h-56 object-cover transform transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
 
-              <h4 className="text-xl mt-3 line-clamp-2">{blog.title}</h4>
+              {/* CONTENT */}
+              <div className="p-5">
+                <h4 className="text-xl font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
+                  {blog.title}
+                </h4>
 
-              <p className="text-sm text-gray-400 mt-1">
-                {new Date(blog.createdAt).toLocaleDateString("en-IN", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </p>
+                <p className="text-xs md:text-sm text-gray-400 mb-3">
+                  {new Date(blog.createdAt).toLocaleDateString("en-IN", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
 
-              <p className="text-sm text-gray-600 mt-2 line-clamp-4">
-                {blog.description}
-              </p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base line-clamp-4">
+                  {blog.description}
+                </p>
 
-              {/* READ MORE BUTTON */}
-              <Button
-                content={
-                  <span className="flex items-center gap-2 leading-none">
-                    {/* LEFT LINE */}
-                    <span className="h-[1.5px] w-6 bg-blue-600 dark:bg-white transition-all duration-300 group-hover:w-14  translate-y-[1px]" />
-                    {/* TEXT */}
-                    <span className="leading-none dark:text-white">
-                      Read more
+                {/* READ MORE BUTTON */}
+                <Button
+                  content={
+                    <span className="flex items-center gap-2 group-hover:text-sky-500 transition-colors duration-300">
+                      <span className="h-[1.5px] w-8 bg-sky-500 group-hover:w-16 transition-all duration-300" />
+                      <span className="font-medium">Read more</span>
                     </span>
-                  </span>
-                }
-                pattern="primary"
-                className="mt-4 text-sm font-medium text-blue-600 flex items-center justify-start p-0 group"
-                buttonProps={{
-                  onClick: () => navigate(`/blog/${blog._id}`),
-                }}
-              />
+                  }
+                  pattern="primary"
+                  className="mt-5 text-sm p-0"
+                  buttonProps={{
+                    onClick: () => navigate(`/blog/${blog._id}`),
+                  }}
+                />
+              </div>
             </div>
           ))}
         </div>

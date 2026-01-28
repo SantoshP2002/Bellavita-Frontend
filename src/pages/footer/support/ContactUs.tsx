@@ -8,6 +8,8 @@ const ContactUs = () => {
     <section className="bg-white  dark:bg-black dark:text-white py-10 p-3">
       <div className="mx-auto max-w-4xl px-4 py-16">
         <h1 className="text-2xl text-center">DROP US A LINE</h1>
+        <span className="mx-auto mt-4 block h-[2px] w-[90%] lg:w-[80%] bg-gradient-to-r from-transparent via-gray-400 to-transparent mb-4" />
+
         <p className="text-lg text-center">
           Have a question or comment? Use the form below to send us a message
           and our team will get back to you ASAP. Or Reach us at +91 9810154380
@@ -19,7 +21,7 @@ const ContactUs = () => {
         </p>
       </div>
       {/* Bottom Part  */}
-      <div className="mx-auto max-w-6xl px-4 py-16 shadow-lg dark:shadow-white shadow-black">
+      <div className="mx-auto max-w-6xl px-4 py-16 shadow-md dark:shadow-white shadow-black rounded-lg">
         <div className="flex flex-col gap-14 lg:flex-row">
           {/* 70% SECTION – FORM */}
           <div className="w-full lg:w-[70%]">

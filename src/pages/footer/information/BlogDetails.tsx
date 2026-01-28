@@ -17,15 +17,26 @@ const BlogDetails = () => {
   if (isError || !blog) return <EmptyData content="Blog not found" />;
 
   return (
-    <>
+    <div className="dark:bg-black dark:text-white min-h-screen">
       {/* TOP IMAGE */}
-      <img src={blog.image} alt={blog.title} className="w-full" />
+      <div className="relative">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-56 sm:h-72 md:h-96 lg:h-[32rem] object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 dark:to-black/80" />
+      </div>
 
       {/* CENTER CONTENT */}
-      <div className="max-w-lvw lg:px-40 p-6 mx-auto dark:bg-black dark:text-white">
-        <p className="text-xl lg:text-5xl font-medium mt-12 ">{blog.title}</p>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 py-8 sm:py-12">
+        {/* TITLE */}
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 text-center sm:text-left">
+          {blog.title}
+        </h1>
 
-        <p className="text-sm text-gray-400 mt-4">
+        {/* DATE */}
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 text-center sm:text-left">
           {new Date(blog.createdAt).toLocaleDateString("en-IN", {
             day: "2-digit",
             month: "long",
@@ -33,27 +44,33 @@ const BlogDetails = () => {
           })}
         </p>
 
-        <p className="text-lg prose prose-lg max-w-none mt-6 dark:text-gray-300">
+        {/* DESCRIPTION */}
+        <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-6 sm:mb-8">
           {blog.description}
         </p>
 
+        {/* BLOG CONTENT */}
         <div
-          className="text-lg prose prose-lg max-w-none mt-6 dark:text-gray-400"
+          className="prose prose-sm sm:prose md:prose-lg lg:prose-xl dark:prose-invert max-w-full mb-8"
           dangerouslySetInnerHTML={{ __html: blog.blog }}
         />
 
-        {/* Go Back Button   */}
-        <Button
-          content="Back To Blogs"
-          pattern="outline"
-          className="w-60! mt-8 bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
-          icons={{
-            left: <FaArrowLeftLong />,
-          }}
-          buttonProps={{ onClick: () => navigate("/blogs") }}
-        />
+        {/* BACK BUTTON */}
+        <div className="flex justify-center sm:justify-start mt-6 sm:mt-8">
+          <Button
+            content={
+              <span className="flex items-center gap-2 text-sm sm:text-base md:text-base lg:text-lg">
+                <FaArrowLeftLong />
+                Back To Blogs
+              </span>
+            }
+            pattern="outline"
+            className="w-60! rounded-lg"
+            buttonProps={{ onClick: () => navigate("/blogs") }}
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
