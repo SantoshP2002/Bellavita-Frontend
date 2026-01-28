@@ -48,8 +48,6 @@ const UploadProducts = () => {
     resolver: zodResolver(productSchema),
   });
 
-  console.log("errors", errors);
-
   const images = watch("images") || [];
 
   const onSubmit = async (data: z.infer<typeof productSchema>) => {
@@ -126,7 +124,7 @@ const UploadProducts = () => {
 
   const subCategoryOptions = useMemo(
     () => navMapData.find((cat) => cat.value === category.value)?.options || [],
-    [category.value]
+    [category.value],
   );
 
   return (
@@ -374,7 +372,7 @@ const UploadProducts = () => {
                           onClick: () => {
                             // Remove selected image
                             const remainingImages = images.filter(
-                              (_, i) => i !== idx
+                              (_, i) => i !== idx,
                             );
                             setValue("images", remainingImages, {
                               shouldValidate: true,
@@ -395,7 +393,7 @@ const UploadProducts = () => {
                     <p key={ind} className="text-sm text-red-500 mt-1">
                       {err?.message}
                     </p>
-                  ) : null
+                  ) : null,
                 )}
             </div>
           </div>

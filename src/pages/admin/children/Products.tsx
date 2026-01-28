@@ -1,11 +1,11 @@
 import { useInView } from "react-intersection-observer";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { Button } from "../../../components/Button";
 import {
   useDeleteProductById,
-  // useGetAllProductsInfinite,
   useGetMyProductsInfinite,
 } from "../../../api/products/service";
 import { useDebounce } from "../../../hooks/useDebounce";
@@ -18,14 +18,10 @@ const Products = () => {
   const navigate = useNavigate();
   const { ref, inView } = useInView();
 
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [removeId, setRemoveId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 500);
-
-  const handleDelete = (id: string) => {
-    if (window.confirm("Are you sure you want to delete this product?")) {
-      deleteProductQuery.mutate(id);
-    }
-  };
 
   const params = useMemo(
     () => ({
@@ -34,8 +30,6 @@ const Products = () => {
     }),
     [debouncedSearch],
   );
-
-  console.log("PARAMS", params);
 
   const {
     data,
@@ -55,6 +49,21 @@ const Products = () => {
 
   if (isError) return <h1>{error.message}</h1>;
   const products = data?.pages?.flatMap((page) => page.products) || [];
+
+  // Trigger delete modal
+  const handleDelete = (id: string) => {
+    setRemoveId(id);
+    setConfirmOpen(true);
+  };
+
+  // Confirm actual delete
+  const confirmDelete = () => {
+    if (removeId) {
+      deleteProductQuery.mutate(removeId);
+    }
+    setConfirmOpen(false);
+    setRemoveId(null);
+  };
 
   return (
     <div className="dark:bg-black dark:text-white">
@@ -99,7 +108,7 @@ const Products = () => {
             No products found
           </p>
         ) : (
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p, index) => {
               const isLastItem = index === products.length - 1;
               return (
@@ -134,19 +143,20 @@ const Products = () => {
                       )}
                     </div>
 
-                    <div className="flex flex-row gap-2">
+                    <div className="flex flex-row gap-2 mt-4">
                       <Button
-                        content="Update"
-                        className="mt-4 w-full py-2 rounded-lg transition-colors duration-300 dark:text-black font-bold text-xs bg-gradient-to-bl from-pink-300 via-purple-300 to-orange-300"
+                        content="UPDATE"
+                        pattern="outline"
+                        className="rounded-lg"
                         buttonProps={{
                           onClick: () =>
                             navigate(`/admin/products/update/${p._id}`),
                         }}
                       />
                       <Button
-                        pattern="secondary"
-                        content="Delete"
-                        className="mt-4 w-full py-2 rounded-lg dark:text-black font-bold text-xs bg-gradient-to-bl from-pink-600 via-purple-400 to-orange-400"
+                        pattern="outline"
+                        content="DELETE"
+                        className="rounded-lg"
                         buttonProps={{
                           onClick: () => handleDelete(p._id),
                         }}
@@ -159,6 +169,59 @@ const Products = () => {
           </div>
         )}
       </div>
+      {/* ❗ Confirm Delete Modal */}
+      <AnimatePresence>
+        {confirmOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white dark:bg-black rounded-xl p-4 w-[90%] max-w-sm shadow-lg"
+            >
+              <div className="flex justify-center mb-3">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/12517/12517928.png"
+                  className="w-16 h-16"
+                />
+              </div>
+
+              <p className="text-sm text-center mb-4 dark:text-white">
+                Are you sure you want to delete this product?
+              </p>
+
+              <div className="flex justify-end gap-2">
+                <Button
+                  content="Cancel"
+                  pattern="outline"
+                  className="rounded-lg text-gray-700 bg-gradient-to-r from-gray-200 dark:from-gray-900 via-gray-100 dark:via-gray-700 to-gray-300 dark:to-gray-600 hover:from-gray-300 dark:hover:from-gray-600 hover:to-gray-300 dark:hover:to-gray-600 transition-all duration-300"
+                  buttonProps={{
+                    onClick: () => {
+                      setConfirmOpen(false);
+                      setRemoveId(null);
+                    },
+                  }}
+                />
+
+                <Button
+                  content="DELETE"
+                  pattern="outline"
+                  className="rounded-lg bg-gradient-to-r from-purple-300 dark:from-purple-600 via-rose-300 dark:via-rose-600 to-red-200 bg-[length:200%_200%] hover:bg-[position:100%_50%] transition-all duration-300"
+                  buttonProps={{
+                    onClick: confirmDelete,
+                  }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
