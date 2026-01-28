@@ -30,7 +30,7 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
       blobUrlsRef,
       toolbarOptions,
     },
-    ref
+    ref,
   ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const editorRef = useRef<Quill | null>(null);
@@ -133,7 +133,9 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
     }, [readOnly]);
 
     return (
-      <div className={`w-full space-y-1.5 ${className}`}>
+      <div
+        className={`w-full space-y-1.5 rounded-lg border border-b-4 border-r-4 border-gray-400 ${className}`}
+      >
         <div className="relative">
           {label && (
             <span className="text-[10px] lg:text-xs dark:bg-black dark:text-gray-300 dark:border-gray-300 text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer">
@@ -154,7 +156,7 @@ const QuillEditor = forwardRef<Quill | null, QuillEditorProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 export default QuillEditor;
