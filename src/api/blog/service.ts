@@ -1,4 +1,4 @@
-import {  useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   create_blog,
   delete_blog_By_Id,
@@ -26,9 +26,6 @@ export const useGetBlog = () => {
   return useQuery({
     queryKey: ["get_blog"],
     queryFn: get_blog,
-    // enabled: enabled ?? true,
-    // refetchOnWindowFocus: false,
-    // select: (data) => data?.blogs,
   });
 };
 
@@ -38,7 +35,6 @@ export const useGetBlogById = (id: string) => {
     queryKey: ["get_blog_By_Id", id],
     queryFn: () => get_blog_By_Id(id!),
     enabled: !!id,
-    // refetchOnWindowFocus: false,
     select: (data) => data.blog,
   });
 };
