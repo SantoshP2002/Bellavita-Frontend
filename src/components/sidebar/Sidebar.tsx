@@ -18,6 +18,7 @@ type SidebarProps = {
 
 const Sidebar = ({ className, onClose }: SidebarProps) => {
   const { logout } = useUserStore();
+
   return (
     <aside className={`dark:bg-black! dark:text-white! ${className}`}>
       <div className="p-4 text-2xl font-bold flex justify-between items-center shadow-md dark:shadow-white shadow-black rounded-xl mb-1">
@@ -76,7 +77,7 @@ const Sidebar = ({ className, onClose }: SidebarProps) => {
 
         <Link
           to="/"
-          className="bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
+          className="bg-black rounded-lg text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
         >
           Back To Home
         </Link>
