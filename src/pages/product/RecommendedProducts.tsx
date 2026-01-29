@@ -41,7 +41,7 @@ const RecommendedProducts = () => {
           ) : (
             <div className="relative">
               {/* Scrollable container */}
-              <div className="max-w-5xl mx-auto flex gap-6 overflow-x-auto scrollbar-hide px-4 sm:px-6 md:px-12">
+              <div className="max-w-5xl mx-auto flex gap-6 overflow-x-auto scrollbar-hide px-4 sm:px-6">
                 {products.map((p) => (
                   <div
                     key={p._id}
