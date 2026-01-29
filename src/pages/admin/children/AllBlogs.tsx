@@ -6,7 +6,7 @@ import type { IBlog } from "../../../types";
 import LoadingScreen from "../../../components/LoadingScreen";
 import EmptyData from "../../../components/empty-data/EmptyData";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import ConfirmModal from "../../../components/ConfirmModal";
 
 const AllBlogs = () => {
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -48,7 +48,6 @@ const AllBlogs = () => {
           }}
         />
       </div>
-
       {/* ALL BLOGS LIST */}
       <div>
         {isLoading && (
@@ -122,64 +121,20 @@ const AllBlogs = () => {
           </div>
         )}
       </div>
-      <AnimatePresence>
-        {confirmOpen && (
-          <motion.div
-            className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-white dark:bg-black rounded-xl p-4 w-[90%] max-w-sm shadow-md shadow-sky-200 dark:shadow-blue-200"
-            >
-              <div className="flex justify-center mb-3">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/12517/12517928.png"
-                  className="w-16 h-16"
-                />
-              </div>
-
-              <p className="text-sm text-center mb-4 dark:text-white">
-                Are you sure you want to delete this blog?
-              </p>
-
-              <div className="flex justify-end gap-2">
-                <Button
-                  content="Cancel"
-                  pattern="outline"
-                  className="rounded-lg text-gray-700 bg-gradient-to-r from-gray-200 dark:from-gray-900 via-gray-100 dark:via-gray-700 to-gray-300 dark:to-gray-600 hover:from-gray-300 dark:hover:from-gray-600 hover:to-gray-300 dark:hover:to-gray-600 transition-all duration-300"
-                  buttonProps={{
-                    onClick: () => {
-                      setConfirmOpen(false);
-                      setRemoveId(null);
-                    },
-                  }}
-                />
-
-                <Button
-                  content="DELETE"
-                  pattern="outline"
-                  className="rounded-lg bg-gradient-to-r from-purple-300 dark:from-purple-600 via-rose-300 dark:via-rose-600 to-red-200 bg-[length:200%_200%] hover:bg-[position:100%_50%] transition-all duration-300"
-                  buttonProps={{
-                    onClick: () => {
-                      if (removeId) {
-                        deleteProductQuery.mutate(removeId);
-                      }
-                      setConfirmOpen(false);
-                      setRemoveId(null);
-                    },
-                  }}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ConfirmModal
+        open={confirmOpen}
+        title="Delete Blog"
+        message="Are you sure you want to delete this blog?"
+        onCancel={() => {
+          setConfirmOpen(false);
+          setRemoveId(null);
+        }}
+        onConfirm={() => {
+          if (removeId) deleteProductQuery.mutate(removeId);
+          setConfirmOpen(false);
+          setRemoveId(null);
+        }}
+      />
     </div>
   );
 };
