@@ -8,6 +8,7 @@ import ProductReview from "./ProductReview";
 import AllReviews from "./AllReviews";
 import QuillContent from "../../components/quillContent";
 import { categoryVideoMap } from "../../constants";
+import RecommendedProducts from "./RecommendedProducts";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -290,6 +291,7 @@ const ProductDetails = () => {
       </div>
       <div>
         <AllReviews />
+        <RecommendedProducts/>
       </div>
     </div>
   );
