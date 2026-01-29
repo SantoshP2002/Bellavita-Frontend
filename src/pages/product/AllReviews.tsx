@@ -1,16 +1,12 @@
 import { FaRegStar, FaStar } from "react-icons/fa";
+import { FiUser } from "react-icons/fi";
+
 import { useGetReviewByProductId } from "../../api/review/service";
 import type { IReview } from "../../types";
 import { Button } from "../../components/Button";
-import { FiUser } from "react-icons/fi";
-import { useGetAllProductsInfinite } from "../../api/products/service";
-import { useAddToCart } from "../../api/cart/service";
-import { useNavigate } from "react-router-dom";
 import LoadingScreen from "../../components/LoadingScreen";
-import EmptyData from "../../components/empty-data/EmptyData";
 
 const AllReviews = () => {
-  const navigate = useNavigate();
   const {
     data,
     fetchNextPage,
@@ -19,21 +15,6 @@ const AllReviews = () => {
     isLoading,
     isError,
   } = useGetReviewByProductId();
-
-  const {
-    data: productsData,
-    isLoading: productsLoading,
-    isError: productsError,
-  } = useGetAllProductsInfinite({ limit: 8 });
-
-  const { mutateAsync: addToCart } = useAddToCart();
-
-  const handleAddToCart = async (id: string) => {
-    await addToCart(id);
-  };
-
-  const products =
-    productsData?.pages?.flatMap((page) => page.products)?.slice(0, 4) || [];
 
   const allReviews = data?.pages.flatMap((page) => page?.reviews || []) || [];
 
@@ -119,74 +100,6 @@ const AllReviews = () => {
               disabled: isFetchingNextPage,
             }}
           />
-        </div>
-      )}
-
-      {/* 🛍 Recommended Products Section */}
-      {products.length > 0 && (
-        <div className="py-3">
-          <h2 className="font-bold text-2xl text-center uppercase py-2">
-            You May Also Like
-          </h2>
-          {/* NEEDLE LINE */}
-          <span className="mx-auto block h-[2px] w-[90%] py-0.5 bg-gradient-to-r from-transparent via-gray-400 to-transparent dark:via-gray-500 mb-10" />
-
-          {productsLoading ? (
-            <LoadingScreen content="Products All Reviews Loading Please Wait !" />
-          ) : productsError ? (
-            <EmptyData content="Product Not Found 😕" />
-          ) : (
-            <div className="flex gap-8 overflow-x-auto scrollbar-hide px-5">
-              {products.map((p) => (
-                <div
-                  key={p._id}
-                  className="flex flex-col justify-between bg-white transition-shadow duration-200 dark:bg-black dark:text-white"
-                >
-                  {/* Image & Info */}
-                  <div
-                    onClick={() => navigate(`/products/${p._id}`)}
-                    className="cursor-pointer flex flex-col flex-1 w-full"
-                  >
-                    <div className="w-full h-40 sm:h-44 md:h-48 lg:h-52 flex items-center justify-center bg-gray-100 rounded">
-                      <img
-                        src={p.images?.[0] || "/placeholder.png"}
-                        alt={p.title}
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-
-                    <div className="p-2 flex-1 flex flex-col justify-between">
-                      <p className="text-xs dark:text-gray-300 sm:font-medium line-clamp-1">
-                        {p.brand}
-                      </p>
-                      <h3 className="text-sm mt-1  sm:font-semibold dark:text-gray-300 line-clamp-2">
-                        {p.title}
-                      </h3>
-                      <div className="flex items-center gap-5 mt-2">
-                        <p className="text-lg font- dark:text-white">
-                          ₹{p.sellingPrice.toFixed(2)}
-                        </p>
-                        {p.price > p.sellingPrice && (
-                          <p className="text-sm text-gray-500 line-through">
-                            ₹{p.price.toFixed(2)}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Add to Cart Button */}
-                  <Button
-                    content="Add To Cart"
-                    pattern="outline"
-                    buttonProps={{
-                      onClick: () => handleAddToCart(p._id),
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       )}
     </div>
