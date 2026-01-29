@@ -2,6 +2,8 @@ import { Button } from "../../../components/Button";
 import type { IAddress } from "../../../types";
 import { useDeleteAddress } from "../../../api/address/service";
 import useQueryParams from "../../../hooks/useQueryParams";
+import ConfirmModal from "../../../components/ConfirmModal";
+import { useState } from "react";
 
 const AddressCard = ({
   address,
@@ -12,6 +14,8 @@ const AddressCard = ({
   isSelected?: boolean;
   onSelect: () => void;
 }) => {
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [removeId, setRemoveId] = useState<string | null>(null);
   const { setParams } = useQueryParams();
   const { mutateAsync } = useDeleteAddress();
   return (
@@ -65,13 +69,35 @@ const AddressCard = ({
           }}
           className="w-40! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
         />
-
         <Button
           content="DELETE"
-          buttonProps={{ onClick: () => mutateAsync(address._id) }}
-          className="w-40! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
+          pattern="outline"
+          className="w-40!"
+          buttonProps={{
+            onClick: () => {
+              setRemoveId(address._id);
+              setConfirmOpen(true);
+            },
+          }}
         />
       </div>
+      <ConfirmModal
+        open={confirmOpen}
+        title="Delete Address"
+        message="Are you sure you want to delete this address? This action cannot be undone."
+        onCancel={() => {
+          setConfirmOpen(false);
+          setRemoveId(null);
+        }}
+        onConfirm={async () => {
+          if (removeId) {
+            await mutateAsync(removeId);
+          }
+          setConfirmOpen(false);
+          setRemoveId(null);
+        }}
+        confirmText="DELETE"
+      />
     </div>
   );
 };
