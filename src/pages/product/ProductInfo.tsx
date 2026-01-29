@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import QuillContent from "../../components/quillContent";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 interface ProductInfoProps {
   product: {
@@ -73,9 +73,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                   {title}
                 </span>
                 {isOpen ? (
-                  <IoIosArrowUp className="text-lg" />
+                  <FaMinus className="text-lg" />
                 ) : (
-                  <IoIosArrowDown className="text-lg" />
+                  <FaPlus className="text-lg" />
                 )}
               </button>
 
