@@ -1,87 +1,9 @@
+import { discounts } from "../constants";
 import { BottomGradient } from "./Gradients";
 import { useNavigate } from "react-router-dom";
 
 const DiscountDetails = () => {
   const navigate = useNavigate();
-
-  const discounts = [
-    {
-      image:
-        "https://img-cdn.publive.online/fit-in/1280x720/filters:format(webp)/elle-india/media/post_attachments/wp-content/uploads/2022/10/Untitled-design-1-1.png",
-      title: "Luxury Perfume Sale",
-      description:
-        "Get your favorite luxury perfumes at exclusive discounted prices. Limited period offer!",
-    },
-    {
-      image:
-        "https://st3.depositphotos.com/10659292/35428/i/450/depositphotos_354289762-stock-photo-perfume-bottle-silk-folded-fabric.jpg",
-      title: "Elegant Fragrances",
-      description:
-        "Experience the elegance of high-end fragrances at up to 40% off. Shop now!",
-    },
-    {
-      image:
-        "https://www.shutterstock.com/image-vector/cosmetic-sale-banner-50-off-600nw-2661450779.jpg",
-      title: "Cosmetics Mega Sale",
-      description:
-        "Top cosmetic brands available at unbeatable discounts. Upgrade your makeup kit today!",
-    },
-    {
-      image:
-        "https://cdn.create.vista.com/downloads/fdd7280a-0c0d-4adc-98d2-5341efd4477a_1024.jpeg",
-      title: "Exclusive Deals",
-      description:
-        "Limited time exclusive deals on popular beauty and cosmetic products.",
-    },
-    {
-      image:
-        "https://png.pngtree.com/png-clipart/20220404/original/pngtree-cosmetics-perfume-high-quality-gift-pink-sale-poster-png-image_7516182.png",
-      title: "Gift Sets",
-      description:
-        "Grab special gift sets at discounted prices. Perfect for surprises!",
-    },
-    {
-      image:
-        "https://c8.alamy.com/comp/2CEH3JY/cosmetics-series-sale-vector-illustration-set-realistic-pink-packages-in-sale-ad-design-promo-banner-collection-with-cosmetic-packaging-bottles-for-skincare-on-soft-silk-and-flower-petals-background-2CEH3JY.jpg",
-      title: "Skincare Discounts",
-      description:
-        "Premium skincare products at affordable prices. Pamper yourself!",
-    },
-    {
-      image:
-        "https://img.pikbest.com/templates/20220327/bg/252c44a3a5047.png!w700wp",
-      title: "Makeup Must-Haves",
-      description:
-        "Top makeup essentials now at exciting discounts. Glow up your style!",
-    },
-    {
-      image:
-        "https://img.freepik.com/premium-vector/sale-social-media-post-design-template-perfumes-social-media-design-sale-offer-design-makeup_635705-1238.jpg",
-      title: "Perfume Collection",
-      description:
-        "Choose from a wide range of perfumes at special sale prices.",
-    },
-    {
-      image:
-        "https://img.freepik.com/premium-psd/cosmetics-beauty-products-makeup-social-media-post-discount-sale-banner-design-template_84443-760.jpg",
-      title: "Beauty Offers",
-      description:
-        "Grab beauty products with limited time offers. Shop your favorites now!",
-    },
-    {
-      image:
-        "https://img.pikbest.com/templates/20220327/bg/62151ba7582d6.png!w700wp",
-      title: "Exclusive Skincare",
-      description: "High-end skincare at discounted prices. Glow naturally!",
-    },
-    {
-      image:
-        "https://img.pikbest.com/templates/20220327/bg/8de0310ca0973.png!sw800",
-      title: "Makeup Essentials",
-      description:
-        "Upgrade your makeup kit with trendy essentials at great prices.",
-    },
-  ];
 
   return (
     <div className="relative min-h-screen py-10 px-4 sm:px-8 lg:px-20 dark:bg-black dark:text-white">
