@@ -11,6 +11,7 @@ import { Button } from "./Button";
 import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import ConfirmModal from "./ConfirmModal";
 
 const CartProducts = () => {
   const navigate = useNavigate();
@@ -242,64 +243,20 @@ const CartProducts = () => {
           </AnimatePresence>
         </div>
       </div>
-      <AnimatePresence>
-        {confirmOpen && (
-          <motion.div
-            className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="bg-white dark:bg-black rounded-xl p-4 w-[90%] max-w-sm shadow-lg shadow-blue-200 dark:shadow-blue-500"
-            >
-              <div className="flex justify-center mb-3">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/12517/12517928.png"
-                  alt="warning image"
-                  className="w-16 h-16"
-                />
-              </div>
-
-              <p className="text-sm text-center text-green-700 mb-4 dark:text-white">
-                Are you sure, you want to remove this item from cart ?
-              </p>
-
-              <div className="flex justify-end gap-2">
-                <Button
-                  content="Cancel"
-                  pattern="outline"
-                  buttonProps={{
-                    onClick: () => {
-                      setConfirmOpen(false);
-                      setRemoveId(null);
-                    },
-                  }}
-                />
-
-                <Button
-                  content="DELETE"
-                  pattern="outline"
-                  className="bg-red-500! text-white"
-                  buttonProps={{
-                    onClick: () => {
-                      if (removeId) {
-                        handleRemoveProductToCart(removeId);
-                      }
-                      setConfirmOpen(false);
-                      setRemoveId(null);
-                    },
-                  }}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ConfirmModal
+        open={confirmOpen}
+        title="Remove Item"
+        message="Are you sure, you want to remove this item from cart?"
+        onCancel={() => {
+          setConfirmOpen(false);
+          setRemoveId(null);
+        }}
+        onConfirm={() => {
+          if (removeId) handleRemoveProductToCart(removeId);
+          setConfirmOpen(false);
+          setRemoveId(null);
+        }}
+      />
     </div>
   );
 };
