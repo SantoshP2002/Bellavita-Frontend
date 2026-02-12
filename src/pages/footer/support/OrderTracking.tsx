@@ -1,4 +1,14 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { get_order_By_Id } from "../../../api/order/api";
+
 const OrderTracking = () => {
+  const [orderId, setOrderId] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black dark:text-white">
       {/* HERO */}
@@ -28,13 +38,50 @@ const OrderTracking = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <input
               type="text"
-              placeholder="Enter Order ID (e.g. ORD12345)"
+              placeholder="Enter Order ID"
+              value={orderId}
+              onChange={(e) => {
+                setOrderId(e.target.value);
+                if (error) setError("");
+              }}
               className="flex-1 px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-sky-400"
             />
-            <button className="px-6 py-3 rounded-md bg-gradient-to-r from-sky-500 to-blue-600 text-white font-medium hover:opacity-90 transition">
-              Track Order
+
+            <button
+              onClick={async () => {
+                if (!orderId.trim()) {
+                  setError("Order ID is required");
+                  return;
+                }
+
+                try {
+                  setLoading(true);
+                  setError("");
+
+                  const res = await get_order_By_Id(orderId);
+
+                  if (!res?.order) {
+                    setError("Order ID not found");
+                    return;
+                  }
+
+                  navigate(`/orders/${orderId}`);
+                } catch (err) {
+                  console.log(err);
+
+                  setError("Order ID not found");
+                } finally {
+                  setLoading(false);
+                }
+              }}
+              className="px-6 py-3 rounded-md bg-gradient-to-r
+  from-sky-500 to-blue-600 text-white
+  font-medium hover:opacity-90 transition cursor-pointer"
+            >
+              {loading ? "Checking..." : "Track Order"}
             </button>
           </div>
+          {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
 
           {/* INFO */}
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
