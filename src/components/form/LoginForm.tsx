@@ -5,10 +5,11 @@ import type z from "zod";
 import Input from "../Input";
 import type { TBaseUser } from "../../types";
 import { useLoginUser } from "../../api/auth/service";
-import { FaAngleDoubleRight, FaLock, FaRegUser } from "react-icons/fa";
+import { FaAngleDoubleRight, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import GoogleLogin from "../GoogleLogin";
+import { AiOutlineMail } from "react-icons/ai";
 
 const LoginForm = () => {
   const { mutateAsync, isPending } = useLoginUser();
@@ -31,7 +32,7 @@ const LoginForm = () => {
           LOGIN
         </h1>
         {/* MAIN CARD */}
-        <div className="flex w-75 lg:w-90  overflow-hidden shadow-md dark:shadow-white shadow-blue-400 rounded-4xl">
+        <div className="flex w-75 lg:w-90  overflow-hidden">
           {/* RIGHT FORM SECTION */}
           <div className="w-full md:w-full p-8 sm:p-10 flex items-center">
             <form
@@ -49,7 +50,7 @@ const LoginForm = () => {
                     name: "email",
                   }}
                 />
-                <FaRegUser className="absolute size-3 lg:size-4 top-3 lg:top-4 left-3 text-gray-500" />
+                <AiOutlineMail className="absolute size-3 lg:size-4 top-3 lg:top-4 left-3 text-gray-500" />
                 {errors.email && (
                   <p className="text-red-500 text-xs mt-1">
                     {errors.email.message}

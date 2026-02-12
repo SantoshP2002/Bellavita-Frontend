@@ -2,7 +2,7 @@ import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
-import { FaRegUser, FaLock, FaArrowRight } from "react-icons/fa";
+import { FaRegUser, FaLock, FaArrowRight, FaImages } from "react-icons/fa";
 import type { TBaseUser } from "../../types";
 import { useRegisterUser } from "../../api/auth/service";
 import { registerSchema } from "../../validations/auth";
@@ -12,6 +12,8 @@ import Input from "../../components/Input";
 import LoadingScreen from "../../components/LoadingScreen";
 import { VITE_BACKEND_URI } from "../../env";
 import { Link } from "react-router-dom";
+import { AiOutlineMail } from "react-icons/ai";
+import { TbLockPassword } from "react-icons/tb";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -97,7 +99,7 @@ const Register = () => {
                   />
                 )}
               />
-              <FaRegUser className="absolute top-4 left-3 text-gray-500" />
+              <FaImages className="absolute top-3 lg:top-4 left-3 text-gray-500" />
               {errors.profilePic && (
                 <p className="text-red-500 text-xs">
                   {String(errors.profilePic.message)}
@@ -114,7 +116,7 @@ const Register = () => {
                   className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "First name" }}
                 />
-                <FaRegUser className="absolute top-4 left-3 text-gray-500" />
+                <FaRegUser className="absolute top-3 lg:top-4 left-3 text-gray-500" />
                 {errors.firstName && (
                   <p className="text-red-500 text-xs">
                     {errors.firstName.message}
@@ -129,7 +131,7 @@ const Register = () => {
                   className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "Last name" }}
                 />
-                <FaRegUser className="absolute top-4 left-3 text-gray-500" />
+                <FaRegUser className="absolute top-3 lg:top-4 left-3 text-gray-500" />
                 {errors.lastName && (
                   <p className="text-red-500 text-xs">
                     {errors.lastName.message}
@@ -144,9 +146,9 @@ const Register = () => {
                 label="Email"
                 register={register("email")}
                 className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
-                inputProps={{ placeholder: "Email" }}
+                inputProps={{ placeholder: "Enter Email" }}
               />
-              <FaRegUser className="absolute top-4 left-3 text-gray-500" />
+              <AiOutlineMail className="absolute top-3 lg:top-4 left-3 text-gray-500" />
               {errors.email && (
                 <p className="text-red-500 text-xs">{errors.email.message}</p>
               )}
@@ -161,14 +163,14 @@ const Register = () => {
                   className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "Password" }}
                 />
-                <FaLock className="absolute top-4 left-3 text-gray-500" />
+                <FaLock className="absolute top-3 lg:top-4 left-3 text-gray-500" />
                 {errors.password && (
                   <p className="text-red-500 text-xs">
                     {errors.password.message}
                   </p>
                 )}
               </div>
-
+              {/* Confirm Password */}
               <div className="relative">
                 <Input
                   label="Confirm Password"
@@ -176,7 +178,7 @@ const Register = () => {
                   className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
                   inputProps={{ placeholder: "Confirm password" }}
                 />
-                <FaLock className="absolute top-4 left-3 text-gray-500" />
+                <TbLockPassword className="absolute top-3 lg:top-4 left-3 text-gray-500" />
                 {errors.confirmPassword && (
                   <p className="text-red-500 text-xs">
                     {errors.confirmPassword.message}
@@ -224,7 +226,7 @@ const Register = () => {
 
               {/* Back Home */}
               <Button
-                content="🏠 Back to Home"
+                content="Back to 🏠"
                 pattern="outline"
                 className=" w-50!"
                 icons={{ right: <FaArrowRight /> }}
