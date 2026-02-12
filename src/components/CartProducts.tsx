@@ -100,7 +100,7 @@ const CartProducts = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="flex flex-col sm:flex-row items-center sm:items-start p-3 sm:p-4 rounded-tr-full shadow gap-3 sm:gap-4 hover:shadow-lg transition bg-gradient-to-bl from-pink-200 via-purple-100 to-orange-200 dark:from-pink-400 dark:via-purple-300 dark:to-blue-300"
+                        className="flex flex-col sm:flex-row items-center sm:items-start p-4 rounded-lg gap-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:shadow-md transition"
                       >
                         <motion.img
                           src={product?.images?.[0]}
@@ -128,7 +128,7 @@ const CartProducts = () => {
                             <Button
                               pattern="tertiary"
                               content={<HiMinusSmall />}
-                              className="!w-6 !h-6 sm:!w-5 sm:!h-5 !p-0 !rounded-full hover:!bg-red-700"
+                              className="!w-6 !h-6 sm:!w-5 sm:!h-5 !p-0 !rounded-full hover:!bg-pink-700"
                               buttonProps={{
                                 onClick: () =>
                                   handleQuantityChange(
@@ -143,7 +143,7 @@ const CartProducts = () => {
                               initial={{ scale: 0.8 }}
                               animate={{ scale: 1 }}
                               transition={{ duration: 0.2 }}
-                              className="text-sm font-semibold dark:text-black w-3 text-center"
+                              className="text-sm font-semibold dark:text-white w-3 text-center"
                             >
                               {item.quantity}
                             </motion.span>
