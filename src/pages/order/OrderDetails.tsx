@@ -5,6 +5,15 @@ import { Button } from "../../components/Button";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { ORDER_STEPS } from "../../constants";
 
+const STATUS_COLOR_MAP: Record<string, string> = {
+  paid: "text-green-600",
+  confirmed: "text-green-600",
+  shipped: "text-blue-600",
+  delivered: "text-green-700",
+  pending: "text-yellow-600",
+  failed: "text-red-600",
+};
+
 const OrderDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
@@ -51,7 +60,7 @@ const OrderDetails = () => {
 
   /* ------------------ UI ------------------ */
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+    <div className="w-full mx-auto px-8 py-8 space-y-8 dark:bg-black dark:text-white">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1
@@ -76,7 +85,7 @@ const OrderDetails = () => {
       </div>
 
       {/* Order Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 rounded-br-full p-6 bg-white shadow-md bg-gradient-to-bl from-pink-400 via-purple-200 to-pink-200 text-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 rounded-br-full p-6 dark:bg-black shadow-md dark:shadow-white shadow-black text-white">
         <Info label="Order ID" value={order._id} />
         <Info
           label="Order Date"
@@ -86,9 +95,15 @@ const OrderDetails = () => {
         />
         <Info
           label="Status"
-          value={order.order_result?.order_status ?? "N/A"}
-          highlight
+          value={
+            order.order_result?.order_status
+              ?.toLowerCase()
+              .replace("_", " ")
+              .toUpperCase() ?? "N/A"
+          }
+          color={STATUS_COLOR_MAP[currentStatus]}
         />
+
         <Info
           label="Payment"
           value={order.razorpay_payment_result?.rzp_payment_status ?? "N/A"}
@@ -96,144 +111,144 @@ const OrderDetails = () => {
         <Info label="Total Amount" value={`₹${order.totalPrice ?? 0}`} bold />
       </div>
 
-      {/* Products */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Products</h2>
+      {/* Products + Order Tracking Wrapper */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* ================= PRODUCTS (LEFT - BIG) ================= */}
+        <div className="lg:col-span-2 space-y-4">
+          <h2 className="text-xl font-semibold">Products</h2>
 
-        {order.products && order.products.length > 0 ? (
-          <div className="divide-y rounded-br-full bg-gradient-to-bl from-pink-200 via-purple-200 to-pink-300 shadow-md ">
-            {order.products.map((item, index) => {
-              const product = item.product;
+          {order.products && order.products.length > 0 ? (
+            <div className="divide-y rounded-xl bg-white dark:bg-black shadow-md shadow-black dark:shadow-white">
+              {order.products.map((item, index) => {
+                const product = item.product;
 
-              const image =
-                typeof product?.images?.[0] === "string"
-                  ? product.images[0]
-                  : "/placeholder.png";
+                const image =
+                  typeof product?.images?.[0] === "string"
+                    ? product.images[0]
+                    : "/placeholder.png";
 
-              return (
-                <div key={item._id ?? index} className="flex gap-4 p-4">
-                  <img
-                    src={image}
-                    alt={product?.title ?? "Product"}
-                    className="w-20 h-20 rounded-lg object-cover border"
-                    loading="lazy"
-                  />
-
-                  <div className="flex-1">
-                    <p className="font-medium">
-                      {product?.title ?? "Untitled Product"}
-                    </p>
-
-                    <p className="text-sm text-gray-500">
-                      {product?.brand ?? "Unknown brand"}
-                    </p>
-
-                    <div className="mt-1 text-sm text-gray-700">
-                      ₹{product?.sellingPrice ?? 0} × {item.quantity ?? 1}
-                    </div>
-                  </div>
-
-                  <div className="text-right text-sm font-medium">
-                    ₹{(product?.sellingPrice ?? 0) * (item.quantity ?? 1)}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p className="text-gray-500">No products found in this order.</p>
-        )}
-
-        <div className="rounded-2xl p-4 md:p-6 bg-white shadow-lg mt-12">
-          <h2 className="text-lg font-semibold mb-4">Order Tracking</h2>
-
-          {/* ================= DESKTOP (HORIZONTAL) ================= */}
-          <div className="hidden md:flex items-center justify-between">
-            {ORDER_STEPS.map((step, index) => {
-              const isCompleted = index <= currentStepIndex;
-
-              return (
-                <div key={step} className="flex-1 flex items-center">
-                  {/* Circle */}
-                  <div
-                    className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold
-              ${
-                isCompleted
-                  ? "bg-green-600 text-white" // green 1, 2, 3
-                  : "bg-gray-200 text-gray-500"
-              }`}
-                  >
-                    {index + 1}
-                  </div>
-
-                  {/* Label */}
-                  <p
-                    className={`ml-2 text-sm capitalize ${
-                      isCompleted ? "text-green-600" : "text-gray-400" // confirmed name
-                    }`}
-                  >
-                    {step}
-                  </p>
-
-                  {/* Line */}
-                  {index !== ORDER_STEPS.length - 1 && (
-                    <div
-                      className={`flex-1 h-1 mx-0 rounded ${
-                        isCompleted ? "bg-green-600" : "bg-gray-200" // green line
-                      }`}
+                return (
+                  <div key={item._id ?? index} className="flex gap-4 p-4">
+                    <img
+                      src={image}
+                      alt={product?.title ?? "Product"}
+                      className="w-16 h-16 rounded-lg object-cover border"
+                      loading="lazy"
                     />
-                  )}
-                </div>
-              );
-            })}
-          </div>
 
-          {/* ================= MOBILE / TABLET (VERTICAL) ================= */}
-          <div className="md:hidden space-y-4">
-            {ORDER_STEPS.map((step, index) => {
-              const isCompleted = index <= currentStepIndex;
+                    <div className="flex-1">
+                      <p className="font-medium text-black dark:text-white">
+                        {product?.title ?? "Untitled Product"}
+                      </p>
 
-              return (
-                <div key={step} className="flex items-start gap-4">
-                  {/* Left indicator */}
-                  <div className="flex flex-col items-center">
-                    <div
-                      className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold
-                ${
-                  isCompleted
-                    ? "bg-green-600 text-white"
-                    : "bg-gray-200 text-gray-500"
-                }`}
-                    >
-                      {index + 1}
+                      <p className="text-sm text-gray-500">
+                        {product?.brand ?? "Unknown brand"}
+                      </p>
+
+                      <div className="mt-1 text-sm text-gray-700 dark:text-gray-300">
+                        ₹{product?.sellingPrice ?? 0} × {item.quantity ?? 1}
+                      </div>
+
+                      <div className="text-sm pt-1 font-semibold dark:text-white">
+                        TOTAL : ₹
+                        {(product?.sellingPrice ?? 0) * (item.quantity ?? 1)}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="text-gray-500">No products found in this order.</p>
+          )}
+        </div>
+
+        {/* ================= ORDER TRACKING (RIGHT - SMALL) ================= */}
+        <div className="space-y-4">
+          <div className="rounded-2xl p-4 dark:bg-black shadow-md shadow-black dark:shadow-white h-full">
+            <h2 className="text-lg font-semibold mb-4 dark:text-white">
+              Order Tracking
+            </h2>
+
+            {/* ===== DESKTOP / TABLET ===== */}
+            <div className="hidden lg:block space-y-5">
+              {ORDER_STEPS.map((step, index) => {
+                const isCompleted = index <= currentStepIndex;
+
+                return (
+                  <div key={step} className="flex items-start gap-3">
+                    <div className="flex flex-col items-center">
+                      <div
+                        className={`w-7 h-7 flex items-center justify-center rounded-full text-xs font-semibold
+                  ${
+                    isCompleted
+                      ? "bg-green-600 text-white"
+                      : "bg-gray-200 text-gray-500"
+                  }`}
+                      >
+                        {index + 1}
+                      </div>
+
+                      {index !== ORDER_STEPS.length - 1 && (
+                        <div
+                          className={`w-1 h-8 mt-1 rounded ${
+                            isCompleted ? "bg-green-600" : "bg-gray-200"
+                          }`}
+                        />
+                      )}
                     </div>
 
-                    {index !== ORDER_STEPS.length - 1 && (
-                      <div
-                        className={`w-1 h-10 mt-1 rounded ${
-                          isCompleted ? "bg-green-600" : "bg-gray-200"
+                    <div>
+                      <p
+                        className={`text-sm font-medium capitalize ${
+                          isCompleted ? "text-green-600" : "text-gray-400"
                         }`}
-                      />
-                    )}
+                      >
+                        {step}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {isCompleted ? "Completed" : "Pending"}
+                      </p>
+                    </div>
                   </div>
+                );
+              })}
+            </div>
 
-                  {/* Label */}
-                  <div>
-                    <p
-                      className={`text-sm font-medium capitalize ${
-                        isCompleted ? "text-green-600" : "text-gray-400"
-                      }`}
+            {/* ===== MOBILE ===== */}
+            <div className="lg:hidden">
+              <div className="flex items-center justify-between">
+                {ORDER_STEPS.map((step, index) => {
+                  const isCompleted = index <= currentStepIndex;
+
+                  return (
+                    <div
+                      key={step}
+                      className="flex-1 flex flex-col items-center"
                     >
-                      {step}
-                    </p>
+                      <div
+                        className={`w-7 h-7 flex items-center justify-center rounded-full text-xs font-semibold
+                  ${
+                    isCompleted
+                      ? "bg-green-600 text-white"
+                      : "bg-gray-200 text-gray-500"
+                  }`}
+                      >
+                        {index + 1}
+                      </div>
 
-                    <p className="text-xs text-gray-500">
-                      {isCompleted ? "Completed" : "Pending"}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
+                      <p
+                        className={`mt-1 text-[10px] capitalize ${
+                          isCompleted ? "text-green-600" : "text-gray-400"
+                        }`}
+                      >
+                        {step}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -249,20 +264,22 @@ const Info = ({
   label,
   value,
   bold,
-  highlight,
+  // highlight,
+  color,
 }: {
   label: string;
   value: string;
   bold?: boolean;
+  color?: string;
   highlight?: boolean;
 }) => {
   return (
     <div>
       <p className="text-sm text-gray-500">{label}</p>
       <p
-        className={`mt-1 ${bold ? "font-bold" : "font-medium"} ${
-          highlight ? "text-green-600" : "text-gray-800"
-        }`}
+        className={`mt-1 ${
+          bold ? "font-bold" : "font-medium"
+        } ${color ?? "text-gray-700 dark:text-gray-300"}`}
       >
         {value}
       </p>

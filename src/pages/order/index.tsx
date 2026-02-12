@@ -42,7 +42,7 @@ const AllOrder = () => {
 
   /* ------------------ UI ------------------ */
   return (
-    <div className="max-w-full mx-auto px-4 py-10 space-y-8 dark:bg-black dark:text-white">
+    <div className="max-w-full mx-auto px-8 py-10 space-y-8 dark:bg-black dark:text-white">
       <h1 className="text-4xl font-extrabold text-center text-shadow-lg">
         MY ORDER
       </h1>
