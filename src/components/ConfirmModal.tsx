@@ -15,7 +15,7 @@ const ConfirmModal = ({
   open,
   title = "Confirm Action",
   message,
-  icon = "https://cdn-icons-png.flaticon.com/128/12517/12517928.png",
+  icon = "https://cdn3d.iconscout.com/3d/premium/thumb/delete-3d-icon-png-download-4644638.png",
   onCancel,
   onConfirm,
   confirmText = "DELETE",
