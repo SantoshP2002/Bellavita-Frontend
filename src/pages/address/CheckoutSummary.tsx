@@ -163,7 +163,7 @@ const CheckoutSummary = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Address Section */}
-        <div className="bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-2xl shadow-lg transition-all duration-300 p-6 dark:border-white border-l-2 border-b-2">
+        <div className="bg-gradient-to-bl from-pink-100 via-violet-100 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-2xl shadow-lg transition-all duration-300 p-6 dark:border-white border-l-2 border-b-2">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 flex items-center gap-2">
             <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
             Shipping Address
@@ -174,20 +174,25 @@ const CheckoutSummary = () => {
               NAME : {selectedAddress.firstName}
             </p>
             <p className="font-medium text-xs lg:text-base text-gray-900 dark:text-gray-100">
-              Phone.No : {selectedAddress.phoneNumber}
+              PHONE.No : {selectedAddress.phoneNumber}
             </p>
             <p className="text-sm">
-              {selectedAddress.address}, {selectedAddress.city},{" "}
-              {selectedAddress.state} - {selectedAddress.pinCode},{" "}
-              {selectedAddress.landmark} - {selectedAddress.email}
+              <span className="font-medium text-xs lg:text-base text-gray-900 dark:text-gray-100">
+                ADDRESS :
+              </span>{" "}
+              {selectedAddress.address}, {selectedAddress.state},{" "}
+              {selectedAddress.pinCode}, {selectedAddress.landmark}{" "}
+            </p>
+            <p className="font-medium text-xs lg:text-base text-gray-900 dark:text-gray-100">
+              EMAIL : {selectedAddress.email}
             </p>
           </div>
         </div>
 
         {/* Products Section */}
-        <div className=" bg-gradient-to-bl from-pink-400 via-violet-300 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-b-full transition-all duration-300 p-6">
+        <div className=" bg-gradient-to-bl from-pink-100 via-violet-100 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-b-full transition-all duration-300 p-6">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full"></span>
+            <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
             Products
           </h2>
 
@@ -214,9 +219,11 @@ const CheckoutSummary = () => {
             ))}
           </div>
 
-          <div className="flex justify-center gap-12 items-center mt-6 text-lg font-semibold text-gray-800 dark:text-gray-100 pt-4">
+          <div className="flex justify-center gap-5 items-center mt-6 text-lg font-semibold text-gray-800 dark:text-gray-100 pt-4">
             <span>Total:</span>
-            <span className="text-red-500 text-xl">₹{subtotal}</span>
+            <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+              ₹{subtotal}
+            </span>
           </div>
         </div>
       </div>
@@ -225,10 +232,12 @@ const CheckoutSummary = () => {
       <div className="flex justify-center mt-10">
         <Button
           content={
-            <span className="flex items-center gap-2">Make Payment</span>
+            <span className="flex items-center gap-2">
+              Make Payment ₹{subtotal}
+            </span>
           }
           pattern="outline"
-          className=" w-70! bg-black text-white border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 transition-all duration-200 ease-out hover:bg-white hover:text-black hover:shadow-[4px_4px_0_0_#000] dark:bg-white dark:text-black dark:border-white  dark:hover:bg-black dark:hover:text-white dark:hover:shadow-[4px_4px_0_0_#fff]"
+          className="w-80! rounded-xl"
           buttonProps={{ onClick: handlePayment }}
         />
       </div>
