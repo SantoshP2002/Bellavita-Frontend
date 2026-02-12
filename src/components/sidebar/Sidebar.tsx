@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 
 import { Button } from "../Button";
 import { useUserStore } from "../../store/user";
+import { RiNewsLine } from "react-icons/ri";
 
 type SidebarProps = {
   className?: string;
@@ -66,6 +67,13 @@ const Sidebar = ({ className, onClose }: SidebarProps) => {
           className="flex items-center gap-3 px-3 py-2 rounded-lg hover:border-b-4 border-b-2 hover:border-r-4 border-r-2 dark:hover:border-white"
         >
           <FaBlogger /> Blogs
+        </Link>
+        {/* NEWSROOM */}
+        <Link
+          to="newsroom"
+          className="flex items-center gap-3 px-3 py-2 rounded-lg hover:border-b-4 border-b-2 hover:border-r-4 border-r-2 dark:hover:border-white"
+        >
+          <RiNewsLine /> Newsroom
         </Link>
         <Button
           content="Logout"
