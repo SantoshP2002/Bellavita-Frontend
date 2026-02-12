@@ -75,7 +75,7 @@ const AllBlogs = () => {
                 <img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-full h-40 object-cover rounded-md"
+                  className="w-full object-cover rounded-md"
                 />
                 <h4 className="text-lg font-semibold mt-3 line-clamp-2">
                   {blog.title}

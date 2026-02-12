@@ -69,8 +69,8 @@ const Products = () => {
     <div className="dark:bg-black dark:text-white">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <h3 className="text-2xl font-bold mt-20">ALL PRODUCTS</h3>
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-10 mt-20">
+        <h3 className="text-2xl font-bold mt-5">ALL PRODUCTS</h3>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-10 mt-5">
           {/* 🔍 Search Bar */}
           <Input
             className="border-b-4 rounded-lg dark:bg-black dark:text-white dark:border-gray-200 dark:border-b-4 dark:border-r-4"
