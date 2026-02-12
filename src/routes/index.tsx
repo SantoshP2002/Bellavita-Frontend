@@ -44,6 +44,7 @@ import ChangePassword from "../pages/profile/ChangePassword";
 import CrazyDealsMobile from "../components/CrazyDealsMobile";
 import SearchPage from "../pages/inputsearch/SearchPage";
 import DiscountDetails from "../components/DiscountDetails";
+import Newsroom from "../pages/admin/children/Newsroom";
 
 const router = createBrowserRouter([
   {
@@ -137,6 +138,7 @@ const router = createBrowserRouter([
       { path: "blog", element: <AllBlogs /> },
       { path: "blog/upload", element: <BlogUpload /> },
       { path: "blog/edit/:id", element: <EditBlog /> },
+      { path: "newsroom", element: <Newsroom /> },
     ],
   },
   // AUTH ROUTES
