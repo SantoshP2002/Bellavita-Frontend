@@ -31,7 +31,7 @@ export const useGetOrder = () => {
 // get order by ID
 export const useGetOrderById = (orderId: string) => {
   return useQuery({
-    queryKey: ["get_order_By_Id"],
+    queryKey: ["get_order_By_Id", orderId],
     queryFn: () => get_order_By_Id(orderId),
   });
 };
