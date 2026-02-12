@@ -33,7 +33,7 @@ const AllBlogs = () => {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-10">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-8">
         <h3 className="text-2xl font-bold dark:text-white">ALL BLOGS</h3>
 
         <Button
