@@ -42,7 +42,7 @@ const AllOrder = () => {
 
   /* ------------------ UI ------------------ */
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10 space-y-8">
+    <div className="max-w-full mx-auto px-4 py-10 space-y-8 dark:bg-black dark:text-white">
       <h1 className="text-4xl font-extrabold text-center text-shadow-lg">
         MY ORDER
       </h1>
@@ -61,12 +61,14 @@ const AllOrder = () => {
             return (
               <div
                 key={order._id}
-                className="rounded-tr-full  bg-white shadow-lg hover:shadow-2xl transition-all duration-500 bg-gradient-to-bl from-pink-200 via-purple-300 to-orange-200 text-white"
+                className="rounded-tr-full shadow-md shadow-black dark:shadow-white dark:shadow-md transition-all duration-500 dark:bg-black/50 text-white"
               >
                 {/* Top */}
-                <div className="flex items-center justify-between px-6 py-4 border-b">
+                <div className="flex items-center justify-between px-6 py-4">
                   <div>
-                    <p className="text-sm text-black">Order ID</p>
+                    <p className="text-sm text-black dark:text-white">
+                      Order ID
+                    </p>
                     <h2 className="font-semibold text-red-500 text-lg">
                       #{order._id.slice(-6)}
                     </h2>
@@ -94,7 +96,9 @@ const AllOrder = () => {
 
                 {/* Address */}
                 <div className="px-6 pb-5 text-sm text-gray-500">
-                  <strong className="text-gray-700">Delivery Address:</strong>{" "}
+                  <strong className="text-gray-500 text-lg">
+                    Delivery Address:
+                  </strong>{" "}
                   {order.address.address}, {order.address.city},{" "}
                   {order.address.state} - {order.address.pinCode}
                 </div>
@@ -136,7 +140,9 @@ const Info = ({
     <p className="text-slate-400 text-xs uppercase tracking-wide">{label}</p>
     <p
       className={`mt-1 ${
-        strong ? "font-semibold text-gray-900" : "font-medium text-gray-700"
+        strong
+          ? "font-semibold text-gray-500 dark:text-gray-300"
+          : "font-medium text-black dark:text-gray-300"
       }`}
     >
       {value}
@@ -152,6 +158,8 @@ const OrderStatus = ({ status }: { status: string }) => {
     paid: "bg-green-100 text-green-700",
     pending: "bg-yellow-100 text-yellow-700",
     failed: "bg-red-100 text-red-700",
+    cancelled: "bg-gray-200 text-gray-700",
+    unknown: "bg-gray-200 text-gray-700",
   };
 
   return (
