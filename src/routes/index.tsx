@@ -45,6 +45,8 @@ import CrazyDealsMobile from "../components/CrazyDealsMobile";
 import SearchPage from "../pages/inputsearch/SearchPage";
 import DiscountDetails from "../components/DiscountDetails";
 import Newsroom from "../pages/admin/children/Newsroom";
+import UploadNewsroom from "../pages/admin/children/UploadNewsroom";
+import EditNewsroom from "../pages/admin/children/EditNewsroom";
 
 const router = createBrowserRouter([
   {
@@ -139,6 +141,8 @@ const router = createBrowserRouter([
       { path: "blog/upload", element: <BlogUpload /> },
       { path: "blog/edit/:id", element: <EditBlog /> },
       { path: "newsroom", element: <Newsroom /> },
+      { path: "newsroom/upload", element: <UploadNewsroom /> },
+      { path: "newsroom/edit/:id", element: <EditNewsroom /> },
     ],
   },
   // AUTH ROUTES
