@@ -1,87 +1,88 @@
+import { useNavigate } from "react-router-dom";
+import { useGetAllNewsroom } from "../../../api/newsroom/service";
+import { Button } from "../../../components/Button";
+import type { INewsroom } from "../../../types";
+
 const NewsRoom = () => {
+  const navigate = useNavigate();
+
+  const { data, isLoading, isError } = useGetAllNewsroom();
+  const newsroom = data?.newsroom || [];
+
   return (
     <div className="dark:bg-black dark:text-white bg-gray-50 min-h-screen">
       {/* HERO SECTION */}
       <div className="text-center py-20 px-4">
         <h1 className="text-3xl md:text-5xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
             Newsroom
           </span>
         </h1>
+
         <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 text-sm md:text-base">
           Stay updated with the latest announcements, product launches, brand
           stories, and exclusive updates from our beauty world.
         </p>
 
         {/* NEEDLE LINE */}
-        <span className="mx-auto mt-6 block h-[2px] w-[90%] lg:w-[70%]  bg-gradient-to-r from-transparent via-orange-400 to-transparent" />
+        <span className="mx-auto mt-6 block h-[2px] w-[90%] lg:w-[70%] bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
       </div>
 
       {/* NEWS CARDS */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-20 pb-20">
+        {isLoading && (
+          <p className="text-center text-gray-500">Loading newsroom...</p>
+        )}
+
+        {isError && (
+          <p className="text-center text-red-500">Failed to load newsroom</p>
+        )}
+
+        {!isLoading && newsroom.length === 0 && (
+          <p className="text-center text-gray-500">No newsroom found</p>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* CARD 1 */}
-          <div className="group bg-white dark:bg-gray-900 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer">
-            <div className="h-40 bg-gradient-to-r from-pink-400 to-rose-500 flex flex-col items-center justify-center text-white text-center px-4">
-              <h4 className="text-lg font-semibold mb-1">Product Launch</h4>
-              <p className="text-xs opacity-90">Premium Beauty Collection</p>
-            </div>
+          {newsroom.map((item: INewsroom) => (
+            <div
+              key={item._id}
+              className="group dark:bg-gray-900 rounded-xl hover:shadow-sky-300 hover:dark:shadow-sky-400 shadow-l shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden cursor-pointer"
+            >
+              {/* IMAGE */}
+              <div className="h-40 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
 
-            <div className="p-6">
-              <h3 className="font-semibold text-lg mb-2">
-                New Luxury Perfume Launch
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Discover our latest premium fragrance collection crafted for
-                elegance and long-lasting impressions.
-              </p>
-              <span className="text-xs font-medium text-orange-500">
-                Read More →
-              </span>
-            </div>
-          </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 line-clamp-2">
+                  {item.title}
+                </h3>
 
-          {/* CARD 2 */}
-          <div className="group bg-white dark:bg-gray-900 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer">
-            <div className="h-40 bg-gradient-to-r from-purple-400 to-indigo-500 flex flex-col items-center justify-center text-white text-center px-4">
-              <h4 className="text-lg font-semibold mb-1">
-                Special Announcement
-              </h4>
-              <p className="text-xs opacity-90">Exclusive Beauty Updates</p>
-            </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                  {item.description}
+                </p>
 
-            <div className="p-6">
-              <h3 className="font-semibold text-lg mb-2">
-                Exclusive Festive Offers
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Limited-time festive discounts on skincare and makeup
-                essentials. Don’t miss out!
-              </p>
-              <span className="text-xs font-medium text-orange-500">
-                Read More →
-              </span>
+                {/* READ MORE BUTTON */}
+                <Button
+                  content={
+                    <span className="flex items-center gap-2 group-hover:text-sky-500 transition-colors duration-300">
+                      <span className="h-[1.5px] w-8 bg-sky-500 group-hover:w-16 transition-all duration-300" />
+                      <span className="font-medium">Read more</span>
+                    </span>
+                  }
+                  pattern="primary"
+                  className="mt-5 text-sm p-0"
+                  buttonProps={{
+                    onClick: () => navigate(`/newsroom/${item._id}`),
+                  }}
+                />
+              </div>
             </div>
-          </div>
-
-          {/* CARD 3 */}
-          <div className="group bg-white dark:bg-gray-900 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer">
-            <div className="h-40 bg-gradient-to-r from-yellow-400 to-orange-500 flex flex-col items-center justify-center text-white text-center px-4">
-              <h4 className="text-lg font-semibold mb-1">Brand Story</h4>
-              <p className="text-xs opacity-90">Innovation • Quality • Trust</p>
-            </div>
-
-            <div className="p-6">
-              <h3 className="font-semibold text-lg mb-2">Behind the Brand</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Learn how our beauty experts design products with quality,
-                sustainability, and innovation.
-              </p>
-              <span className="text-xs font-medium text-orange-500">
-                Read More →
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
