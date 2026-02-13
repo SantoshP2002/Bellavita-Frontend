@@ -5,7 +5,7 @@ export const apiRoutes = {
     login: { method: "POST", url: "/auth/login" },
     changePassword: { method: "PATCH", url: "/auth/change-password" },
   },
-  
+
   // User
   user: {
     getUser: { method: "GET", url: "/users/user" },
@@ -67,5 +67,14 @@ export const apiRoutes = {
     getBlogById: { method: "GET", url: "/blog" },
     updateBlog: { method: "PATCH", url: "/blog" },
     deleteBlog: { method: "DELETE", url: "/blog" },
+  },
+
+  // Newsroom
+  newsroom: {
+    uploadNewsroom: { method: "POST", url: "/newsroom/create" },
+    getNewsroom: { method: "GET", url: "/newsroom" },
+    getNewsroomById: { method: "GET", url: "/newsroom/:id" },
+    updateNewsroom: { method: "PATCH", url: "/newsroom/:id" },
+    deleteNewsroom: { method: "DELETE", url: "/newsroom/:id" },
   },
 };
