@@ -10,6 +10,7 @@ import { toast } from "react-hot-toast";
 
 // Upload Newsroom Service
 export const useUploadNewsroom = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (bodyData: FormData) => upload_newsroom(bodyData),
     onSuccess: (data) => {
@@ -17,6 +18,7 @@ export const useUploadNewsroom = () => {
     },
     onError: (error) => {
       toast.error(typeof error === "string" ? error : "Something went wrong!");
+      queryClient.invalidateQueries({ queryKey: ["get_all_newsroom"] });
     },
   });
 };
@@ -41,11 +43,13 @@ export const useGetNewsroomById = (id: string) => {
 
 // Update Newsroom Service
 export const useUpdateNewsroom = (id: string) => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationKey: ["update_newsroom", id],
     mutationFn: (data: FormData) => update_newsroom(id, data),
     onSuccess: (data) => {
       toast.success(data?.message || "Newsroom updated successfully!");
+      queryClient.invalidateQueries({ queryKey: ["get_all_newsroom"] });
     },
     onError: (error) => {
       toast.error(typeof error === "string" ? error : "Something went wrong!");
