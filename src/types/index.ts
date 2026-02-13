@@ -14,6 +14,7 @@ import type { ALLOW_COUNTRIES } from "../constants";
 import type Quill from "quill";
 import type { blogSchema } from "../validations/blog";
 import type z from "zod";
+import type { newsroomSchema } from "../validations/newsroom";
 
 export type IconProps = SVGProps<SVGSVGElement>;
 
@@ -295,6 +296,14 @@ export interface IProcessQuillContent {
 export type TBaseBlog = z.infer<typeof blogSchema>;
 
 export interface IBlog extends Omit<TBaseBlog, "image"> {
+  image: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+}
+export type TBaseNewsroom = z.infer<typeof newsroomSchema>;
+
+export interface INewsroom extends Omit<TBaseNewsroom, "image"> {
   image: string;
   _id: string;
   createdAt: string;
