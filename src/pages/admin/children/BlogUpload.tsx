@@ -44,7 +44,6 @@ const BlogUpload = () => {
   const image = watch("image") || [];
 
   const onSubmit = async (data: TBaseBlog) => {
-    console.log("data", data);
 
     await processQuillContent({
       quillRef: quillRefs.blog,
