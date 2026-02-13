@@ -24,35 +24,42 @@ const Blog = () => {
   }
 
   return (
-    <div className="p-6 dark:bg-black dark:text-white min-h-screen">
+    <div className="dark:bg-black dark:text-white bg-gray-50 min-h-screen">
       {/* HEADER */}
-      <h2 className="text-3xl md:text-4xl font-extrabold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500">
-        BLOGS
-      </h2>
+      <div className="text-center py-20 px-4">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500">
+          BLOGS
+        </h2>
 
-      {/* NEEDLE LINE */}
-      <span className="mx-auto block h-[2px] w-[90%] bg-gradient-to-r from-transparent via-sky-400 to-transparent dark:via-sky-600 mb-12" />
+        <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 text-sm md:text-base">
+          Stay inspired with our latest blogs, expert insights, beauty tips,
+          brand stories, and exclusive updates from our world of self-care.
+        </p>
+
+        {/* NEEDLE LINE */}
+        <span className="mx-auto mt-6 block h-[2px] w-[90%] lg:w-[70%] bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
+      </div>
 
       {/* BLOG GRID */}
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-20 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog) => (
             <div
               key={blog._id}
-              className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-shadow duration-500 group"
+              className="group dark:bg-gray-900 rounded-xl hover:shadow-sky-300 hover:dark:shadow-sky-400 shadow-l shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden cursor-pointer"
             >
               {/* IMAGE */}
-              <div className="overflow-hidden">
+              <div className="h-40 overflow-hidden">
                 <img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-full h-48 md:h-52 lg:h-56 object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
 
               {/* CONTENT */}
-              <div className="p-5">
-                <h4 className="text-xl font-semibold mb-2 line-clamp-2 text-gray-900 dark:text-white">
+              <div className="p-6">
+                <h4 className="text-lg font-semibold mb-2 line-clamp-2">
                   {blog.title}
                 </h4>
 
@@ -64,7 +71,7 @@ const Blog = () => {
                   })}
                 </p>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base line-clamp-4">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
                   {blog.description}
                 </p>
 

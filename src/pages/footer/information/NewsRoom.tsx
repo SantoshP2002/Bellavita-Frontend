@@ -62,6 +62,14 @@ const NewsRoom = () => {
                   {item.title}
                 </h3>
 
+                <p className="text-xs md:text-sm text-gray-400 mb-3">
+                  {new Date(item.createdAt).toLocaleDateString("en-IN", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </p>
+
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
                   {item.description}
                 </p>
