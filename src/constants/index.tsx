@@ -228,6 +228,13 @@ export const BLOG_INITIAL_VALUES = {
   description: "",
   blog: "",
 };
+export const NEWSROOM_INITIAL_VALUES = {
+  image: "",
+  title: "",
+  description: "",
+  newsroom: "",
+  date: "",
+};
 
 export const ORDER_STEPS = ["pending", "confirmed", "delivered"];
 
