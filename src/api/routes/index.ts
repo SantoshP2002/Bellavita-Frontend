@@ -73,8 +73,8 @@ export const apiRoutes = {
   newsroom: {
     uploadNewsroom: { method: "POST", url: "/newsroom/create" },
     getNewsroom: { method: "GET", url: "/newsroom" },
-    getNewsroomById: { method: "GET", url: "/newsroom/:id" },
-    updateNewsroom: { method: "PATCH", url: "/newsroom/:id" },
-    deleteNewsroom: { method: "DELETE", url: "/newsroom/:id" },
+    getNewsroomById: { method: "GET", url: "/newsroom" },
+    updateNewsroom: { method: "PATCH", url: "/newsroom" },
+    deleteNewsroom: { method: "DELETE", url: "/newsroom" },
   },
 };
