@@ -74,9 +74,7 @@ const OrderTracking = () => {
                   setLoading(false);
                 }
               }}
-              className="px-6 py-3 rounded-md bg-gradient-to-r
-  from-sky-500 to-blue-600 text-white
-  font-medium hover:opacity-90 transition cursor-pointer"
+              className="px-6 py-3 rounded-md bg-gradient-to-r from-sky-500 to-blue-600 text-white font-medium hover:opacity-90 transition cursor-pointer"
             >
               {loading ? "Checking..." : "Track Order"}
             </button>
