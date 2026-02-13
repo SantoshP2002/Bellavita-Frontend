@@ -47,6 +47,7 @@ import DiscountDetails from "../components/DiscountDetails";
 import Newsroom from "../pages/admin/children/Newsroom";
 import UploadNewsroom from "../pages/admin/children/UploadNewsroom";
 import EditNewsroom from "../pages/admin/children/EditNewsroom";
+import NewsroomDetails from "../pages/footer/information/NewsroomDetails";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "edit-profile", element: <EditProfile /> },
       { path: "/blog/:id", element: <BlogDetails /> },
+      { path: "newsroom/:id", element: <NewsroomDetails /> },
       { path: "newsroom", element: <NewsRoom /> },
       { path: "terms-and-condition", element: <TermsAndCondition /> },
       { path: "privacy-policy", element: <PrivacyPolicy /> },
