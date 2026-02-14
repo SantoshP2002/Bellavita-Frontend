@@ -4,6 +4,7 @@ import type { IOrder } from "../../types";
 import { Button } from "../../components/Button";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { ORDER_STEPS } from "../../constants";
+import { useUserStore } from "../../store/user";
 
 const STATUS_COLOR_MAP: Record<string, string> = {
   paid: "text-green-600",
@@ -15,6 +16,7 @@ const STATUS_COLOR_MAP: Record<string, string> = {
 };
 
 const OrderDetails = () => {
+  const { user } = useUserStore();
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
@@ -65,7 +67,7 @@ const OrderDetails = () => {
       <div className="flex items-center justify-between">
         <h1
           className="text-3xl font-bold text-center mb-6 
-               bg-gradient-to-r from-blue-400 to-purple-700 
+               bg-gradient-to-r from-sky-400 to-blue-700 
                text-transparent bg-clip-text"
         >
           Order Details
@@ -86,13 +88,25 @@ const OrderDetails = () => {
 
       {/* Order Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 rounded-br-full p-6 dark:bg-black shadow-md dark:shadow-white shadow-black text-white">
+        <span className="text-lg font-bold bg-gradient-to-r from-sky-400 to-blue-700 text-transparent bg-clip-text">
+          Order Summary
+        </span>
+
         <Info label="Order ID" value={order._id} />
+
         <Info
           label="Order Date"
           value={
             order.createdAt ? new Date(order.createdAt).toLocaleString() : "N/A"
           }
         />
+
+        <Info
+          label="Customer Email"
+          value={user?.email ?? "N/A"}
+          color="text-sky-600"
+        />
+
         <Info
           label="Status"
           value={
@@ -108,6 +122,7 @@ const OrderDetails = () => {
           label="Payment"
           value={order.razorpay_payment_result?.rzp_payment_status ?? "N/A"}
         />
+
         <Info label="Total Amount" value={`₹${order.totalPrice ?? 0}`} bold />
       </div>
 
@@ -128,7 +143,7 @@ const OrderDetails = () => {
                     : "/placeholder.png";
 
                 return (
-                  <div key={item._id ?? index} className="flex gap-4 p-4">
+                  <div key={item._id ?? index} className="flex gap-6 p-4">
                     <img
                       src={image}
                       alt={product?.title ?? "Product"}
@@ -165,7 +180,7 @@ const OrderDetails = () => {
 
         {/* ================= ORDER TRACKING (RIGHT - SMALL) ================= */}
         <div className="space-y-4">
-          <div className="rounded-2xl p-4 dark:bg-black shadow-md shadow-black dark:shadow-white h-full">
+          <div className="rounded-2xl p-4 dark:bg-black shadow-md shadow-black dark:shadow-white lg:h-80 lg:mt-10">
             <h2 className="text-lg font-semibold mb-4 dark:text-white">
               Order Tracking
             </h2>
