@@ -153,8 +153,9 @@ const EditProduct = () => {
 
   return (
     <div className="p-2">
-      <h2 className="text-2xl font-bold">Edit Product</h2>
-
+      <span className="font-bold text-xl bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+        Edit Product
+      </span>
       <form
         className="flex flex-col gap-4 mt-4"
         onSubmit={handleSubmit(onSubmit)}

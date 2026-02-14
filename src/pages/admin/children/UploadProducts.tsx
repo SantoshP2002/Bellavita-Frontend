@@ -129,7 +129,9 @@ const UploadProducts = () => {
 
   return (
     <div className="p-2">
-      <div>Upload Products</div>
+      <span className="font-bold text-xl bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+        Upload Products
+      </span>
       <div className="mt-4">
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
           {/* TITLE */}
