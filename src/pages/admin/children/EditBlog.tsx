@@ -96,8 +96,10 @@ const EditBlog = () => {
 
   return (
     <div className="p-2">
-      <h3>Update Blogs</h3>
-      <div className="mt-4">
+      <span className=" text-xl bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+        Edit Blog
+      </span>
+      <div className="mt-6">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           {/* image start  */}
           <div className="flex flex-col gap-2">
@@ -202,6 +204,7 @@ const EditBlog = () => {
                 name: "description",
                 id: "description",
                 placeholder: "Write a Description",
+                className: "h-80!",
               }}
             />
 

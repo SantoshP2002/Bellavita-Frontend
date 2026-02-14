@@ -20,6 +20,7 @@ import {
 
 import { getQuillValue } from "../../../utils";
 import type { TBaseNewsroom } from "../../../types";
+import { HiDocumentText } from "react-icons/hi2";
 
 const EditNewsroom = () => {
   const { id } = useParams<{ id: string }>();
@@ -78,11 +79,13 @@ const EditNewsroom = () => {
 
   return (
     <div className="p-2">
-      <h3>Edit Newsroom</h3>
+      <span className=" text-xl bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+        Edit Newsroom
+      </span>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 mt-4"
+        className="flex flex-col gap-4 mt-6"
       >
         {/* image start  */}
         <div className="relative flex flex-col gap-2">
@@ -97,7 +100,7 @@ const EditNewsroom = () => {
                   right: {
                     icon: (
                       <label
-                        htmlFor="images"
+                        htmlFor="image"
                         className="flex items-center p-3 text-sm text-black/50 dark:text-white w-full cursor-pointer"
                       >
                         {image
@@ -137,13 +140,17 @@ const EditNewsroom = () => {
         {/* image end  */}
 
         {/* TITLE */}
-        <Input
-          label="Title"
-          register={register("title")}
-          error={errors.title?.message}
-          inputProps={{ placeholder: "Enter title" }}
-          className="border-b-4 border-r-4 px-5 bg-white border-black"
-        />
+        <div className="relative">
+          <Input
+            label="Title"
+            register={register("title")}
+            error={errors.title?.message}
+            inputProps={{ placeholder: "Enter Title" }}
+            className="border-b-4 border-r-4 pl-12 pr-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+          />
+
+          <HiDocumentText className="absolute bottom-3 left-3 lg:bottom-4 lg:left-5" />
+        </div>
 
         {/* DATE */}
         <Controller
@@ -183,7 +190,7 @@ const EditNewsroom = () => {
           label="Description"
           register={register("description")}
           error={errors.description?.message}
-          textareaProps={{ className: "h-32" }}
+          textareaProps={{ className: "h-80!" }}
         />
 
         {/* CONTENT */}

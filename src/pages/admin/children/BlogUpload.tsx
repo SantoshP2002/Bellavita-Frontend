@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { IoCheckmarkDoneCircleSharp, IoImagesOutline } from "react-icons/io5";
+import { IoCheckmarkDoneCircleSharp, IoImage } from "react-icons/io5";
 
 import { blogSchema } from "../../../validations/blog";
 import { BLOG_INITIAL_VALUES } from "../../../constants";
@@ -15,6 +15,7 @@ import { getQuillValue, processQuillContent } from "../../../utils";
 import Textarea from "../../../components/TextArea";
 import { useUploadBlog } from "../../../api/blog/service";
 import type { TBaseBlog } from "../../../types";
+import { HiDocumentText } from "react-icons/hi2";
 
 const BlogUpload = () => {
   const quillRefs = {
@@ -44,7 +45,6 @@ const BlogUpload = () => {
   const image = watch("image") || [];
 
   const onSubmit = async (data: TBaseBlog) => {
-
     await processQuillContent({
       quillRef: quillRefs.blog,
       blobUrlsRef: blobUrlRefs.blog,
@@ -68,8 +68,10 @@ const BlogUpload = () => {
 
   return (
     <div className="p-2">
-      <h3>Upload Blogs</h3>
-      <div className="mt-4">
+      <span className=" text-xl bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+        Upload Blog
+      </span>
+      <div className="mt-6">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           {/* image start  */}
           <div className="relative flex flex-col gap-2">
@@ -108,7 +110,7 @@ const BlogUpload = () => {
                 />
               )}
             />
-            <IoImagesOutline className="absolute bottom-3 left-3 lg:bottom-4 lg:left-5" />
+            <IoImage className="absolute bottom-3 left-3 lg:bottom-4 lg:left-5" />
             {/* Preview */}
             {image instanceof File && (
               <div className="relative w-22 h-22">
@@ -122,22 +124,26 @@ const BlogUpload = () => {
           </div>
           {/* image end  */}
 
-          {/* TITLE  */}
-          <Input
-            label="Title"
-            className="border-b-4 border-r-4 px-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
-            register={register("title")}
-            error={errors.title?.message}
-            inputProps={{ placeholder: "Enter Title", name: "title" }}
-          />
+          {/* TITLE */}
+          <div className="relative">
+            <Input
+              label="Title"
+              register={register("title")}
+              error={errors.title?.message}
+              inputProps={{ placeholder: "Enter Title" }}
+              className="border-b-4 border-r-4 pl-12 pr-5 lg:px-8 bg-white text-black border-black dark:bg-black dark:text-white dark:border-gray-700"
+            />
+
+            <HiDocumentText className="absolute bottom-3 left-3 lg:bottom-4 lg:left-5" />
+          </div>
 
           {/* DATE  */}
           <Controller
             control={control}
             name="date"
             render={({ field }) => (
-              <div className="flex flex-col dark:bg-black">
-                <label className="text-sm font-medium text-center text-black dark:text-white border w-10 rounded-lg dark:border-gray-400">
+              <div className="relative flex flex-col gap-1">
+                <label className="z-10 text-[10px] lg:text-xs dark:bg-black dark:text-gray-300 dark:border-gray-300 text-black bg-white absolute top-0 left-3 transform -translate-y-1/2 border border-black/10 leading-none px-1 md:px-2 py-0.5 rounded cursor-pointer">
                   Date
                 </label>
 
@@ -185,7 +191,7 @@ const BlogUpload = () => {
             name={"blog"}
             render={({ field }) => (
               <QuillEditor
-                label={"Blog"}
+                label="Blog Content"
                 ref={quillRefs.blog}
                 blobUrlsRef={blobUrlRefs.blog}
                 onChange={field.onChange}
