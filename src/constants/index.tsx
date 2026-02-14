@@ -682,3 +682,31 @@ export const discounts = [
       "Upgrade your makeup kit with trendy essentials at great prices.",
   },
 ];
+
+// SiteMap Section Data
+export const sitemapSections = [
+  {
+    title: "Main Pages",
+    links: ["Home", "Shop", "Categories", "Product Details", "Search"],
+  },
+  {
+    title: "User Account",
+    links: ["Login", "Register", "Forgot Password", "Profile", "Wishlist"],
+  },
+  {
+    title: "Orders",
+    links: ["Cart", "Checkout", "Order Tracking", "Order History"],
+  },
+  {
+    title: "Offers",
+    links: ["Discount Details", "Flash Sales", "Coupons", "New Arrivals"],
+  },
+  {
+    title: "Information",
+    links: ["About Us", "Contact Us", "FAQ", "Newsroom"],
+  },
+  {
+    title: "Policies",
+    links: ["Privacy Policy", "Terms & Conditions", "Return Policy"],
+  },
+];
