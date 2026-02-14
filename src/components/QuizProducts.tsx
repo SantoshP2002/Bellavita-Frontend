@@ -16,6 +16,26 @@ const QuizProducts = () => {
             alt="right quiz image"
             className="w-full md:w-1/2 max-w-[600px] object-cover rounded shadow-md md:hover:scale-95 transition-transform duration-300 cursor-pointer"
           />
+          <img
+            src="https://www.sugarcosmetics.com/cdn/shop/files/LA-LA-Love-HP-3200x1200.jpg?v=1770295188&width=2000"
+            alt="right quiz image"
+            className="w-full md:w-1/2 max-w-[600px] object-cover rounded shadow-md md:hover:scale-95 transition-transform duration-300 cursor-pointer"
+          />
+          <img
+            src="https://www.sugarcosmetics.com/cdn/shop/files/Heart-shaped-Valentine-Sling-Bag--HP-3200x1200.jpg?v=1770469177&width=2000"
+            alt="right quiz image"
+            className="w-full md:w-1/2 max-w-[600px] object-cover rounded shadow-md md:hover:scale-95 transition-transform duration-300 cursor-pointer"
+          />
+          <img
+            src="https://www.sugarcosmetics.com/cdn/shop/files/Valentine-Kit-HP-3200x1200.jpg?v=1770276266&width=2000"
+            alt="right quiz image"
+            className="w-full md:w-1/2 max-w-[600px] object-cover rounded shadow-md md:hover:scale-95 transition-transform duration-300 cursor-pointer"
+          />
+          <img
+            src="https://www.sugarcosmetics.com/cdn/shop/files/Tote-Bag-HP-3200x1200.jpg?v=1770033680&width=2000"
+            alt="right quiz image"
+            className="w-full md:w-1/2 max-w-[600px] object-cover rounded shadow-md md:hover:scale-95 transition-transform duration-300 cursor-pointer"
+          />
         </div>
       </div>
     </div>
