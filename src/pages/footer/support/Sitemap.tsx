@@ -1,31 +1,6 @@
-const Sitemap = () => {
-  const sitemapSections = [
-    {
-      title: "Main Pages",
-      links: ["Home", "Shop", "Categories", "Product Details", "Search"],
-    },
-    {
-      title: "User Account",
-      links: ["Login", "Register", "Forgot Password", "Profile", "Wishlist"],
-    },
-    {
-      title: "Orders",
-      links: ["Cart", "Checkout", "Order Tracking", "Order History"],
-    },
-    {
-      title: "Offers",
-      links: ["Discount Details", "Flash Sales", "Coupons", "New Arrivals"],
-    },
-    {
-      title: "Information",
-      links: ["About Us", "Contact Us", "FAQ", "Newsroom"],
-    },
-    {
-      title: "Policies",
-      links: ["Privacy Policy", "Terms & Conditions", "Return Policy"],
-    },
-  ];
+import { sitemapSections } from "../../../constants";
 
+const Sitemap = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black dark:text-white px-4 py-20">
       {/* HEADER */}
