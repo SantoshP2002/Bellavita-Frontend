@@ -10,7 +10,7 @@ import { GoPlus } from "react-icons/go";
 import { Button } from "./Button";
 import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import ConfirmModal from "./ConfirmModal";
 
 const CartProducts = () => {
@@ -67,7 +67,7 @@ const CartProducts = () => {
 
   return (
     <div className="flex-1 p-2 sm:p-4 lg:p-12 dark:bg-black dark:text-white">
-      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 border-black lg:shadow-black dark:bg-black dark:border-white shadow-sm">
+      <div className="h-full w-full bg-white rounded-2xl p-2 sm:p-4 border-black lg:shadow-black dark:bg-black dark:border-white shadow-sm lg:dark:shadow-white">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 h-full">
           {/* Left: Products */}
           <div
@@ -100,7 +100,7 @@ const CartProducts = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="flex flex-col sm:flex-row items-center sm:items-start p-4 rounded-lg gap-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:shadow-md transition"
+                        className="flex flex-col sm:flex-row items-center sm:items-start p-4 rounded-lg gap-4 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:shadow-md dark:shadow-white shadow-black transition"
                       >
                         <motion.img
                           src={product?.images?.[0]}
@@ -116,7 +116,7 @@ const CartProducts = () => {
                             {product?.brand}
                           </p>
                           <div className="flex items-center justify-center sm:justify-start gap-2">
-                            <span className="text-red-500 font-bold text-sm sm:text-base">
+                            <span className="dark:text-white/50 font-bold text-sm sm:text-base">
                               ₹{product?.sellingPrice}
                             </span>
                             <span className="text-gray-400 line-through text-xs sm:text-sm">
@@ -212,7 +212,7 @@ const CartProducts = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.3 }}
-                className="bg-gray-50 p-3 sm:p-6 rounded-xl flex flex-col h-full dark:bg-black dark:text-white border-b-2 border-l-2 dark:border-white shadow-sm dark:shadow-white"
+                className="bg-gray-50 p-3 lg:mt-17 sm:p-6 rounded-xl flex flex-col h-90 dark:bg-black dark:text-white border-b-2 border-l-2 dark:border-white shadow-sm dark:shadow-white"
               >
                 <h2 className="text-base sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left">
                   Order Summary
@@ -232,10 +232,19 @@ const CartProducts = () => {
                 <Button
                   content="Continue"
                   pattern="outline"
-                  className="mt-10"
+                  className="mt-5"
                   icons={{ right: <FaArrowRight /> }}
                   buttonProps={{
                     onClick: () => navigate("/address"),
+                  }}
+                />
+                <Button
+                  content="Back Home"
+                  pattern="outline"
+                  className="mt-5 rounded-lg!"
+                  icons={{ left: <FaArrowLeft /> }}
+                  buttonProps={{
+                    onClick: () => navigate("/"),
                   }}
                 />
               </motion.div>
