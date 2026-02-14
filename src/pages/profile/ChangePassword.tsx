@@ -41,8 +41,8 @@ const ChangePassword = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-10 mb-10 w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto bg-white dark:bg-black/60 shadow-md dark:shadow-white rounded-tl-full rounded-br-full p-6"
       >
-        <p className="text-xl font-medium py-3 dark:text-blue-300">
-          Change You Password 🔏
+        <p className="text-2xl py-3 bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+          Change Your Password
         </p>
         {/* CURRENT PASSWORD */}
         <div className="relative w-full">

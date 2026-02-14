@@ -49,8 +49,8 @@ const EditProfile = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="
-          w-full max-w-sm sm:max-w-md   bg-white/90 dark:bg-black/60 shadow-md dark:shadow-white backdrop-blur-xl p-6 sm:p-8 shadow-2x space-y-4 sm:space-y-5
-          animate-[scaleIn_0.4s_ease-out]  rounded-tl-full rounded-br-full
+          w-full max-w-sm sm:max-w-md bg-white/90 dark:bg-black/60 shadow-md shadow-black/40 dark:shadow-sky-400 backdrop-blur-xl p-6 sm:p-8 shadow-2x space-y-4 sm:space-y-5
+          animate-[scaleIn_0.4s_ease-out] rounded-tl-full rounded-br-full
         "
       >
         <h2 className="text-xl sm:text-2xl font-bold dark:text-white text-start mb-8 uppercase">
