@@ -163,7 +163,7 @@ const CheckoutSummary = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Address Section */}
-        <div className="bg-gradient-to-bl from-pink-100 via-violet-100 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-2xl shadow-lg transition-all duration-300 p-6 dark:border-white border-l-2 border-b-2">
+        <div className="h-80 bg-gradient-to-bl from-pink-100 via-violet-100 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-2xl shadow-lg transition-all duration-300 p-6 dark:border-white border-l-2 border-b-2">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 flex items-center gap-2">
             <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
             Shipping Address
@@ -190,13 +190,13 @@ const CheckoutSummary = () => {
         </div>
 
         {/* Products Section */}
-        <div className=" bg-gradient-to-bl from-pink-100 via-violet-100 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-b-full transition-all duration-300 p-6">
+        <div className="h-80 bg-gradient-to-bl from-pink-100 via-violet-100 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 rounded-b-full transition-all duration-300 p-6">
           <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100 flex items-center gap-2">
             <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
             Products
           </h2>
 
-          <div className="space-y-4 max-h-80 overflow-y-auto pr-2">
+          <div className="space-y-4 max-h-50 overflow-y-auto pr-2">
             {products.map((item) => (
               <div
                 key={item._id}
@@ -219,7 +219,7 @@ const CheckoutSummary = () => {
             ))}
           </div>
 
-          <div className="flex justify-center gap-5 items-center mt-6 text-lg font-semibold text-gray-800 dark:text-gray-100 pt-4">
+          <div className="flex justify-center gap-5 items-center text-lg font-semibold text-gray-800 dark:text-gray-100 pt-4">
             <span>Total:</span>
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
               ₹{subtotal}
