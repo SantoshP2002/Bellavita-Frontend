@@ -12,6 +12,7 @@ import { HiMinusSmall } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import ConfirmModal from "./ConfirmModal";
+import { PiArrowBendDownRightDuotone } from "react-icons/pi";
 
 const CartProducts = () => {
   const navigate = useNavigate();
@@ -184,12 +185,15 @@ const CartProducts = () => {
                     transition={{ duration: 0.4 }}
                     className="flex flex-col justify-center items-center h-full text-center"
                   >
-                    <p className="text-xl sm:text-2xl font-bold dark:text-gray-300 mb-3">
+                    <p className="text-md lg:text-2xl font-bold dark:text-gray-300 mb-3">
                       🛒 Your Cart Is Empty!
                     </p>
                     <Button
                       content="Continue Shopping"
-                      className=" w-50! mt-2 text-black border-2 text-xs sm:text-sm py-1 sm:py-2 px-3  shadow-[4px_4px_0_0_#000]  transition-all duration-200 ease-out hover:text-black dark:bg-black dark:hover:text-white dark:text-white  dark:border-white  dark:shadow-[4px_4px_0_0_#fff]"
+                      icons={{
+                        right: <PiArrowBendDownRightDuotone size={25} />,
+                      }}
+                      className="w-60! mt-2 text-black border-2 text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white dark:border-white dark:shadow-[4px_4px_0_0_#fff] dark:hover:shadow-[4px_4px_0_0_#fff]"
                       pattern="outline"
                       buttonProps={{
                         onClick: () => {
