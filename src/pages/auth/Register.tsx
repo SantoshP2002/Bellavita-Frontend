@@ -124,6 +124,7 @@ const Register = () => {
                 )}
               </div>
 
+              {/* LAST NAME  */}
               <div className="relative">
                 <Input
                   label="Last Name"
