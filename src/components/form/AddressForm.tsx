@@ -10,8 +10,6 @@ import type { IAddress, IBaseAddress } from "../../types";
 import useQueryParams from "../../hooks/useQueryParams";
 import { deepEqual } from "../../utils";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
-import { IoIosArrowBack } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { LuLandmark } from "react-icons/lu";
@@ -216,19 +214,6 @@ const AddressForm = ({
           className="w-30! lg:w-50! mt-8"
           buttonProps={{ type: "submit", disabled: isPending }}
         />
-        <Link to="/cart">
-          <Button
-            content="BACK"
-            pattern="outline"
-            className="mt-8"
-            icons={{
-              left: <IoIosArrowBack size={10} />,
-            }}
-            buttonProps={{
-              type: "button",
-            }}
-          />
-        </Link>
       </div>
     </form>
   );
