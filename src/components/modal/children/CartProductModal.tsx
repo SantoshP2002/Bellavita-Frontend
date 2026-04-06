@@ -13,7 +13,7 @@ const CartProductModal = ({ open, onClose }: Props) => {
       isOpen={open}
       onClose={onClose}
       heading="My Cart"
-      className="max-w-6xl h-[90vh] overflow-hidden rounded-2xl bg-white dark:bg-black"
+      className="max-w-5xl h-[80vh] overflow-hidden rounded-3xl bg-white dark:bg-black shadow-3xl"
     >
       <AnimatePresence mode="wait">
         {open && (
