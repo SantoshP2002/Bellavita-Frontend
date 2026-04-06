@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import type { ModalProps } from "../../types";
 import useVerticalScrollable from "../../hooks/useVerticalScrollable";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { BottomGradient, TopGradient } from "../Gradients";
+import { BottomGradient } from "../Gradients";
 
 const Modal = ({
   isOpen,
@@ -33,7 +33,7 @@ const Modal = ({
     <div
       onClick={onClose}
       {...containerProps}
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-transparent p-8 backdrop-blur-sm ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-transparent p-8 ${
         containerProps?.className || ""
       }`}
     >
@@ -42,9 +42,7 @@ const Modal = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Scrollable area */}
-        {showGradient.top && (
-          <TopGradient className={`h-8 ${heading ? "!top-16" : ""}`} />
-        )}
+
         <div
           ref={containerRef}
           className={`max-h-[90dvh] overflow-y-auto scroll-smooth px-6 ${
@@ -55,7 +53,7 @@ const Modal = ({
           <div
             className={`z-20 ${
               heading
-                ? "h-16 flex items-center justify-between sticky top-0"
+                ? "h-16 flex items-center justify-between sticky top-0 bg-white dark:bg-black px-6"
                 : ""
             }`}
           >
