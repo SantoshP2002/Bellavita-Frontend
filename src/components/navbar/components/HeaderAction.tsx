@@ -14,12 +14,14 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { RiAccountBox2Line } from "react-icons/ri";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { BsCartFill } from "react-icons/bs";
+import CartProductModal from "../../modal/children/CartProductModal";
 
 type TTheme = "light" | "dark";
 const activeTheme = (localStorage.getItem("theme") || "light") as TTheme;
 
 const HeaderAction = () => {
   const navigate = useNavigate();
+  const [cartOpen, setCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [theme, setTheme] = useState<TTheme>(activeTheme);
 
@@ -51,6 +53,7 @@ const HeaderAction = () => {
           <SearchModal onClose={() => setIsSearchOpen(false)} />
         </Modal>
       )}
+      <CartProductModal open={cartOpen} onClose={() => setCartOpen(false)} />
       <div className="flex-1 flex items-center justify-between dark:text-white">
         <Logo />
         <div className="flex items-center gap-5 text-gray-700 px-8">
@@ -100,7 +103,8 @@ const HeaderAction = () => {
           <div className="relative">
             <BsCartFill
               className="cursor-pointer transition-colors duration-200 dark:text-white h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
-              onClick={() => navigate("/cart")}
+              // onClick={() => navigate("/cart")}
+              onClick={() => setCartOpen(true)}
             />
 
             {cartCount > 0 && (
