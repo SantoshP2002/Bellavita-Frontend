@@ -31,7 +31,7 @@ const HomeProducts = () => {
   };
 
   return (
-    <div className="min-h-[550px] px-10 py-4 dark:bg-black dark:text-white dark:hover:shadow-white">
+    <div className="w-full min-h-[550px] px-10 py-4 dark:bg-black dark:text-white dark:hover:shadow-white">
       {isLoading && (
         <LoadingScreen content="Home Product Loading Please Wait !" />
       )}
