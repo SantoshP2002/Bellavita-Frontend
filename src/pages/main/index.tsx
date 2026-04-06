@@ -6,7 +6,7 @@ import MobileBottomNav from "../../components/MobileBottomNav";
 
 const Main = () => {
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full flex flex-col dark:bg-black dark:text-white">
       <ScrollToTop />
       <Navbar />
       <main className="grow flex-1">
