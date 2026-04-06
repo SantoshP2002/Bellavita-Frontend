@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import EmptyData from "../../components/empty-data/EmptyData";
-import { Link } from "react-router-dom";
 import AddressForm from "../../components/form/AddressForm";
 
 const Address = () => {
@@ -100,15 +99,6 @@ const Address = () => {
               },
             }}
           />
-
-          <Link to={"/cart"}>
-            <Button
-              content="BACK"
-              pattern="outline"
-              className="mt-8! lg:w-70! bg-white text-black border-2 border-black text-xs sm:text-sm py-1 sm:py-2 px-3 shadow-[4px_4px_0_0_#000] transition-all duration-200 ease-out dark:bg-black dark:text-white! dark:border-white dark:shadow-[4px_4px_0_0_#fff]"
-              buttonProps={{ type: "button" }}
-            />
-          </Link>
         </div>
       )}
     </div>
