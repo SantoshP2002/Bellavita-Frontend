@@ -14,7 +14,7 @@ import { carouselImages, mobileCarouselImages } from "../../constants";
 
 const Home = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full mx-auto">
       {/*Home Carousel */}
       <HomeCarousel
         key={"top"}
