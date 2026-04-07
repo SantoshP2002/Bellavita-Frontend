@@ -113,8 +113,9 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
 };
 
 export const carouselImages = [
-  "https://bellavitaorganic.com/cdn/shop/files/1920x720_2_1_78e7f165-8c56-42d5-b364-ed43aaf7f435.webp?v=1768391940&width=1920",
-  "https://bellavitaorganic.com/cdn/shop/files/A_1.webp?v=1767079304&width=1920",
+  "https://www.sugarcosmetics.com/cdn/shop/files/Mettle_Liquid_Lipstick_HP_3200x1200_d0b8fcac-094c-4ee2-8779-8accabf7f1a6.jpg?v=1773333978&width=2000",
+  "https://www.sugarcosmetics.com/cdn/shop/files/2000-off-on-4999-HP-3200x1200.jpg?v=1774505309&width=2000",
+  "https://www.sugarcosmetics.com/cdn/shop/files/Glide_Peptide_Range_HP_3200x1200_e74ad863-7e71-46ab-beaa-fe1371dd93c1.jpg?v=1774620979&width=2000",
 ];
 
 export const mobileCarouselImages = [
