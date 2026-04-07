@@ -13,7 +13,7 @@ const CartProductModal = ({ open, onClose }: Props) => {
       isOpen={open}
       onClose={onClose}
       heading="My Cart"
-      className="max-w-5xl h-[80vh] overflow-hidden rounded-3xl bg-white dark:bg-black shadow-3xl"
+      className="max-w-6xl h-[80vh] overflow-hidden rounded-3xl bg-white dark:bg-black shadow-3xl"
     >
       <AnimatePresence mode="wait">
         {open && (
@@ -25,7 +25,6 @@ const CartProductModal = ({ open, onClose }: Props) => {
             transition={{ duration: 0.25 }}
             className="flex h-full min-h-0 flex-col"
           >
-            {/* Scroll sirf content area me hoga */}
             <div className="min-h-0 flex-1 overflow-y-auto bg-white dark:bg-black px-3 sm:px-4 md:px-6 pb-4 sm:pb-6">
               <CartProducts onClose={onClose} />
             </div>
