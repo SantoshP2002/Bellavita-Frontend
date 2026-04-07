@@ -53,7 +53,7 @@ const Modal = ({
           <div
             className={`z-20 ${
               heading
-                ? "h-16 flex items-center justify-between sticky top-0 bg-white dark:bg-black px-6"
+                ? "h-20 flex items-center justify-between sticky top-0 bg-gray-50 dark:bg-black px-6"
                 : ""
             }`}
           >
