@@ -115,12 +115,15 @@ export const PRODUCT_INITIAL_VALUES: TBaseProduct = {
 export const carouselImages = [
   "https://www.sugarcosmetics.com/cdn/shop/files/Mettle_Liquid_Lipstick_HP_3200x1200_d0b8fcac-094c-4ee2-8779-8accabf7f1a6.jpg?v=1773333978&width=2000",
   "https://www.sugarcosmetics.com/cdn/shop/files/2000-off-on-4999-HP-3200x1200.jpg?v=1774505309&width=2000",
+  "https://www.sugarcosmetics.com/cdn/shop/files/TMM-Website-Banner-3200x1200.jpg?v=1769067005&width=2000",
   "https://www.sugarcosmetics.com/cdn/shop/files/Glide_Peptide_Range_HP_3200x1200_e74ad863-7e71-46ab-beaa-fe1371dd93c1.jpg?v=1774620979&width=2000",
 ];
 
 export const mobileCarouselImages = [
-  "https://bellavitaorganic.com/cdn/shop/files/Mobile_3.webp?v=1767012883&width=800",
-  "https://bellavitaorganic.com/cdn/shop/files/860-1150_15.webp?v=1767891845&width=800",
+  "https://www.sugarcosmetics.com/cdn/shop/files/Mettle_Liquid_Lipstick_HP_1200x1600_e30a9872-857c-447b-96d9-c789efb98c59.jpg?v=1773333978&width=1000",
+  "https://www.sugarcosmetics.com/cdn/shop/files/2000_off_on_4999-_HP-1200x1600.jpg?v=1774505309&width=1000",
+  "https://www.sugarcosmetics.com/cdn/shop/files/TMM-Website-Banner-1200x1600-With-Tag.jpg?v=1769687348&width=1000",
+  "https://www.sugarcosmetics.com/cdn/shop/files/Glide_Peptide_Range_HP_1200x1600_cd1bb65a-71be-4384-9729-836d635f20c0.jpg?v=1774621002&width=1000",
 ];
 
 export const luxuryCategories = [
