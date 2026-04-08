@@ -1,6 +1,7 @@
 import Modal from "../index";
 import CartProducts from "../../../components/CartProducts";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   open: boolean;
@@ -8,6 +9,7 @@ type Props = {
 };
 
 const CartProductModal = ({ open, onClose }: Props) => {
+  const navigate = useNavigate();
   return (
     <Modal
       isOpen={open}
@@ -26,7 +28,7 @@ const CartProductModal = ({ open, onClose }: Props) => {
             className="flex h-full min-h-0 flex-col"
           >
             <div className="min-h-0 flex-1 overflow-y-auto bg-white dark:bg-black px-3 sm:px-4 md:px-6 pb-4 sm:pb-6">
-              <CartProducts onClose={onClose} />
+              <CartProducts onClose={() => navigate("/")} />
             </div>
           </motion.div>
         )}

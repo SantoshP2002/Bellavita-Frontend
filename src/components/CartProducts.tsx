@@ -14,7 +14,7 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import ConfirmModal from "./ConfirmModal";
 import { PiArrowBendDownRightDuotone } from "react-icons/pi";
 
-const CartProducts = ({ onClose }: { onClose: () => void }) => {
+const CartProducts = ({ onClose }: { onClose?: () => void }) => {
   const navigate = useNavigate();
   const { data } = useGetUserCart();
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -240,7 +240,7 @@ const CartProducts = ({ onClose }: { onClose: () => void }) => {
                   icons={{ right: <FaArrowRight /> }}
                   buttonProps={{
                     onClick: () => {
-                      onClose();
+                      onClose?.();
                       navigate("/address");
                     },
                   }}
@@ -252,7 +252,7 @@ const CartProducts = ({ onClose }: { onClose: () => void }) => {
                   icons={{ left: <FaArrowLeft /> }}
                   buttonProps={{
                     onClick: () => {
-                      onClose();
+                      onClose?.();
                       navigate("/");
                     },
                   }}
